@@ -7,4 +7,4 @@ Jonathan Petz,
 Aaron Kramer,
 TJ Livingston,
 Alley Borden,
-Jarred Sumpter,
+Jarred Sumpter
