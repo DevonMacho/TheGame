@@ -4,7 +4,20 @@ using System.Collections.Generic;
 
 public class Parser : MonoBehaviour {
 	
+	private static Dictionary<string, int> commandList;
 
+	public static void initializeCommands()
+	{
+		commandList = new Dictionary<string,int >();
+		commandList.Add("help", 0);
+		commandList.Add("clear", 1);
+		commandList.Add("look", 2);
+		commandList.Add("go", 3);
+		commandList.Add("pickup", 4);
+		commandList.Add("drop", 5);
+		commandList.Add("inventory", 6);
+		//Debug.Log("commands initialized");
+	}
 	private static string[] tokenize(string tkn)
 	{
 		string[] tokens;
@@ -14,18 +27,36 @@ public class Parser : MonoBehaviour {
 			return new string[0];
 		}
 		return tokens;
-
-
 	}
 
 	public static string Parse (string input) 
 	{
+		if (commandList == null)
+		{
+			initializeCommands();
+		}
 		string[] token = tokenize(input);
-		if (token.Length <= 0)
+		if (token.Length <= 0 || !commandList.ContainsKey(token[0].ToLower()))
 		{
 			return "Please enter a valid command";
 		}
-		return "valid";
-
+		int command = commandList[token[0].ToLower()];
+		if (command == 0)
+		{
+			return help ();
+		}
+		else
+		{
+		return "You have entered a valid command";
+		}
+	}
+	private static string help()
+	{
+		string lst = "";
+		foreach (string i in commandList.Keys)
+		{
+			lst = i + "\n" + lst;
+		}
+		return lst;
 	}
 }
