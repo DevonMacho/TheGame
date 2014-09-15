@@ -12,8 +12,8 @@ public class GUI_Terminal : MonoBehaviour {
 	protected string consoleLog = "";
 	void OnGUI () 
 	{
-		//todo... add in a box to contain both the input and the log.
-		// "Submit command" button as well as getting enter to work properly
+
+		// get enter to work properly
 		// after submit add to log, if clear command is entered, clear the log
 		GUILayout.BeginArea(new Rect(10, Screen.height - 123, Screen.width - 20, 123));
 		scrollPosition = GUILayout.BeginScrollView (scrollPosition, GUILayout.Width (Screen.width - 20), GUILayout.Height (98));
@@ -30,9 +30,14 @@ public class GUI_Terminal : MonoBehaviour {
 	}
 	void SubmitCommand()
 	{
-		consoleLog = input + "\n" + consoleLog;
-		consoleLog = "Output From Parser" + "\n" + consoleLog;
-		//terminal output / command execution
+
+
+		string output = Parser.Parse(input);
+		if(!input.Equals(""))
+		{
+			consoleLog = input + "\n" + consoleLog;
+		}
+		consoleLog = output + "\n" + consoleLog;
 		input = "";
 	}
 }
