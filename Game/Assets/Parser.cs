@@ -59,6 +59,7 @@ public class Parser : MonoBehaviour {
 		string lst = "----- Commands ----\n";
 		foreach (string i in commandList.Keys)
 		{
+			//testing re-merge
 			lst += i + "\n" ;
 		}
 		lst += "------------------";
