@@ -31,13 +31,17 @@ public class GUI_Terminal : MonoBehaviour {
 	void SubmitCommand()
 	{
 
-
 		string output = Parser.Parse(input);
 		if(!input.Equals(""))
 		{
 			consoleLog = input + "\n" + consoleLog;
 		}
+
 		consoleLog = output + "\n" + consoleLog;
+		if(output.Equals("<===Clearing===>"))
+		{
+			consoleLog = "" + "<===Cleared===>";
+		}
 		input = "";
 	}
 }
