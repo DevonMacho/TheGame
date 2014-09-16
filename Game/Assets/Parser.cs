@@ -45,6 +45,10 @@ public class Parser : MonoBehaviour {
 		{
 			return help ();
 		}
+		else if(command ==1)
+		{
+			return clear ();
+		}
 		else
 		{
 		return "You have entered a valid command";
@@ -52,11 +56,16 @@ public class Parser : MonoBehaviour {
 	}
 	private static string help()
 	{
-		string lst = "";
+		string lst = "----- Commands ----\n";
 		foreach (string i in commandList.Keys)
 		{
-			lst = i + "\n" + lst;
+			lst += i + "\n" ;
 		}
+		lst += "------------------";
 		return lst;
+	}
+	private static string clear()
+	{
+		return "<===Clearing===>";
 	}
 }
