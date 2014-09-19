@@ -9,6 +9,8 @@ public class GUI_Terminal : MonoBehaviour {
 	protected string input = "";
 	protected Vector2 scrollPosition;
 	protected string consoleLog = "";
+	protected ArrayList commandHistory = new ArrayList();
+
 	void OnGUI () 
 	{
 
@@ -24,7 +26,6 @@ public class GUI_Terminal : MonoBehaviour {
 			{
 				SubmitCommand();
 			}
-
 		}
 		if(GUI.Button(new Rect(0, 98, 60,20 ),"Submit"))
 		{
