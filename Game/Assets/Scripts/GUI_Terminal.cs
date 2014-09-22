@@ -10,10 +10,10 @@ public class GUI_Terminal : MonoBehaviour {
 	protected Vector2 scrollPosition;
 	protected string consoleLog = "";
 	protected ArrayList commandHistory = new ArrayList();
-
+	public GUISkin skin;
 	void OnGUI () 
 	{
-
+		GUI.skin = skin;
 		GUILayout.BeginArea(new Rect(10, Screen.height -  (Screen.height * 256/768), Screen.width - 20, (Screen.height * 256/768)));
 		scrollPosition = GUILayout.BeginScrollView (scrollPosition, GUILayout.Width (Screen.width - 20), GUILayout.Height (Screen.height * 221/768));
 
