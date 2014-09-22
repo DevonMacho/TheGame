@@ -5,9 +5,6 @@ public class GUI_Terminal : MonoBehaviour {
 
 	void Start () 
 	{
-		Debug.Log ("Height: "+Screen.height);
-		Debug.Log ("Width: "+Screen.width);
-		//768
 	}
 	protected string input = "";
 	protected Vector2 scrollPosition;
@@ -17,8 +14,8 @@ public class GUI_Terminal : MonoBehaviour {
 	void OnGUI () 
 	{
 
-		GUILayout.BeginArea(new Rect(10, Screen.height -  (Screen.height * 192/768), Screen.width - 20, (Screen.height * 192/768)));
-		scrollPosition = GUILayout.BeginScrollView (scrollPosition, GUILayout.Width (Screen.width - 20), GUILayout.Height (Screen.height * 157/768));
+		GUILayout.BeginArea(new Rect(10, Screen.height -  (Screen.height * 256/768), Screen.width - 20, (Screen.height * 256/768)));
+		scrollPosition = GUILayout.BeginScrollView (scrollPosition, GUILayout.Width (Screen.width - 20), GUILayout.Height (Screen.height * 221/768));
 
 		GUILayout.Label (consoleLog);
 		GUILayout.EndScrollView();
@@ -30,12 +27,12 @@ public class GUI_Terminal : MonoBehaviour {
 				SubmitCommand();
 			}
 		}
-		if(GUI.Button(new Rect(0, (Screen.height * 157/768), (Screen.height * 60/768),(Screen.height * 30/768) ),"Submit"))
+		if(GUI.Button(new Rect(0, (Screen.height * 221/768), 60,(Screen.height * 30/768) ),"Submit"))
 		{
 			SubmitCommand();
 		}
 		GUI.SetNextControlName("textField");
-		input = GUI.TextField(new Rect(70,  (Screen.height * 157/768), Screen.width - 90,(Screen.height * 30/768)), input);
+		input = GUI.TextField(new Rect(70,  (Screen.height * 221/768), Screen.width - 90,(Screen.height * 30/768)), input);
 		GUILayout.EndArea();
 
 	}
