@@ -13,7 +13,6 @@ public class GUI_Terminal : MonoBehaviour {
 	public GUISkin skin;
 	void OnGUI () 
 	{
-		Debug.Log(scrollPosition.y);
 		GUI.skin = skin;
 		GUILayout.BeginArea(new Rect(10, Screen.height -  (Screen.height * 256/768), Screen.width - 20, (Screen.height * 256/768)));
 		scrollPosition = GUILayout.BeginScrollView (scrollPosition, GUILayout.Width (Screen.width - 20), GUILayout.Height (Screen.height * 211/768));
@@ -43,6 +42,7 @@ public class GUI_Terminal : MonoBehaviour {
 		if(!input.Equals(""))
 		{
 			consoleLog =  consoleLog + input +"\n";
+			scrollPosition.y = Mathf.Infinity;
 		}
 
 		consoleLog = consoleLog + output + "\n" ;
