@@ -7,7 +7,7 @@ public class GUI_Terminal : MonoBehaviour {
 	{
 	}
 	protected string input = "";
-	protected Vector2 scrollPosition;
+	public Vector2 scrollPosition;
 	protected string consoleLog = "";
 	protected ArrayList commandHistory = new ArrayList();
 	public GUISkin skin;
@@ -16,7 +16,6 @@ public class GUI_Terminal : MonoBehaviour {
 		GUI.skin = skin;
 		GUILayout.BeginArea(new Rect(10, Screen.height -  (Screen.height * 256/768), Screen.width - 20, (Screen.height * 256/768)));
 		scrollPosition = GUILayout.BeginScrollView (scrollPosition, GUILayout.Width (Screen.width - 20), GUILayout.Height (Screen.height * 211/768));
-
 		GUILayout.Label (consoleLog);
 		GUILayout.EndScrollView();
 
@@ -42,13 +41,14 @@ public class GUI_Terminal : MonoBehaviour {
 		string output = Parser.Parse(input);
 		if(!input.Equals(""))
 		{
-			consoleLog = input + "\n" + consoleLog;
+			consoleLog =  consoleLog + input +"\n";
+			scrollPosition.y = Mathf.Infinity;
 		}
 
-		consoleLog = output + "\n" + consoleLog;
+		consoleLog = consoleLog + output + "\n" ;
 		if(output.Equals("<===Clearing===>"))
 		{
-			consoleLog = "<===Cleared===>";
+			consoleLog = "<===Cleared===>\n";
 		}
 		input = "";
 	}
