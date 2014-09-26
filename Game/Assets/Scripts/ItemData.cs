@@ -33,6 +33,10 @@ public class ItemData : MonoBehaviour {
 		{
 			return this.location;
 		}
+		public void setLocation(int location)
+		{
+			this.location = location;
+		}
 
 	}
 }
