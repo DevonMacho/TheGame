@@ -5,8 +5,34 @@ public class ItemData : MonoBehaviour {
 
 	public struct Item
 	{
-		public int weight;
-		public string name;
-		public string description;
+		private int weight;
+		private string name;
+		private string description;
+		private int location;
+		//user's inventory is -1
+		public Item (string name, string description, int location, int weight)
+		{
+			this.name = name;
+			this.description = description;
+			this.location = location;
+			this.weight = weight;
+		}
+		public int getWeight()
+		{
+			return this.weight;
+		}
+		public string getName()
+		{
+			return this.name;
+		}
+		public string getDescription()
+		{
+			return this.description;
+		}
+		public int getLocation()
+		{
+			return this.location;
+		}
+
 	}
 }

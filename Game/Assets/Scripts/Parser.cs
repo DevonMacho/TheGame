@@ -50,6 +50,10 @@ public class Parser : MonoBehaviour {
 		{
 			return clear ();
 		}
+		else if(command == 6)
+		{
+			return listItems();
+		}
 		else if(command == 7)
 		{
 			return quit();
@@ -69,6 +73,11 @@ public class Parser : MonoBehaviour {
 		}
 		lst += "------------------";
 		return lst;
+	}
+	private static string listItems()
+	{
+		Inventory.initItemList();
+		return Inventory.listItems();
 	}
 	private static string quit()
 	{
