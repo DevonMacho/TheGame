@@ -16,6 +16,7 @@ public class Parser : MonoBehaviour {
 		commandList.Add("pickup", 4);
 		commandList.Add("drop", 5);
 		commandList.Add("inventory", 6);
+		commandList.Add("quit",7);
 		//Debug.Log("commands initialized");
 	}
 	private static string[] tokenize(string tkn)
@@ -49,6 +50,10 @@ public class Parser : MonoBehaviour {
 		{
 			return clear ();
 		}
+		else if(command == 7)
+		{
+			return quit();
+		}
 		else
 		{
 		return "You have entered a valid command";
@@ -64,6 +69,14 @@ public class Parser : MonoBehaviour {
 		}
 		lst += "------------------";
 		return lst;
+	}
+	private static string quit()
+	{
+		#if UNITY_EDITOR
+		UnityEditor.EditorApplication.isPlaying = false;
+		#endif
+		Application.Quit();
+		return "Quitting...";
 	}
 	private static string clear()
 	{
