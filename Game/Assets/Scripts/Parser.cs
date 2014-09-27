@@ -58,6 +58,10 @@ public class Parser : MonoBehaviour {
 		{
 			return quit();
 		}
+		else if(command == 2)
+		{
+			return locationData();
+		}
 		else
 		{
 		return "You have entered a valid command";
@@ -74,6 +78,12 @@ public class Parser : MonoBehaviour {
 		lst += "------------------";
 		return lst;
 	}
+
+	public static string locationData()
+	{
+		return "We need a location";
+		}
+
 	private static string listItems()
 	{
 		Inventory.initItemList();
