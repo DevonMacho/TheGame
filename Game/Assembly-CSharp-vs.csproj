@@ -47,9 +47,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\GUI_Terminal.cs" />
-     <Compile Include="Assets\Scripts\Inventory.cs" />
-     <Compile Include="Assets\Scripts\ItemData.cs" />
      <Compile Include="Assets\Scripts\Parser.cs" />
+     <Compile Include="Assets\Scripts\WorldData.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

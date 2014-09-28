@@ -35,6 +35,7 @@ public class Parser : MonoBehaviour {
 		if (commandList == null)
 		{
 			initializeCommands();
+			WorldData.initializeLocations();
 		}
 		string[] token = tokenize(input);
 		if (token.Length <= 0 || !commandList.ContainsKey(token[0].ToLower()))
@@ -42,31 +43,28 @@ public class Parser : MonoBehaviour {
 			return "Please enter a valid command";
 		}
 		int command = commandList[token[0].ToLower()];
-		if (command == 0)
-		{
-			return help ();
-		}
-		else if(command ==1)
-		{
-			return clear ();
-		}
-		else if(command == 6)
-		{
-			return listItems();
-		}
-		else if(command == 7)
-		{
-			return quit();
-		}
-		else if(command == 2)
-		{
-			return locationData();
-		}
-		else
-		{
-		return "You have entered a valid command";
-		}
-	}
+      if (command == 0)
+        {
+          return help();
+      } else if (command == 1)
+        {
+          return clear();
+      } else if (command == 2)
+        {
+          return locationData();
+        } 
+      else if (command == 3)
+        {
+          return go(token[1].ToLower() + " " + token[2].ToLower());
+        } 
+      else if (command == 6)
+        {
+          return listItems();
+        }
+      else if(command == 7)
+        {
+          return quit();
+        }
 	private static string help()
 	{
 		string lst = "----- Commands ----\n";
@@ -78,17 +76,16 @@ public class Parser : MonoBehaviour {
 		lst += "------------------";
 		return lst;
 	}
+  public static string locationData()
+    {
+      return "We need a location";
+    }
 
-	public static string locationData()
-	{
-		return "We need a location";
-		}
-
-	private static string listItems()
-	{
-		Inventory.initItemList();
-		return Inventory.listItems();
-	}
+  private static string listItems()
+    {
+      Inventory.initItemList();
+      return Inventory.listItems();
+    }
 	private static string quit()
 	{
 		#if UNITY_EDITOR
@@ -100,5 +97,14 @@ public class Parser : MonoBehaviour {
 	private static string clear()
 	{
 		return "<===Clearing===>";
+	}
+	private static string go(string going)
+	{
+		if (going == null) {
+			return "Go Where?";
+			}else{
+		string location = WorldData.Go (going);
+		return location;
+		}
 	}
 }
