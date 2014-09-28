@@ -22,6 +22,7 @@ public class Parser : MonoBehaviour {
 	private static string[] tokenize(string tkn)
 	{
 		string[] tokens;
+		tkn = tkn.ToLower();
 		tokens = tkn.Split(default(string[]),System.StringSplitOptions.RemoveEmptyEntries);
 		if (tokens.Length <= 0)
 		{
@@ -35,7 +36,7 @@ public class Parser : MonoBehaviour {
 		if (commandList == null)
 		{
 			initializeCommands();
-			WorldData.initializeLocations();
+
 		}
 		string[] token = tokenize(input);
 		if (token.Length <= 0 || !commandList.ContainsKey(token[0].ToLower()))
@@ -55,7 +56,7 @@ public class Parser : MonoBehaviour {
         } 
       else if (command == 3)
         {
-          return go(token[1].ToLower() + " " + token[2].ToLower());
+          return go(token);
         } 
       else if (command == 6)
         {
@@ -65,6 +66,11 @@ public class Parser : MonoBehaviour {
         {
           return quit();
         }
+		else
+		{
+			return "you have entered in a valid command";
+		}
+	}
 	private static string help()
 	{
 		string lst = "----- Commands ----\n";
@@ -76,14 +82,16 @@ public class Parser : MonoBehaviour {
 		lst += "------------------";
 		return lst;
 	}
+
   public static string locationData()
     {
-      return "We need a location";
+	 
+      return WorldData.currentLoc.ToString();
     }
 
   private static string listItems()
     {
-      Inventory.initItemList();
+      
       return Inventory.listItems();
     }
 	private static string quit()
@@ -98,13 +106,16 @@ public class Parser : MonoBehaviour {
 	{
 		return "<===Clearing===>";
 	}
-	private static string go(string going)
+	private static string go(string[] token)
 	{
-		if (going == null) {
+
+		if (token.Length <= 1) 
+		{
 			return "Go Where?";
-			}else{
-		string location = WorldData.Go (going);
-		return location;
+		}
+		else
+		{
+			return WorldData.Go (token[1]);
 		}
 	}
 }

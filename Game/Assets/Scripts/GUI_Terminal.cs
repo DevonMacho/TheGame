@@ -5,6 +5,8 @@ public class GUI_Terminal : MonoBehaviour {
 
 	void Start () 
 	{
+		WorldData.initializeLocations();
+		Inventory.initItemList();
 	}
 	protected string input = "";
 	public Vector2 scrollPosition;
