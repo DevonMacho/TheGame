@@ -10,6 +10,7 @@ public class WorldData : MonoBehaviour
 
     public static void initializeLocations()
     {
+        // will be replaced with an xml parser
         if (locationList == null)
         {
             locationList = new List<LocationData.Location>();
@@ -108,7 +109,12 @@ public class WorldData : MonoBehaviour
                 {
                     if (a.getNodeNumber() == currentLoc)
                     {
-                        return a.getDescription() + "\n" + Inventory.itemsAtLocation(currentLoc);
+                        string directions = "From here you can go: ";
+                        for (int i = 0; i < a.getAdjacentDirections().Length; i++)
+                        {
+                            directions = directions + a.getAdjacentDirections()[i] + " ";
+                        }
+                        return a.getDescription() + "\n"+directions + "\n" + Inventory.itemsAtLocation(currentLoc);
                         //test
                     }
                 }
@@ -124,7 +130,17 @@ public class WorldData : MonoBehaviour
                 {
                     if (a.getName().Equals(command [2]) && (a.getLocation() == currentLoc || a.getLocation() == -1))
                     {
-                        return a.getDescription() + "\nWeight: " + a.getWeight();
+                        if (a.getWeight() < 999)
+                        {
+                            return a.getDescription() + "\nWeight: " + a.getWeight();
+                        }
+                        else
+                        {
+                            //this prevents "world objects / switches" from displaying their weight
+                            return a.getDescription();
+                        }
+
+
                     }
                 }
 

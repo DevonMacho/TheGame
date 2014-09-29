@@ -62,6 +62,14 @@ public class Parser : MonoBehaviour
         {
             return go(token);
         }
+        else if (command == 4)
+        {
+            return Inventory.pickup(token);
+        }
+        else if (command == 5)
+        {
+            return Inventory.drop(token);
+        }
         else if (command == 6)
         {
             return listItems();
