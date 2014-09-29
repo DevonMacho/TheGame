@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class Inventory : MonoBehaviour 
 
 {
-	static List<ItemData.Item> items;
+	public static List<ItemData.Item> items;
 	public static void initItemList()
 	{
 		if(items == null)
@@ -21,9 +21,9 @@ public class Inventory : MonoBehaviour
 
 	public static void testAddItems()
 	{
-		addItem("Mock","yeah",-1,2);
-		addItem("Ing","yeah",-1,2);
-		addItem("Bird","yeah",-1,2);
+		addItem("rock","A heavy blunt object that can be used to hurt Kramer",4,5);
+		addItem("paper","lighter and flatter than the rock",2,1);
+		addItem("scissors","It would be able to hurt anyone if they weren't safety scissors",-1,2);
 	}
 	public static string listItems()
 	{
@@ -33,11 +33,43 @@ public class Inventory : MonoBehaviour
 		{
 			end += "-";
 		}
+        int numItems = 0;
 		foreach (ItemData.Item a in items)
 		{
-			total = total + "\n"+ a.getName();
+            if(a.getLocation() == -1)
+            {
+                total = total + "\n"+ a.getName();
+                numItems++;
+            }
 		}
+        if (numItems < 1)
+        {
+            total = total + "\n<Empty>";
+        }
 		return total + end;
 	}
+    public static string itemsAtLocation(int location)
+    {
+        string total = "----- Items at location ----";
+        string end = "\n";
+        for (int i = total.Length; i > 0; i--)
+        {
+            end += "-";
+        }
+        int numItems = 0;
+        foreach (ItemData.Item a in items)
+        {
+            if(a.getLocation() == location)
+            {
+                total = total + "\n"+ a.getName();
+                numItems++;
+            }
+        }
+        if (numItems < 1)
+        {
+            total = total + "\n<None>";
+        }
+        return total + end;
+    }
 
 }
