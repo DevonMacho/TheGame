@@ -100,7 +100,7 @@ public class Parser : MonoBehaviour
     private static string listItems()
     {
       
-        return Inventory.listItems();
+        return Inventory.listInventory();
     }
     private static string pickup(string[] token)
     {

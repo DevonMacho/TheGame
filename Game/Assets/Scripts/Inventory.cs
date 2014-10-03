@@ -27,7 +27,7 @@ public class Inventory : MonoBehaviour
         addItem("scissors", "It would be able to hurt anyone if they weren't safety scissors", -1, 2);
     }
 
-    public static string listItems()
+    public static string listInventory()
     {
         string total = "----- Inventory ----";
         string end = "\n";
