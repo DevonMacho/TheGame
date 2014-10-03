@@ -56,7 +56,7 @@ public class Parser : MonoBehaviour
         }
         else if (command == 2)
         {
-            return WorldData.Look(token);
+            return look(token);
         }
         else if (command == 3)
         {
@@ -64,11 +64,12 @@ public class Parser : MonoBehaviour
         }
         else if (command == 4)
         {
-            return Inventory.pickup(token);
+            return pickup(token);
         }
         else if (command == 5)
         {
-            return Inventory.drop(token);
+            return drop(token);
+            
         }
         else if (command == 6)
         {
@@ -101,7 +102,14 @@ public class Parser : MonoBehaviour
       
         return Inventory.listItems();
     }
-
+    private static string pickup(string[] token)
+    {
+        return Inventory.pickup(token);
+    }
+    private static string drop(string[] token)
+    {
+        return Inventory.drop(token);
+    }
     private static string quit()
     {
         #if UNITY_EDITOR
@@ -110,7 +118,10 @@ public class Parser : MonoBehaviour
         Application.Quit();
         return "Quitting...";
     }
-
+    private static string look(string[] token)
+    {
+        return WorldData.Look(token);
+    }
     private static string clear()
     {
         return "<===Clearing===>";
@@ -118,14 +129,6 @@ public class Parser : MonoBehaviour
 
     private static string go(string[] token)
     {
-
-        if (token.Length <= 1)
-        {
-            return "Go Where?";
-        }
-        else
-        {
-            return WorldData.Go(token [1]);
-        }
+            return WorldData.Go(token);
     }
 }

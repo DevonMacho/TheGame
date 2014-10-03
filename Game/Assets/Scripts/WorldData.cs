@@ -74,25 +74,31 @@ public class WorldData : MonoBehaviour
         }
     }
 
-    public static string Go(string goTo)
+    public static string Go(string[] command)
     {
-
-        foreach (LocationData.Location a in locationList)
+        if (command.Length <= 1)
         {
-            if (a.getNodeNumber() == currentLoc)
+            return "Go Where?";
+        }
+        else
+        {
+            foreach (LocationData.Location a in locationList)
             {
-                for (int i = 0; i < a.getAdjacentNodes().Length; i++)
+                if (a.getNodeNumber() == currentLoc)
                 {
-                    if (a.getAdjacentDirections() [i].Equals(goTo))
+                    for (int i = 0; i < a.getAdjacentNodes().Length; i++)
                     {
-                        currentLoc = a.getAdjacentNodes() [i];
-                        return "Going: " + a.getAdjacentDirections() [i];
+                        if (a.getAdjacentDirections() [i].Equals(command[1]))
+                        {
+                            currentLoc = a.getAdjacentNodes() [i];
+                            return "Going: " + a.getAdjacentDirections() [i];
+                        }
                     }
                 }
-            }
 
+            }
+            return "Location does not exist";
         }
-        return "Location does not exist";
     }
 
     public static string Look(string[] command)
