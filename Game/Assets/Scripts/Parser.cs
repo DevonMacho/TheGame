@@ -73,7 +73,7 @@ public class Parser : MonoBehaviour
         }
         else if (command == 6)
         {
-            return listItems();
+            return listInventory();
         }
         else if (command == 7)
         {
@@ -97,7 +97,7 @@ public class Parser : MonoBehaviour
         return lst;
     }
 
-    private static string listItems()
+    private static string listInventory()
     {
       
         return Inventory.listInventory();
