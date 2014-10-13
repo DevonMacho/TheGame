@@ -4,20 +4,39 @@ using System.Collections.Generic;
 
 public class Parser : MonoBehaviour
 {
-    
-    private static Dictionary<string, int> commandList;
-
+    private static Dictionary<string, int> commandList0;
+    private static Dictionary<string, int> commandList1;
+    private static Dictionary<string, int> devCommandList;
     public static void initializeCommands()
     {
-        commandList = new Dictionary<string,int >();
-        commandList.Add("help", 0);
-        commandList.Add("clear", 1);
-        commandList.Add("look", 2);
-        commandList.Add("go", 3);
-        commandList.Add("pickup", 4);
-        commandList.Add("drop", 5);
-        commandList.Add("inventory", 6);
-        commandList.Add("quit", 7);
+        commandList0 = new Dictionary<string,int >();
+        commandList1 = new Dictionary<string,int >();
+        devCommandList = new Dictionary<string,int >();
+        #region Main Menu Commands
+        commandList0.Add("help",0);
+        commandList0.Add("clear",1);
+        commandList0.Add("quit",2);
+        commandList0.Add("load",3);
+        commandList0.Add("newgame",4);
+        commandList0.Add("import",9);
+        #endregion
+
+        #region Basic Commands
+        commandList1.Add("help", 0);
+        commandList1.Add("clear", 1);
+        commandList1.Add("look", 2);
+        commandList1.Add("go", 3);
+        commandList1.Add("pickup", 4);
+        commandList1.Add("drop", 5);
+        commandList1.Add("inventory", 6);
+        commandList1.Add("quit", 7);
+        #endregion
+
+        #region Developer Commands
+        devCommandList.Add("devmode",0);
+        devCommandList.Add("setloc",1);
+        devCommandList.Add("additem",2);
+        #endregion
         //Debug.Log("commands initialized");
     }
 
@@ -35,17 +54,17 @@ public class Parser : MonoBehaviour
 
     public static string Parse(string input)
     {
-        if (commandList == null)
+        if (commandList1 == null)
         {
             initializeCommands();
         }
         string[] token = tokenize(input);
-        if (token.Length <= 0 || !commandList.ContainsKey(token [0].ToLower()))
+        if (token.Length <= 0 || !commandList1.ContainsKey(token [0].ToLower()))
         {
             return "Please enter a valid command";
         }
 
-        int command = commandList [token [0].ToLower()];
+        int command = commandList1 [token [0].ToLower()];
         if (command == 0)
         {
             return help();
@@ -88,7 +107,7 @@ public class Parser : MonoBehaviour
     private static string help()
     {
         string lst = "----- Commands ----\n";
-        foreach (string i in commandList.Keys)
+        foreach (string i in commandList1.Keys)
         {
             //testing re-merge
             lst += i + "\n";
