@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Parser : MonoBehaviour
 {
-    private static Dictionary<string, int> commandList0;
+
     private static Dictionary<string, int> commandList1;
     private static Dictionary<string, int> devCommandList;
     private static string[] genHelp;
@@ -15,7 +15,7 @@ public class Parser : MonoBehaviour
 
     public static void initializeCommands()
     {
-        commandList0 = new Dictionary<string,int >();
+
         commandList1 = new Dictionary<string,int >();
         devCommandList = new Dictionary<string,int >();
         genHelp = new string[]
@@ -58,14 +58,7 @@ public class Parser : MonoBehaviour
         {
             "Devmode Enable\n Devmode Disable","Setloc <Location Number>","Additem <????>","None","None"
         };
-        #region Main Menu Commands
-        commandList0.Add("help", 0);
-        commandList0.Add("clear", 1);
-        commandList0.Add("quit", 2);
-        commandList0.Add("load", 3);
-        commandList0.Add("newgame", 4);
-        commandList0.Add("import", 9);
-        #endregion
+
 
         #region Basic Commands
         commandList1.Add("help", 0);
@@ -96,17 +89,7 @@ public class Parser : MonoBehaviour
         #endregion
     }
 
-    private static string[] tokenize(string tkn)
-    {
-        string[] tokens;
-        tkn = tkn.ToLower();
-        tokens = tkn.Split(default(string[]), System.StringSplitOptions.RemoveEmptyEntries);
-        if (tokens.Length <= 0)
-        {
-            return new string[0];
-        }
-        return tokens;
-    }
+
 
     public static string Parse(string input)
     {
@@ -114,7 +97,7 @@ public class Parser : MonoBehaviour
         {
             initializeCommands();
         }
-        string[] token = tokenize(input);
+        string[] token = Tokenizer.tokenize(input);
         if (token.Length <= 0 || !commandList1.ContainsKey(token [0].ToLower()))
         {
             if (token.Length <= 0 || devCommandList.ContainsKey(token [0].ToLower()))
@@ -206,7 +189,7 @@ public class Parser : MonoBehaviour
         }
         else if (command == 1)
         {
-            return clear();
+            return GenericCommands.clear();
         }
         else if (command == 2)
         {
@@ -231,7 +214,7 @@ public class Parser : MonoBehaviour
         }
         else if (command == 7)
         {
-            return quit();
+            return GenericCommands.quit();
         }
         else if (command == 8)
         {
@@ -317,36 +300,18 @@ public class Parser : MonoBehaviour
       
         return Inventory.listInventory();
     }
-
     private static string pickup(string[] token)
     {
         return Inventory.pickup(token);
     }
-
     private static string drop(string[] token)
     {
         return Inventory.drop(token);
     }
-
-    private static string quit()
-    {
-        #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-        #endif
-        Application.Quit();
-        return "Quitting...";
-    }
-
     private static string look(string[] token)
     {
         return WorldData.Look(token);
     }
-
-    private static string clear()
-    {
-        return "<===Clearing===>";
-    }
-
     private static string go(string[] token)
     {
         return WorldData.Go(token);

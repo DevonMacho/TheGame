@@ -47,8 +47,9 @@ public class GUI_Terminal : MonoBehaviour
 
     void SubmitCommand()
     {
-
+        //do a command swap here depending on what is the current game state
         string output = Parser.Parse(input);
+        //end command swap
         scrollPosition.y = Mathf.Infinity;
         if (!input.Equals(""))
         {
