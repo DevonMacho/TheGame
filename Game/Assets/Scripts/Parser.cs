@@ -7,19 +7,55 @@ public class Parser : MonoBehaviour
     private static Dictionary<string, int> commandList0;
     private static Dictionary<string, int> commandList1;
     private static Dictionary<string, int> devCommandList;
+    private static string[] genHelp;
+    private static string[] genHelpMod;
     private static bool devmode = false;
+
     public static void initializeCommands()
     {
         commandList0 = new Dictionary<string,int >();
         commandList1 = new Dictionary<string,int >();
         devCommandList = new Dictionary<string,int >();
+        genHelp = new string[]
+        {
+            "Displays a list of commands / help with a particular command",
+            "Clears the command line output",
+            "Allows you to visualize the world via command line",
+            "Allows you to move in a direction",
+            "pickup",
+            "drop",
+            "inventory",
+            "quit",
+            "open",
+            "close",
+            "quip",
+            "unequip",
+            "use"
+        };
+        genHelpMod = new string[]
+        {
+            "Help <Command>",
+            "None",
+            "Around: Displays location information\nAt <Object>: Displays object information",
+            "Go <Direction>: Goes in a particular direction. To get a list of locations use the look around command",
+            "Pickup <Object>",
+            "Drop <Object>",
+            "ASC: List items in ascending order\nDEC: List items in decending order",
+            "None",
+            "??",
+            "??",
+            "Equip <Object>",
+            "Unequip <Object>",
+            "Use <Object>"
+        };
+
         #region Main Menu Commands
-        commandList0.Add("help",0);
-        commandList0.Add("clear",1);
-        commandList0.Add("quit",2);
-        commandList0.Add("load",3);
-        commandList0.Add("newgame",4);
-        commandList0.Add("import",9);
+        commandList0.Add("help", 0);
+        commandList0.Add("clear", 1);
+        commandList0.Add("quit", 2);
+        commandList0.Add("load", 3);
+        commandList0.Add("newgame", 4);
+        commandList0.Add("import", 9);
         #endregion
 
         #region Basic Commands
@@ -43,11 +79,11 @@ public class Parser : MonoBehaviour
         #endregion
 
         #region Developer Commands
-        devCommandList.Add("devmode",0);
-        devCommandList.Add("setloc",1);
-        devCommandList.Add("additem",2);
-        devCommandList.Add("createloc",3);
-        devCommandList.Add("exportworld",4);
+        devCommandList.Add("devmode", 0);
+        devCommandList.Add("setloc", 1);
+        devCommandList.Add("additem", 2);
+        devCommandList.Add("createloc", 3);
+        devCommandList.Add("exportworld", 4);
         #endregion
     }
 
@@ -72,30 +108,35 @@ public class Parser : MonoBehaviour
         string[] token = tokenize(input);
         if (token.Length <= 0 || !commandList1.ContainsKey(token [0].ToLower()))
         {
-            if(token.Length <= 0 || devCommandList.ContainsKey(token [0].ToLower()))
+            if (token.Length <= 0 || devCommandList.ContainsKey(token [0].ToLower()))
             {
+                #region devmode args
                 int devcommand = devCommandList [token [0].ToLower()];
-                if(devmode == true)
+                if (devmode == true)
                 {
                     if (devcommand == 0)
                     {
-                        //add invalid modifier 
-                        if(token.Length >2)
+
+                        if (token.Length > 2)
                         {
                             return "too many args";
                         }
-                        else if(token.Length <= 1)
+                        else if (token.Length <= 1)
                         {
-                            return "devmode enabled";
+                            return "devmode is enabled";
                         }
-                        else if(token[1].ToLower().Equals("enable"))
+                        else if (token [1].ToLower().Equals("enable"))
                         {
                             return "devmode is already enabled";
                         }
-                        else if(token[1].ToLower().Equals("disable"))
+                        else if (token [1].ToLower().Equals("disable"))
                         {
                             devmode = false;
                             return "devmode is now disabled";
+                        }
+                        else
+                        {
+                            return "unrecognized modifier";
                         }
                     }
                     else if (devcommand == 1)
@@ -119,27 +160,32 @@ public class Parser : MonoBehaviour
                 {
                     if (devcommand == 0)
                     {
-                        if(token.Length > 2)
+                        if (token.Length > 2)
                         {
                             return "too many args";
                         }
-                        else if(token.Length <= 1)
+                        else if (token.Length <= 1)
                         {
-                            return "devmode disabled";
+                            return "devmode is disabled";
                         }
-                        else if(token[1].ToLower().Equals("enable"))
+                        else if (token [1].ToLower().Equals("enable"))
                         {
                             devmode = true;
                             return "devmode is now enabled";
 
                         }
-                        else if(token[1].ToLower().Equals("disable"))
+                        else if (token [1].ToLower().Equals("disable"))
                         {
                             return "devmode is already disabled";
+                        }
+                        else
+                        {
+                            return "unrecognized modifier";
                         }
 
                     }
                 }
+                #endregion
             }
             return "Please enter a valid command";
         }
@@ -147,7 +193,7 @@ public class Parser : MonoBehaviour
         int command = commandList1 [token [0].ToLower()];
         if (command == 0)
         {
-            return help();
+            return help(token);
         }
         else if (command == 1)
         {
@@ -205,16 +251,43 @@ public class Parser : MonoBehaviour
         }
     }
 
-    private static string help()
+    private static string help(string[] token)
     {
-        string lst = "----- Commands ----\n";
-        foreach (string i in commandList1.Keys)
+        if (token.Length == 1)
         {
-            //testing re-merge
-            lst += i + "\n";
+            string lst = "----- Commands ----\n";
+            foreach (string i in commandList1.Keys)
+            {
+                lst += i + "\n";
+            }
+            lst += "------------------";
+            return lst;
         }
-        lst += "------------------";
-        return lst;
+        else if (token.Length == 2)
+        {
+            #region Detailed Help modifiers
+            if (token [1].ToLower().Equals("-d"))
+            {
+                return "returning devmode command list";
+            }
+            if (token.Length <= 0 || !commandList1.ContainsKey(token [1].ToLower()))
+            {
+                return "Invalid modifier";
+            }
+            else
+            {
+                int command = commandList1 [token [1].ToLower()];
+
+                return genHelp [command] + "\n------Modifiers------\n" +genHelpMod[command]+"\n ---------------------";
+            }
+            #endregion
+        }
+        else if (token.Length > 2)
+        {
+            return "too many args";  
+        }
+        return "something weird happened in the code";
+
     }
 
     private static string listInventory()
@@ -222,14 +295,17 @@ public class Parser : MonoBehaviour
       
         return Inventory.listInventory();
     }
+
     private static string pickup(string[] token)
     {
         return Inventory.pickup(token);
     }
+
     private static string drop(string[] token)
     {
         return Inventory.drop(token);
     }
+
     private static string quit()
     {
         #if UNITY_EDITOR
@@ -238,10 +314,12 @@ public class Parser : MonoBehaviour
         Application.Quit();
         return "Quitting...";
     }
+
     private static string look(string[] token)
     {
         return WorldData.Look(token);
     }
+
     private static string clear()
     {
         return "<===Clearing===>";
@@ -249,6 +327,6 @@ public class Parser : MonoBehaviour
 
     private static string go(string[] token)
     {
-            return WorldData.Go(token);
+        return WorldData.Go(token);
     }
 }
