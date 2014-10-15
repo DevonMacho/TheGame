@@ -9,6 +9,8 @@ public class Parser : MonoBehaviour
     private static Dictionary<string, int> devCommandList;
     private static string[] genHelp;
     private static string[] genHelpMod;
+    private static string[] devHelp;
+    private static string[] devHelpMod;
     private static bool devmode = false;
 
     public static void initializeCommands()
@@ -22,15 +24,15 @@ public class Parser : MonoBehaviour
             "Clears the command line output",
             "Allows you to visualize the world via command line",
             "Allows you to move in a direction",
-            "pickup",
-            "drop",
-            "inventory",
-            "quit",
-            "open",
-            "close",
-            "quip",
-            "unequip",
-            "use"
+            "Enables you to pick up an item",
+            "Enables you to drop an item",
+            "Lists your inventory",
+            "Lets you quit the game",
+            "Allows you to open objects",
+            "Allows you to close objects",
+            "Allows you to equip an item",
+            "Allows you to unequip an item",
+            "Allows you to use an object"
         };
         genHelpMod = new string[]
         {
@@ -38,17 +40,24 @@ public class Parser : MonoBehaviour
             "None",
             "Around: Displays location information\nAt <Object>: Displays object information",
             "Go <Direction>: Goes in a particular direction. To get a list of locations use the look around command",
-            "Pickup <Object>",
-            "Drop <Object>",
+            "Pickup <Item>",
+            "Drop <Item>",
             "ASC: List items in ascending order\nDEC: List items in decending order",
             "None",
-            "??",
-            "??",
-            "Equip <Object>",
-            "Unequip <Object>",
+            "Open <Object>",
+            "Close <Object>",
+            "Equip <Item>",
+            "Unequip <Item>",
             "Use <Object>"
         };
-
+        devHelp = new string[]
+        {
+            "Displays the status of the developer mode / allows the user to toggle the developer mode","Sets the player's current location","Adds an item to your inventory","Creates a new locaiton","Exports the map data to an XML File"
+        };
+        devHelpMod = new string[]
+        {
+            "Devmode Enable\n Devmode Disable","Setloc <Location Number>","Additem <????>","None","None"
+        };
         #region Main Menu Commands
         commandList0.Add("help", 0);
         commandList0.Add("clear", 1);
@@ -268,17 +277,30 @@ public class Parser : MonoBehaviour
             #region Detailed Help modifiers
             if (token [1].ToLower().Equals("-d"))
             {
-                return "returning devmode command list";
+                string lst = "----- Developer Commands ----\n";
+                foreach (string i in devCommandList.Keys)
+                {
+                    lst += i + "\n";
+                }
+                lst += "----------------------------";
+                return lst;
+
             }
-            if (token.Length <= 0 || !commandList1.ContainsKey(token [1].ToLower()))
+            if (!commandList1.ContainsKey(token [1].ToLower()) && !devCommandList.ContainsKey(token [1].ToLower()))
             {
                 return "Invalid modifier";
             }
-            else
+            else if (devCommandList.ContainsKey(token [1].ToLower()))
+            {
+                int command = devCommandList [token [1].ToLower()];
+                
+                return devHelp [command] + "\n------Modifiers------\n" + devHelpMod [command] + "\n ---------------------";
+            }
+            else if (commandList1.ContainsKey(token [1].ToLower()))
             {
                 int command = commandList1 [token [1].ToLower()];
 
-                return genHelp [command] + "\n------Modifiers------\n" +genHelpMod[command]+"\n ---------------------";
+                return genHelp [command] + "\n------Modifiers------\n" + genHelpMod [command] + "\n ---------------------";
             }
             #endregion
         }
