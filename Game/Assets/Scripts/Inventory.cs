@@ -22,7 +22,7 @@ public class Inventory : MonoBehaviour
 
     public static void testAddItems()
     {
-        addItem("rock", "A heavy blunt object that can be used to hurt Kramer", 4, 5);
+        addItem("rock", "A heavy blunt object that can be used to hurt Kraymo'r", 4, 5);
         addItem("paper", "lighter and flatter than the rock", 2, 1);
         addItem("scissors", "It would be able to hurt anyone if they weren't safety scissors", -1, 2);
     }

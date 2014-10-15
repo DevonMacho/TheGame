@@ -11,6 +11,7 @@ public class ItemData : MonoBehaviour
         private string description;
         private int location;
         //user's inventory is -1
+        //user's body is -2
         public Item(string name, string description, int location, int weight)
         {
             this.name = name;

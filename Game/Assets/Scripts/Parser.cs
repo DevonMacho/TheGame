@@ -7,6 +7,7 @@ public class Parser : MonoBehaviour
     private static Dictionary<string, int> commandList0;
     private static Dictionary<string, int> commandList1;
     private static Dictionary<string, int> devCommandList;
+    private static bool devmode = false;
     public static void initializeCommands()
     {
         commandList0 = new Dictionary<string,int >();
@@ -29,15 +30,25 @@ public class Parser : MonoBehaviour
         commandList1.Add("pickup", 4);
         commandList1.Add("drop", 5);
         commandList1.Add("inventory", 6);
+        //break for quit
+        commandList1.Add("open", 8);
+        commandList1.Add("close", 9);
+        commandList1.Add("equip", 10);
+        commandList1.Add("unequip", 11);
+        commandList1.Add("use", 12);
+        //endbreak for quit
         commandList1.Add("quit", 7);
+
+      
         #endregion
 
         #region Developer Commands
         devCommandList.Add("devmode",0);
         devCommandList.Add("setloc",1);
         devCommandList.Add("additem",2);
+        devCommandList.Add("createloc",3);
+        devCommandList.Add("exportworld",4);
         #endregion
-        //Debug.Log("commands initialized");
     }
 
     private static string[] tokenize(string tkn)
@@ -61,6 +72,75 @@ public class Parser : MonoBehaviour
         string[] token = tokenize(input);
         if (token.Length <= 0 || !commandList1.ContainsKey(token [0].ToLower()))
         {
+            if(token.Length <= 0 || devCommandList.ContainsKey(token [0].ToLower()))
+            {
+                int devcommand = devCommandList [token [0].ToLower()];
+                if(devmode == true)
+                {
+                    if (devcommand == 0)
+                    {
+                        //add invalid modifier 
+                        if(token.Length >2)
+                        {
+                            return "too many args";
+                        }
+                        else if(token.Length <= 1)
+                        {
+                            return "devmode enabled";
+                        }
+                        else if(token[1].ToLower().Equals("enable"))
+                        {
+                            return "devmode is already enabled";
+                        }
+                        else if(token[1].ToLower().Equals("disable"))
+                        {
+                            devmode = false;
+                            return "devmode is now disabled";
+                        }
+                    }
+                    else if (devcommand == 1)
+                    {
+                        
+                    }
+                    else if (devcommand == 2)
+                    {
+                        
+                    }
+                    else if (devcommand == 3)
+                    {
+                        
+                    }
+                    else if (devcommand == 4)
+                    {
+                        
+                    }
+                }
+                else if (devmode == false)
+                {
+                    if (devcommand == 0)
+                    {
+                        if(token.Length > 2)
+                        {
+                            return "too many args";
+                        }
+                        else if(token.Length <= 1)
+                        {
+                            return "devmode disabled";
+                        }
+                        else if(token[1].ToLower().Equals("enable"))
+                        {
+                            devmode = true;
+                            return "devmode is now enabled";
+
+                        }
+                        else if(token[1].ToLower().Equals("disable"))
+                        {
+                            return "devmode is already disabled";
+                        }
+
+                    }
+                }
+            }
             return "Please enter a valid command";
         }
 
@@ -97,6 +177,27 @@ public class Parser : MonoBehaviour
         else if (command == 7)
         {
             return quit();
+        }
+        else if (command == 8)
+        {
+            return "open command entered";
+        }
+        else if (command == 9)
+        {
+            return "close command entered";
+        }
+        else if (command == 10)
+        {
+            return "equip command entered";
+        }
+        else if (command == 11)
+        {
+            return "unequip command entered";
+        }
+        else if (command == 12)
+        {
+            //use
+            return "use command entered";
         }
         else
         {
