@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Parser : MonoBehaviour
+public class GameParser : MonoBehaviour
 {
 
     private static Dictionary<string, int> commandList1;
@@ -52,11 +52,19 @@ public class Parser : MonoBehaviour
         };
         devHelp = new string[]
         {
-            "Displays the status of the developer mode / allows the user to toggle the developer mode","Sets the player's current location","Adds an item to your inventory","Creates a new locaiton","Exports the map data to an XML File"
+            "Displays the status of the developer mode / allows the user to toggle the developer mode",
+            "Sets the player's current location",
+            "Adds an item to your inventory",
+            "Creates a new locaiton",
+            "Exports the map data to an XML File"
         };
         devHelpMod = new string[]
         {
-            "Devmode Enable\n Devmode Disable","Setloc <Location Number>","Additem <????>","None","None"
+            "Devmode Enable\nDevmode Disable",
+            "Setloc <Location Number>",
+            "Additem <????>",
+            "None",
+            "None"
         };
 
 
@@ -89,15 +97,13 @@ public class Parser : MonoBehaviour
         #endregion
     }
 
-
-
     public static string Parse(string input)
     {
         if (commandList1 == null)
         {
             initializeCommands();
         }
-        string[] token = Tokenizer.tokenize(input);
+        string[] token = GenericCommands.tokenize(input);
         if (token.Length <= 0 || !commandList1.ContainsKey(token [0].ToLower()))
         {
             if (token.Length <= 0 || devCommandList.ContainsKey(token [0].ToLower()))
@@ -133,19 +139,19 @@ public class Parser : MonoBehaviour
                     }
                     else if (devcommand == 1)
                     {
-                        
+                        return "set location";
                     }
                     else if (devcommand == 2)
                     {
-                        
+                        return "add item";
                     }
                     else if (devcommand == 3)
                     {
-                        
+                        return "create location";
                     }
                     else if (devcommand == 4)
                     {
-                        
+                        return "export XML";
                     }
                 }
                 else if (devmode == false)
@@ -300,18 +306,22 @@ public class Parser : MonoBehaviour
       
         return Inventory.listInventory();
     }
+
     private static string pickup(string[] token)
     {
         return Inventory.pickup(token);
     }
+
     private static string drop(string[] token)
     {
         return Inventory.drop(token);
     }
+
     private static string look(string[] token)
     {
         return WorldData.Look(token);
     }
+
     private static string go(string[] token)
     {
         return WorldData.Go(token);
