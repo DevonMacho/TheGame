@@ -10,9 +10,11 @@ public class GenericCommands : MonoBehaviour {
     {
         return "<<Clearing>>";
     }
+    static int gameState;
     public static string startQuit()
     {
         quitStage = 1;
+        gameState = ParserSelect.getPrevious();
         return "Are you sure you want to quit?";
     }
     public static string quitParser(string input)
@@ -20,7 +22,7 @@ public class GenericCommands : MonoBehaviour {
        
         if (quitStage == 1)
         {
-            //cleanse output for this command
+            //always returns to main menu -- fixthat
             string[] token = tokenize(input);
             if (token.Length <= 0 && token.Length > 1)
             {
@@ -28,11 +30,11 @@ public class GenericCommands : MonoBehaviour {
             }
             else if (token [0].ToLower().Equals("yes"))
             {
-                if (ParserSelect.getPrevious() == 0)
+                if (gameState == 0)
                 {
                     return quit();
                 }
-                else if (ParserSelect.getPrevious() == 1)
+                else if (gameState == 1)
                 {
                     quitStage = 2;
                     return "Do you want to save?";
@@ -42,20 +44,25 @@ public class GenericCommands : MonoBehaviour {
             else if (token [0].ToLower().Equals("no"))
             {
                 //if equal to game do something if not go back to menu
-                if (ParserSelect.getPrevious() == 0)
+                if (gameState == 0)
                 {
-                    ParserSelect.parserSelect = ParserSelect.getPrevious();
+                    ParserSelect.parserSelect = gameState;
                     return "<<returning to menu>>";
                 }
-                else if (ParserSelect.getPrevious() == 1)
+                else if (gameState == 1)
                 {
-                    ParserSelect.parserSelect = ParserSelect.getPrevious();
+                    ParserSelect.parserSelect = gameState;
                     return "<<returning to game>>";
+                }
+                else
+                {
+                    return "parser select value is off";
                 }
             }
             else
             {
-                return "invalid input";
+                quitStage = 1;
+                return "invalid input\nDo you want to quit?";
             }
         }
         if (quitStage == 2)
