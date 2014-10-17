@@ -58,9 +58,9 @@ public class GUI_Terminal : MonoBehaviour
         }
 
         consoleLog = consoleLog + output + "\n";
-        if (output.Equals("<===Clearing===>"))
+        if (output.Equals("<<Clearing>>"))
         {
-            consoleLog = "<===Cleared===>\n";
+            consoleLog = "<<Cleared>>\n";
         }
         input = "";
     }

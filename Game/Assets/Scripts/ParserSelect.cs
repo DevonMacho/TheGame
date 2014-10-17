@@ -11,7 +11,10 @@ public class ParserSelect : MonoBehaviour
     //3 - load
     //4 - new game
     //5 - quit
-
+    public static int getPrevious()
+    {
+        return previousParser;
+    }
     public static string Parser(string input)
     {
         if (parserSelect == 0)
@@ -39,7 +42,13 @@ public class ParserSelect : MonoBehaviour
 
         }
         */
-
+        else if (parserSelect == 5)
+        {
+            string output = GenericCommands.quitParser(input);
+            previousParser = parserSelect;
+            stateChange(output);
+            return output;
+        }
         else
         {
             return input;
