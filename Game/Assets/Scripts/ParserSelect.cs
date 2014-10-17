@@ -28,7 +28,7 @@ public class ParserSelect : MonoBehaviour
         {
             string output = GameParser.Parse(input);
             previousParser = parserSelect;
-            stateChange(output);
+            parserSelect = stateChange(output);
             return output;
         }
 
@@ -46,7 +46,7 @@ public class ParserSelect : MonoBehaviour
         {
             string output = GenericCommands.quitParser(input);
             previousParser = parserSelect;
-            stateChange(output);
+            parserSelect = stateChange(output);
             return output;
         }
         else
@@ -57,9 +57,10 @@ public class ParserSelect : MonoBehaviour
 
     protected static int stateChange(string input)
     {
-        if (input.Equals("<<Quitting>>"))
+        if (input.Equals("Are you sure you want to quit?"))
         {
             return 5;
+
         }
         else if (input.Equals("<<Starting New Game>>"))
         {
