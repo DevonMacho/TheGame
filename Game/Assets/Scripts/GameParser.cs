@@ -220,7 +220,7 @@ public class GameParser : MonoBehaviour
         }
         else if (command == 7)
         {
-            return GenericCommands.startQuit();
+            return GenericCommands.startQuit(token);
         }
         else if (command == 8)
         {

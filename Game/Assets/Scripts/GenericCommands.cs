@@ -11,10 +11,14 @@ public class GenericCommands : MonoBehaviour {
         return "<<Clearing>>";
     }
     static int gameState;
-    public static string startQuit()
+    public static string startQuit(string[] input)
     {
+        if (input.Length != 1)
+        {
+            return "invalid input";
+        }
         quitStage = 1;
-        gameState = ParserSelect.getPrevious();
+        gameState = ParserSelect.parserSelect;
         return "Are you sure you want to quit?";
     }
     public static string quitParser(string input)
@@ -24,9 +28,10 @@ public class GenericCommands : MonoBehaviour {
         {
             //always returns to main menu -- fixthat
             string[] token = tokenize(input);
-            if (token.Length <= 0 && token.Length > 1)
+
+            if (token.Length <= 0 || token.Length > 1)
             {
-                return "invalid input";
+                return "invalid input\nDo you want to quit?";
             }
             else if (token [0].ToLower().Equals("yes"))
             {
@@ -68,9 +73,9 @@ public class GenericCommands : MonoBehaviour {
         if (quitStage == 2)
         {
             string[] token = tokenize(input);
-            if (token.Length <= 0 && token.Length > 1)
+            if (token.Length <= 0 || token.Length > 1)
             {
-                return "invalid input";
+                return "invalid input\nDo you want to quit?";
             }
             else if (token [0].ToLower().Equals("yes"))
             {

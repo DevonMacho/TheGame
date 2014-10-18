@@ -44,7 +44,7 @@ public class MainMenuParser : MonoBehaviour
         }
         else if (command == 2)
         {
-            return GenericCommands.startQuit();
+            return GenericCommands.startQuit(token);
         }
         else if (command == 3)
         {
