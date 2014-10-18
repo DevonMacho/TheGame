@@ -15,16 +15,16 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public static void addItem(string name, string description, int location, int weight)
+    public static void addItem(string name, string description, int location, int weight,int openState)
     {
-        items.Add(new ItemData.Item(name, description, location, weight));
+        items.Add(new ItemData.Item(name, description, location, weight,openState));
     }
 
     public static void testAddItems()
     {
-        addItem("rock", "A heavy blunt object that can be used to hurt Kraymo'r", 4, 5);
-        addItem("paper", "lighter and flatter than the rock", 2, 1);
-        addItem("scissors", "It would be able to hurt anyone if they weren't safety scissors", -1, 2);
+        addItem("rock", "A heavy blunt object that can be used to hurt Kraymo'r", 4, 5,-1);
+        addItem("paper", "lighter and flatter than the rock", 2, 1,-1);
+        addItem("scissors", "It would be able to hurt anyone if they weren't safety scissors", -1, 2,-1);
     }
 
     public static string listInventory()
