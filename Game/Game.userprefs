@@ -1,22 +1,20 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\WorldData.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\LocationData.cs">
     <Files>
-      <File FileName="Assets\Scripts\GUI_Terminal.cs" Line="24" Column="9" />
-      <File FileName="Assets\Scripts\GenericCommands.cs" Line="87" Column="18" />
-      <File FileName="Assets\Scripts\MainMenuParser.cs" Line="47" Column="51" />
-      <File FileName="Assets\Scripts\ParserSelect.cs" Line="25" Column="1" />
+      <File FileName="Assets\Scripts\GUI_Terminal.cs" Line="51" Column="13" />
+      <File FileName="Assets\Scripts\GenericCommands.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MainMenuParser.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ParserSelect.cs" Line="47" Column="63" />
       <File FileName="Assets\Scripts\GameParser.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\LocationData.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Inventory.cs" Line="27" Column="104" />
-      <File FileName="Assets\Scripts\WorldData.cs" Line="20" Column="18" />
-      <File FileName="Assets\Scripts\ItemData.cs" Line="47" Column="10" />
+      <File FileName="Assets\Scripts\Inventory.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\WorldData.cs" Line="21" Column="29" />
+      <File FileName="Assets\Scripts\ItemData.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="C:\Users\JPEG\TheGame\Game\Assets\Scripts\ParserSelect.cs" line="62" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
