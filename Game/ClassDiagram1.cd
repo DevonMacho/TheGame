@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="WorldData">
+    <Position X="4.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAIAAAEAAAACAAAQAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\WorldData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameParser">
+    <Position X="4.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAoAAiAEAAAAAAAMAAQAEAAgAAAAAAAAAAEACAAAAg=</HashCode>
+      <FileName>Assets\Scripts\GameParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GenericCommands">
+    <Position X="2.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAACAAgAAAAAAAAAAAAACAAAAAAhAAAACAA=</HashCode>
+      <FileName>Assets\Scripts\GenericCommands.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI_Terminal">
+    <Position X="8" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQEAAAACAAAAAAAAQAAAAAABAAABAABACAAAAgAAA=</HashCode>
+      <FileName>Assets\Scripts\GUI_Terminal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Inventory">
+    <Position X="2.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAMQiAIAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Assets\Scripts\Inventory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ItemData">
+    <Position X="1" Y="4" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Struct Name="ItemData.Container">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\ItemData.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="ItemData.Item">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\ItemData.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\ItemData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LocationData">
+    <Position X="6.25" Y="4" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Struct Name="LocationData.Location">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\LocationData.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\LocationData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainMenuParser">
+    <Position X="8" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAgAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Assets\Scripts\MainMenuParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ParserSelect">
+    <Position X="2.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgIAAACAAAAAAAAAAAAAAAAAAAAAACAAAIAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\ParserSelect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
