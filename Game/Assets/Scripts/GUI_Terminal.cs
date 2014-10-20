@@ -56,7 +56,8 @@ public class GUI_Terminal : MonoBehaviour
                 {
                     commandIndex--;
                     input = commandHistory[commandIndex-1];
-                    
+
+
 
                 }
             }
@@ -88,7 +89,9 @@ public class GUI_Terminal : MonoBehaviour
         if (output.Equals("<<Clearing>>"))
         {
             consoleLog = "<<Cleared>>\n";
-            //empty history
+            commandHistory = new List<string>();
+            commandHistory.Add("");
+            commandIndex = 1;
         }
         input = "";
     }
