@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GUI_Terminal : MonoBehaviour
 {
@@ -13,12 +14,19 @@ public class GUI_Terminal : MonoBehaviour
     protected string input = "";
     public Vector2 scrollPosition;
     protected string consoleLog = "";
-    protected ArrayList commandHistory = new ArrayList();
+    private static List<string> commandHistory;
     public Texture clb; //Command Line Background
     public GUISkin skin;
+    private static int commandIndex;
 
     void OnGUI()
     {
+        if(commandHistory == null)
+        {
+            commandHistory = new List<string>();
+            commandHistory.Add("");
+            commandIndex = 1;
+        }
         GUI.skin = skin;
         GUI.DrawTexture(new Rect(0, Screen.height - (Screen.height * 256 / 768), Screen.width, Screen.height * 256 / 768), clb, ScaleMode.StretchToFill, true, 10.0F);
 
@@ -27,12 +35,30 @@ public class GUI_Terminal : MonoBehaviour
         scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(Screen.width - 48), GUILayout.Height(Screen.height * 179 / 768));
         GUILayout.Label(consoleLog);
         GUILayout.EndScrollView();
-
+        Debug.Log(commandHistory[commandIndex-1]);
         if (GUI.GetNameOfFocusedControl() == "textField")
         {
             if (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.Return)
             {
                 SubmitCommand();
+            }
+            else if (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.UpArrow)
+            {
+                if(commandIndex < commandHistory.Count)
+                {
+                    commandIndex++;
+                    input = commandHistory[commandIndex-1];
+                }
+            }
+            else if (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.DownArrow)
+            {
+                if(commandIndex > 1)
+                {
+                    commandIndex--;
+                    input = commandHistory[commandIndex-1];
+                    
+
+                }
             }
         }
         if (GUI.Button(new Rect(0, (Screen.height * 179 / 768), 60, (Screen.height * 40 / 768)), "Submit"))
@@ -50,17 +76,19 @@ public class GUI_Terminal : MonoBehaviour
         //parser selecter
         string output = ParserSelect.Parser(input);
         //end parser swap
+        commandIndex = 1;
         scrollPosition.y = Mathf.Infinity;
         if (!input.Equals(""))
         {
             consoleLog = consoleLog + input + "\n";
-
+            commandHistory.Insert(1,input);
         }
 
         consoleLog = consoleLog + output + "\n";
         if (output.Equals("<<Clearing>>"))
         {
             consoleLog = "<<Cleared>>\n";
+            //empty history
         }
         input = "";
     }
