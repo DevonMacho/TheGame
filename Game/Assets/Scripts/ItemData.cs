@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class ItemData : MonoBehaviour
 {
-
+    [System.Serializable]
     public struct Container
     {
         private List<Item> contents;
@@ -58,7 +58,7 @@ public class ItemData : MonoBehaviour
             return this.contents;
         }
     }
-
+    [System.Serializable]
     public struct Item
     {
         private int weight;

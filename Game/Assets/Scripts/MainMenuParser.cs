@@ -56,7 +56,7 @@ public class MainMenuParser : MonoBehaviour
         }
         else if (command == 3)
         {
-            return "Load Game";
+            return GameData.startLoad();
         }
         else if (command == 4)
         {

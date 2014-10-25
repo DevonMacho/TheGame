@@ -79,12 +79,13 @@ public class GenericCommands : MonoBehaviour
             string[] token = tokenize(input);
             if (token.Length <= 0 || token.Length > 1)
             {
-                return "invalid input\nDo you want to quit?";
+                return "invalid input\nDo you want to save?";
             }
             else if (token [0].ToLower().Equals("yes"))
             {
+                quitStage = 3;
+                return GameData.startSave();
 
-                return "saving" + quit();
             }
             else if (token [0].ToLower().Equals("no"))
             {
@@ -94,6 +95,10 @@ public class GenericCommands : MonoBehaviour
             {
                 return "invalid input";
             }
+        }
+        if (quitStage == 3)
+        {
+            return quit();
         }
         else
         {
@@ -133,4 +138,6 @@ public class GenericCommands : MonoBehaviour
         Application.Quit();
         return "<<Quitting>>";
     }
+
+
 }

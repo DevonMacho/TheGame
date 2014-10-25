@@ -82,6 +82,8 @@ public class GameParser : MonoBehaviour
         commandList1.Add("equip", 10);
         commandList1.Add("unequip", 11);
         commandList1.Add("use", 12);
+        commandList1.Add("save", 13);
+        commandList1.Add("load", 14);
         //endbreak for quit
         commandList1.Add("quit", 7);
 
@@ -188,66 +190,75 @@ public class GameParser : MonoBehaviour
             }
             #endregion
         }
-            int command = commandList1 [token [0].ToLower()];
-            if (command == 0)
-            {
-                return help(token);
-            }
-            else if (command == 1)
-            {
-                return GenericCommands.clear();
-            }
-            else if (command == 2)
-            {
-                return look(token);
-            }
-            else if (command == 3)
-            {
-                return go(token);
-            }
-            else if (command == 4)
-            {
-                return pickup(token);
-            }
-            else if (command == 5)
-            {
-                return drop(token);
-            
-            }
-            else if (command == 6)
-            {
-                return listInventory(token);
-            }
-            else if (command == 7)
-            {
-                return GenericCommands.startQuit(token);
-            }
-            else if (command == 8)
-            {
-                return "open command entered";
-            }
-            else if (command == 9)
-            {
-                return "close command entered";
-            }
-            else if (command == 10)
-            {
-                return "equip command entered";
-            }
-            else if (command == 11)
-            {
-                return "unequip command entered";
-            }
-            else if (command == 12)
-            {
-                //use
-                return "use command entered";
-            }
-            else
-            {
-                return "you have entered in a valid command";
-            }
+        int command = commandList1 [token [0].ToLower()];
+        if (command == 0)
+        {
+            return help(token);
         }
+        else if (command == 1)
+        {
+            return GenericCommands.clear();
+        }
+        else if (command == 2)
+        {
+            return look(token);
+        }
+        else if (command == 3)
+        {
+            return go(token);
+        }
+        else if (command == 4)
+        {
+            return pickup(token);
+        }
+        else if (command == 5)
+        {
+            return drop(token);
+            
+        }
+        else if (command == 6)
+        {
+            return listInventory(token);
+        }
+        else if (command == 7)
+        {
+            return GenericCommands.startQuit(token);
+        }
+        else if (command == 8)
+        {
+            return "open command entered";
+        }
+        else if (command == 9)
+        {
+            return "close command entered";
+        }
+        else if (command == 10)
+        {
+            return "equip command entered";
+        }
+        else if (command == 11)
+        {
+            return "unequip command entered";
+        }
+        else if (command == 12)
+        {
+            //use
+            return "use command entered";
+        }
+        else if (command == 13)
+        {
+            return GameData.startSave();
+        }
+        else if (command == 14)
+        {
+            //use
+            return GameData.startLoad();
+        }
+        else
+        {
+            return "you have entered in a valid command";
+        }
+    }
 
     private static string help(string[] token)
     {

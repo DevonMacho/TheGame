@@ -31,6 +31,22 @@ public class ParserSelect : MonoBehaviour
             parserSelect = stateChange(output);
             return output;
         }
+        else if (parserSelect == 2)
+        {
+            
+            string output = GameData.saveParser(input);
+            previousParser = parserSelect;
+            stateChange(output);
+            return output;
+            
+        }
+        else if (parserSelect == 3)
+        {
+            string output = GameData.loadParser(input);
+            previousParser = parserSelect;
+            parserSelect = stateChange(output);
+            return output;
+        }
         else if (parserSelect == 4)
         {
             string output = NewGameParser.Parse(input);
@@ -38,16 +54,7 @@ public class ParserSelect : MonoBehaviour
             parserSelect = stateChange(output);
             return output;
         }
-        /*else if (parserSelect == 2)
-        {
 
-            string output = GameParser.Parse(input);
-            previousParser = parserSelect;
-            stateChange(output);
-            return output;
-
-        }
-        */
         else if (parserSelect == 5)
         {
             string output = GenericCommands.quitParser(input);
@@ -72,11 +79,11 @@ public class ParserSelect : MonoBehaviour
         {
             return 4;
         }
-        else if (input.Equals("<<Loading>>"))
+        else if (input.Equals("<<Loading>>\nAre you Sure that you want to load?"))
         {
             return 3;
         }
-        else if (input.Equals("<<Saving>>"))
+        else if (input.Equals("<<Saving>>\nEnter in a name for the save file"))
         {
             return 2;
         }

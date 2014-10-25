@@ -7,11 +7,10 @@ using System.Linq;
 public class WorldData : MonoBehaviour
 {
     public static GameData.GameInformation gameData;
-    public static int currentLoc = 0;
 
     public static string StartNewGame(string playerName, string playerGender, string playerClass, string xmlFile)
     {
-        gameData = new GameData.GameInformation(loadLocationData(xmlFile), loadItemData(xmlFile), playerName, playerGender, playerClass);
+        gameData = new GameData.GameInformation(loadLocationData(xmlFile), loadItemData(xmlFile), playerName, playerGender, playerClass,0);
         return "<<Game Started>>";
     }
 
@@ -25,13 +24,13 @@ public class WorldData : MonoBehaviour
         {
             foreach (LocationData.Location a in gameData.locations)
             {
-                if (a.getNodeNumber() == currentLoc)
+                if (a.getNodeNumber() == gameData.currentLoc)
                 {
                     for (int i = 0; i < a.getAdjacentNodes().Length; i++)
                     {
                         if (a.getAdjacentDirections() [i].Equals(command [1]))
                         {
-                            currentLoc = a.getAdjacentNodes() [i];
+                            gameData.currentLoc = a.getAdjacentNodes() [i];
                             return "Going: " + a.getAdjacentDirections() [i];
                         }
                     }
@@ -126,14 +125,14 @@ public class WorldData : MonoBehaviour
             {
                 foreach (LocationData.Location a in gameData.locations)
                 {
-                    if (a.getNodeNumber() == currentLoc)
+                    if (a.getNodeNumber() == gameData.currentLoc)
                     {
                         string directions = "From here you can go: ";
                         for (int i = 0; i < a.getAdjacentDirections().Length; i++)
                         {
                             directions = directions + a.getAdjacentDirections() [i] + " ";
                         }
-                        return a.getDescription() + "\n" + directions + "\n" + Inventory.itemsAtLocation(currentLoc);
+                        return a.getDescription() + "\n" + directions + "\n" + Inventory.itemsAtLocation(gameData.currentLoc);
                     }
                 }
             }
@@ -146,7 +145,7 @@ public class WorldData : MonoBehaviour
 
                 foreach (ItemData.Item a in gameData.items)
                 {
-                    if (a.getName().Equals(command [2]) && (a.getLocation() == currentLoc || a.getLocation() == -1))
+                    if (a.getName().Equals(command [2]) && (a.getLocation() == gameData.currentLoc || a.getLocation() == -1))
                     {
                         if (a.getWeight() < 999)
                         {

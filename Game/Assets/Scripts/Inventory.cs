@@ -150,7 +150,7 @@ public class Inventory : MonoBehaviour
         {
             foreach (ItemData.Item a in WorldData.gameData.items)
             {
-                if (a.getName().Equals(command [1]) && a.getLocation() == WorldData.currentLoc)
+                if (a.getName().Equals(command [1]) && a.getLocation() == WorldData.gameData.currentLoc)
                 {
                     WorldData.gameData.items.Remove(a);
                     a.setLocation(-1);
@@ -177,7 +177,7 @@ public class Inventory : MonoBehaviour
                 if (a.getName().Equals(command [1]) && a.getLocation() == -1)
                 {
                     WorldData.gameData.items.Remove(a);
-                    a.setLocation(WorldData.currentLoc);
+                    a.setLocation(WorldData.gameData.currentLoc);
                     WorldData.gameData.items.Add(a);
                     return command [1] + " dropped";
                 } 

@@ -40,7 +40,7 @@ public class NewGameParser : MonoBehaviour
             count ++;
             string[] cleaner = a.Trim().Replace("/", " ").Split(default(string[]), System.StringSplitOptions.RemoveEmptyEntries);
             files.Add(cleaner [cleaner.Length - 1]);
-            midline = "\n" + count + ") " + midline + cleaner [cleaner.Length - 1];
+            midline = "\n" + count + ") " + cleaner [cleaner.Length - 1] + midline;
         }
         
         string final = baseline + midline + "\n------------------------";
