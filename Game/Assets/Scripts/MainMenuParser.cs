@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
+using System.IO;
 
 public class MainMenuParser : MonoBehaviour
 {
@@ -19,6 +21,12 @@ public class MainMenuParser : MonoBehaviour
         commandList0.Add("newgame", 4);
         commandList0.Add("import", 5);
         #endregion
+
+        if (!Directory.Exists(Application.persistentDataPath + "/Scenarios/"))
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/Scenarios/");
+            //copy over main game xml from Asset folder
+        }
     }
 
     public static string Parse(string input)
@@ -52,7 +60,11 @@ public class MainMenuParser : MonoBehaviour
         }
         else if (command == 4)
         {
-            return "<<Resuming Game>>";
+            return NewGameParser.startNewGame();
+        }
+        else if (command == 5)
+        {
+            return import();
         }
         else
         {
@@ -60,6 +72,39 @@ public class MainMenuParser : MonoBehaviour
         }
     }
 
+    private static string import()
+    {
+
+        string fileLoc = EditorUtility.OpenFilePanel("Import Scenario", Application.persistentDataPath + "/Scenarios/", "xml");
+        if (fileLoc.Equals(""))
+        {
+            return "Invalid Directory";
+        }
+        string fileLoc2 = fileLoc.Trim().Replace("/", " ");
+        string[] directories;
+        directories = fileLoc2.Split(default(string[]), System.StringSplitOptions.RemoveEmptyEntries);
+        Debug.Log(directories [directories.Length - 1]);
+        
+        try
+        {
+            Debug.Log(Application.persistentDataPath + "/Scenarios/"+ directories [directories.Length - 1]);
+            if (File.Exists(Application.persistentDataPath + "/Scenarios/" + directories [directories.Length - 1]))
+            {
+                return "file exists, please delete" + directories [directories.Length - 1];
+            }
+            else
+            {
+                //check valid XML file
+                FileUtil.CopyFileOrDirectory(fileLoc, Application.persistentDataPath + "/Scenarios/"+ directories [directories.Length - 1]);
+            }
+        }
+        catch
+        {
+            return "error copying data";
+        }
+
+        return directories [directories.Length - 1] + "Imported!";
+    }
 
     private static string help(string[] token)
     {
@@ -111,7 +156,7 @@ public class MainMenuParser : MonoBehaviour
         {
             return "too many args";  
         }
-        return "something weird happened in the code";
+        return "Guru Meditation x0000001";
         
     }
 }

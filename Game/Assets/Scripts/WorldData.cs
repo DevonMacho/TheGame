@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
+using System.Linq;
 
 public class WorldData : MonoBehaviour
 {
@@ -10,7 +12,8 @@ public class WorldData : MonoBehaviour
 
     public static void initializeLocations()
     {
-        // will be replaced with an xml parser
+
+        #region replace with XML
         if (locationList == null)
         {
             locationList = new List<LocationData.Location>();
@@ -72,6 +75,7 @@ public class WorldData : MonoBehaviour
                 "west"
             }));
         }
+        #endregion
     }
 
     public static string Go(string[] command)
@@ -158,7 +162,7 @@ public class WorldData : MonoBehaviour
             return "Too many args";
         }
        
-        return "Look modifier not recognized";
+        return "Invalid modifier";
      
     }
 }

@@ -61,7 +61,7 @@ public class GenericCommands : MonoBehaviour {
                 }
                 else
                 {
-                    return "parser select value is off";
+                    return "Guru Meditation x0000004";
                 }
             }
             else
@@ -93,7 +93,7 @@ public class GenericCommands : MonoBehaviour {
         }
         else
         {
-            return "broken code 0";
+            return "Guru Meditation x0000003";
         }
 
     }
@@ -108,7 +108,17 @@ public class GenericCommands : MonoBehaviour {
         }
         return tokens;
     }
-    private static string quit()
+    public static string[] tokenizeKeepCase(string tkn)
+    {
+        string[] tokens;
+        tokens = tkn.Split(default(string[]), System.StringSplitOptions.RemoveEmptyEntries);
+        if (tokens.Length <= 0)
+        {
+            return new string[0];
+        }
+        return tokens;
+    }
+    public static string quit()
     {
         #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;

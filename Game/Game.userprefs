@@ -1,8 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GUI_Terminal.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI_Terminal.cs">
     <Files>
-      <File FileName="Assets/Scripts/GUI_Terminal.cs" Line="73" Column="130" />
+      <File FileName="Assets\Scripts\GameParser.cs" Line="276" Column="17" />
+      <File FileName="Assets\Scripts\NewGameParser.cs" Line="310" Column="23" />
+      <File FileName="Assets\Scripts\GenericCommands.cs" Line="87" Column="31" />
+      <File FileName="Assets\Scripts\GUI_Terminal.cs" Line="57" Column="60" />
+      <File FileName="Assets\Scripts\Inventory.cs" Line="97" Column="47" />
+      <File FileName="Assets\Scripts\MainMenuParser.cs" Line="97" Column="39" />
+      <File FileName="Assets\Scripts\ParserSelect.cs" Line="83" Column="32" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

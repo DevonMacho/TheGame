@@ -35,7 +35,6 @@ public class GUI_Terminal : MonoBehaviour
         scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(Screen.width - 48), GUILayout.Height(Screen.height * 179 / 768));
         GUILayout.Label(consoleLog);
         GUILayout.EndScrollView();
-        //Debug.Log(commandHistory[commandIndex-1]);
         if (GUI.GetNameOfFocusedControl() == "textField")
         {
             if (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.Return)
@@ -56,9 +55,6 @@ public class GUI_Terminal : MonoBehaviour
                 {
                     commandIndex--;
                     input = commandHistory[commandIndex-1];
-
-
-
                 }
             }
         }

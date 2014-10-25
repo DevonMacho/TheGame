@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
+using System.Linq;
+
+// get asc and desc sort on inventory
 
 public class Inventory : MonoBehaviour
 {
@@ -15,40 +19,108 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public static void addItem(string name, string description, int location, int weight,int openState)
+    public static void addItem(string name, string description, int location, int weight, int openState)
     {
-        items.Add(new ItemData.Item(name, description, location, weight,openState));
+        items.Add(new ItemData.Item(name, description, location, weight, openState));
     }
 
     public static void testAddItems()
     {
-        addItem("rock", "A heavy blunt object that can be used to hurt Kraymo'r", 4, 5,-1);
-        addItem("paper", "lighter and flatter than the rock", 2, 1,-1);
-        addItem("scissors", "It would be able to hurt anyone if they weren't safety scissors", -1, 2,-1);
+        addItem("rock", "A heavy blunt object that can be used to hurt Kraymo'r", 4, 5, -1);
+        addItem("paper", "lighter and flatter than the rock", 2, 1, -1);
+        addItem("scissors", "It would be able to hurt anyone if they weren't safety scissors", -1, 2, -1);
     }
 
-    public static string listInventory()
+    public static string listInventory(string[] token)
     {
-        string total = "----- Inventory ----";
-        string end = "\n";
-        for (int i = total.Length; i > 0; i--)
+        if (token.Length == 1)
         {
-            end += "-";
-        }
-        int numItems = 0;
-        foreach (ItemData.Item a in items)
-        {
-            if (a.getLocation() == -1)
+            string total = "----- Inventory ----";
+            string end = "\n";
+            for (int i = total.Length; i > 0; i--)
             {
-                total = total + "\n" + a.getName();
-                numItems++;
+                end += "-";
+            }
+            int numItems = 0;
+            foreach (ItemData.Item a in items)
+            {
+                if (a.getLocation() == -1)
+                {
+                    total = total + "\n" + a.getName();
+                    numItems++;
+                }
+            }
+            if (numItems < 1)
+            {
+                total = total + "\n<Empty>";
+            }
+            return total + end;
+        }
+
+        else if (token.Length == 2)
+        {
+            if (token [1].ToLower().Equals("asc"))
+            {
+
+                var orderedInv = items.OrderBy(x => x.getName());
+                string total = "----- Inventory ----";
+                string end = "\n";
+                for (int i = total.Length; i > 0; i--)
+                {
+                    end += "-";
+                }
+                int numItems = 0;
+                foreach ( var a in orderedInv)
+                {
+                    if (a.getLocation() == -1)
+                    {
+                        total = total + "\n" + a.getName();
+                        numItems++;
+                    }
+                }
+                if (numItems < 1)
+                {
+                    total = total + "\n<Empty>";
+                }
+                return total + end;
+            }
+            else if (token [1].ToLower().Equals("dsc"))
+            {
+                var orderedInv = items.OrderByDescending(x => x.getName());
+                string total = "----- Inventory ----";
+                string end = "\n";
+                for (int i = total.Length; i > 0; i--)
+                {
+                    end += "-";
+                }
+                int numItems = 0;
+                foreach ( var a in orderedInv)
+                {
+                    if (a.getLocation() == -1)
+                    {
+                        total = total + "\n" + a.getName();
+                        numItems++;
+                    }
+                }
+                if (numItems < 1)
+                {
+                    total = total + "\n<Empty>";
+                }
+                return total + end;
+            }
+            else
+            {
+                return "Invalid modifier";
             }
         }
-        if (numItems < 1)
+        else if (token.Length > 2)
         {
-            total = total + "\n<Empty>";
+            return "too many args";
         }
-        return total + end;
+        else
+        {
+            return "unknown error";
+        }
     }
 
     public static string itemsAtLocation(int location)

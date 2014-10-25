@@ -106,148 +106,148 @@ public class GameParser : MonoBehaviour
         string[] token = GenericCommands.tokenize(input);
         if (token.Length <= 0 || !commandList1.ContainsKey(token [0].ToLower()))
         {
-            if (token.Length <= 0 || devCommandList.ContainsKey(token [0].ToLower()))
-            {
-                #region devmode args
-                int devcommand = devCommandList [token [0].ToLower()];
-                if (devmode == true)
-                {
-                    if (devcommand == 0)
-                    {
 
-                        if (token.Length > 2)
-                        {
-                            return "too many args";
-                        }
-                        else if (token.Length <= 1)
-                        {
-                            return "devmode is enabled";
-                        }
-                        else if (token [1].ToLower().Equals("enable"))
-                        {
-                            return "devmode is already enabled";
-                        }
-                        else if (token [1].ToLower().Equals("disable"))
-                        {
-                            devmode = false;
-                            return "devmode is now disabled";
-                        }
-                        else
-                        {
-                            return "unrecognized modifier";
-                        }
-                    }
-                    else if (devcommand == 1)
-                    {
-                        return "set location";
-                    }
-                    else if (devcommand == 2)
-                    {
-                        return "add item";
-                    }
-                    else if (devcommand == 3)
-                    {
-                        return "create location";
-                    }
-                    else if (devcommand == 4)
-                    {
-                        return "export XML";
-                    }
-                }
-                else if (devmode == false)
-                {
-                    if (devcommand == 0)
-                    {
-                        if (token.Length > 2)
-                        {
-                            return "too many args";
-                        }
-                        else if (token.Length <= 1)
-                        {
-                            return "devmode is disabled";
-                        }
-                        else if (token [1].ToLower().Equals("enable"))
-                        {
-                            devmode = true;
-                            return "devmode is now enabled";
-
-                        }
-                        else if (token [1].ToLower().Equals("disable"))
-                        {
-                            return "devmode is already disabled";
-                        }
-                        else
-                        {
-                            return "unrecognized modifier";
-                        }
-
-                    }
-                }
-                #endregion
-            }
             return "Please enter a valid command";
         }
-
-        int command = commandList1 [token [0].ToLower()];
-        if (command == 0)
+        else if (devCommandList.ContainsKey(token [0].ToLower()))
         {
-            return help(token);
+            #region devmode args
+            int devcommand = devCommandList [token [0].ToLower()];
+            if (devmode == true)
+            {
+                if (devcommand == 0)
+                {
+                    
+                    if (token.Length > 2)
+                    {
+                        return "too many args";
+                    }
+                    else if (token.Length <= 1)
+                    {
+                        return "devmode is enabled";
+                    }
+                    else if (token [1].ToLower().Equals("enable"))
+                    {
+                        return "devmode is already enabled";
+                    }
+                    else if (token [1].ToLower().Equals("disable"))
+                    {
+                        devmode = false;
+                        return "devmode is now disabled";
+                    }
+                    else
+                    {
+                        return "unrecognized modifier";
+                    }
+                }
+                else if (devcommand == 1)
+                {
+                    return "set location";
+                }
+                else if (devcommand == 2)
+                {
+                    return "add item";
+                }
+                else if (devcommand == 3)
+                {
+                    return "create location";
+                }
+                else if (devcommand == 4)
+                {
+                    return "export XML";
+                }
+            }
+            else if (devmode == false)
+            {
+                if (devcommand == 0)
+                {
+                    if (token.Length > 2)
+                    {
+                        return "too many args";
+                    }
+                    else if (token.Length <= 1)
+                    {
+                        return "devmode is disabled";
+                    }
+                    else if (token [1].ToLower().Equals("enable"))
+                    {
+                        devmode = true;
+                        return "devmode is now enabled";
+                        
+                    }
+                    else if (token [1].ToLower().Equals("disable"))
+                    {
+                        return "devmode is already disabled";
+                    }
+                    else
+                    {
+                        return "unrecognized modifier";
+                    }
+                    
+                }
+            }
+            #endregion
         }
-        else if (command == 1)
-        {
-            return GenericCommands.clear();
-        }
-        else if (command == 2)
-        {
-            return look(token);
-        }
-        else if (command == 3)
-        {
-            return go(token);
-        }
-        else if (command == 4)
-        {
-            return pickup(token);
-        }
-        else if (command == 5)
-        {
-            return drop(token);
+            int command = commandList1 [token [0].ToLower()];
+            if (command == 0)
+            {
+                return help(token);
+            }
+            else if (command == 1)
+            {
+                return GenericCommands.clear();
+            }
+            else if (command == 2)
+            {
+                return look(token);
+            }
+            else if (command == 3)
+            {
+                return go(token);
+            }
+            else if (command == 4)
+            {
+                return pickup(token);
+            }
+            else if (command == 5)
+            {
+                return drop(token);
             
+            }
+            else if (command == 6)
+            {
+                return listInventory(token);
+            }
+            else if (command == 7)
+            {
+                return GenericCommands.startQuit(token);
+            }
+            else if (command == 8)
+            {
+                return "open command entered";
+            }
+            else if (command == 9)
+            {
+                return "close command entered";
+            }
+            else if (command == 10)
+            {
+                return "equip command entered";
+            }
+            else if (command == 11)
+            {
+                return "unequip command entered";
+            }
+            else if (command == 12)
+            {
+                //use
+                return "use command entered";
+            }
+            else
+            {
+                return "you have entered in a valid command";
+            }
         }
-        else if (command == 6)
-        {
-            return listInventory();
-        }
-        else if (command == 7)
-        {
-            return GenericCommands.startQuit(token);
-        }
-        else if (command == 8)
-        {
-            return "open command entered";
-        }
-        else if (command == 9)
-        {
-            return "close command entered";
-        }
-        else if (command == 10)
-        {
-            return "equip command entered";
-        }
-        else if (command == 11)
-        {
-            return "unequip command entered";
-        }
-        else if (command == 12)
-        {
-            //use
-            return "use command entered";
-        }
-        else
-        {
-            return "you have entered in a valid command";
-        }
-    }
 
     private static string help(string[] token)
     {
@@ -297,14 +297,14 @@ public class GameParser : MonoBehaviour
         {
             return "too many args";  
         }
-        return "something weird happened in the code";
+        return "Guru Meditation x0000002";
 
     }
 
-    private static string listInventory()
+    private static string listInventory(string[] token)
     {
       
-        return Inventory.listInventory();
+        return Inventory.listInventory(token);
     }
 
     private static string pickup(string[] token)
