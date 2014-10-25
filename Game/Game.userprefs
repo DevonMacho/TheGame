@@ -1,14 +1,18 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI_Terminal.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\WorldData.cs">
     <Files>
-      <File FileName="Assets\Scripts\GameParser.cs" Line="276" Column="17" />
-      <File FileName="Assets\Scripts\NewGameParser.cs" Line="310" Column="23" />
-      <File FileName="Assets\Scripts\GenericCommands.cs" Line="87" Column="31" />
-      <File FileName="Assets\Scripts\GUI_Terminal.cs" Line="57" Column="60" />
-      <File FileName="Assets\Scripts\Inventory.cs" Line="97" Column="47" />
-      <File FileName="Assets\Scripts\MainMenuParser.cs" Line="97" Column="39" />
-      <File FileName="Assets\Scripts\ParserSelect.cs" Line="83" Column="32" />
+      <File FileName="Assets\Scripts\WorldData.cs" Line="22" Column="32" />
+      <File FileName="Assets\Scripts\GameData.cs" Line="33" Column="89" />
+      <File FileName="Assets\Scripts\GameParser.cs" Line="63" Column="42" />
+      <File FileName="Assets\Scripts\GenericCommands.cs" Line="45" Column="18" />
+      <File FileName="Assets\Scripts\Inventory.cs" Line="180" Column="56" />
+      <File FileName="Assets\Scripts\GUI_Terminal.cs" Line="14" Column="33" />
+      <File FileName="Assets\Scripts\ItemData.cs" Line="29" Column="10" />
+      <File FileName="Assets\Scripts\LocationData.cs" Line="15" Column="117" />
+      <File FileName="Assets\Scripts\NewGameParser.cs" Line="300" Column="10" />
+      <File FileName="Assets\Scripts\MainMenuParser.cs" Line="93" Column="12" />
+      <File FileName="Assets\Scripts\ParserSelect.cs" Line="83" Column="88" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

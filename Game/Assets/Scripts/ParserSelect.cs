@@ -68,7 +68,7 @@ public class ParserSelect : MonoBehaviour
         {
             return 5;
         }
-        else if (trimput[0].Equals("<<<NewGameStartNow>>>"))
+        else if (trimput.Length > 0 && trimput[0].Equals("<<<NewGameStartNow>>>"))
         {
             return 4;
         }
@@ -80,7 +80,7 @@ public class ParserSelect : MonoBehaviour
         {
             return 2;
         }
-        else if (input.Equals("<<Resuming Game>>"))
+        else if (input.Equals("<<Resuming Game>>") || input.Equals("<<Game Started>>"))
         {
             return 1;
         }

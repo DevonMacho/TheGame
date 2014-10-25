@@ -103,7 +103,7 @@ public class MainMenuParser : MonoBehaviour
             return "error copying data";
         }
 
-        return directories [directories.Length - 1] + "Imported!";
+        return directories [directories.Length - 1] + " Imported!";
     }
 
     private static string help(string[] token)

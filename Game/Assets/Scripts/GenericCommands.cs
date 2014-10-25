@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GenericCommands : MonoBehaviour {
+public class GenericCommands : MonoBehaviour
+{
     private static int quitStage = 0;
     //0 - not quitting
     //1 - quitting prompted / triggered
@@ -10,7 +11,9 @@ public class GenericCommands : MonoBehaviour {
     {
         return "<<Clearing>>";
     }
+
     static int gameState;
+
     public static string startQuit(string[] input)
     {
         if (input.Length != 1)
@@ -21,6 +24,7 @@ public class GenericCommands : MonoBehaviour {
         gameState = ParserSelect.parserSelect;
         return "Are you sure you want to quit?";
     }
+
     public static string quitParser(string input)
     {
        
@@ -97,6 +101,7 @@ public class GenericCommands : MonoBehaviour {
         }
 
     }
+
     public static string[] tokenize(string tkn)
     {
         string[] tokens;
@@ -108,6 +113,7 @@ public class GenericCommands : MonoBehaviour {
         }
         return tokens;
     }
+
     public static string[] tokenizeKeepCase(string tkn)
     {
         string[] tokens;
@@ -118,6 +124,7 @@ public class GenericCommands : MonoBehaviour {
         }
         return tokens;
     }
+
     public static string quit()
     {
         #if UNITY_EDITOR

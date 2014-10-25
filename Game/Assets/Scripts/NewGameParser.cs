@@ -10,6 +10,7 @@ public class NewGameParser : MonoBehaviour
      
     public static List<string> files;
     private static int stage = 0;
+    public static string xmlFile = "";
     private static string characterName = "";
     private static string type = "";
     private static string gender = "";
@@ -72,7 +73,7 @@ public class NewGameParser : MonoBehaviour
             int.TryParse(token [0], out parsed);
             if (parsed > 0 && parsed <= files.Count)
             {
-                //load xml file
+                xmlFile = files [parsed-1];
 
                 stage = 2;
                 return "Scenario Loaded! transporting to the between zone...\n\nYou find yourself floating, alone in a dark space." +
@@ -299,12 +300,13 @@ public class NewGameParser : MonoBehaviour
         }
         else if (stage == 8)
         {
-            //actual newgame command
-            return "<<Resuming Game>>";
+
+            return WorldData.StartNewGame(characterName,gender,type,xmlFile);
         }
 
         return "Guru Mediation x0000005";
     }
+
     private static string endScene(int step)
     {
         if (step == 0)

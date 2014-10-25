@@ -8,17 +8,8 @@ using System.Linq;
 
 public class Inventory : MonoBehaviour
 {
-    public static List<ItemData.Item> items;
 
-    public static void initItemList()
-    {
-        if (items == null)
-        {
-            items = new List<ItemData.Item>();
-            testAddItems();
-        }
-    }
-
+    /*
     public static void addItem(string name, string description, int location, int weight, int openState)
     {
         items.Add(new ItemData.Item(name, description, location, weight, openState));
@@ -30,6 +21,7 @@ public class Inventory : MonoBehaviour
         addItem("paper", "lighter and flatter than the rock", 2, 1, -1);
         addItem("scissors", "It would be able to hurt anyone if they weren't safety scissors", -1, 2, -1);
     }
+*/
 
     public static string listInventory(string[] token)
     {
@@ -42,7 +34,7 @@ public class Inventory : MonoBehaviour
                 end += "-";
             }
             int numItems = 0;
-            foreach (ItemData.Item a in items)
+            foreach (ItemData.Item a in WorldData.gameData.items)
             {
                 if (a.getLocation() == -1)
                 {
@@ -62,7 +54,7 @@ public class Inventory : MonoBehaviour
             if (token [1].ToLower().Equals("asc"))
             {
 
-                var orderedInv = items.OrderBy(x => x.getName());
+                var orderedInv = WorldData.gameData.items.OrderBy(x => x.getName());
                 string total = "----- Inventory ----";
                 string end = "\n";
                 for (int i = total.Length; i > 0; i--)
@@ -86,7 +78,7 @@ public class Inventory : MonoBehaviour
             }
             else if (token [1].ToLower().Equals("dsc"))
             {
-                var orderedInv = items.OrderByDescending(x => x.getName());
+                var orderedInv = WorldData.gameData.items.OrderByDescending(x => x.getName());
                 string total = "----- Inventory ----";
                 string end = "\n";
                 for (int i = total.Length; i > 0; i--)
@@ -132,7 +124,7 @@ public class Inventory : MonoBehaviour
             end += "-";
         }
         int numItems = 0;
-        foreach (ItemData.Item a in items)
+        foreach (ItemData.Item a in WorldData.gameData.items)
         {
             if (a.getLocation() == location)
             {
@@ -156,13 +148,13 @@ public class Inventory : MonoBehaviour
         }
         else if (command.Length == 2)
         {
-            foreach (ItemData.Item a in items)
+            foreach (ItemData.Item a in WorldData.gameData.items)
             {
                 if (a.getName().Equals(command [1]) && a.getLocation() == WorldData.currentLoc)
                 {
-                    items.Remove(a);
+                    WorldData.gameData.items.Remove(a);
                     a.setLocation(-1);
-                    items.Add(a);
+                    WorldData.gameData.items.Add(a);
                     return command [1] + " picked up";
                 } 
             }
@@ -180,13 +172,13 @@ public class Inventory : MonoBehaviour
         }
         else if (command.Length == 2)
         {
-            foreach (ItemData.Item a in items)
+            foreach (ItemData.Item a in WorldData.gameData.items)
             {
                 if (a.getName().Equals(command [1]) && a.getLocation() == -1)
                 {
-                    items.Remove(a);
+                    WorldData.gameData.items.Remove(a);
                     a.setLocation(WorldData.currentLoc);
-                    items.Add(a);
+                    WorldData.gameData.items.Add(a);
                     return command [1] + " dropped";
                 } 
             }

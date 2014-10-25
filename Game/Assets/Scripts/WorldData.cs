@@ -6,76 +6,13 @@ using System.Linq;
 
 public class WorldData : MonoBehaviour
 {
-
-    private static List<LocationData.Location> locationList;
+    public static GameData.GameInformation gameData;
     public static int currentLoc = 0;
 
-    public static void initializeLocations()
+    public static string StartNewGame(string playerName, string playerGender, string playerClass, string xmlFile)
     {
-
-        #region replace with XML
-        if (locationList == null)
-        {
-            locationList = new List<LocationData.Location>();
-            locationList.Add(new LocationData.Location("LocA", "Location A", 0, new int[2]
-            {
-                1,
-                2
-            }, new string[2]
-            {
-                "southwest",
-                "southeast"
-            }));
-            locationList.Add(new LocationData.Location("LocB", "Location B", 1, new int[4]
-            {
-                0,
-                2,
-                3,
-                4
-            }, new string[4]
-            {
-                "northeast",
-                "east",
-                "south",
-                "southeast"
-            }));
-            locationList.Add(new LocationData.Location("LocC", "Location C", 2, new int[4]
-            {
-                0,
-                1,
-                3,
-                4
-            }, new string[4]
-            {
-                "northwest",
-                "west",
-                "southwest",
-                "south"
-            }));
-            locationList.Add(new LocationData.Location("LocD", "Location D", 3, new int[3]
-            {
-                1,
-                2,
-                4
-            }, new string[3]
-            {
-                "north",
-                "northeast",
-                "east"
-            }));
-            locationList.Add(new LocationData.Location("LocE", "Location E", 4, new int[3]
-            {
-                1,
-                2,
-                3
-            }, new string[3]
-            {
-                "northwest",
-                "north",
-                "west"
-            }));
-        }
-        #endregion
+        gameData = new GameData.GameInformation(loadLocationData(xmlFile), loadItemData(xmlFile), playerName, playerGender, playerClass);
+        return "<<Game Started>>";
     }
 
     public static string Go(string[] command)
@@ -86,13 +23,13 @@ public class WorldData : MonoBehaviour
         }
         else
         {
-            foreach (LocationData.Location a in locationList)
+            foreach (LocationData.Location a in gameData.locations)
             {
                 if (a.getNodeNumber() == currentLoc)
                 {
                     for (int i = 0; i < a.getAdjacentNodes().Length; i++)
                     {
-                        if (a.getAdjacentDirections() [i].Equals(command[1]))
+                        if (a.getAdjacentDirections() [i].Equals(command [1]))
                         {
                             currentLoc = a.getAdjacentNodes() [i];
                             return "Going: " + a.getAdjacentDirections() [i];
@@ -105,6 +42,78 @@ public class WorldData : MonoBehaviour
         }
     }
 
+    public static List<LocationData.Location> loadLocationData(string xmlLocation)
+    {
+        XDocument locationInfo = null;
+        List<LocationData.Location> locData = new List<LocationData.Location>();
+
+        try
+        {
+            //Debug.Log(xmlLocation);
+            locationInfo = XDocument.Load(Application.persistentDataPath + "/Scenarios/" + xmlLocation, LoadOptions.PreserveWhitespace);
+            
+        }
+        catch
+        {
+            Debug.Log("error reading XML");
+        }
+        if (locationInfo != null)
+        {
+            var location = locationInfo.Element("World").Element("Locations").Elements("Location");
+
+            foreach (var a in location)
+            {
+                string n = a.Element("Location_Name").Value.ToString();
+                string d = a.Element("Location_Description").Value.ToString();
+                int nn = (int)a.Element("Location_NodeNumber");
+                List<int> an = new List<int>();
+                List<string> ad = new List<string>();
+
+                foreach (var ani in a.Elements("Location_AdjacentNodes"))
+                {
+                    an.Add((int)ani);
+                }
+                foreach (var adi in a.Elements("Location_AdjacentDirections"))
+                {
+                    ad.Add(adi.Value.ToString());
+                }
+
+                locData.Add(new LocationData.Location(n, d, nn, an.ToArray(), ad.ToArray()));
+            }
+        }
+        return locData;
+    }
+
+    public static List<ItemData.Item> loadItemData(string xmlLocation)
+    {
+        XDocument iteminfo = null;
+        List<ItemData.Item> itemData = new List<ItemData.Item>();
+        
+        try
+        {
+            iteminfo = XDocument.Load(Application.persistentDataPath + "/Scenarios/" + xmlLocation, LoadOptions.PreserveWhitespace);  
+        }
+        catch
+        {
+            Debug.Log("error reading XML");
+        }
+        if (iteminfo != null)
+        {
+            var itemz = iteminfo.Element("World").Element("Items").Elements("Item");
+            
+            foreach (var a in itemz)
+            {
+                string n = a.Element("Item_Name").Value.ToString();
+                string d = a.Element("Item_Description").Value.ToString();
+                int nn = (int)a.Element("Item_Location");
+                int w = (int)a.Element("Item_Weight");
+                int os = (int)a.Element("Item_OpenState");
+                itemData.Add(new ItemData.Item(n, d, nn, w, os));
+            }
+        }
+        return itemData;
+    }
+
     public static string Look(string[] command)
     {
         if (command.Length == 1)
@@ -115,17 +124,16 @@ public class WorldData : MonoBehaviour
         {
             if (command [1].Equals("around") && command.Length == 2)
             {
-                foreach (LocationData.Location a in locationList)
+                foreach (LocationData.Location a in gameData.locations)
                 {
                     if (a.getNodeNumber() == currentLoc)
                     {
                         string directions = "From here you can go: ";
                         for (int i = 0; i < a.getAdjacentDirections().Length; i++)
                         {
-                            directions = directions + a.getAdjacentDirections()[i] + " ";
+                            directions = directions + a.getAdjacentDirections() [i] + " ";
                         }
-                        return a.getDescription() + "\n"+directions + "\n" + Inventory.itemsAtLocation(currentLoc);
-                        //test
+                        return a.getDescription() + "\n" + directions + "\n" + Inventory.itemsAtLocation(currentLoc);
                     }
                 }
             }
@@ -136,7 +144,7 @@ public class WorldData : MonoBehaviour
                     return "Look at what?";
                 }
 
-                foreach (ItemData.Item a in Inventory.items)
+                foreach (ItemData.Item a in gameData.items)
                 {
                     if (a.getName().Equals(command [2]) && (a.getLocation() == currentLoc || a.getLocation() == -1))
                     {
