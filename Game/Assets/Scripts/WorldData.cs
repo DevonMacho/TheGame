@@ -11,7 +11,7 @@ public class WorldData : MonoBehaviour
     public static string StartNewGame(string playerName, string playerGender, string playerClass, string xmlFile)
     {
         gameData = new GameData.GameInformation(loadLocationData(xmlFile), loadItemData(xmlFile), playerName, playerGender, playerClass,0);
-        return "<<Game Started>>";
+        return "\n<<Game Started>>";
     }
 
     public static string Go(string[] command)
@@ -156,7 +156,7 @@ public class WorldData : MonoBehaviour
                             //this prevents "world objects / switches" from displaying their weight
                             return a.getDescription();
                         }
-
+                       
 
                     }
                 }

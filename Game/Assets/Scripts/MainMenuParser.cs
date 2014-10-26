@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using System.IO;
 
 public class MainMenuParser : MonoBehaviour
@@ -19,7 +21,7 @@ public class MainMenuParser : MonoBehaviour
         commandList0.Add("quit", 2);
         commandList0.Add("load", 3);
         commandList0.Add("newgame", 4);
-        commandList0.Add("import", 5);
+        //commandList0.Add("import", 5);
         #endregion
 
         if (!Directory.Exists(Application.persistentDataPath + "/Scenarios/"))
@@ -48,7 +50,7 @@ public class MainMenuParser : MonoBehaviour
         }
         else if (command == 1)
         {
-            return GenericCommands.clear();
+            return GenericCommands.clear(token);
         }
         else if (command == 2)
         {
@@ -56,15 +58,15 @@ public class MainMenuParser : MonoBehaviour
         }
         else if (command == 3)
         {
-            return GameData.startLoad();
+            return GameData.startLoad(token);
         }
         else if (command == 4)
         {
-            return NewGameParser.startNewGame();
+            return NewGameParser.startNewGame(token);
         }
         else if (command == 5)
         {
-            return import();
+            return import(token);
         }
         else
         {
@@ -72,10 +74,32 @@ public class MainMenuParser : MonoBehaviour
         }
     }
 
-    private static string import()
+    private static string import(string[] token)
     {
+        if (token.Length > 1)
+        {
+            return "too many args";
+        }
+        string fileLoc = "";
+        if(Application.isMobilePlatform == true)
+        {
+            return "Custom campaigns are not supported on mobile platforms at this time, mostly due to the fact that" +
+                " the command is unbelievably scary on android and I need to figure out a way to do it properly";
+        }
+        GUI_Terminal terminal = GameObject.FindObjectOfType<GUI_Terminal>();
 
-        string fileLoc = EditorUtility.OpenFilePanel("Import Scenario", Application.persistentDataPath + "/Scenarios/", "xml");
+        string path = terminal.getTextPath();
+        Debug.Log(terminal.getTextPath());
+
+        if(path != null)
+        {
+            fileLoc = terminal.getTextPath();
+        }
+        else
+        {
+            fileLoc = "";
+        }
+
         if (fileLoc.Equals(""))
         {
             return "Invalid Directory";
@@ -83,19 +107,19 @@ public class MainMenuParser : MonoBehaviour
         string fileLoc2 = fileLoc.Trim().Replace("/", " ");
         string[] directories;
         directories = fileLoc2.Split(default(string[]), System.StringSplitOptions.RemoveEmptyEntries);
-        Debug.Log(directories [directories.Length - 1]);
+
         
         try
         {
-            Debug.Log(Application.persistentDataPath + "/Scenarios/"+ directories [directories.Length - 1]);
+
             if (File.Exists(Application.persistentDataPath + "/Scenarios/" + directories [directories.Length - 1]))
             {
-                return "file exists, please delete" + directories [directories.Length - 1];
+                return "file exists, please use the delete command" + directories [directories.Length - 1];
             }
             else
             {
                 //check valid XML file
-                FileUtil.CopyFileOrDirectory(fileLoc, Application.persistentDataPath + "/Scenarios/"+ directories [directories.Length - 1]);
+                File.Copy(fileLoc, Application.persistentDataPath + "/Scenarios/" + directories [directories.Length - 1]);
             }
         }
         catch

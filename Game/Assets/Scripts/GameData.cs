@@ -74,7 +74,7 @@ public class GameData : MonoBehaviour
 
         public string getClass()
         {
-            return this.playerName;
+            return this.playerClass;
         }
 
         public void getName(string playerName)
@@ -89,7 +89,7 @@ public class GameData : MonoBehaviour
 
         public void getClass(string playerClass)
         {
-            this.playerName = playerClass;
+            this.playerClass = playerClass;
         }
 
         public void addItem(string name, string description, int location, int weight, int openState)
@@ -104,6 +104,7 @@ public class GameData : MonoBehaviour
     }
     static int saveState = 0;
     static int gameState;
+
     public static string startSave()
     {
         saveState = 1;
@@ -112,6 +113,7 @@ public class GameData : MonoBehaviour
     }
 
     static string saveName;
+
     public static string saveParser(string input)
     {
         string[] token = GenericCommands.tokenize(input);
@@ -130,9 +132,9 @@ public class GameData : MonoBehaviour
             {
                 return "Save file name not valid";
             }
-            if (!File.Exists(Application.persistentDataPath + "/SaveGames/"+token[0]+".save"))
+            if (!File.Exists(Application.persistentDataPath + "/SaveGames/" + token [0] + ".save"))
             {
-                saveName = token[0]+".save";
+                saveName = token [0] + ".save";
                 WorldData.gameData.serialize(WorldData.gameData, saveName);
 
                 if (gameState == 1)
@@ -149,12 +151,12 @@ public class GameData : MonoBehaviour
             else
             {
                 saveState = 2;
-                    return "File name exists, do you want to overwrite the save file?";
+                return "File name exists, do you want to overwrite the save file?";
             }
         }
         if (saveState == 2)
         {
-            if(token[0].Equals("yes"))
+            if (token [0].Equals("yes"))
             {
                 WorldData.gameData.serialize(WorldData.gameData, saveName);
                 if (gameState == 1)
@@ -168,7 +170,7 @@ public class GameData : MonoBehaviour
                     return "Saved!\n<input anything to quit>";
                 }
             }
-            if(token[0].Equals("no"))
+            if (token [0].Equals("no"))
             {
                 saveState = 3;
                 return "Do you want to rename your save file?";
@@ -177,12 +179,12 @@ public class GameData : MonoBehaviour
         }
         if (saveState == 3)
         {
-            if(token[0].Equals("yes"))
+            if (token [0].Equals("yes"))
             {
                 saveState = 1;
                 return "Enter in a name for the save file";
             }
-            if(token[0].Equals("no"))
+            if (token [0].Equals("no"))
             {
                 if (gameState == 1)
                 {
@@ -198,10 +200,15 @@ public class GameData : MonoBehaviour
         }
         return "Guru Mediation x0000007";
     }
+
     static int loadStatus = 0;
     
-    public static string startLoad()
+    public static string startLoad(string[] token)
     {
+        if (token.Length > 1)
+        {
+            return "Too many args";
+        }
         loadStatus = 1;
         gameState = ParserSelect.parserSelect;
         files = new List<string>();
@@ -209,6 +216,7 @@ public class GameData : MonoBehaviour
     }
 
     static List<string> files;
+
     public static string loadParser(string input)
     {
         string[] token = GenericCommands.tokenize(input);
@@ -222,13 +230,13 @@ public class GameData : MonoBehaviour
             {
                 return "too many args";
             }
-            if(token[0].Equals("yes"))
+            if (token [0].Equals("yes"))
             {
                 loadStatus = 2;
                 return listSaveFiles();
 
             }
-            else if (token[0].Equals("no"))
+            else if (token [0].Equals("no"))
             {
                 if (gameState == 0)
                 {
@@ -260,7 +268,7 @@ public class GameData : MonoBehaviour
             int.TryParse(token [0], out parsed);
             if (parsed > 0 && parsed <= files.Count)
             {
-                WorldData.gameData = GameData.GameInformation.deserialize(files[parsed-1]);
+                WorldData.gameData = GameData.GameInformation.deserialize(files [parsed - 1]);
                 return "<<Resuming Game>>";
             }
             else
@@ -272,6 +280,7 @@ public class GameData : MonoBehaviour
         return "Guru Mediation x0000008";
 
     }
+
     public static string listSaveFiles()
     {
         string baseline = "Enter in the number of the save that you want to load\n--------Saves--------";

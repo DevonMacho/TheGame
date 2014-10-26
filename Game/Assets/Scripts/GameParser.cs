@@ -197,7 +197,7 @@ public class GameParser : MonoBehaviour
         }
         else if (command == 1)
         {
-            return GenericCommands.clear();
+            return GenericCommands.clear(token);
         }
         else if (command == 2)
         {
@@ -252,7 +252,7 @@ public class GameParser : MonoBehaviour
         else if (command == 14)
         {
             //use
-            return GameData.startLoad();
+            return GameData.startLoad(token);
         }
         else
         {

@@ -7,18 +7,22 @@ public class GenericCommands : MonoBehaviour
     //0 - not quitting
     //1 - quitting prompted / triggered
     //2 - do you want to save
-    public static string clear()
+    public static string clear(string[] token)
     {
+        if(token.Length > 1)
+        {
+            return "too many args";
+        }
         return "<<Clearing>>";
     }
 
     static int gameState;
 
-    public static string startQuit(string[] input)
+    public static string startQuit(string[] token)
     {
-        if (input.Length != 1)
+        if (token.Length > 1)
         {
-            return "invalid input";
+            return "Too many args";
         }
         quitStage = 1;
         gameState = ParserSelect.parserSelect;
