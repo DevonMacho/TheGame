@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Extra GUI Skins\SkinTest.cs" />
-     <Compile Include="Assets\Scripts\FileBrowserGUI.cs" />
      <Compile Include="Assets\Scripts\GUI_Terminal.cs" />
      <Compile Include="Assets\Scripts\GameData.cs" />
      <Compile Include="Assets\Scripts\GameParser.cs" />
@@ -58,9 +57,11 @@
      <Compile Include="Assets\Scripts\MainMenuParser.cs" />
      <Compile Include="Assets\Scripts\NewGameParser.cs" />
      <Compile Include="Assets\Scripts\NonGroupCreatedScripts\FileBrowser.cs" />
+     <Compile Include="Assets\Scripts\NonGroupCreatedScripts\FileBrowserGUI.cs" />
      <Compile Include="Assets\Scripts\NonGroupCreatedScripts\ImprovedSelection.cs" />
      <Compile Include="Assets\Scripts\ParserSelect.cs" />
      <Compile Include="Assets\Scripts\WorldData.cs" />
+     <None Include="Assets\Resources\Scenarios\BaseGame.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>

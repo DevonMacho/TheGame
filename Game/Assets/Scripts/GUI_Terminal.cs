@@ -29,10 +29,7 @@ public class GUI_Terminal : MonoBehaviour
     public string getTextPath()
     {
         openXML();
-        while(m_fileBrowser != null)
-        {
 
-        }
         return m_textPath;
     }
     void OnGUI()

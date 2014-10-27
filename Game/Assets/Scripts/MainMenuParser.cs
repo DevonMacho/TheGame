@@ -21,13 +21,14 @@ public class MainMenuParser : MonoBehaviour
         commandList0.Add("quit", 2);
         commandList0.Add("load", 3);
         commandList0.Add("newgame", 4);
-        //commandList0.Add("import", 5);
+        commandList0.Add("import", 5);
         #endregion
 
         if (!Directory.Exists(Application.persistentDataPath + "/Scenarios/"))
         {
             Directory.CreateDirectory(Application.persistentDataPath + "/Scenarios/");
-            //copy over main game xml from Asset folder
+            File.Create(Application.persistentDataPath + "/Scenarios/BaseGame.xml");
+
         }
     }
 
