@@ -48,7 +48,6 @@ public class Inventory : MonoBehaviour
             }
             return total + end;
         }
-
         else if (token.Length == 2)
         {
             if (token [1].ToLower().Equals("asc"))
@@ -62,7 +61,7 @@ public class Inventory : MonoBehaviour
                     end += "-";
                 }
                 int numItems = 0;
-                foreach ( var a in orderedInv)
+                foreach (var a in orderedInv)
                 {
                     if (a.getLocation() == -1)
                     {
@@ -86,7 +85,7 @@ public class Inventory : MonoBehaviour
                     end += "-";
                 }
                 int numItems = 0;
-                foreach ( var a in orderedInv)
+                foreach (var a in orderedInv)
                 {
                     if (a.getLocation() == -1)
                     {
@@ -186,6 +185,148 @@ public class Inventory : MonoBehaviour
 
         }
         return "too many args";
+    }
+
+    public static string open(string[] command)
+    {
+        if (command.Length <= 1)
+        {
+            return "open what?";
+        }
+        else if (command.Length == 2)
+        {
+            foreach (ItemData.Item a in WorldData.gameData.items)
+            {
+                if (a.getName().Equals(command [1]) && a.getLocation() == WorldData.gameData.currentLoc)
+                {
+                    if (a.getOpenState() == -1)
+                    {
+                        return a.getName() + " can not be opened";
+                    }
+                    else if (a.getOpenState() == 0)
+                    {
+                        WorldData.gameData.items.Remove(a);
+                        a.setOpenState(1);
+                        WorldData.gameData.items.Add(a);
+                        return command [1] + " opened";
+                    }
+                    else if (a.getOpenState() == 1)
+                    {
+                        return command [1] + " is already opened";
+                    }
+                }
+                
+            }
+            return "Item not found at current location";
+        }
+        else
+        {
+            return "too many args";
+        }
+    }
+
+    public static string close(string[] command)
+    {
+        if (command.Length <= 1)
+        {
+            return "close what?";
+        }
+        else if (command.Length == 2)
+        {
+            foreach (ItemData.Item a in WorldData.gameData.items)
+            {
+                if (a.getName().Equals(command [1]) && a.getLocation() == WorldData.gameData.currentLoc)
+                {
+                    if (a.getOpenState() == -1)
+                    {
+                        return a.getName() + " can not be closed";
+                    }
+                    else if (a.getOpenState() == 1)
+                    {
+                        WorldData.gameData.items.Remove(a);
+                        a.setOpenState(0);
+                        WorldData.gameData.items.Add(a);
+                        return command [1] + " closed";
+                    }
+                    else if (a.getOpenState() == 0)
+                    {
+                        return command [1] + " is already closed";
+                    }
+                }
+
+            }
+            return "Item not found at current location";
+        }
+        else
+        {
+            return "too many args";
+        }
+    }
+
+    /*
+    public static string equip(string[] command)
+{
+        if (command.Length <= 1)
+        {
+            return "equip what?";
+        }
+        else if (command.Length == 2)
+        {
+            foreach (ItemData.Item a in WorldData.gameData.items)
+            {
+                if (a.getName().Equals(command [1]) && a.getLocation() == -1)
+                {
+                    if (a.getOpenState() == -1)
+                    {
+                        return a.getName() + " can not be closed";
+                    }
+                    else if (a.getOpenState() == 1)
+                    {
+                        WorldData.gameData.items.Remove(a);
+                        a.setOpenState(0);
+                        WorldData.gameData.items.Add(a);
+                        return command [1] + " closed";
+                    }
+                    else if (a.getOpenState() == 0)
+                    {
+                        return command [1] + " is already closed";
+                    }
+                }
+
+            }
+            return "Item not found at current location";
+        }
+        else
+        {
+            return "too many args";
+        }
+    }
+*/
+    public static string unequip(string[] command)
+    {
+        if (command.Length <= 1)
+        {
+            return "unequip what?";
+        }
+        else if (command.Length == 2)
+        {
+            foreach (ItemData.Item a in WorldData.gameData.items)
+            {
+                if (a.getName().Equals(command [1]) && a.getLocation() < -1)
+                {
+                    WorldData.gameData.items.Remove(a);
+                    a.setLocation(-1);
+                    WorldData.gameData.items.Add(a);
+                    return command [1] + " unequipped";
+                }
+
+            }
+            return command [1] + "was not equipped";
+        }
+        else
+        {
+            return "too many args";
+        }
     }
 
 }

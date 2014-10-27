@@ -32,7 +32,9 @@ public class GameParser : MonoBehaviour
             "Allows you to close objects",
             "Allows you to equip an item",
             "Allows you to unequip an item",
-            "Allows you to use an object"
+            "Allows you to use an object",
+            "Allows you to save your progress",
+            "Allows you to load your progress"
         };
         genHelpMod = new string[]
         {
@@ -48,7 +50,9 @@ public class GameParser : MonoBehaviour
             "Close <Object>",
             "Equip <Item>",
             "Unequip <Item>",
-            "Use <Object>"
+            "Use <Object>",
+            "None",
+            "None"
         };
         devHelp = new string[]
         {
@@ -226,11 +230,11 @@ public class GameParser : MonoBehaviour
         }
         else if (command == 8)
         {
-            return "open command entered";
+            return Inventory.open(token);
         }
         else if (command == 9)
         {
-            return "close command entered";
+            return Inventory.close(token);
         }
         else if (command == 10)
         {

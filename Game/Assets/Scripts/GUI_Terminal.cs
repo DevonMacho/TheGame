@@ -8,16 +8,8 @@ public class GUI_Terminal : MonoBehaviour
     void Start()
     {
 
-        m_fileImage = (Texture2D)Resources.Load("GUI Assets/Gnome-edit-select-all");
-        m_directoryImage = (Texture2D)Resources.Load("GUI Assets/Gnome-folder");
     }
 
-    protected string m_textPath;
-    protected FileBrowser m_fileBrowser;
-    [SerializeField]
-    protected Texture2D
-        m_directoryImage,
-        m_fileImage;
     protected string input = "";
     public Vector2 scrollPosition;
     protected string consoleLog = "";
@@ -26,20 +18,9 @@ public class GUI_Terminal : MonoBehaviour
     public GUISkin skin;
     private static int commandIndex;
 
-    public string getTextPath()
-    {
-        openXML();
-
-        return m_textPath;
-    }
     void OnGUI()
     {
-        if (m_fileBrowser != null)
-        {
-            m_fileBrowser.OnGUI();
-        }
-        else
-        {
+
             if (commandHistory == null)
             {
                 commandHistory = new List<string>();
@@ -82,26 +63,6 @@ public class GUI_Terminal : MonoBehaviour
             GUI.SetNextControlName("textField");
             input = GUI.TextField(new Rect(70, (Screen.height * 179 / 768), Screen.width - 120, (Screen.height * 40 / 768)), input);
             GUILayout.EndArea();
-
-        }
-    }
-    public void openXML()
-    {
-        m_textPath = null;
-        m_fileBrowser = new FileBrowser(
-            new Rect(0, 100, Screen.width, Screen.height * .5f),
-            "Choose Scenario File",
-            FileSelectedCallback
-            );
-        m_fileBrowser.SelectionPattern = "*.xml";
-        m_fileBrowser.DirectoryImage = m_directoryImage;
-        m_fileBrowser.FileImage = m_fileImage;
-    }
-    protected void FileSelectedCallback(string path)
-    {
-
-        m_fileBrowser = null;
-        m_textPath = path;
     }
     void SubmitCommand()
     {

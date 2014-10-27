@@ -12,14 +12,16 @@ public class ItemData : MonoBehaviour
         private string description;
         private int location;
         private int openState;
+        private int itemType;
 
-        public Container(string name, string description, int location, int openState)
+        public Container(string name, string description, int location, int openState, int itemType)
         {
             contents = new List<Item>();
             this.name = name;
             this.description = description;
             this.location = location;
             this.openState = openState;
+            this.itemType = itemType;
         }
         public string getName()
         {
@@ -57,6 +59,14 @@ public class ItemData : MonoBehaviour
         {
             return this.contents;
         }
+        public int getItemType()
+        {
+            return this.itemType;
+        }
+        public void setItemType(int itemType)
+        {
+             this.itemType = itemType;
+        }
     }
     [System.Serializable]
     public struct Item
@@ -71,13 +81,23 @@ public class ItemData : MonoBehaviour
         // item can not be opened -1
         // item is closed 0
         // item is open 1
-        public Item(string name, string description, int location, int weight,int openState)
+        private int itemType;
+        // 0 not usable
+        // 1 usable
+        // 2 head
+        // 3 chest (body)
+        // 4 gauntlets
+        // 5 belt
+        // 6 pants
+        // 7 shoes
+        public Item(string name, string description, int location, int weight,int openState, int itemType)
         {
             this.name = name;
             this.description = description;
             this.location = location;
             this.weight = weight;
             this.openState = openState;
+            this.itemType = itemType;
         }
 
         public int getWeight()
@@ -111,6 +131,14 @@ public class ItemData : MonoBehaviour
         public void setOpenState(int openState)
         {
             this.openState = openState;
+        }
+        public int getItemType()
+        {
+            return this.itemType;
+        }
+        public void setItemType(int itemType)
+        {
+            this.itemType = itemType;
         }
     }
 }

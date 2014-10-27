@@ -56,9 +56,6 @@
      <Compile Include="Assets\Scripts\LocationData.cs" />
      <Compile Include="Assets\Scripts\MainMenuParser.cs" />
      <Compile Include="Assets\Scripts\NewGameParser.cs" />
-     <Compile Include="Assets\Scripts\NonGroupCreatedScripts\FileBrowser.cs" />
-     <Compile Include="Assets\Scripts\NonGroupCreatedScripts\FileBrowserGUI.cs" />
-     <Compile Include="Assets\Scripts\NonGroupCreatedScripts\ImprovedSelection.cs" />
      <Compile Include="Assets\Scripts\ParserSelect.cs" />
      <Compile Include="Assets\Scripts\WorldData.cs" />
      <None Include="Assets\Resources\Scenarios\BaseGame.xml" />

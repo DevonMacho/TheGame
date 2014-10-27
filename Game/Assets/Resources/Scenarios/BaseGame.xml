@@ -84,6 +84,7 @@
 		<Item_Location>4</Item_Location>
 		<Item_Weight>5</Item_Weight>
 		<Item_OpenState>-1</Item_OpenState>
+		<Item_Type>0</Item_Type>
 	</Item>
 
 	<Item>
@@ -92,6 +93,7 @@
 		<Item_Location>2</Item_Location>
 		<Item_Weight>1</Item_Weight>
 		<Item_OpenState>-1</Item_OpenState>
+		<Item_Type>0</Item_Type>
 	</Item>
 
 	<Item>
@@ -100,6 +102,15 @@
 		<Item_Location>-1</Item_Location>
 		<Item_Weight>2</Item_Weight>
 		<Item_OpenState>-1</Item_OpenState>
+		<Item_Type>0</Item_Type>
+	</Item>
+	<Item>
+		<Item_Name>heart</Item_Name>
+		<Item_Description>kraymoar's heart</Item_Description>
+		<Item_Location>2</Item_Location>
+		<Item_Weight>2</Item_Weight>
+		<Item_OpenState>1</Item_OpenState>
+		<Item_Type>0</Item_Type>
 	</Item>
 
 </Items>

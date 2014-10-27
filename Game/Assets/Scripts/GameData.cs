@@ -94,9 +94,9 @@ public class GameData : MonoBehaviour
             this.playerClass = playerClass;
         }
 
-        public void addItem(string name, string description, int location, int weight, int openState)
+        public void addItem(string name, string description, int location, int weight, int openState, int itemType)
         {
-            items.Add(new ItemData.Item(name, description, location, weight, openState));
+            items.Add(new ItemData.Item(name, description, location, weight, openState, itemType));
         }
 
         public void addLocation(string name, string description, int nodeNumber, int[] adjacentNodes, string[] adjacentDirections)
