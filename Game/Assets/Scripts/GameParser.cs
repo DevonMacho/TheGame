@@ -247,7 +247,7 @@ public class GameParser : MonoBehaviour
         }
         else if (command == 13)
         {
-            return GameData.startSave();
+            return GameData.startSave(token);
         }
         else if (command == 14)
         {

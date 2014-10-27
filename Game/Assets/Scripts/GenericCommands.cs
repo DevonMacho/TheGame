@@ -88,7 +88,7 @@ public class GenericCommands : MonoBehaviour
             else if (token [0].ToLower().Equals("yes"))
             {
                 quitStage = 3;
-                return GameData.startSave();
+                return GameData.startSave(token);
 
             }
             else if (token [0].ToLower().Equals("no"))

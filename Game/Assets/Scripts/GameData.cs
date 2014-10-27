@@ -28,21 +28,24 @@ public class GameData : MonoBehaviour
             this.currentLoc = currentLoc;
         }
 
-        public void serialize(GameInformation saveData, string fileName)
+        public string serialize(GameInformation saveData, string fileName)
         {
             BinaryFormatter formatter = new BinaryFormatter();
-            Debug.Log("1");
             if (!Directory.Exists(Application.persistentDataPath + "/SaveGames/"))
             {
-                Debug.Log("2");
                 Directory.CreateDirectory(Application.persistentDataPath + "/SaveGames/");
             }
-            Debug.Log("3");
-            Stream file = new FileStream(Application.persistentDataPath + "/SaveGames/" + fileName, FileMode.Create,FileAccess.Write,FileShare.ReadWrite);
-            Debug.Log("4");
-            formatter.Serialize(file, saveData);
-            Debug.Log("5");
-            file.Close();
+            try
+            {
+                Stream file = new FileStream(Application.persistentDataPath + "/SaveGames/" + fileName, FileMode.Create, FileAccess.Write, FileShare.ReadWrite);
+                formatter.Serialize(file, saveData);
+                file.Close();
+                return "saved";
+            }
+            catch
+            {
+                return "error";
+            }
         }
        
         public static GameInformation deserialize(string fileName)
@@ -104,8 +107,12 @@ public class GameData : MonoBehaviour
     static int saveState = 0;
     static int gameState;
 
-    public static string startSave()
+    public static string startSave(string[] token)
     {
+        if (token.Length > 1)
+        {
+            return "too many args";
+        }
         saveState = 1;
         gameState = ParserSelect.parserSelect;
         return "<<Saving>>\nEnter in a name for the save file";
@@ -136,17 +143,24 @@ public class GameData : MonoBehaviour
             if (!File.Exists(Application.persistentDataPath + "/SaveGames/" + token [0] + ".save"))
             {
                 saveName = token [0] + ".save";
-                WorldData.gameData.serialize(WorldData.gameData, saveName);
+                if (WorldData.gameData.serialize(WorldData.gameData, saveName) == "saved")
+                {
 
-                if (gameState == 1)
-                {
-                    ParserSelect.parserSelect = gameState;
-                    return "Saved!\n<<returning to game>>";
+                    if (gameState == 1)
+                    {
+                        ParserSelect.parserSelect = gameState;
+                        return "Saved!\n<<returning to game>>";
+                    }
+                    else if (gameState == 5)
+                    {
+                        ParserSelect.parserSelect = gameState;
+                        return "Saved!\n<input anything to quit>";
+                    }
                 }
-                else if (gameState == 5)
+                else
                 {
-                    ParserSelect.parserSelect = gameState;
-                    return "Saved!\n<input anything to quit>";
+                    saveState = 3;
+                    return "there was an error saving the game, do you want to rename the file?";
                 }
             }
             else
@@ -159,16 +173,23 @@ public class GameData : MonoBehaviour
         {
             if (token [0].Equals("yes"))
             {
-                WorldData.gameData.serialize(WorldData.gameData, saveName);
-                if (gameState == 1)
+                if (WorldData.gameData.serialize(WorldData.gameData, saveName) == "saved")
                 {
-                    ParserSelect.parserSelect = gameState;
-                    return "Saved!\n<<returning to game>>";
+                    if (gameState == 1)
+                    {
+                        ParserSelect.parserSelect = gameState;
+                        return "Saved!\n<<returning to game>>";
+                    }
+                    else if (gameState == 5)
+                    {
+                        ParserSelect.parserSelect = gameState;
+                        return "Saved!\n<input anything to quit>";
+                    }
                 }
-                else if (gameState == 5)
+                else
                 {
-                    ParserSelect.parserSelect = gameState;
-                    return "Saved!\n<input anything to quit>";
+                    saveState = 3;
+                    return "there was an error saving the game, do you want to rename the file?";
                 }
             }
             if (token [0].Equals("no"))
@@ -237,8 +258,26 @@ public class GameData : MonoBehaviour
             }
             if (token [0].Equals("yes"))
             {
-                loadStatus = 2;
-                return listSaveFiles();
+                listSaveFiles();
+                if (files.Count >= 1)
+                {
+                    loadStatus = 2;
+                    return listSaveFiles();
+                }
+                else
+                {
+                    string s = "there aren't any save files\n";
+                    if (gameState == 0)
+                    {
+                        ParserSelect.parserSelect = gameState;
+                        return s + "<<returning to menu>>";
+                    }
+                    else if (gameState == 1)
+                    {
+                        ParserSelect.parserSelect = gameState;
+                        return s + "<<returning to game>>";
+                    }
+                }
 
             }
             else if (token [0].Equals("no"))
@@ -271,10 +310,21 @@ public class GameData : MonoBehaviour
             }
             int parsed;
             int.TryParse(token [0], out parsed);
-            if (parsed > 0 && parsed <= files.Count)
+            if (parsed > 0 && parsed <= fileCount)
             {
-                WorldData.gameData = GameData.GameInformation.deserialize(files [parsed - 1]);
-                return "<<Resuming Game>>";
+                GameData.GameInformation testNull = GameData.GameInformation.deserialize(files [parsed - 1]);
+                if(testNull != null)
+                {
+                    WorldData.gameData = testNull;
+                    return "<<Resuming Game>>";
+                }
+                else
+                {
+                    //return to menu / game
+                    return "error loading file";
+                } 
+
+
             }
             else
             {
@@ -286,19 +336,24 @@ public class GameData : MonoBehaviour
 
     }
 
+    public static int fileCount;
+
     public static string listSaveFiles()
     {
+        fileCount = 0;
         string baseline = "Enter in the number of the save that you want to load\n--------Saves--------";
         
         string[] UncleanScenarios = Directory.GetFiles(Application.persistentDataPath + "/SaveGames/");
         string midline = "";
-        int count = 0;
         foreach (string a in UncleanScenarios)
         {
-            count ++;
             string[] cleaner = a.Trim().Replace("/", " ").Split(default(string[]), System.StringSplitOptions.RemoveEmptyEntries);
-            files.Add(cleaner [cleaner.Length - 1]);
-            midline = "\n" + count + ") " + cleaner [cleaner.Length - 1] + midline;
+            if (cleaner [cleaner.Length - 1].ToLower().Contains(".save"))
+            {
+                fileCount ++;
+                files.Add(cleaner [cleaner.Length - 1]);
+                midline = "\n" + fileCount + ") " + cleaner [cleaner.Length - 1] + midline;
+            }
         }
         string final = baseline + midline + "\n--------------------";
         return final;
