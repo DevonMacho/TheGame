@@ -238,16 +238,16 @@ public class GameParser : MonoBehaviour
         }
         else if (command == 10)
         {
-            return "equip command entered";
+            return Inventory.equip(token);
         }
         else if (command == 11)
         {
-            return "unequip command entered";
+            return Inventory.unequip(token);
         }
         else if (command == 12)
         {
-            //use
-            return "use command entered";
+
+            return Inventory.use(token);
         }
         else if (command == 13)
         {
@@ -255,7 +255,7 @@ public class GameParser : MonoBehaviour
         }
         else if (command == 14)
         {
-            //use
+
             return GameData.startLoad(token);
         }
         else

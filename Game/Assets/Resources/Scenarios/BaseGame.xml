@@ -80,7 +80,7 @@
 <Items>
 	<Item>
 		<Item_Name>rock</Item_Name>
-		<Item_Description>A heavy blunt object that can be used to hurt Kramer</Item_Description>
+		<Item_Description>A heavy blunt object that can be used to hurt Kraymoar</Item_Description>
 		<Item_Location>4</Item_Location>
 		<Item_Weight>5</Item_Weight>
 		<Item_OpenState>-1</Item_OpenState>
@@ -105,12 +105,20 @@
 		<Item_Type>0</Item_Type>
 	</Item>
 	<Item>
-		<Item_Name>heart</Item_Name>
-		<Item_Description>kraymoar's heart</Item_Description>
+		<Item_Name>cap</Item_Name>
+		<Item_Description>The cap of Dunesay</Item_Description>
 		<Item_Location>2</Item_Location>
 		<Item_Weight>2</Item_Weight>
 		<Item_OpenState>1</Item_OpenState>
-		<Item_Type>0</Item_Type>
+		<Item_Type>2</Item_Type>
+	</Item>
+	<Item>
+		<Item_Name>hat</Item_Name>
+		<Item_Description>The hat of Dunesay</Item_Description>
+		<Item_Location>2</Item_Location>
+		<Item_Weight>2</Item_Weight>
+		<Item_OpenState>1</Item_OpenState>
+		<Item_Type>2</Item_Type>
 	</Item>
 
 </Items>

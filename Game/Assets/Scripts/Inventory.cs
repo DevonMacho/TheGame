@@ -138,6 +138,18 @@ public class Inventory : MonoBehaviour
         return total + end;
     }
 
+    private static bool checkItemEquipped(int loc)
+    {
+        foreach (ItemData.Item a in WorldData.gameData.items)
+        {
+            if (a.getLocation() == loc)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static string pickup(string[] command)
     {
         
@@ -263,9 +275,8 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    /*
     public static string equip(string[] command)
-{
+    {
         if (command.Length <= 1)
         {
             return "equip what?";
@@ -276,32 +287,36 @@ public class Inventory : MonoBehaviour
             {
                 if (a.getName().Equals(command [1]) && a.getLocation() == -1)
                 {
-                    if (a.getOpenState() == -1)
+                    if (a.getItemType() > 1)
                     {
-                        return a.getName() + " can not be closed";
+                        if (!checkItemEquipped(a.getItemType() * -1))
+                        {
+                            WorldData.gameData.items.Remove(a);
+                            a.setLocation(a.getItemType() * -1);
+                            WorldData.gameData.items.Add(a);
+                            return command [1] + " equipped";
+                        }
+                        else
+                        {
+                            return "something is already in that slot, please unequip it first";
+                        }
                     }
-                    else if (a.getOpenState() == 1)
+                    else
                     {
-                        WorldData.gameData.items.Remove(a);
-                        a.setOpenState(0);
-                        WorldData.gameData.items.Add(a);
-                        return command [1] + " closed";
+                        return command [1] + " can not be equipped.";
                     }
-                    else if (a.getOpenState() == 0)
-                    {
-                        return command [1] + " is already closed";
-                    }
+                   
                 }
 
             }
-            return "Item not found at current location";
+            return command [1] + " was not found in inventory";
         }
         else
         {
             return "too many args";
         }
     }
-*/
+
     public static string unequip(string[] command)
     {
         if (command.Length <= 1)
@@ -321,7 +336,46 @@ public class Inventory : MonoBehaviour
                 }
 
             }
-            return command [1] + "was not equipped";
+            return command [1] + " was not equipped";
+        }
+        else
+        {
+            return "too many args";
+        }
+    }
+
+    public static string use(string[] command)
+    {
+        if (command.Length <= 1)
+        {
+            return "use what?";
+        }
+        else if (command.Length == 2)
+        {
+            foreach (ItemData.Item a in WorldData.gameData.items)
+            {
+                if (a.getName().Equals(command [1]) && (a.getLocation() == -1) || (a.getLocation() == WorldData.gameData.currentLoc))
+                {
+                    if(a.getItemType() != 1)
+                    {
+                        return command[1] +" can not be used";
+                    }
+                    else if (a.getItemType() == 1)
+                    {
+                        return command[1]+ " can be used";
+                    //if number of (uses -1) != 0 uses--, item used
+                    //if number of (uses -1) == 0, delte item, item was used and was desroyed in the process
+                    /*
+                    WorldData.gameData.items.Remove(a);
+                    a.setLocation(-1);
+                    WorldData.gameData.items.Add(a);
+                    return command [1] + " unequipped";
+                    */
+                    }
+                }
+                
+            }
+            return command [1] + " is not in inventory or at the current location";
         }
         else
         {

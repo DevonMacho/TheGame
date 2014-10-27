@@ -76,7 +76,7 @@ public class ItemData : MonoBehaviour
         private string description;
         private int location;
         //user's inventory is -1
-        //user's body is -2
+        //user's equipment is -2 - -7
         private int openState;
         // item can not be opened -1
         // item is closed 0
