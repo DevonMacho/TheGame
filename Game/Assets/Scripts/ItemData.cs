@@ -14,6 +14,7 @@ public class ItemData : MonoBehaviour
         private int openState;
         private int itemType;
 
+
         public Container(string name, string description, int location, int openState, int itemType)
         {
             contents = new List<Item>();
@@ -90,7 +91,11 @@ public class ItemData : MonoBehaviour
         // 5 belt
         // 6 pants
         // 7 shoes
-        public Item(string name, string description, int location, int weight,int openState, int itemType)
+        private int usesLeft;
+        // -1 unlimited
+        //  0 depleted
+        //  1+ useable
+        public Item(string name, string description, int location, int weight,int openState, int itemType,int usesLeft)
         {
             this.name = name;
             this.description = description;
@@ -98,6 +103,7 @@ public class ItemData : MonoBehaviour
             this.weight = weight;
             this.openState = openState;
             this.itemType = itemType;
+            this.usesLeft = usesLeft;
         }
 
         public int getWeight()
@@ -139,6 +145,14 @@ public class ItemData : MonoBehaviour
         public void setItemType(int itemType)
         {
             this.itemType = itemType;
+        }
+        public void setUsesLeft(int usesLeft)
+        {
+            this.usesLeft = usesLeft;
+        }
+        public int getUsesLeft()
+        {
+            return this.usesLeft;
         }
     }
 }

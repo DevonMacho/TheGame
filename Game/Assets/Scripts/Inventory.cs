@@ -8,21 +8,6 @@ using System.Linq;
 
 public class Inventory : MonoBehaviour
 {
-
-    /*
-    public static void addItem(string name, string description, int location, int weight, int openState)
-    {
-        items.Add(new ItemData.Item(name, description, location, weight, openState));
-    }
-
-    public static void testAddItems()
-    {
-        addItem("rock", "A heavy blunt object that can be used to hurt Kraymo'r", 4, 5, -1);
-        addItem("paper", "lighter and flatter than the rock", 2, 1, -1);
-        addItem("scissors", "It would be able to hurt anyone if they weren't safety scissors", -1, 2, -1);
-    }
-*/
-
     public static string listInventory(string[] token)
     {
         if (token.Length == 1)
@@ -352,30 +337,46 @@ public class Inventory : MonoBehaviour
         }
         else if (command.Length == 2)
         {
+            bool exists = false;
             foreach (ItemData.Item a in WorldData.gameData.items)
             {
-                if (a.getName().Equals(command [1]) && (a.getLocation() == -1) || (a.getLocation() == WorldData.gameData.currentLoc))
+               
+                if (a.getName().Equals(command [1]) && (a.getLocation() == -1 || a.getLocation() == WorldData.gameData.currentLoc))
                 {
-                    if(a.getItemType() != 1)
+                    exists = true;
+                    if (a.getItemType() == 1)
                     {
-                        return command[1] +" can not be used";
+                        if (a.getUsesLeft() - 1 == 0)
+                        {
+                            WorldData.gameData.items.Remove(a);
+                            //actually apply an effect
+                            return command [1] + " was used and was destroyed in the process.";
+                        }
+                        else if (a.getUsesLeft() - 1 > 0)
+                        {
+                            WorldData.gameData.items.Remove(a);
+                            a.setUsesLeft(a.getUsesLeft() - 1);
+                            WorldData.gameData.items.Add(a);
+                            //actually apply an effect
+                            return command [1] + " was used and has " + a.getUsesLeft() + " uses left.";
+                        }
+                        else if (a.getUsesLeft() < 0)
+                        {
+                            // apply an effect
+                            return command [1] + " was used";
+                        }
                     }
-                    else if (a.getItemType() == 1)
-                    {
-                        return command[1]+ " can be used";
-                    //if number of (uses -1) != 0 uses--, item used
-                    //if number of (uses -1) == 0, delte item, item was used and was desroyed in the process
-                    /*
-                    WorldData.gameData.items.Remove(a);
-                    a.setLocation(-1);
-                    WorldData.gameData.items.Add(a);
-                    return command [1] + " unequipped";
-                    */
-                    }
-                }
-                
+
+                }    
             }
-            return command [1] + " is not in inventory or at the current location";
+            if (exists)
+            {
+                return command [1] + " can not be used";
+            }
+            else
+            {
+                return command [1] + " is not in inventory or at the current location";
+            }
         }
         else
         {

@@ -94,9 +94,10 @@ public class GameData : MonoBehaviour
             this.playerClass = playerClass;
         }
 
-        public void addItem(string name, string description, int location, int weight, int openState, int itemType)
+        public void addItem(string name, string description, int location, int weight, int openState, int itemType, int usesLeft)
         {
-            items.Add(new ItemData.Item(name, description, location, weight, openState, itemType));
+            items.Add(new ItemData.Item(name, description, location, weight, openState, itemType, usesLeft));
+
         }
 
         public void addLocation(string name, string description, int nodeNumber, int[] adjacentNodes, string[] adjacentDirections)
@@ -313,7 +314,7 @@ public class GameData : MonoBehaviour
             if (parsed > 0 && parsed <= fileCount)
             {
                 GameData.GameInformation testNull = GameData.GameInformation.deserialize(files [parsed - 1]);
-                if(testNull != null)
+                if (testNull != null)
                 {
                     WorldData.gameData = testNull;
                     return "<<Resuming Game>>";

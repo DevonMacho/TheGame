@@ -108,7 +108,8 @@ public class WorldData : MonoBehaviour
                 int w = (int)a.Element("Item_Weight");
                 int os = (int)a.Element("Item_OpenState");
                 int it = (int)a.Element("Item_Type");
-                itemData.Add(new ItemData.Item(n, d, nn, w, os, it));
+                int ul = (int)a.Element("Item_Uses");
+                itemData.Add(new ItemData.Item(n, d, nn, w, os, it,ul));
             }
         }
         return itemData;
