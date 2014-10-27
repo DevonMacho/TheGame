@@ -87,7 +87,7 @@ public class ParserSelect : MonoBehaviour
         {
             return 2;
         }
-        else if (input.Equals("<<Resuming Game>>") || input.Equals("<<Game Started>>"))
+        else if (input.Equals("<<Resuming Game>>") || input.Equals("\n<<Game Started>>"))
         {
             return 1;
         }

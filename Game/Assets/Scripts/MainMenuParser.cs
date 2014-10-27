@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -27,9 +28,23 @@ public class MainMenuParser : MonoBehaviour
         if (!Directory.Exists(Application.persistentDataPath + "/Scenarios/"))
         {
             Directory.CreateDirectory(Application.persistentDataPath + "/Scenarios/");
-            File.Create(Application.persistentDataPath + "/Scenarios/BaseGame.xml");
-
         }
+        string[] assets = {"Scenarios/BaseGame","Scenarios/Readme"};
+       
+
+        TextAsset basegame = Resources.Load(assets [0]) as TextAsset;
+        TextAsset readme = Resources.Load(assets [1]) as TextAsset;
+       
+
+        byte[] baseText = basegame.bytes;
+        byte[] readText = readme.bytes;
+        FileStream file1 = File.Create(Application.persistentDataPath + "/Scenarios/BaseGame.xml");
+        FileStream file2 = File.Create(Application.persistentDataPath + "/Scenarios/Readme.txt");
+        file1.Write(baseText,0,baseText.Length);
+        file2.Write(readText,0,readText.Length);
+        file1.Close();
+        file2.Close();
+
     }
 
     public static string Parse(string input)
@@ -81,18 +96,34 @@ public class MainMenuParser : MonoBehaviour
         {
             return "too many args";
         }
-        string fileLoc = "";
-        if(Application.isMobilePlatform == true)
+        //string fileLoc = "";
+        if (Application.platform == RuntimePlatform.Android)
         {
             return "Custom campaigns are not supported on mobile platforms at this time, mostly due to the fact that" +
                 " the command is unbelievably scary on android and I need to figure out a way to do it properly";
         }
+        else if (Application.platform == RuntimePlatform.OSXPlayer)
+        {
+            return "import not avaliavle on OSX right now";
+        }
+        else if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor)
+        {
+            System.Diagnostics.Process.Start(@Application.persistentDataPath + "/Scenarios/");
+            return "Follow the readme in the Scenarios Folder";
+        }
+        else
+        {
+            return "platform not supported";
+        }
+
+        /*
         GUI_Terminal terminal = GameObject.FindObjectOfType<GUI_Terminal>();
 
-        string path = terminal.getTextPath();
+        //string path = terminal.getTextPath();
+        string path;
         Debug.Log(terminal.getTextPath());
 
-        if(path != null)
+        if (path != null)
         {
             fileLoc = terminal.getTextPath();
         }
@@ -129,6 +160,7 @@ public class MainMenuParser : MonoBehaviour
         }
 
         return directories [directories.Length - 1] + " Imported!";
+        */
     }
 
     private static string help(string[] token)

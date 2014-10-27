@@ -38,7 +38,7 @@ public class GameData : MonoBehaviour
                 Directory.CreateDirectory(Application.persistentDataPath + "/SaveGames/");
             }
             Debug.Log("3");
-            FileStream file = File.Create(Application.persistentDataPath + "/SaveGames/" + fileName);
+            Stream file = new FileStream(Application.persistentDataPath + "/SaveGames/" + fileName, FileMode.Create,FileAccess.Write,FileShare.ReadWrite);
             Debug.Log("4");
             formatter.Serialize(file, saveData);
             Debug.Log("5");
@@ -57,7 +57,6 @@ public class GameData : MonoBehaviour
             }
             else
             {
-                Debug.Log("null");
                 return null;
             }
         }
@@ -210,6 +209,10 @@ public class GameData : MonoBehaviour
         if (token.Length > 1)
         {
             return "Too many args";
+        }
+        if (!Directory.Exists(Application.persistentDataPath + "/SaveGames/"))
+        {
+            return "There aren't any files to load";
         }
         loadStatus = 1;
         gameState = ParserSelect.parserSelect;

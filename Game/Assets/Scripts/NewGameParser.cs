@@ -9,6 +9,7 @@ public class NewGameParser : MonoBehaviour
     // Use this for initialization
      
     public static List<string> files;
+    public static int fileCount;
     private static int stage = 0;
     public static string xmlFile = "";
     private static string characterName = "";
@@ -43,17 +44,23 @@ public class NewGameParser : MonoBehaviour
 
     public static string listXML()
     {
+        fileCount = 0;
         string baseline = "Enter in the number of the scenario that you want to load\n--------Scenarios--------";
         
         string[] UncleanScenarios = Directory.GetFiles(Application.persistentDataPath + "/Scenarios/");
         string midline = "";
-        int count = 0;
+
         foreach (string a in UncleanScenarios)
         {
-            count ++;
+
             string[] cleaner = a.Trim().Replace("/", " ").Split(default(string[]), System.StringSplitOptions.RemoveEmptyEntries);
-            files.Add(cleaner [cleaner.Length - 1]);
-            midline = "\n" + count + ") " + cleaner [cleaner.Length - 1] + midline;
+            if(cleaner [cleaner.Length - 1].ToLower().Contains(".xml"))
+            {
+                fileCount ++;
+                files.Add(cleaner [cleaner.Length - 1]);
+                midline = "\n" + fileCount + ") " + cleaner [cleaner.Length - 1] + midline;
+            }
+
         }
         
         string final = baseline + midline + "\n------------------------";
@@ -84,7 +91,7 @@ public class NewGameParser : MonoBehaviour
             }
             int parsed;
             int.TryParse(token [0], out parsed);
-            if (parsed > 0 && parsed <= files.Count)
+            if (parsed > 0 && parsed <= fileCount)
             {
                 xmlFile = files [parsed - 1];
 
@@ -260,6 +267,7 @@ public class NewGameParser : MonoBehaviour
             else if (token [0].Equals("yes"))
             {
                 stage = 5;
+                timesSubmitted = 0;
                 return "\nAlright then. By the way, not to be rude or anything, but I can’t tell if you are a man or woman with that mask on. what exactly are you?";
             }
             else if (token [0].Equals("no"))
@@ -275,11 +283,12 @@ public class NewGameParser : MonoBehaviour
         }
         else if (stage == 5)
         {
-            timesSubmitted = 0;
+
             if (token.Length <= 0)
             {
                 return "\nWhat was that? I asked if you were a man or a woman.";
             }
+
             else if (token.Length > 1)
             {
                 return "\nJust tell me if you are a man or woman.";
@@ -296,23 +305,24 @@ public class NewGameParser : MonoBehaviour
                 stage = 6;
                 return endScene(0);
             }
-            else if (timesSubmitted == 0)
+            timesSubmitted++;
+            if (timesSubmitted == 1)
             {
                 return "\nthat was completely unintelligible, are you a man or a woman?";
             }
-            else if (timesSubmitted == 1)
+            else if (timesSubmitted == 2)
             {
                 return "\nthere are two choices, man or woman";
             }
-            else if (timesSubmitted == 2)
+            else if (timesSubmitted == 3)
             {
                 return "\nman / woman";
             }
-            else if (timesSubmitted == 3)
+            else if (timesSubmitted == 4)
             {
                 return "\nMAN / WOMAN";
             }
-            else if (timesSubmitted >= 4)
+            else if (timesSubmitted >= 5)
             {
                 return "\nHey look, the programmer is lazy and didn't put in more than two of the infinite options that are out there for gender." +
                     " Trust me, he is more lazy than insensitive to the several other options for gender. Hell, he even told me to tell you that. " +
