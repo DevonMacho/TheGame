@@ -46,7 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Extra GUI Skins\SkinTest.cs" />
      <Compile Include="Assets\Scripts\GUI_Terminal.cs" />
      <Compile Include="Assets\Scripts\GameData.cs" />
      <Compile Include="Assets\Scripts\GameParser.cs" />
@@ -58,8 +57,12 @@
      <Compile Include="Assets\Scripts\NewGameParser.cs" />
      <Compile Include="Assets\Scripts\ParserSelect.cs" />
      <Compile Include="Assets\Scripts\WorldData.cs" />
+     <Compile Include="Assets\UnusedStuff\Extra GUI Skins\SkinTest.cs" />
+     <None Include="Assets\Shaders\Background.shader" />
      <None Include="Assets\Resources\Scenarios\BaseGame.xml" />
+     <None Include="Assets\StrumpyShaderEditor\Editor\Resources\Internal\Temp\TempShader.shader" />
      <None Include="Assets\Resources\Scenarios\Readme.txt" />
+     <None Include="Assets\StrumpyShaderEditor\Editor\Resources\Internal\TextureCopy.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
