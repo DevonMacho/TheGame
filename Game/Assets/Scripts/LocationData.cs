@@ -3,7 +3,7 @@ using System.Collections;
 
 public class LocationData : MonoBehaviour 
 {
-
+    [System.Serializable]
 	public struct Location
 	{
 		private int[] adjacentNodes;
@@ -11,6 +11,7 @@ public class LocationData : MonoBehaviour
 		private string description;
 		private int nodeNumber;
 		private string[] adjacentDirections;
+
 
 		public Location (string name, string description, int nodeNumber, int[] adjacentNodes, string[] adjacentDirections)
 

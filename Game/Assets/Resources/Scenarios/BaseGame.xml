@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<World>
+	<Locations>
+		<Location>
+			<Location_Name>LocA</Location_Name>
+			<Location_Description>Location A</Location_Description>
+			<Location_NodeNumber>0</Location_NodeNumber>
+			<Location_AdjacentNodes>1</Location_AdjacentNodes>
+			<Location_AdjacentDirections>southwest</Location_AdjacentDirections>
+			<Location_AdjacentNodes>2</Location_AdjacentNodes>
+			<Location_AdjacentDirections>southeast</Location_AdjacentDirections>
+		</Location>
+		<Location>
+			<Location_Name>LocB</Location_Name>
+			<Location_Description>Location B</Location_Description>
+			<Location_NodeNumber>1</Location_NodeNumber>
+			<Location_AdjacentNodes>0</Location_AdjacentNodes>
+			<Location_AdjacentDirections>northeast</Location_AdjacentDirections>
+			<Location_AdjacentNodes>2</Location_AdjacentNodes>
+			<Location_AdjacentDirections>east</Location_AdjacentDirections>
+			<Location_AdjacentNodes>3</Location_AdjacentNodes>
+			<Location_AdjacentDirections>south</Location_AdjacentDirections>
+			<Location_AdjacentNodes>4</Location_AdjacentNodes>
+			<Location_AdjacentDirections>southeast</Location_AdjacentDirections>
+		</Location>
+		<Location>
+			<Location_Name>LocC</Location_Name>
+			<Location_Description>Location C</Location_Description>
+			<Location_NodeNumber>2</Location_NodeNumber>
+			<Location_AdjacentNodes>0</Location_AdjacentNodes>
+			<Location_AdjacentDirections>northwest</Location_AdjacentDirections>
+			<Location_AdjacentNodes>1</Location_AdjacentNodes>
+			<Location_AdjacentDirections>west</Location_AdjacentDirections>
+			<Location_AdjacentNodes>3</Location_AdjacentNodes>
+			<Location_AdjacentDirections>southwest</Location_AdjacentDirections>
+			<Location_AdjacentNodes>4</Location_AdjacentNodes>
+			<Location_AdjacentDirections>south</Location_AdjacentDirections>
+		</Location>
+		<Location>
+			<Location_Name>LocD</Location_Name>
+			<Location_Description>Location D</Location_Description>
+			<Location_NodeNumber>3</Location_NodeNumber>
+			<Location_AdjacentNodes>1</Location_AdjacentNodes>
+			<Location_AdjacentDirections>north</Location_AdjacentDirections>
+			<Location_AdjacentNodes>2</Location_AdjacentNodes>
+			<Location_AdjacentDirections>northeast</Location_AdjacentDirections>
+			<Location_AdjacentNodes>4</Location_AdjacentNodes>
+			<Location_AdjacentDirections>east</Location_AdjacentDirections>
+		</Location>
+		<Location>
+			<Location_Name>LocE</Location_Name>
+			<Location_Description>Location E</Location_Description>
+			<Location_NodeNumber>4</Location_NodeNumber>
+			<Location_AdjacentNodes>1</Location_AdjacentNodes>
+			<Location_AdjacentDirections>northwest</Location_AdjacentDirections>
+			<Location_AdjacentNodes>2</Location_AdjacentNodes>
+			<Location_AdjacentDirections>north</Location_AdjacentDirections>
+			<Location_AdjacentNodes>3</Location_AdjacentNodes>
+			<Location_AdjacentDirections>west</Location_AdjacentDirections>
+		</Location>
+	</Locations>
+	<Items>
+		<Item>
+			<Item_Name>rock</Item_Name>
+			<Item_Description>A heavy blunt object that can be used to hurt Kraymoar</Item_Description>
+			<Item_Location>4</Item_Location>
+			<Item_Weight>5</Item_Weight>
+			<Item_OpenState>-1</Item_OpenState>
+			<Item_Type>0</Item_Type>
+			<Item_Uses>0</Item_Uses>
+		</Item>
+		<Item>
+			<Item_Name>paper</Item_Name>
+			<Item_Description>lighter and flatter than the rock</Item_Description>
+			<Item_Location>2</Item_Location>
+			<Item_Weight>1</Item_Weight>
+			<Item_OpenState>-1</Item_OpenState>
+			<Item_Type>0</Item_Type>
+			<Item_Uses>0</Item_Uses>
+		</Item>
+		<Item>
+			<Item_Name>scissors</Item_Name>
+			<Item_Description>It would be able to hurt anyone if they weren't safety scissors</Item_Description>
+			<Item_Location>-1</Item_Location>
+			<Item_Weight>2</Item_Weight>
+			<Item_OpenState>-1</Item_OpenState>
+			<Item_Type>0</Item_Type>
+			<Item_Uses>0</Item_Uses>
+		</Item>
+		<Item>
+			<Item_Name>cap</Item_Name>
+			<Item_Description>The cap of Dunesay</Item_Description>
+			<Item_Location>2</Item_Location>
+			<Item_Weight>2</Item_Weight>
+			<Item_OpenState>1</Item_OpenState>
+			<Item_Type>2</Item_Type>
+			<Item_Uses>0</Item_Uses>
+		</Item>
+		<Item>
+			<Item_Name>hat</Item_Name>
+			<Item_Description>The hat of Dunesay</Item_Description>
+			<Item_Location>2</Item_Location>
+			<Item_Weight>2</Item_Weight>
+			<Item_OpenState>1</Item_OpenState>
+			<Item_Type>2</Item_Type>
+			<Item_Uses>0</Item_Uses>
+		</Item>
+		<Item>
+			<Item_Name>potion</Item_Name>
+			<Item_Description>The potion of health</Item_Description>
+			<Item_Location>2</Item_Location>
+			<Item_Weight>2</Item_Weight>
+			<Item_OpenState>1</Item_OpenState>
+			<Item_Type>1</Item_Type>
+			<Item_Uses>1</Item_Uses>
+		</Item>
+		<Item>
+			<Item_Name>potion2</Item_Name>
+			<Item_Description>The potion of health</Item_Description>
+			<Item_Location>2</Item_Location>
+			<Item_Weight>2</Item_Weight>
+			<Item_OpenState>1</Item_OpenState>
+			<Item_Type>1</Item_Type>
+			<Item_Uses>2</Item_Uses>
+		</Item>
+	</Items>
+</World>
