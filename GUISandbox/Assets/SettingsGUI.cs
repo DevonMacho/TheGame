@@ -1,28 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Settings : MonoBehaviour
+public class SettingsGUI : MonoBehaviour
 {
 		
-		private Rect background;
-		private Rect videoOptions;
-		private Rect soundOptions;
-		private Rect resolutions;
-		private Rect fullScreenOptions;
-		private bool fullscreen = false;
-		private float gameAudio; //fix so that it loads from global
-		private float musicAudio; //fix so that it loads from global
+		static Rect background;
+		static Rect videoOptions;
+		static Rect soundOptions;
+		static Rect resolutions;
+		static Rect fullScreenOptions;
+		static bool fullscreen;
+		static float gameAudio; //fix so that it loads from global
+		static float musicAudio; //fix so that it loads from global
 
-		void Start ()
+		public static void Start ()
 		{
-				if (Screen.fullScreen == false) {
+				if (!Screen.fullScreen) {
 						fullscreen = false;
 				} else {
 						fullscreen = true;
 				}
 		}
 
-		void Update ()
+		public static void Update ()
 		{
 				background = new Rect (Screen.width / 7, Screen.height / 12, Screen.width * 5 / 7, Screen.height * 5 / 6);
 				
@@ -34,15 +34,15 @@ public class Settings : MonoBehaviour
 
 
 
-				if (fullscreen == true) {
+				if (fullscreen) {
 						Screen.fullScreen = true;
-				} else if (fullscreen == false) {
+				} else if (!fullscreen) {
 						Screen.fullScreen = false;
 
 				}
 		}
 
-		void OnGUI ()
+		public static void OnGUI ()
 		{
 				GUI.BeginGroup (background);
 				GUI.Box (new Rect (0, 0, background.width, background.height), "Settings");
@@ -99,10 +99,10 @@ public class Settings : MonoBehaviour
 						Debug.Log ("Saving Configuration");
 				}
 				if (GUI.Button (new Rect (background.width / 2 - (background.width / 3) / 2, background.height * 6 / 8, background.width / 3, background.height / 12), "Configure HUD")) {
-						Debug.Log ("Configure HUD");
+						GUISelector.Gui = 2;
 				}
 				if (GUI.Button (new Rect (background.width / 2 - (background.width / 3) / 2, background.height * 7 / 8, background.width / 3, background.height / 12), "Back")) {
-						Debug.Log ("Going back to main menu");
+						GUISelector.Gui = 0;
 				}
 				#endregion
 
