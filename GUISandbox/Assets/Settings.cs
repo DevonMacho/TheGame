@@ -84,7 +84,7 @@ public class Settings : MonoBehaviour
 				GUILayout.EndVertical ();
 				GUILayout.EndArea ();
 
-				GUILayout.BeginArea (new Rect (soundOptions.width * 1 / 6, soundOptions.height *  9 / 30, soundOptions.width / 4, soundOptions.height));	
+				GUILayout.BeginArea (new Rect (soundOptions.width * 1 / 6, soundOptions.height * 9 / 30, soundOptions.width / 4, soundOptions.height));	
 				GUILayout.BeginVertical ();		
 				GUILayout.Box ("Game Volume");
 				GUILayout.Space (soundOptions.height / 20);
@@ -94,6 +94,18 @@ public class Settings : MonoBehaviour
 
 				GUI.EndGroup ();
 				#endregion
+				#region buttons
+				if (GUI.Button (new Rect (background.width / 2 - (background.width / 3) / 2, background.height * 5 / 8, background.width / 3, background.height / 12), "Save")) {
+						Debug.Log ("Saving Configuration");
+				}
+				if (GUI.Button (new Rect (background.width / 2 - (background.width / 3) / 2, background.height * 6 / 8, background.width / 3, background.height / 12), "Configure HUD")) {
+						Debug.Log ("Configure HUD");
+				}
+				if (GUI.Button (new Rect (background.width / 2 - (background.width / 3) / 2, background.height * 7 / 8, background.width / 3, background.height / 12), "Back")) {
+						Debug.Log ("Going back to main menu");
+				}
+				#endregion
+
 				GUI.EndGroup ();
 		}
 }
