@@ -15,14 +15,12 @@ public class ParserSelect : MonoBehaviour
     {
         return previousParser;
     }
+
     public static string Parser(string input)
     {
         if (parserSelect == 0)
         {
-            string output = MainMenuParser.Parse(input);
-            previousParser = parserSelect;
-            parserSelect = stateChange(output);
-            return output;
+            return "Guru Mediation x0000001";
         }
         else if (parserSelect == 1)
         {
@@ -54,7 +52,6 @@ public class ParserSelect : MonoBehaviour
             parserSelect = stateChange(output);
             return output;
         }
-
         else if (parserSelect == 5)
         {
             string output = GenericCommands.quitParser(input);
@@ -70,12 +67,12 @@ public class ParserSelect : MonoBehaviour
 
     protected static int stateChange(string input)
     {
-        string[] trimput = input.Trim().Replace("<<Starting New Game>>","<<<NewGameStartNow>>>").Split(default(string[]), System.StringSplitOptions.RemoveEmptyEntries);
+        string[] trimput = input.Trim().Replace("<<Starting New Game>>", "<<<NewGameStartNow>>>").Split(default(string[]), System.StringSplitOptions.RemoveEmptyEntries);
         if (input.Equals("Are you sure you want to quit?"))
         {
             return 5;
         }
-        else if (trimput.Length > 0 && trimput[0].Equals("<<<NewGameStartNow>>>"))
+        else if (trimput.Length > 0 && trimput [0].Equals("<<<NewGameStartNow>>>"))
         {
             return 4;
         }

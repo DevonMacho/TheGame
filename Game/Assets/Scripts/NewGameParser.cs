@@ -17,28 +17,22 @@ public class NewGameParser : MonoBehaviour
     private static string gender = "";
     private static int timesSubmitted = 0;
 
-    public static string startNewGame(string[] token)
+    public static void startNewGame()
     {
         //change background to black
-        if (token.Length > 1)
-        {
-            return "too many args";
-        }
-
 
         files = new List<string>();
         listXML();
-
-
         if (files.Count >= 1)
         {
-            string baseline = "<<Starting New Game>>\n";
+
+            //string baseline = "<<Starting New Game>>\n";
             stage = 1;
-            return baseline + listXML();
+            //return baseline + listXML();
         }
         else
         {
-            return "there aren't any scenarios in the folder, try using the 'import' command";
+            //return "there aren't any scenarios in the folder, try using the 'import' command";
         }
     }
 

@@ -1,16 +1,38 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Linq;
-using System.Linq;
+using System.IO;
 
 public class WorldData : MonoBehaviour
 {
     public static GameData.GameInformation gameData;
 
+    public static void generateScenarios()
+    {
+        if (!Directory.Exists(Application.persistentDataPath + "/Scenarios/"))
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/Scenarios/");
+        }
+        string[] assets = {"Scenarios/BaseGame","Scenarios/Readme"};
+        
+        
+        TextAsset basegame = Resources.Load(assets [0]) as TextAsset;
+        TextAsset readme = Resources.Load(assets [1]) as TextAsset;
+        
+        
+        byte[] baseText = basegame.bytes;
+        byte[] readText = readme.bytes;
+        FileStream file1 = File.Create(Application.persistentDataPath + "/Scenarios/BaseGame.xml");
+        FileStream file2 = File.Create(Application.persistentDataPath + "/Scenarios/Readme.txt");
+        file1.Write(baseText, 0, baseText.Length);
+        file2.Write(readText, 0, readText.Length);
+        file1.Close();
+        file2.Close();
+    }
+
     public static string StartNewGame(string playerName, string playerGender, string playerClass, string xmlFile)
     {
-        gameData = new GameData.GameInformation(loadLocationData(xmlFile), loadItemData(xmlFile), playerName, playerGender, playerClass,0);
+        gameData = new GameData.GameInformation(loadLocationData(xmlFile), loadItemData(xmlFile), playerName, playerGender, playerClass, 0);
         return "\n<<Game Started>>";
     }
 
@@ -109,7 +131,7 @@ public class WorldData : MonoBehaviour
                 int os = (int)a.Element("Item_OpenState");
                 int it = (int)a.Element("Item_Type");
                 int ul = (int)a.Element("Item_Uses");
-                itemData.Add(new ItemData.Item(n, d, nn, w, os, it,ul));
+                itemData.Add(new ItemData.Item(n, d, nn, w, os, it, ul));
             }
         }
         return itemData;

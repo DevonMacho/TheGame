@@ -1,9 +1,20 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\GUISandbox\Assets\MainMenuGUI.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUIScripts\MainMenuGUI.cs">
     <Files>
-      <File FileName="..\GUISandbox\Assets\NewBehaviourScript.cs" Line="7" Column="2" />
-      <File FileName="..\GUISandbox\Assets\MainMenuGUI.cs" Line="40" Column="3" />
+      <File FileName="Assets\Scripts\NewGameParser.cs" Line="28" Column="13" />
+      <File FileName="Assets\Scripts\GameData.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GUIScripts\GUI_Terminal.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameParser.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GenericCommands.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Inventory.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ItemData.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GUIScripts\ConfigureHUD_GUI.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\WorldData.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GUIScripts\MainMenuGUI.cs" Line="32" Column="10" />
+      <File FileName="Assets\Scripts\GUIScripts\GUISelector.cs" Line="6" Column="30" />
+      <File FileName="Assets\Scripts\GlobalSettings.cs" Line="22" Column="70" />
+      <File FileName="Assets\Scripts\GUIScripts\MessageGUI.cs" Line="24" Column="13" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

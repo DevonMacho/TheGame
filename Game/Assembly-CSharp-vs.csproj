@@ -46,18 +46,22 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\GUI_Terminal.cs" />
+     <Compile Include="Assets\Scripts\GUIScripts\ConfigureHUD_GUI.cs" />
+     <Compile Include="Assets\Scripts\GUIScripts\GUISelector.cs" />
+     <Compile Include="Assets\Scripts\GUIScripts\GUI_Terminal.cs" />
+     <Compile Include="Assets\Scripts\GUIScripts\MainMenuGUI.cs" />
+     <Compile Include="Assets\Scripts\GUIScripts\MessageGUI.cs" />
+     <Compile Include="Assets\Scripts\GUIScripts\SettingsGUI.cs" />
      <Compile Include="Assets\Scripts\GameData.cs" />
      <Compile Include="Assets\Scripts\GameParser.cs" />
      <Compile Include="Assets\Scripts\GenericCommands.cs" />
+     <Compile Include="Assets\Scripts\GlobalSettings.cs" />
      <Compile Include="Assets\Scripts\Inventory.cs" />
      <Compile Include="Assets\Scripts\ItemData.cs" />
      <Compile Include="Assets\Scripts\LocationData.cs" />
-     <Compile Include="Assets\Scripts\MainMenuParser.cs" />
      <Compile Include="Assets\Scripts\NewGameParser.cs" />
      <Compile Include="Assets\Scripts\ParserSelect.cs" />
      <Compile Include="Assets\Scripts\WorldData.cs" />
-     <Compile Include="Assets\UnusedStuff\Extra GUI Skins\SkinTest.cs" />
      <None Include="Assets\Shaders\Background.shader" />
      <None Include="Assets\Resources\Scenarios\BaseGame.xml" />
      <None Include="Assets\StrumpyShaderEditor\Editor\Resources\Internal\Temp\TempShader.shader" />
