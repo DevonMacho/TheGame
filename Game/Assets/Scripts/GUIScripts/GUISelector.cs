@@ -6,7 +6,7 @@ public class GUISelector : MonoBehaviour
     public static int Gui = 0;
     public static int PreviousGui;
     public static string message = "";
-
+    public static string FileType = "";
     void Awake()
     {
         WorldData.generateScenarios();
@@ -41,7 +41,11 @@ public class GUISelector : MonoBehaviour
 
             MessageGUI.OnGUI(message);
         }
-        if (Gui != 3)
+        if (Gui == 4)
+        {
+            FileBrowserGUI.M_fileBrowser.OnGUI();
+        }
+        if (Gui != 3 && Gui != 4)
         {
             PreviousGui = Gui;
         }

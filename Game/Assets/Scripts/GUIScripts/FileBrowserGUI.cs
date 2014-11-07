@@ -4,12 +4,25 @@ using System.Collections;
 public class FileBrowserGUI : MonoBehaviour
 {
         
-    protected string m_textPath;
-    protected FileBrowser m_fileBrowser;
+    protected static string m_textPath;
+    protected static FileBrowser m_fileBrowser;
+
+    public static FileBrowser M_fileBrowser
+    {
+        get
+        {
+            return m_fileBrowser;
+        }
+        set
+        {
+            m_fileBrowser = value;
+        }
+    }
+
     [SerializeField]
-    protected Texture2D
-        m_directoryImage,
-        m_fileImage;
+    static Texture2D
+        m_directoryImage = Resources.Load("/GUI Assets/Gnome-folder") as Texture2D,
+        m_fileImage = Resources.Load("/GUI Assets/Gnome-edit-select-all") as Texture2D;
         
     protected void OnGUI()
     {
@@ -20,34 +33,26 @@ public class FileBrowserGUI : MonoBehaviour
         }
         else
         {
-            OnGUIMain();
+           // OnGUIMain(GUISelector.FileType);
         }
     }
-    public GUISkin skin;
-    protected void OnGUIMain()
+    public static GUISkin skin;
+
+    public static void OnGUIMain(string FileType)
     {
         GUI.skin = skin;
-        GUILayout.BeginHorizontal();
-        GUILayout.Label("Scenario File", GUILayout.Width(100));
-        GUILayout.FlexibleSpace();
-        GUILayout.Label(m_textPath ?? "none selected");
-        if (GUILayout.Button("...", GUILayout.ExpandWidth(false)))
-        {
 
             m_fileBrowser = new FileBrowser(
                 new Rect(0, 100, Screen.width, Screen.height * .5f),
                     "Choose Scenario File",
                     FileSelectedCallback
             );
-            m_fileBrowser.SelectionPattern = "*.xml";
+            m_fileBrowser.SelectionPattern = "*"+ FileType;
             m_fileBrowser.DirectoryImage = m_directoryImage;
             m_fileBrowser.FileImage = m_fileImage;
-
-        }
-        GUILayout.EndHorizontal();
     }
         
-    protected void FileSelectedCallback(string path)
+    static protected void FileSelectedCallback(string path)
     {
         m_fileBrowser = null;
         m_textPath = path;

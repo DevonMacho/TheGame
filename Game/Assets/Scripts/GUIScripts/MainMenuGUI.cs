@@ -25,7 +25,8 @@ public class MainMenuGUI : MonoBehaviour
         
         if (GUI.Button(new Rect(50, background.height * 2 / 6, background.width - 100, background.width * 1 / 10), "Load Game"))
         {
-            Debug.Log("Game loaded...");
+            FileBrowserGUI.OnGUIMain(".xml");
+            GUISelector.Gui = 4;
         }
         
         if (GUI.Button(new Rect(50, background.height * 3 / 6, background.width - 100, background.width * 1 / 10), "Options"))

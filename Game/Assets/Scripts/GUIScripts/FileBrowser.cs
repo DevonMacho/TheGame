@@ -351,6 +351,7 @@ public class FileBrowser
         GUILayout.FlexibleSpace();
         if (GUILayout.Button("Cancel", GUILayout.Width(50)))
         {
+            GUISelector.Gui = GUISelector.PreviousGui;
             m_callback(null);
         }
         if (BrowserType == FileBrowserType.File)
@@ -373,7 +374,7 @@ public class FileBrowser
                         );
             }
         }
-        if (GUILayout.Button("Select", GUILayout.Width(50)))
+        if (GUILayout.Button("Select", GUILayout.Width(50)
         {
             if (BrowserType == FileBrowserType.File)
             {
