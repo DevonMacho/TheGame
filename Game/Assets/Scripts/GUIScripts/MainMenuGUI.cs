@@ -20,12 +20,15 @@ public class MainMenuGUI : MonoBehaviour
         
         if (GUI.Button(new Rect(50, background.height * 1 / 6, background.width - 100, background.width * 1 / 10), "New Game"))
         {
-            NewGameParser.startNewGame();
+            GUISelector.FileType = ".xml";
+            FileBrowserGUI.OnGUIMain();
+            GUISelector.Gui = 4;
         }
         
         if (GUI.Button(new Rect(50, background.height * 2 / 6, background.width - 100, background.width * 1 / 10), "Load Game"))
         {
-            FileBrowserGUI.OnGUIMain(".xml");
+            GUISelector.FileType = ".save";
+            FileBrowserGUI.OnGUIMain();
             GUISelector.Gui = 4;
         }
         

@@ -7,10 +7,15 @@ public class GUISelector : MonoBehaviour
     public static int PreviousGui;
     public static string message = "";
     public static string FileType = "";
+    public static string FilePath = "";
+    public static GUISkin skin = Resources.Load("GUI Assets/fore") as GUISkin;
+
     void Awake()
     {
+
         WorldData.generateScenarios();
         SettingsGUI.Start();
+        FileBrowserGUI.Start();
     }
 
     void Update()
@@ -24,6 +29,7 @@ public class GUISelector : MonoBehaviour
 
     void OnGUI()
     {
+        GUI.skin = skin;
         if (Gui == 0)
         {
             MainMenuGUI.OnGUI();
@@ -43,7 +49,30 @@ public class GUISelector : MonoBehaviour
         }
         if (Gui == 4)
         {
-            FileBrowserGUI.M_fileBrowser.OnGUI();
+            if (FileBrowserGUI.M_fileBrowser != null)
+            {
+                FileBrowserGUI.M_fileBrowser.OnGUI();
+            }
+            else
+            {
+                if (FileType == "")
+                {
+                    message = "Error loading file";
+                    Gui = 3;
+                }
+                else if (FileType == ".xml")
+                {
+                    message = "File Selected!!!\nstarting new game";
+                    //start game
+                    Gui = 3;
+                }
+                else if (FileType == ".save")
+                {
+                    message = "File Selected!!!\nloading game";
+                    //Load game
+                    Gui = 3;
+                }
+            }
         }
         if (Gui != 3 && Gui != 4)
         {

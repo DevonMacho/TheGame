@@ -279,6 +279,7 @@ public class FileBrowser
     
     public void OnGUI()
     {
+        GUI.skin = Resources.Load("GUI Assets/fore") as GUISkin;
         GUILayout.BeginArea(
             m_screenRect,
             m_name,
@@ -289,7 +290,7 @@ public class FileBrowser
         {
             if (parentIndex == m_currentDirectoryParts.Length - 1)
             {
-                GUILayout.Label(m_currentDirectoryParts [parentIndex], CentredText);
+                //GUILayout.Label(m_currentDirectoryParts [parentIndex], CentredText);
             }
             else if (GUILayout.Button(m_currentDirectoryParts [parentIndex]))
             {
@@ -374,7 +375,7 @@ public class FileBrowser
                         );
             }
         }
-        if (GUILayout.Button("Select", GUILayout.Width(50)
+        if (GUILayout.Button("Select", GUILayout.Width(50)))
         {
             if (BrowserType == FileBrowserType.File)
             {
