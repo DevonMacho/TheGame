@@ -12,7 +12,7 @@ public class NewGameParser : MonoBehaviour
     public static int fileCount;
     private static int stage = 0;
     public static string xmlFile = "";
-    private static string characterName = "";
+    static string characterName = "";
     private static string type = "";
     private static string gender = "";
     private static int timesSubmitted = 0;
@@ -25,14 +25,14 @@ public class NewGameParser : MonoBehaviour
         listXML();
         if (files.Count >= 1)
         {
-
-            //string baseline = "<<Starting New Game>>\n";
+            GUISelector.message = "JPEG, Implement the new game function";
+            GUISelector.Gui = 3;
             stage = 1;
-            //return baseline + listXML();
         }
         else
         {
-            //return "there aren't any scenarios in the folder, try using the 'import' command";
+            GUISelector.message = "There are not any scenario files to load, please use the import function to add in a scenario";
+            GUISelector.Gui = 3;
         }
     }
 

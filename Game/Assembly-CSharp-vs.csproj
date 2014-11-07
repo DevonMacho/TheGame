@@ -62,6 +62,9 @@
      <Compile Include="Assets\Scripts\NewGameParser.cs" />
      <Compile Include="Assets\Scripts\ParserSelect.cs" />
      <Compile Include="Assets\Scripts\WorldData.cs" />
+     <Compile Include="Assets\UnusedStuff\NonGroupCreatedScripts\FileBrowser.cs" />
+     <Compile Include="Assets\UnusedStuff\NonGroupCreatedScripts\FileBrowserGUI.cs" />
+     <Compile Include="Assets\UnusedStuff\NonGroupCreatedScripts\ImprovedSelection.cs" />
      <None Include="Assets\Shaders\Background.shader" />
      <None Include="Assets\Resources\Scenarios\BaseGame.xml" />
      <None Include="Assets\StrumpyShaderEditor\Editor\Resources\Internal\Temp\TempShader.shader" />
