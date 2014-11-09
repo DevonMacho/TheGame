@@ -4,21 +4,20 @@ using System.Collections.Generic;
 
 public class GUI_Terminal : MonoBehaviour
 {
-
-    void Start()
+    static string input = "";
+    static Vector2 scrollPosition;
+    public static string consoleLog = "";
+    static List<string> commandHistory;
+    static Texture clb;
+    static GUISkin skin;
+    static int commandIndex;
+    public static void Start()
     {
-       
+        clb = Resources.Load("GUI Assets/CommandLineBackground") as Texture;
+        skin = Resources.Load("GUI Assets/GameSkin") as GUISkin;
     }
 
-    protected string input = "";
-    public Vector2 scrollPosition;
-    protected string consoleLog = "";
-    private static List<string> commandHistory;
-    public Texture clb; //Command Line Background
-    public GUISkin skin;
-    private static int commandIndex;
-
-    void OnGUI()
+    public static void OnGUI()
     {
 
         if (commandHistory == null)
@@ -65,7 +64,7 @@ public class GUI_Terminal : MonoBehaviour
         GUILayout.EndArea();
     }
 
-    void SubmitCommand()
+    static void SubmitCommand()
     {
         //parser selecter
         string output = ParserSelect.Parser(input);

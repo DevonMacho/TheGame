@@ -76,7 +76,10 @@ public class WorldData : MonoBehaviour
         }
         catch
         {
-            Debug.Log("error reading XML");
+            GUISelector.message = "There was an error loading this scenario, please select another scenario.";
+            GUISelector.Gui = 3;
+            GUISelector.PreviousGui = 0;
+            //Debug.Log("error reading XML");
         }
         if (locationInfo != null)
         {
@@ -116,7 +119,9 @@ public class WorldData : MonoBehaviour
         }
         catch
         {
-            Debug.Log("error reading XML");
+            GUISelector.message = "There was an error loading this scenario, please select another scenario.";
+            GUISelector.Gui = 3;
+            GUISelector.PreviousGui = 0;
         }
         if (iteminfo != null)
         {

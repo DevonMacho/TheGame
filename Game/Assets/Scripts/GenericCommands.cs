@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.IO;
 public class GenericCommands : MonoBehaviour
 {
     private static int quitStage = 0;
@@ -141,6 +141,30 @@ public class GenericCommands : MonoBehaviour
         #endif
         Application.Quit();
         return "<<Quitting>>";
+    }
+
+    public static bool checkForFiles(string extension,string path)
+    {
+        int fileCount = 0;
+        string[] UncleanScenarios = Directory.GetFiles(Application.persistentDataPath + "/"+ path+"/");
+        
+        foreach (string a in UncleanScenarios)
+        {
+            
+            string[] cleaner = a.Trim().Replace("/", " ").Split(default(string[]), System.StringSplitOptions.RemoveEmptyEntries);
+            if(cleaner [cleaner.Length - 1].ToLower().Contains(extension))
+            {
+                fileCount ++;
+            }
+            
+        }
+       
+        if (fileCount > 0)
+        {
+            return true;
+        }
+        return false;
+        
     }
 
 

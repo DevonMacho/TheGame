@@ -16,6 +16,7 @@ public class GUISelector : MonoBehaviour
         WorldData.generateScenarios();
         SettingsGUI.Start();
         FileBrowserGUI.Start();
+        GUI_Terminal.Start();
     }
 
     void Update()
@@ -63,7 +64,8 @@ public class GUISelector : MonoBehaviour
                 else if (FileType == ".xml")
                 {
                     message = "File Selected!!!\nstarting new game";
-                    //start game
+                    ParserSelect.parserSelect = 4;
+                    PreviousGui = 5;
                     Gui = 3;
                 }
                 else if (FileType == ".save")
@@ -78,6 +80,11 @@ public class GUISelector : MonoBehaviour
         {
             PreviousGui = Gui;
         }
+        if (Gui == 5)
+        {
+            GUI_Terminal.OnGUI();
+        }
     }
+
     
 }

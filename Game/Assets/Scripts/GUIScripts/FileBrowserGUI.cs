@@ -73,6 +73,8 @@ public class FileBrowserGUI : MonoBehaviour
     static protected void FileSelectedCallback(string path)
     {
         m_fileBrowser = null;
-        m_textPath = path;
+        string[] split = path.Trim().Replace("/", " ").Replace("\\", " ").Split(default(string[]), System.StringSplitOptions.RemoveEmptyEntries);
+        GUISelector.FilePath = split [split.Length - 1];
+
     }
 }

@@ -20,16 +20,34 @@ public class MainMenuGUI : MonoBehaviour
         
         if (GUI.Button(new Rect(50, background.height * 1 / 6, background.width - 100, background.width * 1 / 10), "New Game"))
         {
-            GUISelector.FileType = ".xml";
-            FileBrowserGUI.OnGUIMain();
-            GUISelector.Gui = 4;
+            if (GenericCommands.checkForFiles(".xml","Scenarios"))
+            {
+                NewGameParser.startNewGame();
+                GUISelector.FileType = ".xml";
+                FileBrowserGUI.OnGUIMain();
+                GUISelector.Gui = 4;
+            }
+            else
+            {
+                GUISelector.message = "There are not any scenario files to load, please use the import function to add in a scenario";
+                GUISelector.Gui = 3;
+            }
         }
         
         if (GUI.Button(new Rect(50, background.height * 2 / 6, background.width - 100, background.width * 1 / 10), "Load Game"))
         {
-            GUISelector.FileType = ".save";
-            FileBrowserGUI.OnGUIMain();
-            GUISelector.Gui = 4;
+            if (GenericCommands.checkForFiles(".xml","SaveGames"))
+            {
+                NewGameParser.startNewGame();
+                GUISelector.FileType = ".save";
+                FileBrowserGUI.OnGUIMain();
+                GUISelector.Gui = 4;
+            }
+            else
+            {
+                GUISelector.message = "There are not any save files to load";
+                GUISelector.Gui = 3;
+            }
         }
         
         if (GUI.Button(new Rect(50, background.height * 3 / 6, background.width - 100, background.width * 1 / 10), "Options"))

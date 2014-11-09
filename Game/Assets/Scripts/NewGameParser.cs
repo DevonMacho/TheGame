@@ -6,12 +6,8 @@ using System.Collections.Generic;
 public class NewGameParser : MonoBehaviour
 {
 
-    // Use this for initialization
-     
-    public static List<string> files;
     public static int fileCount;
     private static int stage = 0;
-    public static string xmlFile = "";
     static string characterName = "";
     private static string type = "";
     private static string gender = "";
@@ -19,47 +15,10 @@ public class NewGameParser : MonoBehaviour
 
     public static void startNewGame()
     {
-        //change background to black
-
-        files = new List<string>();
-        listXML();
-        if (files.Count >= 1)
-        {
-            GUISelector.message = "JPEG, Implement the new game function";
-            GUISelector.Gui = 3;
             stage = 1;
-        }
-        else
-        {
-            GUISelector.message = "There are not any scenario files to load, please use the import function to add in a scenario";
-            GUISelector.Gui = 3;
-        }
     }
 
-    public static string listXML()
-    {
-        fileCount = 0;
-        string baseline = "Enter in the number of the scenario that you want to load\n--------Scenarios--------";
-        
-        string[] UncleanScenarios = Directory.GetFiles(Application.persistentDataPath + "/Scenarios/");
-        string midline = "";
 
-        foreach (string a in UncleanScenarios)
-        {
-
-            string[] cleaner = a.Trim().Replace("/", " ").Split(default(string[]), System.StringSplitOptions.RemoveEmptyEntries);
-            if(cleaner [cleaner.Length - 1].ToLower().Contains(".xml"))
-            {
-                fileCount ++;
-                files.Add(cleaner [cleaner.Length - 1]);
-                midline = "\n" + fileCount + ") " + cleaner [cleaner.Length - 1] + midline;
-            }
-
-        }
-        
-        string final = baseline + midline + "\n------------------------";
-        return final;
-    }
     //get work done on stuff...
 
     public static string Parse(string input)
@@ -75,29 +34,10 @@ public class NewGameParser : MonoBehaviour
         }
         if (stage == 1)
         {
-            if (token.Length <= 0)
-            {
-                return "Invalid Input";
-            }
-            if (token.Length > 1)
-            {
-                return "too many args";
-            }
-            int parsed;
-            int.TryParse(token [0], out parsed);
-            if (parsed > 0 && parsed <= fileCount)
-            {
-                xmlFile = files [parsed - 1];
-
-                stage = 2;
-                return "Scenario input accepted! transporting to the between zone...\n\nYou find yourself floating, alone in a dark space." +
-                    "\nYou wonder who brought you here, or even why you are here.\nSuddenly a voice echoes out of the darkness:\n" +
-                    "You look familiar, by what name do you call yourself traveler?";
-            }
-            else
-            {
-                return "Invalid Input\n" + listXML();
-            }
+            stage = 2;
+            return "You find yourself floating, alone in a dark space." +
+                "\nYou wonder who brought you here, or even why you are here.\nSuddenly a voice echoes out of the darkness:\n" +
+                "You look familiar, by what name do you call yourself traveler?";
         }
         else if (stage == 2)
         {
@@ -109,7 +49,7 @@ public class NewGameParser : MonoBehaviour
             {
                 return "\nI'm a tad deaf in this ear, could you try speaking louder next time *Sarcasm*.";
             }
-            if (token.Length > 1 || token[0].Length > 32)
+            if (token.Length > 1 || token [0].Length > 32)
             {
                 return "\nThat is too complicated for me to remember, what do you call yourself for short?";
             }
@@ -282,7 +222,6 @@ public class NewGameParser : MonoBehaviour
             {
                 return "\nWhat was that? I asked if you were a man or a woman.";
             }
-
             else if (token.Length > 1)
             {
                 return "\nJust tell me if you are a man or woman.";
@@ -335,7 +274,7 @@ public class NewGameParser : MonoBehaviour
         }
         else if (stage == 8)
         {
-            return WorldData.StartNewGame(characterName, gender, type, xmlFile);
+            return WorldData.StartNewGame(characterName, gender, type, GUISelector.FilePath);
         }
 
         return "Guru Mediation x0000005";
