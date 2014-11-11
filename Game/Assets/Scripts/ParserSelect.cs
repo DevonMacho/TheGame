@@ -67,7 +67,8 @@ public class ParserSelect : MonoBehaviour
 
     protected static int stateChange(string input)
     {
-        string[] trimput = input.Trim().Replace("<<Starting New Game>>", "<<<NewGameStartNow>>>").Split(default(string[]), System.StringSplitOptions.RemoveEmptyEntries);
+        string[] trimput = input.Trim().Replace("<<Starting New Game>>", "<<<NewGameStartNow>>>").Replace("<<Game Started>>","xStart").Split(default(string[]), System.StringSplitOptions.RemoveEmptyEntries);
+             
         if (input.Equals("Are you sure you want to quit?"))
         {
             return 5;
@@ -84,7 +85,7 @@ public class ParserSelect : MonoBehaviour
         {
             return 2;
         }
-        else if (input.Equals("<<Resuming Game>>") || input.Equals("\n<<Game Started>>"))
+        else if (input.Equals("<<Resuming Game>>") || (trimput.Length > 0 && trimput [0].Equals("xStart")))
         {
             return 1;
         }

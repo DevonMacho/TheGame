@@ -11,6 +11,7 @@ public class GUI_Terminal : MonoBehaviour
     static Texture clb;
     static GUISkin skin;
     static int commandIndex;
+
     public static void Start()
     {
         clb = Resources.Load("GUI Assets/CommandLineBackground") as Texture;
@@ -76,8 +77,14 @@ public class GUI_Terminal : MonoBehaviour
             consoleLog = consoleLog + input + "\n";
             commandHistory.Insert(1, input);
         }
-
-        consoleLog = consoleLog + output + "\n";
+        if (ParserSelect.parserSelect == 4) // used for dialog because it looks nicer with dialog
+        {
+            consoleLog = consoleLog + "\n" + output + "\n";
+        }
+        else
+        {
+            consoleLog = consoleLog + output + "\n\n";
+        }
         if (output.Equals("<<Clearing>>"))
         {
             consoleLog = "<<Cleared>>\n";

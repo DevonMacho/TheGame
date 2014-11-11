@@ -33,7 +33,7 @@ public class WorldData : MonoBehaviour
     public static string StartNewGame(string playerName, string playerGender, string playerClass, string xmlFile)
     {
         gameData = new GameData.GameInformation(loadLocationData(xmlFile), loadItemData(xmlFile), playerName, playerGender, playerClass, 0);
-        return "\n<<Game Started>>";
+        return "\n<<Game Started>>\n\n" + gameData.locations[gameData.currentLoc].getDescription(); //New Game Message here instead of currentloc <- add that to XML
     }
 
     public static string Go(string[] command)
@@ -41,6 +41,10 @@ public class WorldData : MonoBehaviour
         if (command.Length <= 1)
         {
             return "Go Where?";
+        }
+        else if(command.Length > 2)
+        {
+            return "you can't go to more than one place at a time, unless you happen to split into two things, which may happen soon if you aren't careful";
         }
         else
         {
@@ -53,7 +57,7 @@ public class WorldData : MonoBehaviour
                         if (a.getAdjacentDirections() [i].Equals(command [1]))
                         {
                             gameData.currentLoc = a.getAdjacentNodes() [i];
-                            return "Going: " + a.getAdjacentDirections() [i];
+                            return "Going: " + a.getAdjacentDirections() [i] + "\n" + gameData.locations[gameData.currentLoc].getDescription();
                         }
                     }
                 }

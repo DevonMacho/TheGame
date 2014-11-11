@@ -19,7 +19,64 @@ public class NewGameParser : MonoBehaviour
     }
 
 
-    //get work done on stuff...
+    /*
+     * need to put in a way to get stats in....
+     * 
+     * what I know:
+     * 
+     * Stats:
+     * 
+     * Strength: Melee Weapon Modifier / Weapon type you can use <- dont care about spelling
+     * Perception: Ranged Weapon Modifier / Weapon type you can use
+     * Endurance: Health Modifier
+     * Charisma: not included
+     * Intelligence: not included... <Fallout Joke Completed>
+     * Agility: Speed Modifier - Higher Doge Chance (such agility much dodge so wow!)
+     * Luck: Higher odds of finding better Weapons / Items
+     * 
+     * Total: 5 stats
+     * 
+     * Base Character:
+     * Strength: 5
+     * Perception: 5
+     * Endurance: 5
+     * Agility: 5
+     * Luck: 5
+     * 
+     * 
+     * Higher: 1    --  Ceil((Roll from 100 - 300) / 100)
+     * High: 1      --  Ceil((Roll from 100 - 200) / 100)
+     * Meh: 2       --  Floor((Roll from 0 - 101) / 100) 
+     * Shit: 1      --  -Ceil((Roll from 100 - 200) / 100)
+     * 
+     * Hunter - High Strength, Higher Perception, Meh Endurance, Meh Agility, Shit Luck 
+     * 
+     * Thief - Meh Strength, Meh Perception, Shit Endurance, Higher Agility, High Luck 
+     * 
+     * Knight - Higher Strength, Meh Perception, High Endurance, Shit Agility, Meh Luck
+     * 
+     * Hunter (Extreme Stats):
+     * Strength: 8
+     * Perception: 7
+     * Endurance: 5
+     * Agility: 5
+     * Luck: 3
+     * 
+     * Thief (Extreme Stats):
+     * Strength: 5
+     * Perception: 5
+     * Endurance: 3
+     * Agility: 8
+     * Luck: 7
+     * 
+     * Knight (Extreme Stats):
+     * Strength: 8
+     * Perception: 5
+     * Endurance: 7
+     * Agility: 3
+     * Luck: 5
+     * 
+     */
 
     public static string Parse(string input)
     {
@@ -36,43 +93,43 @@ public class NewGameParser : MonoBehaviour
         {
             stage = 2;
             return "You find yourself floating, alone in a dark space." +
-                "\nYou wonder who brought you here, or even why you are here.\nSuddenly a voice echoes out of the darkness:\n" +
+                "\nYou wonder who brought you here, or even why you are here.\nSuddenly a voice echoes out of the darkness:\n\n" +
                 "You look familiar, by what name do you call yourself traveler?";
         }
         else if (stage == 2)
         {
             if (token.Length <= 0)
             {
-                return "\nI can't quite hear you, you sound muffled.";
+                return "I can't quite hear you, you sound muffled.";
             }
             if (token [0].Contains("!") || token [0].Equals(token [0].ToUpper()))
             {
-                return "\nI'm a tad deaf in this ear, could you try speaking louder next time *Sarcasm*.";
+                return "I'm a tad deaf in this ear, could you try speaking louder next time *Sarcasm*.";
             }
             if (token.Length > 1 || token [0].Length > 32)
             {
-                return "\nThat is too complicated for me to remember, what do you call yourself for short?";
+                return "That is too complicated for me to remember, what do you call yourself for short?";
             }
             else if (token.Length == 1)
             {
                 characterName = token [0];
                 stage = 3;
-                return "\nAh! " + characterName + ", you do sound like one of those. Are you here for fame, fortune, or power?";
+                return "Ah! " + characterName + ", you do sound like one of those. Are you here for fame, fortune, or power?";
             }
         }
         else if (stage == 3)
         {
             if (token.Length <= 0)
             {
-                return "\nWhat was that? Are you here for fame, fortune, or power?";
+                return "What was that? Are you here for fame, fortune, or power?";
             }
             if (input.ToLower().Equals("are all 3 an option?\n"))
             {
-                return "\nsadly no, you have to choose either fame, fortune, or power.";
+                return "sadly no, you have to choose either fame, fortune, or power.";
             }
             if (token.Length > 1)
             {
-                return "\nwoah, repeat that one more time, but be quick about it and to the point; fame, fortune, or power.";
+                return "woah, repeat that one more time, but be quick about it and to the point; fame, fortune, or power.";
             }
             if (token [0].Equals("fame"))
             {
@@ -88,13 +145,13 @@ public class NewGameParser : MonoBehaviour
             }
             else
             {
-                return "\nyou're here for what now?";
+                return "you're here for what now?";
             }
             if (type != "")
             {
                 stage = 4;
                 timesSubmitted = 0;
-                return "\nI didn't take you for a " + type + ", are you sure that you are a " + type + "?";
+                return "I didn't take you for a " + type + ", are you sure that you are a " + type + "?";
             }
 
 
@@ -107,7 +164,7 @@ public class NewGameParser : MonoBehaviour
                 timesSubmitted++;
                 if (timesSubmitted == 1)
                 {
-                    return "\nHmmm? did you say something. Just tell me yes or no";
+                    return "Hmmm? did you say something. Just tell me yes or no";
                 }
                 if (timesSubmitted == 2)
                 {
@@ -192,26 +249,26 @@ public class NewGameParser : MonoBehaviour
            
             if (token.Length > 1 && token.Length < 3)
             {
-                return "\nIt's a simple yes or no";
+                return "It's a simple yes or no";
             }
             else if (token.Length > 3)
             {
-                return "\nIt's a simple yes or no not the story of your life and your indecisiveness";
+                return "It's a simple yes or no not the story of your life and your indecisiveness";
             }
             else if (token [0].Equals("yes"))
             {
                 stage = 5;
                 timesSubmitted = 0;
-                return "\nAlright then. By the way, not to be rude or anything, but I can’t tell if you are a man or woman with that mask on. what exactly are you?";
+                return "Alright then. By the way, not to be rude or anything, but I can’t tell if you are a man or woman with that mask on. what exactly are you?";
             }
             else if (token [0].Equals("no"))
             {
                 stage = 3;
-                return "\nwell if you're not that, what are you here for; fame, fortune or power?";
+                return "well if you're not that, what are you here for; fame, fortune or power?";
             }
             else
             {
-                return "\nI didn't quite hear you, was that a yes or a no?";
+                return "I didn't quite hear you, was that a yes or a no?";
             }
           
         }
@@ -220,11 +277,11 @@ public class NewGameParser : MonoBehaviour
 
             if (token.Length <= 0)
             {
-                return "\nWhat was that? I asked if you were a man or a woman.";
+                return "What was that? I asked if you were a man or a woman.";
             }
             else if (token.Length > 1)
             {
-                return "\nJust tell me if you are a man or woman.";
+                return "Just tell me if you are a man or woman.";
             }
             else if (token [0].Equals("man"))
             {
@@ -241,23 +298,23 @@ public class NewGameParser : MonoBehaviour
             timesSubmitted++;
             if (timesSubmitted == 1)
             {
-                return "\nthat was completely unintelligible, are you a man or a woman?";
+                return "that was completely unintelligible, are you a man or a woman?";
             }
             else if (timesSubmitted == 2)
             {
-                return "\nthere are two choices, man or woman";
+                return "there are two choices, man or woman";
             }
             else if (timesSubmitted == 3)
             {
-                return "\nman / woman";
+                return "man / woman";
             }
             else if (timesSubmitted == 4)
             {
-                return "\nMAN / WOMAN";
+                return "MAN / WOMAN";
             }
             else if (timesSubmitted >= 5)
             {
-                return "\nHey look, the programmer is lazy and didn't put in more than two of the infinite options that are out there for gender." +
+                return "Hey look, the programmer is lazy and didn't put in more than two of the infinite options that are out there for gender." +
                     " Trust me, he is more lazy than insensitive to the several other options for gender. Hell, he even told me to tell you that. " +
                     "So please, just for time's sake, pick either man or woman.";
             }
@@ -284,17 +341,17 @@ public class NewGameParser : MonoBehaviour
     {
         if (step == 0)
         {
-            return "\nI can kinda see that now, yeah....\n<input anything to advance>";
+            return "I can kinda see that now, yeah....\n<input anything to advance>";
         }
         if (step == 1)
         {
             //fade to white
-            return "\nA white light surrounds you as you start to feel heavier and heavier.\n<input anything to advance>";
+            return "A white light surrounds you as you start to feel heavier and heavier.\n<input anything to advance>";
         }
         if (step == 2)
         {
 
-            return "\nWell, its time for me to go, good luck on your adventure!\n<input anything to start your adventure>";
+            return "Well, its time for me to go, good luck on your adventure!\n<input anything to start your adventure>";
         }
         return "Guru Meditation x0000006";
     }
