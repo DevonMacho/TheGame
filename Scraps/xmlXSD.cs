@@ -1,14 +1,11 @@
 using UnityEngine;
-using System.Collections;
 using System.Xml;
+using System.Xml.Linq;
 using System.Xml.Schema;
-using System.IO;
-
 public class xmlXSD : MonoBehaviour
 {
 		
-		// Use this for initialization
-
+	static bool error;
 		XmlSchemaSet genSchema (string xmlName)
 		{
 				XmlReader reader = XmlReader.Create (@xmlName);
@@ -21,15 +18,18 @@ public class xmlXSD : MonoBehaviour
 
 		bool checkSchema (string baseXml, string xmlName)
 		{
-			XmlSchemaSet schema = genSchema (baseXml);
-			//XmlDocument doc = XmlDocument.Load(xmlName);
-			//XDocument doc = XDocument.Load(@xmlName);
-			
-		try{
-			doc.Validate(schema, new ValidationEventHandler());
+		XmlReaderSettings test = new XmlReaderSettings();
+		test.Schemas.Add(genSchema(baseXml));
+		test.ValidationType = ValidationType.Schema;
+		test.ValidationEventHandler += new ValidationEventHandler(vHandle);
+
+		try
+		{
+			XmlReader doc = XmlReader.Create(@xmlName,test);
+			while (doc.Read()) { }
 			return true;
 		}
-		catch
+		catch 
 		{
 			return false;
 		}
@@ -38,11 +38,22 @@ public class xmlXSD : MonoBehaviour
 
 		void Start ()
 		{
-		Debug.Log( checkSchema ("yourxml.xml","yourxml.xml"));
+		Debug.Log( checkSchema ("yourxml.xml","BaseGame.xml")); //have to create stricter rules
 		}
 
-		void Update ()
+	static void vHandle(object sender, ValidationEventArgs e)
+	{
+		if (e.Severity == XmlSeverityType.Warning)
 		{
-	
+			//Debug.LogWarning("WARNING: " + e.Message);
+			throw new System.Exception();
 		}
+		else if (e.Severity == XmlSeverityType.Error)
+		{
+			//Debug.LogError("ERROR: " + e.Message);
+			throw new System.Exception();
+		}
+	}
 }
+
+
