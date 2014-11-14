@@ -17,67 +17,6 @@ public class NewGameParser : MonoBehaviour
     {
             stage = 1;
     }
-
-
-    /*
-     * need to put in a way to get stats in....
-     * 
-     * what I know:
-     * 
-     * Stats:
-     * 
-     * Strength: Melee Weapon Modifier / Weapon type you can use <- dont care about spelling
-     * Perception: Ranged Weapon Modifier / Weapon type you can use
-     * Endurance: Health Modifier
-     * Charisma: not included
-     * Intelligence: not included... <Fallout Joke Completed>
-     * Agility: Speed Modifier - Higher Doge Chance (such agility much dodge so wow!)
-     * Luck: Higher odds of finding better Weapons / Items
-     * 
-     * Total: 5 stats
-     * 
-     * Base Character:
-     * Strength: 5
-     * Perception: 5
-     * Endurance: 5
-     * Agility: 5
-     * Luck: 5
-     * 
-     * 
-     * Higher: 1    --  Ceil((Roll from 100 - 300) / 100)
-     * High: 1      --  Ceil((Roll from 100 - 200) / 100)
-     * Meh: 2       --  Floor((Roll from 0 - 101) / 100) 
-     * Shit: 1      --  -Ceil((Roll from 100 - 200) / 100)
-     * 
-     * Hunter - High Strength, Higher Perception, Meh Endurance, Meh Agility, Shit Luck 
-     * 
-     * Thief - Meh Strength, Meh Perception, Shit Endurance, Higher Agility, High Luck 
-     * 
-     * Knight - Higher Strength, Meh Perception, High Endurance, Shit Agility, Meh Luck
-     * 
-     * Hunter (Extreme Stats):
-     * Strength: 8
-     * Perception: 7
-     * Endurance: 5
-     * Agility: 5
-     * Luck: 3
-     * 
-     * Thief (Extreme Stats):
-     * Strength: 5
-     * Perception: 5
-     * Endurance: 3
-     * Agility: 8
-     * Luck: 7
-     * 
-     * Knight (Extreme Stats):
-     * Strength: 8
-     * Perception: 5
-     * Endurance: 7
-     * Agility: 3
-     * Luck: 5
-     * 
-     */
-
     public static string Parse(string input)
     {
         string[] token;

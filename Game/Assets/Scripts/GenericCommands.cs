@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.IO;
+
 public class GenericCommands : MonoBehaviour
 {
     private static int quitStage = 0;
@@ -9,7 +10,7 @@ public class GenericCommands : MonoBehaviour
     //2 - do you want to save
     public static string clear(string[] token)
     {
-        if(token.Length > 1)
+        if (token.Length > 1)
         {
             return "too many args";
         }
@@ -143,16 +144,16 @@ public class GenericCommands : MonoBehaviour
         return "<<Quitting>>";
     }
 
-    public static bool checkForFiles(string extension,string path)
+    public static bool checkForFiles(string extension, string path)
     {
         int fileCount = 0;
-        string[] UncleanScenarios = Directory.GetFiles(Application.persistentDataPath + "/"+ path+"/");
+        string[] UncleanScenarios = Directory.GetFiles(Application.persistentDataPath + "/" + path + "/");
         
         foreach (string a in UncleanScenarios)
         {
             
             string[] cleaner = a.Trim().Replace("/", " ").Split(default(string[]), System.StringSplitOptions.RemoveEmptyEntries);
-            if(cleaner [cleaner.Length - 1].ToLower().Contains(extension))
+            if (cleaner [cleaner.Length - 1].ToLower().Contains(extension))
             {
                 fileCount ++;
             }

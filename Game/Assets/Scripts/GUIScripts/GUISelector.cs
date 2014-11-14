@@ -66,13 +66,26 @@ public class GUISelector : MonoBehaviour
                     message = "File Selected!!!\nstarting new game";
                     ParserSelect.parserSelect = 4;
                     PreviousGui = 5;
+                    //return "<<Starting new game, input anything to continue>>"; <- set that to output
                     Gui = 3;
                 }
                 else if (FileType == ".save")
                 {
                     message = "File Selected!!!\nloading game";
-                    //Load game
+                    ParserSelect.parserSelect = 1;
+                    PreviousGui = 5;
                     Gui = 3;
+                    GameData.GameInformation testNull = GameData.GameInformation.deserialize(GUISelector.FilePath);
+                    if (testNull != null)
+                    {
+                        WorldData.gameData = testNull;
+                        //return "<<Resuming Game>>"; <- set that to output
+                    }
+                    else
+                    {
+                        GUISelector.message = "There was an error loading the save file";
+                        GUISelector.Gui = 3;
+                    }
                 }
             }
         }

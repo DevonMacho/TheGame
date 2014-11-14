@@ -1,8 +1,15 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\Documents\testing-help\Assets\xmlXSD.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GenericCommands.cs">
     <Files>
-      <File FileName="..\..\Documents\testing-help\Assets\xmlXSD.cs" Line="26" Column="37" />
+      <File FileName="Assets\Scripts\WorldData.cs" Line="269" Column="14" />
+      <File FileName="Assets\Scripts\GenericCommands.cs" Line="19" Column="5" />
+      <File FileName="Assets\Scripts\NewGameParser.cs" Line="17" Column="6" />
+      <File FileName="Assets\Scripts\GlobalSettings.cs" Line="16" Column="9" />
+      <File FileName="Assets\Scripts\GUIScripts\MainMenuGUI.cs" Line="46" Column="16" />
+      <File FileName="Assets\Scripts\GUIScripts\GUISelector.cs" Line="69" Column="53" />
+      <File FileName="Assets\Scripts\GameData.cs" Line="342" Column="32" />
+      <File FileName="Assets\Scripts\GUIScripts\FileBrowserGUI.cs" Line="54" Column="30" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
