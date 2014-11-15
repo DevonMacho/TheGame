@@ -4,7 +4,11 @@ using System.Collections.Generic;
 
 public class GUI_Terminal : MonoBehaviour
 {
+    static bool mini = true;
+    static bool stat = true;
     static string input = "";
+    static Rect miniMap;
+    static Rect stats;
     static Vector2 scrollPosition;
     public static string consoleLog = "";
     static List<string> commandHistory;
@@ -17,11 +21,26 @@ public class GUI_Terminal : MonoBehaviour
         consoleLog = "";
         clb = Resources.Load("GUI Assets/CommandLineBackground") as Texture;
         skin = Resources.Load("GUI Assets/GameSkin") as GUISkin;
+       
+    }
+
+    public static void Update()
+    {
+
+        miniMap = new Rect(GlobalSettings.MinimapX, GlobalSettings.MinimapY, Screen.height / 6, Screen.height / 6);
+        stats = new Rect(GlobalSettings.StatsX, GlobalSettings.StatsY, Screen.width / 4, Screen.height * 99 / 200);
     }
 
     public static void OnGUI()
     {
-
+        if (mini)
+        {
+            GUI.Box(miniMap, "Minimap Goes here");
+        }
+        if (stat)
+        {
+            GUI.Box(stats, "stats go here");
+        }
         if (commandHistory == null)
         {
             commandHistory = new List<string>();

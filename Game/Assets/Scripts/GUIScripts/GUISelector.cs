@@ -13,15 +13,17 @@ public class GUISelector : MonoBehaviour
     void Awake()
     {
 
+        GlobalSettings.Start();
         WorldData.generateScenarios();
         SettingsGUI.Start();
         FileBrowserGUI.Start();
         GUI_Terminal.Start();
+        ConfigureHUD_GUI.Start();
     }
-
     void Update()
     {
-                
+
+        GUI_Terminal.Update();       
         SettingsGUI.Update();
         MainMenuGUI.Update();
         ConfigureHUD_GUI.Update();
@@ -81,7 +83,6 @@ public class GUISelector : MonoBehaviour
                         WorldData.gameData = testNull;
                         GUI_Terminal.consoleLog = "<<Resuming Game>>\n";
                     }
-
                     else
                     {
                         GUISelector.message = "There was an error loading the save file";

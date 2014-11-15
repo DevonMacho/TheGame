@@ -10,11 +10,13 @@ public class SettingsGUI : MonoBehaviour
     static Rect resolutions;
     //static Rect fullScreenOptions;
     static bool fullscreen;
-    static float gameAudio; //fix so that it loads from global
-    static float musicAudio; //fix so that it loads from global
+    public static float gameAudio; //fix so that it loads from global
+    public static float musicAudio; //fix so that it loads from global
 
     public static void Start()
     {
+        gameAudio = GlobalSettings.GameAudio;
+        musicAudio = GlobalSettings.Music;
         if (!Screen.fullScreen)
         {
             fullscreen = false;
@@ -106,7 +108,7 @@ public class SettingsGUI : MonoBehaviour
         #region buttons
         if (GUI.Button(new Rect(background.width / 2 - (background.width / 3) / 2, background.height * 5 / 8, background.width / 3, background.height / 12), "Save"))
         {
-            //save config
+            GlobalSettings.setSettings(musicAudio, gameAudio, "Claw of Kraymoar");
             GUISelector.message = "Configuration saved";
             GUISelector.Gui = 3;
 

@@ -33,8 +33,8 @@ public class WorldData : MonoBehaviour
     public static string StartNewGame(string playerName, string playerGender, string playerClass, string xmlFile)
     {
         playerStats baseStats = new playerStats(playerClass, playerGender); 
-        gameData = new GameData.GameInformation(loadLocationData(xmlFile), loadItemData(xmlFile), playerName, playerGender, playerClass, 0, baseStats);
-        return "\n<<Game Started>>\n\n" + gameData.locations [gameData.currentLoc].getDescription(); //New Game Message here instead of currentloc <- add that to XML
+        gameData = new GameData.GameInformation(loadLocationData(xmlFile), loadItemData(xmlFile), playerName, playerGender, playerClass, 0, baseStats,0);
+        return "\n<<Game Started>>\n\n" + gameData.Locations [gameData.currentLoc].getDescription(); //New Game Message here instead of currentloc <- add that to XML
     }
 
     public static string Go(string[] command)
@@ -49,7 +49,7 @@ public class WorldData : MonoBehaviour
         }
         else
         {
-            foreach (LocationData.Location a in gameData.locations)
+            foreach (LocationData.Location a in gameData.Locations)
             {
                 if (a.getNodeNumber() == gameData.currentLoc)
                 {
@@ -58,7 +58,7 @@ public class WorldData : MonoBehaviour
                         if (a.getAdjacentDirections() [i].Equals(command [1]))
                         {
                             gameData.currentLoc = a.getAdjacentNodes() [i];
-                            return "Going: " + a.getAdjacentDirections() [i] + "\n" + gameData.locations [gameData.currentLoc].getDescription();
+                            return "Going: " + a.getAdjacentDirections() [i] + "\n" + gameData.Locations [gameData.currentLoc].getDescription();
                         }
                     }
                 }
@@ -157,7 +157,7 @@ public class WorldData : MonoBehaviour
         {
             if (command [1].Equals("around") && command.Length == 2)
             {
-                foreach (LocationData.Location a in gameData.locations)
+                foreach (LocationData.Location a in gameData.Locations)
                 {
                     if (a.getNodeNumber() == gameData.currentLoc)
                     {
@@ -177,7 +177,7 @@ public class WorldData : MonoBehaviour
                     return "Look at what?";
                 }
 
-                foreach (ItemData.Item a in gameData.items)
+                foreach (ItemData.Item a in gameData.Items)
                 {
                     if (a.getName().Equals(command [2]) && (a.getLocation() == gameData.currentLoc || a.getLocation() == -1))
                     {

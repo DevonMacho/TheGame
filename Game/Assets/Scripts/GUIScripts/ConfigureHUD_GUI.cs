@@ -3,17 +3,24 @@ using UnityEngine;
 public class ConfigureHUD_GUI : MonoBehaviour
 {
     public static Rect charStats = new Rect(1, Screen.height * 580 / 669, Screen.width / 2, Screen.height * 99 / 200);
-    public static Rect miniMap = new Rect(1, 1, Screen.width / 6, Screen.width/6);
+    public static Rect miniMap = new Rect(1, 1, Screen.width / 6, Screen.width / 6);
     public static Texture clb = Resources.Load("GUI Assets/CommandLineBackground") as Texture;
+    public static float miniX;
+    public  static float miniY;
+    public  static float statX;
+    public  static float statY;
 
     public static void DragWindow(int windowID)
     {
         GUI.DragWindow(new Rect(0, 0, Screen.width, Screen.height));
     }
 
-    void Start()
+    public static void Start()
     {
-    
+        miniX = miniMap.x = GlobalSettings.MinimapX; //WTF these lined up perfectly...
+        miniY = miniMap.y = GlobalSettings.MinimapY;
+        statX = charStats.x = GlobalSettings.StatsX;
+        statY = charStats.y = GlobalSettings.StatsY;
     }
 
     public static void Update()
@@ -21,7 +28,11 @@ public class ConfigureHUD_GUI : MonoBehaviour
         charStats.height = Screen.height * 99 / 200;
         charStats.width = Screen.width / 4;
         miniMap.height = Screen.height / 6;
-        miniMap.width = Screen.width / 6;
+        miniMap.width = Screen.height / 6;
+        miniX = miniMap.x;
+        miniY = miniMap.y;
+        statX = charStats.x;
+        statY = charStats.y;
     }
 
     public static void OnGUI()
@@ -31,7 +42,9 @@ public class ConfigureHUD_GUI : MonoBehaviour
         miniMap = GUI.Window(1, miniMap, DragWindow, "MiniMap");
         if (GUI.Button(new Rect(Screen.width - Screen.width / 4, Screen.height - 3 * (Screen.height / 10), Screen.width / 5, Screen.height / 15), "save"))
         {
-            Debug.Log("minimap " + miniMap.position + " charstats " + charStats.position);
+            GlobalSettings.saveHUD(miniX, miniY, statX, statY);
+            GUISelector.message = "HUD Saved!";
+            GUISelector.Gui = 3;
         }
         if (GUI.Button(new Rect(Screen.width - Screen.width / 4, Screen.height - (Screen.height / 10), Screen.width / 5, Screen.height / 15), "back"))
         {

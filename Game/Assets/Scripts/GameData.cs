@@ -10,16 +10,42 @@ public class GameData : MonoBehaviour
     public class GameInformation
     {
 
-        public List<LocationData.Location> locations = new List<LocationData.Location>();
-        public List<ItemData.Item> items = new List<ItemData.Item>();
+        List<LocationData.Location> locations = new List<LocationData.Location>();
+        List<ItemData.Item> items = new List<ItemData.Item>();
+
+        public List<LocationData.Location> Locations
+        {
+            get
+            {
+                return locations;
+            }
+            set
+            {
+                locations = value;
+            }
+        }
+
+        public List<ItemData.Item> Items
+        {
+            get
+            {
+                return items;
+            }
+            set
+            {
+                items = value;
+            }
+        }
+
         //going public due to lazy ^
         public int currentLoc;
+        int turn;
         string playerName;
         string playerGender;
         string playerClass;
         playerStats stats;
 
-        public GameInformation(List<LocationData.Location> locations, List<ItemData.Item> items, string playerName, string playerGender, string playerClass, int currentLoc,playerStats stats)
+        public GameInformation(List<LocationData.Location> locations, List<ItemData.Item> items, string playerName, string playerGender, string playerClass, int currentLoc,playerStats stats,int turn)
         {
             this.locations = locations;
             this.items = items;
@@ -28,8 +54,12 @@ public class GameData : MonoBehaviour
             this.playerClass = playerClass;
             this.currentLoc = currentLoc;
             this.stats = stats;
+            this.turn = turn;
         }
-
+        public void playerTurn()
+        {
+            this.turn++;
+        }
         public string serialize(string fileName)
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -39,21 +69,9 @@ public class GameData : MonoBehaviour
             }
             try
             {
-                /*
-                using (var stream = File.OpenWrite(Application.persistentDataPath + "/SaveGames/" + fileName))
-                {
-                    formatter.Serialize(stream, this);
-                    stream.Close();
-                    return "saved";
-                }
-                */
-
                 FileStream file = File.Open(Application.persistentDataPath + "/SaveGames/" + fileName,FileMode.Create);     
-                Debug.Log("file created");
                 formatter.Serialize(file,this);
-                Debug.Log("serialized info");
                 file.Close();
-                Debug.Log("closed file");
                 return "saved";
             }
             catch

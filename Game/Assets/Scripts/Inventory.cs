@@ -19,7 +19,7 @@ public class Inventory : MonoBehaviour
                 end += "-";
             }
             int numItems = 0;
-            foreach (ItemData.Item a in WorldData.gameData.items)
+            foreach (ItemData.Item a in WorldData.gameData.Items)
             {
                 if (a.getLocation() == -1)
                 {
@@ -38,7 +38,7 @@ public class Inventory : MonoBehaviour
             if (token [1].ToLower().Equals("asc"))
             {
 
-                var orderedInv = WorldData.gameData.items.OrderBy(x => x.getName());
+                var orderedInv = WorldData.gameData.Items.OrderBy(x => x.getName());
                 string total = "----- Inventory ----";
                 string end = "\n";
                 for (int i = total.Length; i > 0; i--)
@@ -62,7 +62,7 @@ public class Inventory : MonoBehaviour
             }
             else if (token [1].ToLower().Equals("dsc"))
             {
-                var orderedInv = WorldData.gameData.items.OrderByDescending(x => x.getName());
+                var orderedInv = WorldData.gameData.Items.OrderByDescending(x => x.getName());
                 string total = "----- Inventory ----";
                 string end = "\n";
                 for (int i = total.Length; i > 0; i--)
@@ -108,7 +108,7 @@ public class Inventory : MonoBehaviour
             end += "-";
         }
         int numItems = 0;
-        foreach (ItemData.Item a in WorldData.gameData.items)
+        foreach (ItemData.Item a in WorldData.gameData.Items)
         {
             if (a.getLocation() == location)
             {
@@ -125,7 +125,7 @@ public class Inventory : MonoBehaviour
 
     private static bool checkItemEquipped(int loc)
     {
-        foreach (ItemData.Item a in WorldData.gameData.items)
+        foreach (ItemData.Item a in WorldData.gameData.Items)
         {
             if (a.getLocation() == loc)
             {
@@ -144,13 +144,13 @@ public class Inventory : MonoBehaviour
         }
         else if (command.Length == 2)
         {
-            foreach (ItemData.Item a in WorldData.gameData.items)
+            foreach (ItemData.Item a in WorldData.gameData.Items)
             {
                 if (a.getName().Equals(command [1]) && a.getLocation() == WorldData.gameData.currentLoc)
                 {
-                    WorldData.gameData.items.Remove(a);
+                    WorldData.gameData.Items.Remove(a);
                     a.setLocation(-1);
-                    WorldData.gameData.items.Add(a);
+                    WorldData.gameData.Items.Add(a);
                     return command [1] + " picked up";
                 } 
             }
@@ -168,13 +168,13 @@ public class Inventory : MonoBehaviour
         }
         else if (command.Length == 2)
         {
-            foreach (ItemData.Item a in WorldData.gameData.items)
+            foreach (ItemData.Item a in WorldData.gameData.Items)
             {
                 if (a.getName().Equals(command [1]) && a.getLocation() == -1)
                 {
-                    WorldData.gameData.items.Remove(a);
+                    WorldData.gameData.Items.Remove(a);
                     a.setLocation(WorldData.gameData.currentLoc);
-                    WorldData.gameData.items.Add(a);
+                    WorldData.gameData.Items.Add(a);
                     return command [1] + " dropped";
                 } 
             }
@@ -192,7 +192,7 @@ public class Inventory : MonoBehaviour
         }
         else if (command.Length == 2)
         {
-            foreach (ItemData.Item a in WorldData.gameData.items)
+            foreach (ItemData.Item a in WorldData.gameData.Items)
             {
                 if (a.getName().Equals(command [1]) && a.getLocation() == WorldData.gameData.currentLoc)
                 {
@@ -202,9 +202,9 @@ public class Inventory : MonoBehaviour
                     }
                     else if (a.getOpenState() == 0)
                     {
-                        WorldData.gameData.items.Remove(a);
+                        WorldData.gameData.Items.Remove(a);
                         a.setOpenState(1);
-                        WorldData.gameData.items.Add(a);
+                        WorldData.gameData.Items.Add(a);
                         return command [1] + " opened";
                     }
                     else if (a.getOpenState() == 1)
@@ -230,7 +230,7 @@ public class Inventory : MonoBehaviour
         }
         else if (command.Length == 2)
         {
-            foreach (ItemData.Item a in WorldData.gameData.items)
+            foreach (ItemData.Item a in WorldData.gameData.Items)
             {
                 if (a.getName().Equals(command [1]) && a.getLocation() == WorldData.gameData.currentLoc)
                 {
@@ -240,9 +240,9 @@ public class Inventory : MonoBehaviour
                     }
                     else if (a.getOpenState() == 1)
                     {
-                        WorldData.gameData.items.Remove(a);
+                        WorldData.gameData.Items.Remove(a);
                         a.setOpenState(0);
-                        WorldData.gameData.items.Add(a);
+                        WorldData.gameData.Items.Add(a);
                         return command [1] + " closed";
                     }
                     else if (a.getOpenState() == 0)
@@ -268,7 +268,7 @@ public class Inventory : MonoBehaviour
         }
         else if (command.Length == 2)
         {
-            foreach (ItemData.Item a in WorldData.gameData.items)
+            foreach (ItemData.Item a in WorldData.gameData.Items)
             {
                 if (a.getName().Equals(command [1]) && a.getLocation() == -1)
                 {
@@ -276,9 +276,9 @@ public class Inventory : MonoBehaviour
                     {
                         if (!checkItemEquipped(a.getItemType() * -1))
                         {
-                            WorldData.gameData.items.Remove(a);
+                            WorldData.gameData.Items.Remove(a);
                             a.setLocation(a.getItemType() * -1);
-                            WorldData.gameData.items.Add(a);
+                            WorldData.gameData.Items.Add(a);
                             return command [1] + " equipped";
                         }
                         else
@@ -310,13 +310,13 @@ public class Inventory : MonoBehaviour
         }
         else if (command.Length == 2)
         {
-            foreach (ItemData.Item a in WorldData.gameData.items)
+            foreach (ItemData.Item a in WorldData.gameData.Items)
             {
                 if (a.getName().Equals(command [1]) && a.getLocation() < -1)
                 {
-                    WorldData.gameData.items.Remove(a);
+                    WorldData.gameData.Items.Remove(a);
                     a.setLocation(-1);
-                    WorldData.gameData.items.Add(a);
+                    WorldData.gameData.Items.Add(a);
                     return command [1] + " unequipped";
                 }
 
@@ -338,7 +338,7 @@ public class Inventory : MonoBehaviour
         else if (command.Length == 2)
         {
             bool exists = false;
-            foreach (ItemData.Item a in WorldData.gameData.items)
+            foreach (ItemData.Item a in WorldData.gameData.Items)
             {
                
                 if (a.getName().Equals(command [1]) && (a.getLocation() == -1 || a.getLocation() == WorldData.gameData.currentLoc))
@@ -348,15 +348,15 @@ public class Inventory : MonoBehaviour
                     {
                         if (a.getUsesLeft() - 1 == 0)
                         {
-                            WorldData.gameData.items.Remove(a);
+                            WorldData.gameData.Items.Remove(a);
                             //actually apply an effect
                             return command [1] + " was used and was destroyed in the process.";
                         }
                         else if (a.getUsesLeft() - 1 > 0)
                         {
-                            WorldData.gameData.items.Remove(a);
+                            WorldData.gameData.Items.Remove(a);
                             a.setUsesLeft(a.getUsesLeft() - 1);
-                            WorldData.gameData.items.Add(a);
+                            WorldData.gameData.Items.Add(a);
                             //actually apply an effect
                             return command [1] + " was used and has " + a.getUsesLeft() + " uses left.";
                         }
