@@ -155,10 +155,10 @@ public class GameData : MonoBehaviour
                 return "Save file name not valid";
             }
 
-
+            saveName = token [0] + ".save";
             if (!File.Exists(Application.persistentDataPath + "/SaveGames/" + token [0] + ".save"))
             {
-                saveName = token [0] + ".save";
+               
                 if (WorldData.gameData.serialize(saveName) == "saved")
                 {
 
