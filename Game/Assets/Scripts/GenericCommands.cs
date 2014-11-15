@@ -170,6 +170,97 @@ public class GenericCommands : MonoBehaviour
         return false;
         
     }
+    static int menustage = 0;
+    public static string startMainMenu(string[] input)
+    {
+        menustage = 0;
+        if (input.Length <= 0)
+        {
+            return "invalid input";
+        }
+        else if (input.Length > 1)
+        {
+            return "too many args";
+        }
+        else if (input.Length == 1)
+        {
+            ParserSelect.parserSelect = 6;
+            menustage = 1;
+            return "Are you sure you want to return to the menu?";
+        }
+        else
+        {
+            return "Guru Mediation x0000009";
+        }
+
+    }
+
+    public static string returnMenuParser(string input)
+    {
+        string[] token = tokenize(input);
+        if (token.Length <= 0)
+        {
+            return "invalid input";
+        }
+        else if (token.Length > 1)
+        {
+            return "too many args";
+        }else if(menustage == 1)
+        {
+            if(token[0] == "yes")
+            {
+
+                //combat check
+                if(WorldData.inBattle())
+                {
+                    returnToMenu("You can not save in battle, returning to the main menu");
+                    return "<<Returning to menu>>";
+                }
+                else
+                {
+                    menustage = 2;
+                    return "would you like to save?";
+                }
+                   
+            }
+            else if(token[0] == "no")
+            {
+                menustage = 0;
+                ParserSelect.parserSelect = 1;
+                return "<<returning to game>>";
+            }
+            else
+            {
+                return "invalid input";
+            }
+
+        }
+        else if(menustage == 2)
+        {
+            if(token[0] == "yes")
+            {
+                return GameData.startSave(token);
+            }
+            else if(token[0] == "no")
+            {
+
+                menustage = 0;
+                GenericCommands.returnToMenu("you are being returned to the main menu");
+                return "<<returning to the menu>>";
+            }
+            else
+            {
+                return "invalid input";
+            }
+        }
+        return "Guru Mediation x000000A";
+    }
+    public static void returnToMenu(string input)
+    {
+        GUISelector.message = input;
+        GUISelector.Gui = 3;
+        GUISelector.PreviousGui = 0;
+    }
 
 
 }

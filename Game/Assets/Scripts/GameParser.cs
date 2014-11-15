@@ -53,25 +53,34 @@ public class GameParser : MonoBehaviour
         //order of appearance in the help command
 
         #region Basic Commands
+        //"free" moves
         commandList1.Add("help", 0);
         commandList1.Add("clear", 1);
+        commandList1.Add("stats", 15);
+        commandList1.Add("minimap", 16);
         commandList1.Add("look", 2);
+        commandList1.Add("inventory", 6);
+
+        //uses a turn
         commandList1.Add("go", 3);
         commandList1.Add("pickup", 4);
         commandList1.Add("drop", 5);
-        commandList1.Add("inventory", 6);
-        //break for quit
         commandList1.Add("open", 8);
         commandList1.Add("close", 9);
+        commandList1.Add("use", 12);
+        commandList1.Add("attack", 18);
+        commandList1.Add("defend", 19);
+
+        //cannot do in battle
         commandList1.Add("equip", 10);
         commandList1.Add("unequip", 11);
-        commandList1.Add("use", 12);
-        commandList1.Add("save", 13);
-        commandList1.Add("load", 14);
-        commandList1.Add("stats", 30);
-        //endbreak for quit
-        commandList1.Add("quit", 7);
 
+        commandList1.Add("save", 13);
+
+        //instant leave game when in battle
+        commandList1.Add("load", 14);
+        commandList1.Add("mainmenu", 17);
+        commandList1.Add("quit", 7);
       
         #endregion
 
@@ -128,15 +137,31 @@ public class GameParser : MonoBehaviour
         }
         else if (command == 9)
         {
+
             return Inventory.close(token);
+            
         }
         else if (command == 10)
         {
-            return Inventory.equip(token);
+            if (!WorldData.inBattle())
+            {
+                return Inventory.equip(token);
+            }
+            else
+            {
+                return "you can not equip an item in combat";
+            }
         }
         else if (command == 11)
         {
-            return Inventory.unequip(token);
+            if (!WorldData.inBattle())
+            {
+                return Inventory.unequip(token);
+            }
+            else
+            {
+                return "you can not unequip an item in combat";
+            }
         }
         else if (command == 12)
         {
@@ -145,16 +170,38 @@ public class GameParser : MonoBehaviour
         }
         else if (command == 13)
         {
-            return GameData.startSave(token);
+            if (!WorldData.inBattle())
+            {
+                return GameData.startSave(token);
+            }
+            else
+            {
+                return "you can not save your game combat!";
+            }
         }
         else if (command == 14)
         {
-
-            return GameData.startLoad(token);
+                return GameData.startLoad(token);
         }
-        else if(command == 30)
+        else if (command == 15)
         {
-           return WorldData.gameData.Stats.displayStats();
+            return GUI_Terminal.toggleStats();
+        }
+        else if (command == 16)
+        {
+            return GUI_Terminal.toggleMiniMap();
+        }
+        else if (command == 17)
+        {
+            return GenericCommands.startMainMenu(token);
+        }
+        else if (command == 18)
+        {
+            return "attack was eneterd";
+        }
+        else if (command == 19)
+        {
+            return "defend was entered";
         }
         else
         {

@@ -58,6 +58,12 @@ public class ParserSelect : MonoBehaviour
             previousParser = parserSelect;
             parserSelect = stateChange(output);
             return output;
+        }else if(parserSelect == 6)
+        {
+            string output = GenericCommands.returnMenuParser(input);
+            previousParser = parserSelect;
+            parserSelect = stateChange(output);
+            return output;
         }
         else
         {

@@ -16,12 +16,39 @@ public class GUI_Terminal : MonoBehaviour
     static GUISkin skin;
     static int commandIndex;
 
+
+
     public static void Start()
     {
         consoleLog = "";
         clb = Resources.Load("GUI Assets/CommandLineBackground") as Texture;
         skin = Resources.Load("GUI Assets/GameSkin") as GUISkin;
        
+    }
+    public static string toggleStats()
+    {
+        stat = !stat;
+        if(!stat)
+        {
+            return "The stat window was turned off";
+        }
+        else
+        {
+            return "The stat window was turned on";
+        }
+    }
+    public static string toggleMiniMap()
+    {
+        mini = !mini;
+        if(!mini)
+        {
+            
+            return "minimap was turned off";
+        }
+        else
+        {
+            return "minimap was turned on";
+        }  
     }
 
     public static void Update()

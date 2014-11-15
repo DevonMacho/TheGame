@@ -9,6 +9,10 @@
 			<Location_AdjacentDirections>southwest</Location_AdjacentDirections>
 			<Location_AdjacentNodes>2</Location_AdjacentNodes>
 			<Location_AdjacentDirections>southeast</Location_AdjacentDirections>
+			<Location_Required_Item>0</Location_Required_Item>
+			<Location_Required_Use>0</Location_Required_Use>
+			<Location_Required_Open>0</Location_Required_Open>
+			<Location_Required_Close>0</Location_Required_Close>
 		</Location>
 		<Location>
 			<Location_Name>LocB</Location_Name>
@@ -22,6 +26,10 @@
 			<Location_AdjacentDirections>south</Location_AdjacentDirections>
 			<Location_AdjacentNodes>4</Location_AdjacentNodes>
 			<Location_AdjacentDirections>southeast</Location_AdjacentDirections>
+			<Location_Required_Item>0</Location_Required_Item>
+			<Location_Required_Use>0</Location_Required_Use>
+			<Location_Required_Open>0</Location_Required_Open>
+			<Location_Required_Close>0</Location_Required_Close>
 		</Location>
 		<Location>
 			<Location_Name>LocC</Location_Name>
@@ -35,6 +43,10 @@
 			<Location_AdjacentDirections>southwest</Location_AdjacentDirections>
 			<Location_AdjacentNodes>4</Location_AdjacentNodes>
 			<Location_AdjacentDirections>south</Location_AdjacentDirections>
+			<Location_Required_Item>0</Location_Required_Item>
+			<Location_Required_Use>0</Location_Required_Use>
+			<Location_Required_Open>0</Location_Required_Open>
+			<Location_Required_Close>0</Location_Required_Close>
 		</Location>
 		<Location>
 			<Location_Name>LocD</Location_Name>
@@ -46,6 +58,10 @@
 			<Location_AdjacentDirections>northeast</Location_AdjacentDirections>
 			<Location_AdjacentNodes>4</Location_AdjacentNodes>
 			<Location_AdjacentDirections>east</Location_AdjacentDirections>
+			<Location_Required_Item>0</Location_Required_Item>
+			<Location_Required_Use>0</Location_Required_Use>
+			<Location_Required_Open>0</Location_Required_Open>
+			<Location_Required_Close>0</Location_Required_Close>
 		</Location>
 		<Location>
 			<Location_Name>LocE</Location_Name>
@@ -57,6 +73,10 @@
 			<Location_AdjacentDirections>north</Location_AdjacentDirections>
 			<Location_AdjacentNodes>3</Location_AdjacentNodes>
 			<Location_AdjacentDirections>west</Location_AdjacentDirections>
+			<Location_Required_Item>0</Location_Required_Item>
+			<Location_Required_Use>0</Location_Required_Use>
+			<Location_Required_Open>0</Location_Required_Open>
+			<Location_Required_Close>0</Location_Required_Close>
 		</Location>
 	</Locations>
 	<Items>
@@ -68,6 +88,19 @@
 			<Item_OpenState>-1</Item_OpenState>
 			<Item_Type>0</Item_Type>
 			<Item_Uses>0</Item_Uses>
+			<Item_Strength>0</Item_Strength>
+			<Item_Perception>0</Item_Perception>
+			<Item_Endurance>0</Item_Endurance>
+			<Item_Agility>0</Item_Agility>
+			<Item_Luck>0</Item_Luck>
+			<Item_REQ_Strength>0</Item_REQ_Strength>
+			<Item_REQ_Perception>0</Item_REQ_Perception>
+			<Item_REQ_Endurance>0</Item_REQ_Endurance>
+			<Item_REQ_Agility>0</Item_REQ_Agility>
+			<Item_REQ_Luck>0</Item_REQ_Luck>
+			<Item_Armor>0</Item_Armor>
+			<Item_Attack>0</Item_Attack>
+			<Item_ID>0</Item_ID>
 		</Item>
 		<Item>
 			<Item_Name>paper</Item_Name>
@@ -77,6 +110,19 @@
 			<Item_OpenState>-1</Item_OpenState>
 			<Item_Type>0</Item_Type>
 			<Item_Uses>0</Item_Uses>
+			<Item_Strength>0</Item_Strength>
+			<Item_Perception>0</Item_Perception>
+			<Item_Endurance>0</Item_Endurance>
+			<Item_Agility>0</Item_Agility>
+			<Item_Luck>0</Item_Luck>
+			<Item_REQ_Strength>0</Item_REQ_Strength>
+			<Item_REQ_Perception>0</Item_REQ_Perception>
+			<Item_REQ_Endurance>0</Item_REQ_Endurance>
+			<Item_REQ_Agility>0</Item_REQ_Agility>
+			<Item_REQ_Luck>0</Item_REQ_Luck>
+			<Item_Armor>0</Item_Armor>
+			<Item_Attack>0</Item_Attack>
+			<Item_ID>0</Item_ID>
 		</Item>
 		<Item>
 			<Item_Name>scissors</Item_Name>
@@ -86,6 +132,19 @@
 			<Item_OpenState>-1</Item_OpenState>
 			<Item_Type>0</Item_Type>
 			<Item_Uses>0</Item_Uses>
+			<Item_Strength>0</Item_Strength>
+			<Item_Perception>0</Item_Perception>
+			<Item_Endurance>0</Item_Endurance>
+			<Item_Agility>0</Item_Agility>
+			<Item_Luck>0</Item_Luck>
+			<Item_REQ_Strength>0</Item_REQ_Strength>
+			<Item_REQ_Perception>0</Item_REQ_Perception>
+			<Item_REQ_Endurance>0</Item_REQ_Endurance>
+			<Item_REQ_Agility>0</Item_REQ_Agility>
+			<Item_REQ_Luck>0</Item_REQ_Luck>
+			<Item_Armor>0</Item_Armor>
+			<Item_Attack>0</Item_Attack>
+			<Item_ID>0</Item_ID>
 		</Item>
 		<Item>
 			<Item_Name>cap</Item_Name>
@@ -95,6 +154,19 @@
 			<Item_OpenState>1</Item_OpenState>
 			<Item_Type>2</Item_Type>
 			<Item_Uses>0</Item_Uses>
+			<Item_Strength>0</Item_Strength>
+			<Item_Perception>0</Item_Perception>
+			<Item_Endurance>0</Item_Endurance>
+			<Item_Agility>0</Item_Agility>
+			<Item_Luck>0</Item_Luck>
+			<Item_REQ_Strength>0</Item_REQ_Strength>
+			<Item_REQ_Perception>0</Item_REQ_Perception>
+			<Item_REQ_Endurance>0</Item_REQ_Endurance>
+			<Item_REQ_Agility>0</Item_REQ_Agility>
+			<Item_REQ_Luck>0</Item_REQ_Luck>
+			<Item_Armor>0</Item_Armor>
+			<Item_Attack>0</Item_Attack>
+			<Item_ID>0</Item_ID>
 		</Item>
 		<Item>
 			<Item_Name>hat</Item_Name>
@@ -104,6 +176,19 @@
 			<Item_OpenState>1</Item_OpenState>
 			<Item_Type>2</Item_Type>
 			<Item_Uses>0</Item_Uses>
+			<Item_Strength>0</Item_Strength>
+			<Item_Perception>0</Item_Perception>
+			<Item_Endurance>0</Item_Endurance>
+			<Item_Agility>0</Item_Agility>
+			<Item_Luck>0</Item_Luck>
+			<Item_REQ_Strength>0</Item_REQ_Strength>
+			<Item_REQ_Perception>0</Item_REQ_Perception>
+			<Item_REQ_Endurance>0</Item_REQ_Endurance>
+			<Item_REQ_Agility>0</Item_REQ_Agility>
+			<Item_REQ_Luck>0</Item_REQ_Luck>
+			<Item_Armor>0</Item_Armor>
+			<Item_Attack>0</Item_Attack>
+			<Item_ID>0</Item_ID>
 		</Item>
 		<Item>
 			<Item_Name>potion</Item_Name>
@@ -113,6 +198,19 @@
 			<Item_OpenState>1</Item_OpenState>
 			<Item_Type>1</Item_Type>
 			<Item_Uses>1</Item_Uses>
+			<Item_Strength>0</Item_Strength>
+			<Item_Perception>0</Item_Perception>
+			<Item_Endurance>0</Item_Endurance>
+			<Item_Agility>0</Item_Agility>
+			<Item_Luck>0</Item_Luck>
+			<Item_REQ_Strength>0</Item_REQ_Strength>
+			<Item_REQ_Perception>0</Item_REQ_Perception>
+			<Item_REQ_Endurance>0</Item_REQ_Endurance>
+			<Item_REQ_Agility>0</Item_REQ_Agility>
+			<Item_REQ_Luck>0</Item_REQ_Luck>
+			<Item_Armor>0</Item_Armor>
+			<Item_Attack>0</Item_Attack>
+			<Item_ID>0</Item_ID>
 		</Item>
 		<Item>
 			<Item_Name>potion2</Item_Name>
@@ -122,6 +220,19 @@
 			<Item_OpenState>1</Item_OpenState>
 			<Item_Type>1</Item_Type>
 			<Item_Uses>2</Item_Uses>
+			<Item_Strength>0</Item_Strength>
+			<Item_Perception>0</Item_Perception>
+			<Item_Endurance>0</Item_Endurance>
+			<Item_Agility>0</Item_Agility>
+			<Item_Luck>0</Item_Luck>
+			<Item_REQ_Strength>0</Item_REQ_Strength>
+			<Item_REQ_Perception>0</Item_REQ_Perception>
+			<Item_REQ_Endurance>0</Item_REQ_Endurance>
+			<Item_REQ_Agility>0</Item_REQ_Agility>
+			<Item_REQ_Luck>0</Item_REQ_Luck>
+			<Item_Armor>0</Item_Armor>
+			<Item_Attack>0</Item_Attack>
+			<Item_ID>0</Item_ID>
 		</Item>
 	</Items>
 </World>

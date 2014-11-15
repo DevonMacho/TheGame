@@ -33,8 +33,27 @@ public class WorldData : MonoBehaviour
     public static string StartNewGame(string playerName, string playerGender, string playerClass, string xmlFile)
     {
         playerStats baseStats = new playerStats(playerClass, playerGender); 
-        gameData = new GameData.GameInformation(loadLocationData(xmlFile), loadItemData(xmlFile), playerName, playerGender, playerClass, 0, baseStats,0);
+        gameData = new GameData.GameInformation(loadLocationData(xmlFile), loadItemData(xmlFile), playerName, playerGender, playerClass, 0, baseStats, 0);
         return "\n<<Game Started>>\n\n" + gameData.Locations [gameData.currentLoc].getDescription(); //New Game Message here instead of currentloc <- add that to XML
+    }
+
+    public static bool inBattle()
+    {
+        //if enemy is at location, return true
+        // else return false
+        return false;
+    }
+    public static bool escapeRoll()
+    {
+        int roll = (int)Mathf.Ceil(Random.Range(0, 20));
+        if (roll >= gameData.Stats.Agility + (int)(gameData.Stats.Luck/2))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public static string Go(string[] command)
@@ -57,8 +76,26 @@ public class WorldData : MonoBehaviour
                     {
                         if (a.getAdjacentDirections() [i].Equals(command [1]))
                         {
-                            gameData.currentLoc = a.getAdjacentNodes() [i];
-                            return "Going: " + a.getAdjacentDirections() [i] + "\n" + gameData.Locations [gameData.currentLoc].getDescription();
+                            if (!inBattle())
+                            {
+                                gameData.currentLoc = a.getAdjacentNodes() [i];
+                                gameData.playerTurn();
+                                return "Going: " + a.getAdjacentDirections() [i] + "\n" + gameData.Locations [gameData.currentLoc].getDescription();
+
+                            }
+                            else
+                            {
+                                gameData.playerTurn();
+                                if(escapeRoll())
+                                {
+                                    gameData.currentLoc = a.getAdjacentNodes() [i];
+                                    return "Going: " + a.getAdjacentDirections() [i] + "\n" + gameData.Locations [gameData.currentLoc].getDescription();
+                                }
+                                else
+                                {
+                                    return "you failed to escape...";
+                                }
+                            }
                         }
                     }
                 }
@@ -206,6 +243,7 @@ public class WorldData : MonoBehaviour
         return "Invalid modifier";
      
     }
+
 
 }
 

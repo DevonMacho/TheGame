@@ -203,6 +203,11 @@ public class GameData : MonoBehaviour
                         ParserSelect.parserSelect = gameState;
                         return "Saved!\n<input anything to quit>";
                     }
+                    else if (gameState == 6)
+                    {
+                        GenericCommands.returnToMenu("Your game has been saved, returning to the main menu");
+                        return "Saved!\n<returning to main menu>";
+                    }
                 }
                 else
                 {
@@ -232,6 +237,12 @@ public class GameData : MonoBehaviour
                     {
                         ParserSelect.parserSelect = gameState;
                         return "Saved!\n<input anything to quit>";
+                    }
+                    else if (gameState == 6)
+                    {
+                        GenericCommands.returnToMenu("Your game has been saved, returning to the main menu");
+                        ParserSelect.parserSelect = gameState;
+                        return "Saved!\n<returning to main menu>";
                     }
                 }
                 else
@@ -269,6 +280,12 @@ public class GameData : MonoBehaviour
                 {
                     ParserSelect.parserSelect = gameState;
                     return "Game Not Saved!\n";
+                }
+                else if (gameState == 6)
+                {
+                    GenericCommands.returnToMenu("Your game has not been saved, returning to the main menu");
+                    ParserSelect.parserSelect = gameState;
+                    return "Saved!\n<returning to main menu>";
                 }
             }
             else
