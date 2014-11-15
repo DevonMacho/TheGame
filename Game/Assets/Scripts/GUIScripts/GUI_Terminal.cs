@@ -14,6 +14,7 @@ public class GUI_Terminal : MonoBehaviour
 
     public static void Start()
     {
+        consoleLog = "";
         clb = Resources.Load("GUI Assets/CommandLineBackground") as Texture;
         skin = Resources.Load("GUI Assets/GameSkin") as GUISkin;
     }

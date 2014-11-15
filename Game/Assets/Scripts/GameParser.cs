@@ -6,18 +6,13 @@ public class GameParser : MonoBehaviour
 {
 
     private static Dictionary<string, int> commandList1;
-    private static Dictionary<string, int> devCommandList;
     private static string[] genHelp;
     private static string[] genHelpMod;
-    private static string[] devHelp;
-    private static string[] devHelpMod;
-    private static bool devmode = false;
 
     public static void initializeCommands()
     {
 
         commandList1 = new Dictionary<string,int >();
-        devCommandList = new Dictionary<string,int >();
         genHelp = new string[]
         {
             "Displays a list of commands / help with a particular command",
@@ -54,23 +49,8 @@ public class GameParser : MonoBehaviour
             "None",
             "None"
         };
-        devHelp = new string[]
-        {
-            "Displays the status of the developer mode / allows the user to toggle the developer mode",
-            "Sets the player's current location",
-            "Adds an item to your inventory",
-            "Creates a new locaiton",
-            "Exports the map data to an XML File"
-        };
-        devHelpMod = new string[]
-        {
-            "Devmode Enable\nDevmode Disable",
-            "Setloc <Location Number>",
-            "Additem <????>",
-            "None",
-            "None"
-        };
 
+        //order of appearance in the help command
 
         #region Basic Commands
         commandList1.Add("help", 0);
@@ -94,13 +74,6 @@ public class GameParser : MonoBehaviour
       
         #endregion
 
-        #region Developer Commands
-        devCommandList.Add("devmode", 0);
-        devCommandList.Add("setloc", 1);
-        devCommandList.Add("additem", 2);
-        devCommandList.Add("createloc", 3);
-        devCommandList.Add("exportworld", 4);
-        #endregion
     }
 
     public static string Parse(string input)
@@ -112,87 +85,7 @@ public class GameParser : MonoBehaviour
         string[] token = GenericCommands.tokenize(input);
         if (token.Length <= 0 || !commandList1.ContainsKey(token [0].ToLower()))
         {
-
             return "Please enter a valid command";
-        }
-        else if (devCommandList.ContainsKey(token [0].ToLower()))
-        {
-            #region devmode args
-            int devcommand = devCommandList [token [0].ToLower()];
-            if (devmode == true)
-            {
-                if (devcommand == 0)
-                {
-                    
-                    if (token.Length > 2)
-                    {
-                        return "too many args";
-                    }
-                    else if (token.Length <= 1)
-                    {
-                        return "devmode is enabled";
-                    }
-                    else if (token [1].ToLower().Equals("enable"))
-                    {
-                        return "devmode is already enabled";
-                    }
-                    else if (token [1].ToLower().Equals("disable"))
-                    {
-                        devmode = false;
-                        return "devmode is now disabled";
-                    }
-                    else
-                    {
-                        return "unrecognized modifier";
-                    }
-                }
-                else if (devcommand == 1)
-                {
-                    return "set location";
-                }
-                else if (devcommand == 2)
-                {
-                    return "add item";
-                }
-                else if (devcommand == 3)
-                {
-                    return "create location";
-                }
-                else if (devcommand == 4)
-                {
-                    return "export XML";
-                }
-            }
-            else if (devmode == false)
-            {
-                if (devcommand == 0)
-                {
-                    if (token.Length > 2)
-                    {
-                        return "too many args";
-                    }
-                    else if (token.Length <= 1)
-                    {
-                        return "devmode is disabled";
-                    }
-                    else if (token [1].ToLower().Equals("enable"))
-                    {
-                        devmode = true;
-                        return "devmode is now enabled";
-                        
-                    }
-                    else if (token [1].ToLower().Equals("disable"))
-                    {
-                        return "devmode is already disabled";
-                    }
-                    else
-                    {
-                        return "unrecognized modifier";
-                    }
-                    
-                }
-            }
-            #endregion
         }
         int command = commandList1 [token [0].ToLower()];
         if (command == 0)
@@ -279,26 +172,9 @@ public class GameParser : MonoBehaviour
         else if (token.Length == 2)
         {
             #region Detailed Help modifiers
-            if (token [1].ToLower().Equals("-d"))
-            {
-                string lst = "----- Developer Commands ----\n";
-                foreach (string i in devCommandList.Keys)
-                {
-                    lst += i + "\n";
-                }
-                lst += "----------------------------";
-                return lst;
-
-            }
-            if (!commandList1.ContainsKey(token [1].ToLower()) && !devCommandList.ContainsKey(token [1].ToLower()))
+            if (!commandList1.ContainsKey(token [1].ToLower()))
             {
                 return "Invalid modifier";
-            }
-            else if (devCommandList.ContainsKey(token [1].ToLower()))
-            {
-                int command = devCommandList [token [1].ToLower()];
-                
-                return devHelp [command] + "\n------Modifiers------\n" + devHelpMod [command] + "\n ---------------------";
             }
             else if (commandList1.ContainsKey(token [1].ToLower()))
             {

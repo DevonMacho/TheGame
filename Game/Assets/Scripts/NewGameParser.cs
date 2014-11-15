@@ -15,8 +15,10 @@ public class NewGameParser : MonoBehaviour
 
     public static void startNewGame()
     {
-            stage = 1;
+        stage = 1;
+
     }
+
     public static string Parse(string input)
     {
         string[] token;
@@ -62,7 +64,7 @@ public class NewGameParser : MonoBehaviour
             {
                 return "What was that? Are you here for fame, fortune, or power?";
             }
-            if (input.ToLower().Equals("are all 3 an option?\n"))
+            if (input.ToLower().Equals("are all 3 an option?"))
             {
                 return "sadly no, you have to choose either fame, fortune, or power.";
             }

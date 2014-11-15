@@ -66,7 +66,7 @@ public class GUISelector : MonoBehaviour
                     message = "File Selected!!!\nstarting new game";
                     ParserSelect.parserSelect = 4;
                     PreviousGui = 5;
-                    //return "<<Starting new game, input anything to continue>>"; <- set that to output
+                    GUI_Terminal.consoleLog = "<<Starting new game, input anything to continue>>\n";
                     Gui = 3;
                 }
                 else if (FileType == ".save")
@@ -79,8 +79,9 @@ public class GUISelector : MonoBehaviour
                     if (testNull != null)
                     {
                         WorldData.gameData = testNull;
-                        //return "<<Resuming Game>>"; <- set that to output
+                        GUI_Terminal.consoleLog = "<<Resuming Game>>\n";
                     }
+
                     else
                     {
                         GUISelector.message = "There was an error loading the save file";

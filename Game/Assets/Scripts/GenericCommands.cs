@@ -146,9 +146,12 @@ public class GenericCommands : MonoBehaviour
 
     public static bool checkForFiles(string extension, string path)
     {
+        if (!Directory.Exists(Application.persistentDataPath + "/" + path + "/"))
+        {
+            return false;
+        }
         int fileCount = 0;
         string[] UncleanScenarios = Directory.GetFiles(Application.persistentDataPath + "/" + path + "/");
-        
         foreach (string a in UncleanScenarios)
         {
             
