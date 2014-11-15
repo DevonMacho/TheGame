@@ -48,12 +48,12 @@ public class GameData : MonoBehaviour
                 }
                 */
 
-                FileStream file = File.Open(Application.persistentDataPath + "/SaveGames/" + fileName,FileMode.OpenOrCreate);
-               
-
+                FileStream file = File.Open(Application.persistentDataPath + "/SaveGames/" + fileName,FileMode.Create);     
+                Debug.Log("file created");
                 formatter.Serialize(file,this);
-
+                Debug.Log("serialized info");
                 file.Close();
+                Debug.Log("closed file");
                 return "saved";
             }
             catch
@@ -167,17 +167,11 @@ public class GameData : MonoBehaviour
                 return "Save file name not valid";
             }
 
-<<<<<<< HEAD
-
-            if (!File.Exists(Application.persistentDataPath + "/SaveGames/" + token [0] + ".dat"))
-            {
-                saveName = token [0] + ".dat";
-=======
-            saveName = token [0] + ".save";
-            if (!File.Exists(Application.persistentDataPath + "/SaveGames/" + token [0] + ".save"))
+            saveName = token [0] + ".dat";
+            if (!File.Exists(Application.persistentDataPath + "/SaveGames/" + saveName))
             {
                
->>>>>>> pr/18
+
                 if (WorldData.gameData.serialize(saveName) == "saved")
                 {
 
@@ -403,7 +397,7 @@ public class GameData : MonoBehaviour
         return final;
     }
 }
-
+[System.Serializable]
 public class playerStats
 {  
     /*
