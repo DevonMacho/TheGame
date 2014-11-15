@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-
+using System.Security.AccessControl;
 public class GameData : MonoBehaviour
 {
     [System.Serializable]
@@ -17,8 +17,9 @@ public class GameData : MonoBehaviour
         string playerName;
         string playerGender;
         string playerClass;
+        playerStats stats;
 
-        public GameInformation(List<LocationData.Location> locations, List<ItemData.Item> items, string playerName, string playerGender, string playerClass, int currentLoc)
+        public GameInformation(List<LocationData.Location> locations, List<ItemData.Item> items, string playerName, string playerGender, string playerClass, int currentLoc,playerStats stats)
         {
             this.locations = locations;
             this.items = items;
@@ -26,6 +27,7 @@ public class GameData : MonoBehaviour
             this.playerGender = playerGender;
             this.playerClass = playerClass;
             this.currentLoc = currentLoc;
+            this.stats = stats;
         }
 
         public string serialize(string fileName)
@@ -47,8 +49,10 @@ public class GameData : MonoBehaviour
                 */
 
                 FileStream file = File.Open(Application.persistentDataPath + "/SaveGames/" + fileName,FileMode.OpenOrCreate);
+               
 
                 formatter.Serialize(file,this);
+
                 file.Close();
                 return "saved";
             }
@@ -76,6 +80,14 @@ public class GameData : MonoBehaviour
             else
             {
                 return null;
+            }
+        }
+
+        public playerStats Stats
+        {
+            get
+            {
+                return stats;
             }
         }
 
@@ -156,9 +168,9 @@ public class GameData : MonoBehaviour
             }
 
 
-            if (!File.Exists(Application.persistentDataPath + "/SaveGames/" + token [0] + ".save"))
+            if (!File.Exists(Application.persistentDataPath + "/SaveGames/" + token [0] + ".dat"))
             {
-                saveName = token [0] + ".save";
+                saveName = token [0] + ".dat";
                 if (WorldData.gameData.serialize(saveName) == "saved")
                 {
 
@@ -373,7 +385,7 @@ public class GameData : MonoBehaviour
         foreach (string a in UncleanScenarios)
         {
             string[] cleaner = a.Trim().Replace("/", " ").Split(default(string[]), System.StringSplitOptions.RemoveEmptyEntries);
-            if (cleaner [cleaner.Length - 1].ToLower().Contains(".save"))
+            if (cleaner [cleaner.Length - 1].ToLower().Contains(".dat"))
             {
                 fileCount ++;
                 files.Add(cleaner [cleaner.Length - 1]);
@@ -385,7 +397,7 @@ public class GameData : MonoBehaviour
     }
 }
 
-public class playerStats : MonoBehaviour
+public class playerStats
 {  
     /*
      * Stats:
@@ -453,7 +465,23 @@ public class playerStats : MonoBehaviour
     {
         return _playerHealth;
     }
-    
+    public string displayStats()
+    {
+       
+        string total = "----- Stats ----\n";
+        string end = "\n";
+        for (int i = total.Length; i > 0; i--)
+        {
+            end += "-";
+        }
+        total += ("Health: " + _playerHealth + " / " + _playerHealthMax+"\n");
+        total += ("Strength: " + _str +"\n");
+        total += ("Perception: " + _per +"\n");
+        total += ("Endurance: " + _end +"\n");
+        total += ("Agility: " + _agil +"\n");
+        total += ("Luck: " + _luck);
+        return total + end;
+    }
     public void setHealth(int playerHealth)
     {
         _playerHealth = Mathf.Clamp(playerHealth, -10, _playerHealthMax);
@@ -507,7 +535,7 @@ public class playerStats : MonoBehaviour
         }
     }
     
-    playerStats(string characterClass)
+    public playerStats(string characterClass, string characterGender)
     {
         int highestRoll = Mathf.Clamp((int)Mathf.Ceil(Random.Range(100, 400) / 100), 1, 3);
         int highRoll = Mathf.Clamp((int)Mathf.Ceil(Random.Range(100, 300) / 100), 1, 2);
@@ -516,29 +544,89 @@ public class playerStats : MonoBehaviour
         int mehRoll2 = Mathf.Clamp((int)Mathf.Ceil(Random.Range(0, 110) / 100), 0, 1);
         if (characterClass == "hunter")
         {
-            _str = 5 + highRoll;
-            _per = 5 + highestRoll;
-            _end = 5 + mehRoll1;
-            _agil = 5 + mehRoll2;
-            _luck = 5 + badRoll;
+            if(characterGender == "male")
+            {
+                _str = 5 + highRoll;
+                _per = 4 + highestRoll;
+                _end = 5 + mehRoll1;
+                _agil = 4 + mehRoll2;
+                _luck = 5 + badRoll;
+            }
+            else if(characterGender == "female")
+            {
+                _str = 4 + highRoll;
+                _per = 5 + highestRoll;
+                _end = 4 + mehRoll1;
+                _agil = 5 + mehRoll2;
+                _luck = 5 + badRoll;
+            }
+            else
+            {
+                _str = 5 + highRoll;
+                _per = 5 + highestRoll;
+                _end = 5 + mehRoll1;
+                _agil = 5 + mehRoll2;
+                _luck = 5 + badRoll;
+            }
+
         }
         else if (characterClass == "thief")
         {
-            _str = 5 + mehRoll1;
-            _per = 5 + mehRoll2;
-            _end = 5 + badRoll;
-            _agil = 5 + highestRoll;
-            _luck = 5 + highRoll;
+            if(characterGender == "male")
+            {
+                _str = 5 + mehRoll1;
+                _per = 4 + mehRoll2;
+                _end = 5 + badRoll;
+                _agil = 4 + highestRoll;
+                _luck = 5 + highRoll;
+            }
+            else if(characterGender == "female")
+            {
+                _str = 4 + mehRoll1;
+                _per = 5 + mehRoll2;
+                _end = 4 + badRoll;
+                _agil = 5 + highestRoll;
+                _luck = 5 + highRoll;
+            }
+            else
+            {
+                _str = 5 + mehRoll1;
+                _per = 5 + mehRoll2;
+                _end = 5 + badRoll;
+                _agil = 5 + highestRoll;
+                _luck = 5 + highRoll;
+            }
+
             
         }
         else if (characterClass == "knight")
         {
-            _str = 5 + highestRoll;
-            _per = 5 + mehRoll1;
-            _end = 5 + highRoll;
-            _agil = 5 + badRoll;
-            _luck = 5 + mehRoll2;
+            if(characterGender == "male")
+            {
+                _str = 5 + highestRoll;
+                _per = 4 + mehRoll1;
+                _end = 5 + highRoll;
+                _agil = 4 + badRoll;
+                _luck = 5 + mehRoll2; 
+            }
+            else if(characterGender == "female")
+            {
+                _str = 4 + highestRoll;
+                _per = 5 + mehRoll1;
+                _end = 4 + highRoll;
+                _agil = 5 + badRoll;
+                _luck = 5 + mehRoll2; 
+            }
+            else
+            {
+                _str = 5 + highestRoll;
+                _per = 5 + mehRoll1;
+                _end = 5 + highRoll;
+                _agil = 5 + badRoll;
+                _luck = 5 + mehRoll2; 
+            }
+
         }
-        _playerHealth = _playerHealthMax = (Mathf.CeilToInt(_str / 2 + _end * 2) * 10);
+        _playerHealth = _playerHealthMax = (Mathf.CeilToInt((_str / 2 + _end * 2) * 10) );
     }
 }

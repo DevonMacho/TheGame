@@ -69,7 +69,7 @@ public class GUISelector : MonoBehaviour
                     GUI_Terminal.consoleLog = "<<Starting new game, input anything to continue>>\n";
                     Gui = 3;
                 }
-                else if (FileType == ".save")
+                else if (FileType == ".dat")
                 {
                     message = "File Selected!!!\nloading game";
                     ParserSelect.parserSelect = 1;

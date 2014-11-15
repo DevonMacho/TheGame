@@ -62,7 +62,7 @@ public class FileBrowserGUI : MonoBehaviour
 
             m_fileBrowser.CurrentDirectory = Application.persistentDataPath + "/Scenarios";
         }
-        if (GUISelector.FileType == ".save")
+        if (GUISelector.FileType == ".dat")
         {
 
             m_fileBrowser.CurrentDirectory = Application.persistentDataPath + "/SaveGames";

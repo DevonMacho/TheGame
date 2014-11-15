@@ -68,6 +68,7 @@ public class GameParser : MonoBehaviour
         commandList1.Add("use", 12);
         commandList1.Add("save", 13);
         commandList1.Add("load", 14);
+        commandList1.Add("stats", 30);
         //endbreak for quit
         commandList1.Add("quit", 7);
 
@@ -150,6 +151,10 @@ public class GameParser : MonoBehaviour
         {
 
             return GameData.startLoad(token);
+        }
+        else if(command == 30)
+        {
+           return WorldData.gameData.Stats.displayStats();
         }
         else
         {

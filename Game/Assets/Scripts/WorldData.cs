@@ -32,7 +32,8 @@ public class WorldData : MonoBehaviour
 
     public static string StartNewGame(string playerName, string playerGender, string playerClass, string xmlFile)
     {
-        gameData = new GameData.GameInformation(loadLocationData(xmlFile), loadItemData(xmlFile), playerName, playerGender, playerClass, 0);
+        playerStats baseStats = new playerStats(playerClass, playerGender); 
+        gameData = new GameData.GameInformation(loadLocationData(xmlFile), loadItemData(xmlFile), playerName, playerGender, playerClass, 0, baseStats);
         return "\n<<Game Started>>\n\n" + gameData.locations [gameData.currentLoc].getDescription(); //New Game Message here instead of currentloc <- add that to XML
     }
 

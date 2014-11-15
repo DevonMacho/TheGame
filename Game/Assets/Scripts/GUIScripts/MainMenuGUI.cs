@@ -36,11 +36,11 @@ public class MainMenuGUI : MonoBehaviour
         
         if (GUI.Button(new Rect(50, background.height * 2 / 6, background.width - 100, background.width * 1 / 10), "Load Game"))
         {
-            if (GenericCommands.checkForFiles(".save","SaveGames"))
+            if (GenericCommands.checkForFiles(".dat","SaveGames"))
             {
 
 
-                GUISelector.FileType = ".save";
+                GUISelector.FileType = ".dat";
                 FileBrowserGUI.OnGUIMain();
                 GUISelector.Gui = 4;
                
