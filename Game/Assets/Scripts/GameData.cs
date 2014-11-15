@@ -139,15 +139,15 @@ public class GameData : MonoBehaviour
             this.playerClass = playerClass;
         }
 
-        public void addItem(string name, string description, int location, int weight, int openState, int itemType, int usesLeft)
+        public void addItem(string name, string description, int location, int weight, int openState, int itemType, int usesLeft, int s, int p, int e, int a, int l, int rs, int rp, int re, int ra, int rl, int armor, int attack, int id)
         {
-            items.Add(new ItemData.Item(name, description, location, weight, openState, itemType, usesLeft));
+            items.Add(new ItemData.Item(name, description, location, weight, openState, itemType, usesLeft,s,p,e,a,l,rs,rp,re,ra,rl,armor,attack,id));
 
         }
 
-        public void addLocation(string name, string description, int nodeNumber, int[] adjacentNodes, string[] adjacentDirections)
+        public void addLocation(string name, string description, int nodeNumber, int[] adjacentNodes, string[] adjacentDirections,int reqItem, int reqUse, int reqOpen, int reqClosed)
         {
-            locations.Add(new LocationData.Location(name, description, nodeNumber, adjacentNodes, adjacentDirections));
+            locations.Add(new LocationData.Location(name, description, nodeNumber, adjacentNodes, adjacentDirections,reqItem,reqUse,reqOpen,reqClosed));
         }
     }
     static int saveState = 0;

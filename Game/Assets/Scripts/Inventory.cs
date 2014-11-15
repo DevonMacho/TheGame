@@ -150,6 +150,7 @@ public class Inventory : MonoBehaviour
                 {
                     WorldData.gameData.Items.Remove(a);
                     a.setLocation(-1);
+                    WorldData.gameData.playerTurn();
                     WorldData.gameData.Items.Add(a);
                     return command [1] + " picked up";
                 } 
@@ -174,6 +175,7 @@ public class Inventory : MonoBehaviour
                 {
                     WorldData.gameData.Items.Remove(a);
                     a.setLocation(WorldData.gameData.currentLoc);
+                    WorldData.gameData.playerTurn();
                     WorldData.gameData.Items.Add(a);
                     return command [1] + " dropped";
                 } 
@@ -204,6 +206,7 @@ public class Inventory : MonoBehaviour
                     {
                         WorldData.gameData.Items.Remove(a);
                         a.setOpenState(1);
+                        WorldData.gameData.playerTurn();
                         WorldData.gameData.Items.Add(a);
                         return command [1] + " opened";
                     }
@@ -242,6 +245,7 @@ public class Inventory : MonoBehaviour
                     {
                         WorldData.gameData.Items.Remove(a);
                         a.setOpenState(0);
+                        WorldData.gameData.playerTurn();
                         WorldData.gameData.Items.Add(a);
                         return command [1] + " closed";
                     }
@@ -279,6 +283,7 @@ public class Inventory : MonoBehaviour
                             WorldData.gameData.Items.Remove(a);
                             a.setLocation(a.getItemType() * -1);
                             WorldData.gameData.Items.Add(a);
+                            WorldData.gameData.playerTurn();
                             return command [1] + " equipped";
                         }
                         else

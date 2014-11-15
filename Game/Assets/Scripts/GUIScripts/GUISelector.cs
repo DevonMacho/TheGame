@@ -8,8 +8,8 @@ public class GUISelector : MonoBehaviour
     public static string message = "";
     public static string FileType = "";
     public static string FilePath = "";
-    public static GUISkin skin = Resources.Load("GUI Assets/fore") as GUISkin;
-
+    public static GUISkin skin; //= Resources.Load("GUI Assets/fore") as GUISkin;
+    //public static GUISkin skin2;// = Resources.Load("GUI Assets/MainMenuSkin") as GUISkin;
     void Awake()
     {
 
@@ -68,7 +68,7 @@ public class GUISelector : MonoBehaviour
                     message = "File Selected!!!\nstarting new game";
                     ParserSelect.parserSelect = 4;
                     PreviousGui = 5;
-                    GUI_Terminal.consoleLog = "<<Starting new game, input anything to continue>>\n";
+                    //"<<Starting new game, input anything to continue>>\n";
                     Gui = 3;
                 }
                 else if (FileType == ".dat")

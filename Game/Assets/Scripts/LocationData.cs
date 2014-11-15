@@ -11,14 +11,24 @@ public class LocationData : MonoBehaviour
         string description;
         int nodeNumber;
         string[] adjacentDirections;
+        int reqItem;
+        int reqUse; 
+        int reqOpen;
+        int reqClosed;
 
-        public Location(string name, string description, int nodeNumber, int[] adjacentNodes, string[] adjacentDirections)
+       
+
+        public Location(string name, string description, int nodeNumber, int[] adjacentNodes, string[] adjacentDirections, int reqItem, int reqUse, int reqOpen, int reqClosed)
         {
             this.name = name;
             this.description = description;
             this.nodeNumber = nodeNumber;
             this.adjacentNodes = adjacentNodes;
             this.adjacentDirections = adjacentDirections;
+            this.reqItem = reqItem;
+            this.reqUse = reqUse;
+            this.reqOpen = reqOpen;
+            this.reqClosed = reqClosed;
         }
 
         public int getNodeNumber()
@@ -69,6 +79,53 @@ public class LocationData : MonoBehaviour
         public void setAdjacentDirections(string[] adjacentDirections)
         {
             this.adjacentDirections = adjacentDirections;
+        }
+        public int ReqItem
+        {
+            get
+            {
+                return reqItem;
+            }
+            set
+            {
+                reqItem = value;
+            }
+        }
+        
+        public int ReqUse
+        {
+            get
+            {
+                return reqUse;
+            }
+            set
+            {
+                reqUse = value;
+            }
+        }
+        
+        public int ReqOpen
+        {
+            get
+            {
+                return reqOpen;
+            }
+            set
+            {
+                reqOpen = value;
+            }
+        }
+        
+        public int ReqClosed
+        {
+            get
+            {
+                return reqClosed;
+            }
+            set
+            {
+                reqClosed = value;
+            }
         }
     }
 }

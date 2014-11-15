@@ -7,7 +7,7 @@ public class NewGameParser : MonoBehaviour
 {
 
     public static int fileCount;
-    private static int stage = 0;
+    private static int stage = 1;
     static string characterName = "";
     private static string type = "";
     private static string gender = "";
@@ -15,8 +15,10 @@ public class NewGameParser : MonoBehaviour
 
     public static void startNewGame()
     {
-        stage = 1;
-
+        stage = 2;
+        GUI_Terminal.consoleLog = "You find yourself floating, alone in a dark space." +
+            "\nYou wonder who brought you here, or even why you are here.\nSuddenly a voice echoes out of the darkness:\n\n" +
+            "You look familiar, by what name do you call yourself traveler?\n";
     }
 
     public static string Parse(string input)
@@ -30,14 +32,8 @@ public class NewGameParser : MonoBehaviour
         {
             token = GenericCommands.tokenizeKeepCase(input);
         }
-        if (stage == 1)
-        {
-            stage = 2;
-            return "You find yourself floating, alone in a dark space." +
-                "\nYou wonder who brought you here, or even why you are here.\nSuddenly a voice echoes out of the darkness:\n\n" +
-                "You look familiar, by what name do you call yourself traveler?";
-        }
-        else if (stage == 2)
+
+        if (stage == 2)
         {
             if (token.Length <= 0)
             {

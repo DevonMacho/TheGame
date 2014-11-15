@@ -12,7 +12,9 @@ Platform assembly: C:\Users\JPEG\TheGame\Game\TheGame_Data\Managed\Assembly-CSha
 Loading C:\Users\JPEG\TheGame\Game\TheGame_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: C:\Users\JPEG\TheGame\Game\TheGame_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\JPEG\TheGame\Game\TheGame_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.037 seconds
+- Completed reload, in  0.038 seconds
 <RI> Initializing input.
 <RI> Input initialized.
 desktop: 1680x1050 59Hz; virtual: 3360x1050 at 0,0
+Platform assembly: C:\Users\JPEG\TheGame\Game\TheGame_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\JPEG\TheGame\Game\TheGame_Data\Managed\System.dll (this message is harmless)

@@ -13,14 +13,16 @@ public class MainMenuGUI : MonoBehaviour
     
     public static void OnGUI()
     {
-        
+
+
         GUI.BeginGroup(background);
-        GUI.Box(new Rect(0, 0, background.width, background.height), "Main Menu");
-        
+        GUI.Box(new Rect(0, 0, background.width, background.height), "");
+
+
         
         if (GUI.Button(new Rect(50, background.height * 1 / 6, background.width - 100, background.width * 1 / 10), "New Game"))
         {
-            if (GenericCommands.checkForFiles(".xml","Scenarios"))
+            if (GenericCommands.checkForFiles(".xml", "Scenarios"))
             {
                 NewGameParser.startNewGame();
                 GUISelector.FileType = ".xml";
@@ -36,7 +38,7 @@ public class MainMenuGUI : MonoBehaviour
         
         if (GUI.Button(new Rect(50, background.height * 2 / 6, background.width - 100, background.width * 1 / 10), "Load Game"))
         {
-            if (GenericCommands.checkForFiles(".dat","SaveGames"))
+            if (GenericCommands.checkForFiles(".dat", "SaveGames"))
             {
 
 
@@ -79,5 +81,10 @@ public class MainMenuGUI : MonoBehaviour
         }
         
         GUI.EndGroup();
+
+        GUI.skin = Resources.Load("GUI Assets/MainMenuSkin") as GUISkin;
+        GUILayout.BeginArea(new Rect(Screen.width / 7, Screen.height / 9, background.width, background.height));
+        GUILayout.Label(GlobalSettings.GameName);
+        GUILayout.EndArea();
     }
 }

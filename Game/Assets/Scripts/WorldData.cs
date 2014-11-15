@@ -43,10 +43,11 @@ public class WorldData : MonoBehaviour
         // else return false
         return false;
     }
+
     public static bool escapeRoll()
     {
         int roll = (int)Mathf.Ceil(Random.Range(0, 20));
-        if (roll >= gameData.Stats.Agility + (int)(gameData.Stats.Luck/2))
+        if (roll >= gameData.Stats.Agility + (int)(gameData.Stats.Luck / 2))
         {
             return true;
         }
@@ -86,7 +87,7 @@ public class WorldData : MonoBehaviour
                             else
                             {
                                 gameData.playerTurn();
-                                if(escapeRoll())
+                                if (escapeRoll())
                                 {
                                     gameData.currentLoc = a.getAdjacentNodes() [i];
                                     return "Going: " + a.getAdjacentDirections() [i] + "\n" + gameData.Locations [gameData.currentLoc].getDescription();
@@ -143,8 +144,12 @@ public class WorldData : MonoBehaviour
                 {
                     ad.Add(adi.Value.ToString());
                 }
+                int ri = (int)a.Element("Location_Required_Item");
+                int ru = (int)a.Element("Location_Required_Use");
+                int ro = (int)a.Element("Location_Required_Open");
+                int rc = (int)a.Element("Location_Required_Close");
 
-                locData.Add(new LocationData.Location(n, d, nn, an.ToArray(), ad.ToArray()));
+                locData.Add(new LocationData.Location(n, d, nn, an.ToArray(), ad.ToArray(), ri, ru, ro, rc));
             }
         }
         return locData;
@@ -178,7 +183,24 @@ public class WorldData : MonoBehaviour
                 int os = (int)a.Element("Item_OpenState");
                 int it = (int)a.Element("Item_Type");
                 int ul = (int)a.Element("Item_Uses");
-                itemData.Add(new ItemData.Item(n, d, nn, w, os, it, ul));
+
+                int s = (int)a.Element("Item_Strength");
+                int p = (int)a.Element("Item_Perception");
+                int e = (int)a.Element("Item_Endurance");
+                int i = (int)a.Element("Item_Agility");
+                int l = (int)a.Element("Item_Luck");
+
+                int rs = (int)a.Element("Item_REQ_Strength");
+                int rp = (int)a.Element("Item_REQ_Perception");
+                int re = (int)a.Element("Item_REQ_Endurance");
+                int ra = (int)a.Element("Item_REQ_Agility");
+                int rl = (int)a.Element("Item_REQ_Luck");
+
+                int armor = (int)a.Element("Item_Armor");
+                int attack = (int)a.Element("Item_Attack");
+                int id = (int)a.Element("Item_ID");
+               
+                itemData.Add(new ItemData.Item(n, d, nn, w, os, it, ul, s, p, e, i, l, rs, rp, re, ra, rl, armor, attack, id));
             }
         }
         return itemData;
