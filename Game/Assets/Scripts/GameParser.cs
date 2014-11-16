@@ -186,11 +186,11 @@ public class GameParser : MonoBehaviour
         }
         else if (command == 15)
         {
-            return GUI_Terminal.toggleStats();
+            return GUI_Terminal.toggleStats(token);
         }
         else if (command == 16)
         {
-            return GUI_Terminal.toggleMiniMap();
+            return GUI_Terminal.toggleMiniMap(token);
         }
         else if (command == 17)
         {

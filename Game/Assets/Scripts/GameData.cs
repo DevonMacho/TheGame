@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.AccessControl;
+
 public class GameData : MonoBehaviour
 {
     [System.Serializable]
@@ -45,7 +46,7 @@ public class GameData : MonoBehaviour
         string playerClass;
         playerStats stats;
 
-        public GameInformation(List<LocationData.Location> locations, List<ItemData.Item> items, string playerName, string playerGender, string playerClass, int currentLoc,playerStats stats,int turn)
+        public GameInformation(List<LocationData.Location> locations, List<ItemData.Item> items, string playerName, string playerGender, string playerClass, int currentLoc, playerStats stats, int turn)
         {
             this.locations = locations;
             this.items = items;
@@ -56,10 +57,12 @@ public class GameData : MonoBehaviour
             this.stats = stats;
             this.turn = turn;
         }
+
         public void playerTurn()
         {
             this.turn++;
         }
+
         public string serialize(string fileName)
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -69,8 +72,8 @@ public class GameData : MonoBehaviour
             }
             try
             {
-                FileStream file = File.Open(Application.persistentDataPath + "/SaveGames/" + fileName,FileMode.Create);     
-                formatter.Serialize(file,this);
+                FileStream file = File.Open(Application.persistentDataPath + "/SaveGames/" + fileName, FileMode.Create);     
+                formatter.Serialize(file, this);
                 file.Close();
                 return "saved";
             }
@@ -111,7 +114,9 @@ public class GameData : MonoBehaviour
 
         public string getName()
         {
-            return this.playerName;
+            char[] temp = this.playerName.ToCharArray();
+            string temp2 = temp [0].ToString().ToUpper() + new string(temp).TrimStart(temp [0]).ToLower();
+            return temp2;
         }
 
         public string getGender()
@@ -139,15 +144,15 @@ public class GameData : MonoBehaviour
             this.playerClass = playerClass;
         }
 
-        public void addItem(string name, string description, int location, int weight, int openState, int itemType, int usesLeft, int s, int p, int e, int a, int l, int rs, int rp, int re, int ra, int rl, int armor, int attack, int id)
+        public void addItem(string name, string description, int location, int weight, int openState, int itemType, int usesLeft, int s, int p, int e, int a, int l, int rs, int rp, int re, int ra, int rl, int armor, int attack, int useEffect, int useModifier, int id)
         {
-            items.Add(new ItemData.Item(name, description, location, weight, openState, itemType, usesLeft,s,p,e,a,l,rs,rp,re,ra,rl,armor,attack,id));
+            items.Add(new ItemData.Item(name, description, location, weight, openState, itemType, usesLeft, s, p, e, a, l, rs, rp, re, ra, rl, armor, attack, useEffect, useModifier, id));
 
         }
 
-        public void addLocation(string name, string description, int nodeNumber, int[] adjacentNodes, string[] adjacentDirections,int reqItem, int reqUse, int reqOpen, int reqClosed)
+        public void addLocation(string name, string description, int nodeNumber, int[] adjacentNodes, string[] adjacentDirections, int reqItem, int reqUse, int reqOpen, int reqClosed)
         {
-            locations.Add(new LocationData.Location(name, description, nodeNumber, adjacentNodes, adjacentDirections,reqItem,reqUse,reqOpen,reqClosed));
+            locations.Add(new LocationData.Location(name, description, nodeNumber, adjacentNodes, adjacentDirections, reqItem, reqUse, reqOpen, reqClosed));
         }
     }
     static int saveState = 0;
@@ -432,6 +437,7 @@ public class GameData : MonoBehaviour
         return final;
     }
 }
+
 [System.Serializable]
 public class playerStats
 {  
@@ -501,6 +507,7 @@ public class playerStats
     {
         return _playerHealth;
     }
+
     public string displayStats()
     {
        
@@ -510,14 +517,15 @@ public class playerStats
         {
             end += "-";
         }
-        total += ("Health: " + _playerHealth + " / " + _playerHealthMax+"\n");
-        total += ("Strength: " + _str +"\n");
-        total += ("Perception: " + _per +"\n");
-        total += ("Endurance: " + _end +"\n");
-        total += ("Agility: " + _agil +"\n");
+        total += ("Health: " + _playerHealth + " / " + _playerHealthMax + "\n");
+        total += ("Strength: " + _str + "\n");
+        total += ("Perception: " + _per + "\n");
+        total += ("Endurance: " + _end + "\n");
+        total += ("Agility: " + _agil + "\n");
         total += ("Luck: " + _luck);
         return total + end;
     }
+
     public void setHealth(int playerHealth)
     {
         _playerHealth = Mathf.Clamp(playerHealth, -10, _playerHealthMax);
@@ -580,7 +588,7 @@ public class playerStats
         int mehRoll2 = Mathf.Clamp((int)Mathf.Ceil(Random.Range(0, 110) / 100), 0, 1);
         if (characterClass == "hunter")
         {
-            if(characterGender == "male")
+            if (characterGender == "male")
             {
                 _str = 5 + highRoll;
                 _per = 4 + highestRoll;
@@ -588,7 +596,7 @@ public class playerStats
                 _agil = 4 + mehRoll2;
                 _luck = 5 + badRoll;
             }
-            else if(characterGender == "female")
+            else if (characterGender == "female")
             {
                 _str = 4 + highRoll;
                 _per = 5 + highestRoll;
@@ -608,7 +616,7 @@ public class playerStats
         }
         else if (characterClass == "thief")
         {
-            if(characterGender == "male")
+            if (characterGender == "male")
             {
                 _str = 5 + mehRoll1;
                 _per = 4 + mehRoll2;
@@ -616,7 +624,7 @@ public class playerStats
                 _agil = 4 + highestRoll;
                 _luck = 5 + highRoll;
             }
-            else if(characterGender == "female")
+            else if (characterGender == "female")
             {
                 _str = 4 + mehRoll1;
                 _per = 5 + mehRoll2;
@@ -637,7 +645,7 @@ public class playerStats
         }
         else if (characterClass == "knight")
         {
-            if(characterGender == "male")
+            if (characterGender == "male")
             {
                 _str = 5 + highestRoll;
                 _per = 4 + mehRoll1;
@@ -645,7 +653,7 @@ public class playerStats
                 _agil = 4 + badRoll;
                 _luck = 5 + mehRoll2; 
             }
-            else if(characterGender == "female")
+            else if (characterGender == "female")
             {
                 _str = 4 + highestRoll;
                 _per = 5 + mehRoll1;
@@ -663,6 +671,6 @@ public class playerStats
             }
 
         }
-        _playerHealth = _playerHealthMax = (Mathf.CeilToInt((_str / 2 + _end * 2) * 10) );
+        _playerHealth = _playerHealthMax = (Mathf.CeilToInt((_str / 2 + _end * 2) * 10));
     }
 }

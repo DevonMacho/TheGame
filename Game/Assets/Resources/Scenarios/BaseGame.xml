@@ -100,6 +100,8 @@
 			<Item_REQ_Luck>0</Item_REQ_Luck>
 			<Item_Armor>0</Item_Armor>
 			<Item_Attack>0</Item_Attack>
+			<Item_Use_Effect>0</Item_Use_Effect>
+			<Item_Use_Mod>0</Item_Use_Mod>
 			<Item_ID>-3</Item_ID>
 		</Item>
 		<Item>
@@ -122,6 +124,8 @@
 			<Item_REQ_Luck>0</Item_REQ_Luck>
 			<Item_Armor>0</Item_Armor>
 			<Item_Attack>0</Item_Attack>
+			<Item_Use_Effect>0</Item_Use_Effect>
+			<Item_Use_Mod>0</Item_Use_Mod>
 			<Item_ID>-2</Item_ID>
 		</Item>
 		<Item>
@@ -144,6 +148,8 @@
 			<Item_REQ_Luck>0</Item_REQ_Luck>
 			<Item_Armor>0</Item_Armor>
 			<Item_Attack>0</Item_Attack>
+			<Item_Use_Effect>0</Item_Use_Effect>
+			<Item_Use_Mod>0</Item_Use_Mod>
 			<Item_ID>-1</Item_ID>
 		</Item>
 		<Item>
@@ -166,6 +172,8 @@
 			<Item_REQ_Luck>0</Item_REQ_Luck>
 			<Item_Armor>0</Item_Armor>
 			<Item_Attack>0</Item_Attack>
+			<Item_Use_Effect>0</Item_Use_Effect>
+			<Item_Use_Mod>0</Item_Use_Mod>
 			<Item_ID>-4</Item_ID>
 		</Item>
 		<Item>
@@ -188,6 +196,8 @@
 			<Item_REQ_Luck>0</Item_REQ_Luck>
 			<Item_Armor>0</Item_Armor>
 			<Item_Attack>0</Item_Attack>
+			<Item_Use_Effect>0</Item_Use_Effect>
+			<Item_Use_Mod>0</Item_Use_Mod>
 			<Item_ID>1</Item_ID>
 		</Item>
 		<Item>
@@ -210,6 +220,8 @@
 			<Item_REQ_Luck>0</Item_REQ_Luck>
 			<Item_Armor>0</Item_Armor>
 			<Item_Attack>0</Item_Attack>
+			<Item_Use_Effect>0</Item_Use_Effect>
+			<Item_Use_Mod>0</Item_Use_Mod>
 			<Item_ID>3</Item_ID>
 		</Item>
 		<Item>
@@ -231,6 +243,8 @@
 			<Item_REQ_Agility>0</Item_REQ_Agility>
 			<Item_REQ_Luck>0</Item_REQ_Luck>
 			<Item_Armor>0</Item_Armor>
+			<Item_Use_Effect>0</Item_Use_Effect>
+			<Item_Use_Mod>0</Item_Use_Mod>
 			<Item_Attack>0</Item_Attack>
 			<Item_ID>2</Item_ID>
 		</Item>
@@ -242,7 +256,9 @@
 			<Container_Location> 2</Container_Location>
 			<Container_OpenState> 0</Container_OpenState>
 			<Container_Items> 1</Container_Items>
+			<Container_Item_Chance>1</Container_Item_Chance>
 			<Container_Items> 3</Container_Items>
+			<Container_Item_Chance>.5</Container_Item_Chance>
 		</Container>
 	</Containers>
 </World>

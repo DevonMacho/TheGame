@@ -10,13 +10,13 @@ public class GUI_Terminal : MonoBehaviour
     static Rect miniMap;
     static Rect stats;
     static Vector2 scrollPosition;
+    static Vector2 ScrollPosition2;
+    static Vector2 ScrollPosition3;
     public static string consoleLog = "";
     static List<string> commandHistory;
     static Texture clb;
     static GUISkin skin;
     static int commandIndex;
-
-
 
     public static void Start()
     {
@@ -25,10 +25,15 @@ public class GUI_Terminal : MonoBehaviour
         skin = Resources.Load("GUI Assets/GameSkin") as GUISkin;
        
     }
-    public static string toggleStats()
+
+    public static string toggleStats(string[] input)
     {
+        if (input.Length > 1)
+        {
+            return "too many args";
+        }
         stat = !stat;
-        if(!stat)
+        if (!stat)
         {
             return "The stat window was turned off";
         }
@@ -36,11 +41,18 @@ public class GUI_Terminal : MonoBehaviour
         {
             return "The stat window was turned on";
         }
+
     }
-    public static string toggleMiniMap()
+
+    public static string toggleMiniMap(string[] input)
     {
+
+        if (input.Length > 1)
+        {
+            return "too many args";
+        }
         mini = !mini;
-        if(!mini)
+        if (!mini)
         {
             
             return "minimap was turned off";
@@ -55,18 +67,69 @@ public class GUI_Terminal : MonoBehaviour
     {
 
         miniMap = new Rect(GlobalSettings.MinimapX, GlobalSettings.MinimapY, Screen.height / 6, Screen.height / 6);
-        stats = new Rect(GlobalSettings.StatsX, GlobalSettings.StatsY, Screen.width / 4, Screen.height * 99 / 200);
+        stats = new Rect(GlobalSettings.StatsX, Screen.width * (GlobalSettings.StatsY / 1024) + 17, Screen.width / 4, Screen.height * 99 / 200);
     }
 
     public static void OnGUI()
     {
-        if (mini)
+        if (WorldData.gameData != null)
         {
-            GUI.Box(miniMap, "Minimap Goes here");
-        }
-        if (stat)
-        {
-            GUI.Box(stats, "stats go here");
+            if (mini)
+            {
+                GUI.Box(miniMap, "");
+                GUI.BeginGroup(miniMap);
+                GUI.EndGroup();
+
+            }
+            if (stat)
+            {
+
+                GUI.Box(stats, "");
+                GUI.BeginGroup(stats);
+
+                GUILayout.BeginArea(new Rect(stats.x / 100, 0, stats.width * 19 / 20, stats.height));
+                GUILayout.BeginVertical();
+                GUI.skin = Resources.Load("GUI Assets/Stats_Centered") as GUISkin;
+                GUILayout.Label("Name: "+"\"" + WorldData.gameData.getName()+"\"");
+                GUILayout.Space(stats.height * 1/ 20);
+                GUILayout.Label("Stats");
+                GUI.skin = Resources.Load("GUI Assets/Stats") as GUISkin;
+                ScrollPosition2 = GUILayout.BeginScrollView(ScrollPosition2,GUILayout.Width(stats.width * 19 / 20), GUILayout.Height(stats.height * 3 /10));
+                int testInt = 0;
+                GUILayout.Label("Health:\t" + WorldData.gameData.Stats.getHealth() + " / " + WorldData.gameData.Stats.getHealth());
+                GUILayout.Label("Strength:\t" + WorldData.gameData.Stats.Strength + " + " + testInt);
+                GUILayout.Label("Per. :\t" + WorldData.gameData.Stats.Perception  + " + " + testInt);
+                GUILayout.Label("End. :\t" + WorldData.gameData.Stats.Endurance  + " + " + testInt);
+                GUILayout.Label("Agility:\t" + WorldData.gameData.Stats.Agility  + " + " + testInt);
+                GUILayout.Label("Luck:\t" + WorldData.gameData.Stats.Luck  + " + " + testInt);
+                GUILayout.Label("Armor:\t" + testInt  + " + " + testInt);
+                GUILayout.EndScrollView();
+                GUI.skin = Resources.Load("GUI Assets/Stats_Centered") as GUISkin;
+                GUILayout.Label("Equipped Items");
+                GUI.skin = Resources.Load("GUI Assets/Stats") as GUISkin;
+                ScrollPosition3 = GUILayout.BeginScrollView(ScrollPosition3,GUILayout.Width(stats.width * 19 / 20), GUILayout.Height(stats.height * 3 /10));
+                // 0 not usable
+                // 1 usable
+                // 2 head
+                // 3 chest (body)
+                // 4 gauntlets
+                // 5 belt
+                // 6 pants
+                // 7 shoes
+                // 8 weapon
+                GUILayout.Label("Head:\tasdf");
+                GUILayout.Label("Chest:\tasdf");
+                GUILayout.Label("Gauntlets:\tasdf");
+                GUILayout.Label("Belt:\tasdf");
+                GUILayout.Label("Pants:\tasdf");
+                GUILayout.Label("Shoes:\tasdf");
+                GUILayout.Label("Weapon:\tasdf");
+                GUILayout.EndScrollView();
+                GUILayout.EndVertical();
+                GUILayout.EndArea();
+                GUI.EndGroup();
+                
+            }
         }
         if (commandHistory == null)
         {

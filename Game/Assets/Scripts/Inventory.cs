@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Xml.Linq;
 using System.Linq;
 
-// get asc and desc sort on inventory
-
 public class Inventory : MonoBehaviour
 {
     public static string listInventory(string[] token)

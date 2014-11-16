@@ -198,9 +198,13 @@ public class WorldData : MonoBehaviour
 
                 int armor = (int)a.Element("Item_Armor");
                 int attack = (int)a.Element("Item_Attack");
+
+                int useEffect = (int)a.Element("Item_Use_Effect");
+                int useModifier = (int) a.Element("Item_Use_Mod");
+
                 int id = (int)a.Element("Item_ID");
                
-                itemData.Add(new ItemData.Item(n, d, nn, w, os, it, ul, s, p, e, i, l, rs, rp, re, ra, rl, armor, attack, id));
+                itemData.Add(new ItemData.Item(n, d, nn, w, os, it, ul, s, p, e, i, l, rs, rp, re, ra, rl, armor, attack,useEffect, useModifier, id));
             }
         }
         return itemData;

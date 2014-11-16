@@ -78,7 +78,7 @@ public class ItemData : MonoBehaviour
         //Duh ^
         private int location;
         //user's inventory is -1
-        //user's equipment is -2 - -7
+        //user's equipment is -2 - -8
         private int openState;
         // item can not be opened -1
         // item is closed 0
@@ -92,7 +92,7 @@ public class ItemData : MonoBehaviour
         // 5 belt
         // 6 pants
         // 7 shoes
-        // 8 weapon in use
+        // 8 weapon
 
         private int usesLeft;
         // -1 unlimited
@@ -106,6 +106,7 @@ public class ItemData : MonoBehaviour
         int a;
         int l;
         //end - equipped modifiers
+
         //start
         int rs;
         int rp;
@@ -117,6 +118,9 @@ public class ItemData : MonoBehaviour
         //armor modifier
         int attack;
         //attack modifier
+        int useEffect;
+        int useModifier;
+
         int id;
 
        
@@ -263,6 +267,30 @@ public class ItemData : MonoBehaviour
                 attack = value;
             }
         }
+
+        public int UseEffect
+        {
+            get
+            {
+                return useEffect;
+            }
+            set
+            {
+                useEffect = value;
+            }
+        }
+
+        public int UseModifier
+        {
+            get
+            {
+                return useModifier;
+            }
+            set
+            {
+                useModifier = value;
+            }
+        }
         
         public int Id
         {
@@ -279,7 +307,7 @@ public class ItemData : MonoBehaviour
         // negative ID's mean that they are one of a kind
         //positive ID's spawn normally from enemies / found in boxes
 
-        public Item(string name, string description, int location, int weight, int openState, int itemType, int usesLeft, int s, int p, int e, int a, int l, int rs, int rp, int re, int ra, int rl, int armor, int attack, int id)
+        public Item(string name, string description, int location, int weight, int openState, int itemType, int usesLeft, int s, int p, int e, int a, int l, int rs, int rp, int re, int ra, int rl, int armor, int attack, int useEffect,int useModifier,int id)
         {
             this.name = name;
             this.description = description;
@@ -300,6 +328,9 @@ public class ItemData : MonoBehaviour
             this.rl = rl;
             this.armor = armor;
             this.attack = attack;
+            this.useEffect = useEffect;
+            this.useModifier = useModifier;
+
             this.id = id;
         }
 

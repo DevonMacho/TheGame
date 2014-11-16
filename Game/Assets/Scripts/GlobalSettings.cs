@@ -126,7 +126,7 @@ public class GlobalSettings : MonoBehaviour
         PlayerPrefs.SetFloat("miniMapPositionX", 1.0f);
         PlayerPrefs.SetFloat("miniMapPositionY", 1.0f);
         PlayerPrefs.SetFloat("statsX", 1.0f);
-        PlayerPrefs.SetFloat("statsY", 131f);
+        PlayerPrefs.SetFloat("statsY", Screen.width * (131f/1024));
         //saveHUD(ConfigureHUD_GUI.miniX, ConfigureHUD_GUI.miniY, ConfigureHUD_GUI.statX, ConfigureHUD_GUI.statY);
         PlayerPrefs.SetString("gameName", "Claw Of Kraymoar");
         PlayerPrefs.Save();

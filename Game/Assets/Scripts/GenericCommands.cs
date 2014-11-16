@@ -170,7 +170,9 @@ public class GenericCommands : MonoBehaviour
         return false;
         
     }
+
     static int menustage = 0;
+
     public static string startMainMenu(string[] input)
     {
         menustage = 0;
@@ -205,13 +207,14 @@ public class GenericCommands : MonoBehaviour
         else if (token.Length > 1)
         {
             return "too many args";
-        }else if(menustage == 1)
+        }
+        else if (menustage == 1)
         {
-            if(token[0] == "yes")
+            if (token [0] == "yes")
             {
 
-                //combat check
-                if(WorldData.inBattle())
+
+                if (WorldData.inBattle())
                 {
                     returnToMenu("You can not save in battle, returning to the main menu");
                     return "<<Returning to menu>>";
@@ -223,7 +226,7 @@ public class GenericCommands : MonoBehaviour
                 }
                    
             }
-            else if(token[0] == "no")
+            else if (token [0] == "no")
             {
                 menustage = 0;
                 ParserSelect.parserSelect = 1;
@@ -235,13 +238,13 @@ public class GenericCommands : MonoBehaviour
             }
 
         }
-        else if(menustage == 2)
+        else if (menustage == 2)
         {
-            if(token[0] == "yes")
+            if (token [0] == "yes")
             {
                 return GameData.startSave(token);
             }
-            else if(token[0] == "no")
+            else if (token [0] == "no")
             {
 
                 menustage = 0;
@@ -255,8 +258,10 @@ public class GenericCommands : MonoBehaviour
         }
         return "Guru Mediation x000000A";
     }
+
     public static void returnToMenu(string input)
     {
+        WorldData.gameData = null;
         GUISelector.message = input;
         GUISelector.Gui = 3;
         GUISelector.PreviousGui = 0;

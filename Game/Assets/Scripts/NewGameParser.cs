@@ -35,6 +35,14 @@ public class NewGameParser : MonoBehaviour
 
         if (stage == 2)
         {
+            if (input == "mor'falas")
+            {
+                return "Well hello to you too! I did not know that you spoke Scrubbish! Although did I ask for your name, what is it?";
+            }
+            if (input == "les'falas")
+            {
+                return "Wait, why are you saing goodbye, you just got here! Also, I did not know that you spoke Scrubbish. Although did I ask for your name, what is it?";
+            }
             if (token.Length <= 0)
             {
                 return "I can't quite hear you, you sound muffled.";
