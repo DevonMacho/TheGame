@@ -68,6 +68,7 @@ public class GameParser : MonoBehaviour
         commandList1.Add("open", 8);
         commandList1.Add("close", 9);
         commandList1.Add("use", 12);
+
         //not WorldData.gameData.playerTurn(); yet
         commandList1.Add("attack", 18);
         commandList1.Add("defend", 19);

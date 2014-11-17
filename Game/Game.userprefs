@@ -1,11 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameData.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameData.cs">
     <Files>
-      <File FileName="Assets/Scripts/GameData.cs" Line="155" Column="32" />
-      <File FileName="Assets/Resources/Scenarios/BaseGame.xml" Line="6" Column="11" />
-      <File FileName="Assets/Scripts/WorldData.cs" Line="39" Column="31" />
-      <File FileName="Assets/Scripts/GUIScripts/GUI_Terminal.cs" Line="81" Column="19" />
+      <File FileName="Assets\Scripts\GUIScripts\FileBrowser.cs" Line="407" Column="5" />
+      <File FileName="Assets\Scripts\GameData.cs" Line="155" Column="35" />
+      <File FileName="Assets\Resources\Scenarios\BaseGame.xml" Line="6" Column="11" />
+      <File FileName="Assets\Scripts\WorldData.cs" Line="52" Column="6" />
+      <File FileName="Assets\Scripts\GUIScripts\GUI_Terminal.cs" Line="81" Column="19" />
+      <File FileName="Assets\Scripts\LocationData.cs" Line="61" Column="34" />
+      <File FileName="Assets\Scripts\GameParser.cs" Line="72" Column="9" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

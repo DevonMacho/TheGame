@@ -17,6 +17,32 @@ public class LocationData : MonoBehaviour
         int reqClosed;
         int lox;
         int loy;
+        bool _enemy;
+        int _enemyType;
+
+        public int EnemyType
+        {
+            get
+            {
+                return _enemyType;
+            }
+            set
+            {
+                _enemyType = value;
+            }
+        }
+
+        public bool EnemyAtLocation
+        {
+            get
+            {
+                return _enemy;
+            }
+            set
+            {
+                _enemy = value;
+            }
+        }
 
         public Location(string name, string description, int nodeNumber, int[] adjacentNodes, string[] adjacentDirections, int reqItem, int reqUse, int reqOpen, int reqClosed, int lox, int loy)
         {
@@ -31,6 +57,8 @@ public class LocationData : MonoBehaviour
             this.reqClosed = reqClosed;
             this.lox = lox;
             this.loy = loy;
+            this._enemy = false;
+            this._enemyType = -1;
         }
 
         public int getNodeNumber()

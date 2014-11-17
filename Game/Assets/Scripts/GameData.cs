@@ -16,6 +16,20 @@ public class GameData : MonoBehaviour
         List<LocationData.Location> locations = new List<LocationData.Location>();
         List<ItemData.Item> items = new List<ItemData.Item>();
 
+        string _combatLog;
+        //access all variables from WorldData.gameData.<modifier>
+        public string CombatLog
+        {
+            get
+            {
+                return _combatLog;
+            }
+            set
+            {
+                _combatLog = value;
+            }
+        }
+
         public List<LocationData.Location> Locations
         {
             get
@@ -138,6 +152,8 @@ public class GameData : MonoBehaviour
 
         public void playerTurn()
         {
+            //Put world moves here
+
             this.turn++;
         }
 

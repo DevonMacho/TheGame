@@ -255,7 +255,9 @@ public class FileBrowser
     
     protected void BuildContent()
     {
-        m_directoriesWithImages = new GUIContent[m_directories.Length];
+        //m_directoriesWithImages = new GUIContent[m_directories.Length];
+        m_directoriesWithImages = new GUIContent[0];
+
         for (int i = 0; i < m_directoriesWithImages.Length; ++i)
         {
             m_directoriesWithImages [i] = new GUIContent(m_directories [i], DirectoryImage);

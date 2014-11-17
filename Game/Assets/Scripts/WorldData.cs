@@ -53,6 +53,7 @@ public class WorldData : MonoBehaviour
         playerStats baseStats = new playerStats(playerClass, playerGender); 
         gameData = new GameData.GameInformation(loadLocationData(xmlFile), loadItemData(xmlFile), playerName, playerGender, playerClass, 0, baseStats, 0);
         gameData.loadGameInfo(xmlFile);
+        //put enemy creation here
         return "\n<<Game Started>>\n\n" + gameData.IntroText;
     }
 
