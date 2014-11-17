@@ -47,8 +47,42 @@ public class GameData : MonoBehaviour
         string playerClass;
         playerStats stats;
         string gameName;
+        string xmlName;
+        List<Texture2D> backgroundList;
+        Texture2D minimapTexture;
         string[] inventoryData;
 
+        public List<Texture2D> BackgroundList
+        {
+            get
+            {
+                return backgroundList;
+            }
+        }
+
+        public Texture2D MinimapTexture
+        {
+            get
+            {
+                return minimapTexture;
+            }
+            set
+            {
+                minimapTexture = value;
+            }
+        }
+
+    public string XmlName
+      {
+        get
+          {
+            return xmlName;
+          }
+        set
+          {
+            xmlName = value;
+          }
+      }
         public string[] InventoryData
         {
             get
@@ -145,6 +179,25 @@ public class GameData : MonoBehaviour
             {
                 this.gameName = gameInfo.Element("World").Element("Game_Info").Element("GameName").Value.ToString();
                 this.introText = gameInfo.Element("World").Element("Game_Info").Element("IntroString").Value.ToString();
+                this.xmlName = gameInfo.Element("World").Element("Game_Info").Element("XMLName").Value.ToString();
+
+
+
+                this.minimapTexture = new Texture2D(1024,1024);
+                this.minimapTexture.LoadImage(File.ReadAllBytes(Application.persistentDataPath + "/Scenarios/"+ this.xmlName + "/minimap.png"));
+                this.backgroundList = new List<Texture2D>();
+                foreach(string a in Directory.GetFiles(Application.persistentDataPath + "/Scenarios/"+ this.xmlName +"/Backgrounds"))
+                {
+                    if(a != Application.persistentDataPath + "/Scenarios/"+ this.xmlName +"/Backgrounds" + "/.DS_Store")
+                    
+                    {Texture2D b = new Texture2D(1024,1024);
+                    b.LoadImage(File.ReadAllBytes(a));
+                    //Debug.Log(a);
+                    this.backgroundList.Add(b);
+                    }
+                }
+                //FileStream f1 = File.Create(Application.persistentDataPath + "/Scenarios/BaseGame/Backgrounds/" + b.name +".png");
+
             }
         }
 

@@ -23,7 +23,7 @@ public class GUI_Terminal : MonoBehaviour
         consoleLog = "";
         clb = Resources.Load("GUI Assets/CommandLineBackground") as Texture;
         skin = Resources.Load("GUI Assets/GameSkin") as GUISkin;
-        miniMapTexture = Resources.Load("GUI Assets/test") as Texture2D;
+      
         
        
     }
@@ -72,22 +72,20 @@ public class GUI_Terminal : MonoBehaviour
         stats = new Rect(GlobalSettings.StatsX, Screen.width * (GlobalSettings.StatsY / 1024) + 17, Screen.width / 4, Screen.height * 99 / 200);
     }
 
-    static Texture2D miniMapTexture;
-
     public static void OnGUI()
     {
-        if (miniMapTexture == null)
-        {
-            miniMapTexture = Resources.Load("GUI Assets/test") as Texture2D;
-        }
         if (WorldData.gameData != null)
         {
-            GUI.DrawTexture(new Rect(0,0,Screen.width,Screen.height * 2 / 3),miniMapTexture,ScaleMode.ScaleToFit);
-            if (mini)
+            if(WorldData.gameData.BackgroundList != null)
+            {
+                //Debug.Log(WorldData.gameData.BackgroundList.Count);
+            GUI.DrawTexture(new Rect(0,0,Screen.width,Screen.height * 2 / 3),WorldData.gameData.BackgroundList[WorldData.gameData.currentLoc],ScaleMode.ScaleToFit);
+            }
+                if (mini)
             {
                 GUI.Box(miniMap, "");
                 GUI.BeginGroup(miniMap);
-                GUI.DrawTexture(new Rect(-WorldData.gameData.Locations [WorldData.gameData.currentLoc].Lox + miniMap.width / 2, -WorldData.gameData.Locations [WorldData.gameData.currentLoc].Loy + miniMap.height / 2, 1024, 1024), miniMapTexture);
+                GUI.DrawTexture(new Rect(-WorldData.gameData.Locations [WorldData.gameData.currentLoc].Lox + miniMap.width / 2, -WorldData.gameData.Locations [WorldData.gameData.currentLoc].Loy + miniMap.height / 2, 1024, 1024), WorldData.gameData.MinimapTexture);
                 GUI.EndGroup();
 
             }
@@ -133,7 +131,7 @@ public class GUI_Terminal : MonoBehaviour
                 // 6 pants
                 // 7 shoes
                 // 8 weapon
-                string testString = "";
+               
                 GUILayout.Label("Head:\t" + WorldData.gameData.InventoryData[0]);
                 GUILayout.Label("Chest:\t" + WorldData.gameData.InventoryData[1]);
                 GUILayout.Label("Gauntlets:\t" + WorldData.gameData.InventoryData[2]);

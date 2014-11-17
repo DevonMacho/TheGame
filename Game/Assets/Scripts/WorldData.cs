@@ -19,9 +19,11 @@ public class WorldData : MonoBehaviour
         TextAsset basegame = Resources.Load(assets [0]) as TextAsset;
         TextAsset readme = Resources.Load(assets [1]) as TextAsset;
 
+        Texture2D minimap = Resources.Load("BaseGame/minimap") as Texture2D;
         object[] textures = Resources.LoadAll("BaseGame/Backgrounds");
-        List<Texture2D> textList = new List<Texture2D>();
+
         Directory.CreateDirectory(Application.persistentDataPath + "/Scenarios/BaseGame/Backgrounds");
+       
         foreach (object a in textures)
         {
 
@@ -30,12 +32,12 @@ public class WorldData : MonoBehaviour
                 Texture2D b = a as Texture2D;
                 FileStream f1 = File.Create(Application.persistentDataPath + "/Scenarios/BaseGame/Backgrounds/" + b.name +".png");
                 f1.Write(b.EncodeToPNG(),0,b.EncodeToPNG().Length);
-
                 f1.Close();
             }
         }
-
-        
+        FileStream f2 = File.Create( Application.persistentDataPath + "/Scenarios/BaseGame/minimap.png");
+        f2.Write(minimap.EncodeToPNG(),0,minimap.EncodeToPNG().Length);
+        f2.Close();
         byte[] baseText = basegame.bytes;
         byte[] readText = readme.bytes;
         FileStream file1 = File.Create(Application.persistentDataPath + "/Scenarios/BaseGame.xml");
