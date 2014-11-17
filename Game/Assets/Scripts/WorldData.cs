@@ -148,8 +148,9 @@ public class WorldData : MonoBehaviour
                 int ru = (int)a.Element("Location_Required_Use");
                 int ro = (int)a.Element("Location_Required_Open");
                 int rc = (int)a.Element("Location_Required_Close");
-
-                locData.Add(new LocationData.Location(n, d, nn, an.ToArray(), ad.ToArray(), ri, ru, ro, rc));
+                int lox = (int)a.Element("GridLocationX");
+                int loy = (int)a.Element("GridLocationY");
+                locData.Add(new LocationData.Location(n, d, nn, an.ToArray(), ad.ToArray(), ri, ru, ro, rc,lox,loy));
             }
         }
         return locData;

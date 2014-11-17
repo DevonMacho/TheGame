@@ -67,9 +67,7 @@
      <Compile Include="Assets\Scripts\WorldData.cs" />
      <None Include="Assets\Shaders\Background.shader" />
      <None Include="Assets\Resources\Scenarios\BaseGame.xml" />
-     <None Include="Assets\StrumpyShaderEditor\Editor\Resources\Internal\Temp\TempShader.shader" />
      <None Include="Assets\Resources\Scenarios\Readme.txt" />
-     <None Include="Assets\StrumpyShaderEditor\Editor\Resources\Internal\TextureCopy.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>

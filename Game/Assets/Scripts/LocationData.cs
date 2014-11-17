@@ -12,13 +12,13 @@ public class LocationData : MonoBehaviour
         int nodeNumber;
         string[] adjacentDirections;
         int reqItem;
-        int reqUse; 
+        int reqUse;
         int reqOpen;
         int reqClosed;
+        int lox;
+        int loy;
 
-       
-
-        public Location(string name, string description, int nodeNumber, int[] adjacentNodes, string[] adjacentDirections, int reqItem, int reqUse, int reqOpen, int reqClosed)
+        public Location(string name, string description, int nodeNumber, int[] adjacentNodes, string[] adjacentDirections, int reqItem, int reqUse, int reqOpen, int reqClosed, int lox, int loy)
         {
             this.name = name;
             this.description = description;
@@ -29,6 +29,8 @@ public class LocationData : MonoBehaviour
             this.reqUse = reqUse;
             this.reqOpen = reqOpen;
             this.reqClosed = reqClosed;
+            this.lox = lox;
+            this.loy = loy;
         }
 
         public int getNodeNumber()
@@ -80,6 +82,7 @@ public class LocationData : MonoBehaviour
         {
             this.adjacentDirections = adjacentDirections;
         }
+
         public int ReqItem
         {
             get
@@ -127,5 +130,21 @@ public class LocationData : MonoBehaviour
                 reqClosed = value;
             }
         }
+
+        public int Loy
+        {
+            get
+            {
+                return loy;
+            }
+        }
+        
+        public int Lox
+        {
+            get
+            {
+                return lox;
+            }
+        } 
     }
 }

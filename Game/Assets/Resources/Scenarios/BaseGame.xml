@@ -13,6 +13,8 @@
 			<Location_Required_Use>0</Location_Required_Use>
 			<Location_Required_Open>0</Location_Required_Open>
 			<Location_Required_Close>0</Location_Required_Close>
+			<GridLocationX>512</GridLocationX>
+			<GridLocationY>256</GridLocationY>
 		</Location>
 		<Location>
 			<Location_Name>LocB</Location_Name>
@@ -30,6 +32,8 @@
 			<Location_Required_Use>0</Location_Required_Use>
 			<Location_Required_Open>0</Location_Required_Open>
 			<Location_Required_Close>0</Location_Required_Close>
+			<GridLocationX>384</GridLocationX>
+			<GridLocationY>384</GridLocationY>
 		</Location>
 		<Location>
 			<Location_Name>LocC</Location_Name>
@@ -47,6 +51,8 @@
 			<Location_Required_Use>0</Location_Required_Use>
 			<Location_Required_Open>0</Location_Required_Open>
 			<Location_Required_Close>0</Location_Required_Close>
+			<GridLocationX>640</GridLocationX>
+			<GridLocationY>384</GridLocationY>
 		</Location>
 		<Location>
 			<Location_Name>LocD</Location_Name>
@@ -62,6 +68,8 @@
 			<Location_Required_Use>0</Location_Required_Use>
 			<Location_Required_Open>0</Location_Required_Open>
 			<Location_Required_Close>0</Location_Required_Close>
+			<GridLocationX>384</GridLocationX>
+			<GridLocationY>512</GridLocationY>
 		</Location>
 		<Location>
 			<Location_Name>LocE</Location_Name>
@@ -77,6 +85,8 @@
 			<Location_Required_Use>0</Location_Required_Use>
 			<Location_Required_Open>0</Location_Required_Open>
 			<Location_Required_Close>0</Location_Required_Close>
+			<GridLocationX>640</GridLocationX>
+			<GridLocationY>512</GridLocationY>
 		</Location>
 	</Locations>
 	<Items>

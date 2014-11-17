@@ -150,9 +150,9 @@ public class GameData : MonoBehaviour
 
         }
 
-        public void addLocation(string name, string description, int nodeNumber, int[] adjacentNodes, string[] adjacentDirections, int reqItem, int reqUse, int reqOpen, int reqClosed)
+        public void addLocation(string name, string description, int nodeNumber, int[] adjacentNodes, string[] adjacentDirections, int reqItem, int reqUse, int reqOpen, int reqClosed, int lox, int loy)
         {
-            locations.Add(new LocationData.Location(name, description, nodeNumber, adjacentNodes, adjacentDirections, reqItem, reqUse, reqOpen, reqClosed));
+            locations.Add(new LocationData.Location(name, description, nodeNumber, adjacentNodes, adjacentDirections, reqItem, reqUse, reqOpen, reqClosed, lox, loy));
         }
     }
     static int saveState = 0;

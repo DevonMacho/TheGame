@@ -46,13 +46,13 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\StrumpyShaderEditor\Editor\Scripts\NodeEditorWindow.cs" />
-     <Compile Include="Assets\StrumpyShaderEditor\Editor\Scripts\StrumpyPreviewWindow.cs" />
+     <Compile Include="Assets\UnusedStuff\StrumpyShaderEditor\Editor\Scripts\NodeEditorWindow.cs" />
+     <Compile Include="Assets\UnusedStuff\StrumpyShaderEditor\Editor\Scripts\StrumpyPreviewWindow.cs" />
      <None Include="Assets\Shaders\Background.shader" />
      <None Include="Assets\Resources\Scenarios\BaseGame.xml" />
-     <None Include="Assets\StrumpyShaderEditor\Editor\Resources\Internal\Temp\TempShader.shader" />
+     <None Include="Assets\UnusedStuff\StrumpyShaderEditor\Editor\Resources\Internal\Temp\TempShader.shader" />
      <None Include="Assets\Resources\Scenarios\Readme.txt" />
-     <None Include="Assets\StrumpyShaderEditor\Editor\Resources\Internal\TextureCopy.shader" />
+     <None Include="Assets\UnusedStuff\StrumpyShaderEditor\Editor\Resources\Internal\TextureCopy.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -60,7 +60,7 @@
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/Editor/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="StrumpyShaderEditor">
- <HintPath>C:/Users/JPEG/TheGame/Game/Assets/StrumpyShaderEditor/Editor/StrumpyShaderEditor.dll</HintPath>
+ <HintPath>C:/Users/JPEG/TheGame/Game/Assets/UnusedStuff/StrumpyShaderEditor/Editor/StrumpyShaderEditor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
