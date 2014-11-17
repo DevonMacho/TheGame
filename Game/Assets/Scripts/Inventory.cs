@@ -282,6 +282,7 @@ public class Inventory : MonoBehaviour
                             a.setLocation(a.getItemType() * -1);
                             WorldData.gameData.Items.Add(a);
                             WorldData.gameData.playerTurn();
+                            updateInventory();
                             return command [1] + " equipped";
                         }
                         else
@@ -320,6 +321,7 @@ public class Inventory : MonoBehaviour
                     WorldData.gameData.Items.Remove(a);
                     a.setLocation(-1);
                     WorldData.gameData.Items.Add(a);
+                    updateInventory();
                     return command [1] + " unequipped";
                 }
 
@@ -385,6 +387,23 @@ public class Inventory : MonoBehaviour
         {
             return "too many args";
         }
+    }
+    public static void updateInventory()
+    {
+        WorldData.gameData.InventoryData = getInventory();
+    }
+    public static string[] getInventory()
+    {
+
+        string[] inventory = new string[7];
+        foreach (ItemData.Item a in WorldData.gameData.Items)
+        {
+            if (a.getLocation() <= -2)
+            {
+                inventory [-2 - a.getLocation()] = a.getName();
+            }
+        }
+        return inventory;
     }
 
 }

@@ -1,9 +1,36 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\Documents\testing-help\Assets\WrapArray.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUIScripts\MainMenuGUI.cs">
     <Files>
-      <File FileName="..\..\Documents\testing-help\Assets\WrapArray.cs" Line="34" Column="2" />
+      <File FileName="Assets\Scripts\GUIScripts\GUI_Terminal.cs" Line="81" Column="77" />
+      <File FileName="Assets\Resources\Scenarios\BaseGame.xml" Line="140" Column="32" />
+      <File FileName="Assets\Scripts\WorldData.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\LocationData.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameData.cs" Line="50" Column="21" />
+      <File FileName="Assets\Scripts\NewGameParser.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Inventory.cs" Line="403" Column="17" />
+      <File FileName="Assets\Scripts\ItemData.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GUIScripts\MainMenuGUI.cs" Line="14" Column="41" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Assembly-CSharp" expanded="True">
+            <Node name="Scripts" expanded="True">
+              <Node name="GUIScripts" expanded="True">
+                <Node name="MainMenuGUI.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

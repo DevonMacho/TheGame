@@ -23,6 +23,8 @@ public class GUI_Terminal : MonoBehaviour
         consoleLog = "";
         clb = Resources.Load("GUI Assets/CommandLineBackground") as Texture;
         skin = Resources.Load("GUI Assets/GameSkin") as GUISkin;
+        miniMapTexture = Resources.Load("GUI Assets/test") as Texture2D;
+        
        
     }
 
@@ -70,44 +72,57 @@ public class GUI_Terminal : MonoBehaviour
         stats = new Rect(GlobalSettings.StatsX, Screen.width * (GlobalSettings.StatsY / 1024) + 17, Screen.width / 4, Screen.height * 99 / 200);
     }
 
+    static Texture2D miniMapTexture;
+
     public static void OnGUI()
     {
+        if (miniMapTexture == null)
+        {
+            miniMapTexture = Resources.Load("GUI Assets/test") as Texture2D;
+        }
         if (WorldData.gameData != null)
         {
+            GUI.DrawTexture(new Rect(0,0,Screen.width,Screen.height * 2 / 3),miniMapTexture,ScaleMode.ScaleToFit);
             if (mini)
             {
                 GUI.Box(miniMap, "");
                 GUI.BeginGroup(miniMap);
+                GUI.DrawTexture(new Rect(-WorldData.gameData.Locations [WorldData.gameData.currentLoc].Lox + miniMap.width / 2, -WorldData.gameData.Locations [WorldData.gameData.currentLoc].Loy + miniMap.height / 2, 1024, 1024), miniMapTexture);
                 GUI.EndGroup();
 
             }
             if (stat)
             {
-
+                if (WorldData.gameData.InventoryData == null && WorldData.gameData != null)
+                {
+                    Inventory.updateInventory();
+                }
                 GUI.Box(stats, "");
                 GUI.BeginGroup(stats);
 
                 GUILayout.BeginArea(new Rect(stats.x / 100, 0, stats.width * 19 / 20, stats.height));
                 GUILayout.BeginVertical();
                 GUI.skin = Resources.Load("GUI Assets/Stats_Centered") as GUISkin;
-                GUILayout.Label("Name: "+"\"" + WorldData.gameData.getName()+"\"");
-                GUILayout.Space(stats.height * 1/ 20);
+                GUILayout.Label("Name: " + "\"" + WorldData.gameData.getName() + "\"");
+                GUILayout.Space(stats.height * 1 / 20);
                 GUILayout.Label("Stats");
                 GUI.skin = Resources.Load("GUI Assets/Stats") as GUISkin;
-                ScrollPosition2 = GUILayout.BeginScrollView(ScrollPosition2,GUILayout.Width(stats.width * 19 / 20), GUILayout.Height(stats.height * 3 /10));
+                ScrollPosition2 = GUILayout.BeginScrollView(ScrollPosition2, GUILayout.Width(stats.width * 19 / 20), GUILayout.Height(stats.height * 3 / 10));
                 int testInt = 0;
                 GUILayout.Label("Health:\t" + WorldData.gameData.Stats.getHealth() + " / " + WorldData.gameData.Stats.getHealth());
+                GUILayout.Label("Attack:\t" + testInt + " + " + testInt);
                 GUILayout.Label("Strength:\t" + WorldData.gameData.Stats.Strength + " + " + testInt);
-                GUILayout.Label("Per. :\t" + WorldData.gameData.Stats.Perception  + " + " + testInt);
-                GUILayout.Label("End. :\t" + WorldData.gameData.Stats.Endurance  + " + " + testInt);
-                GUILayout.Label("Agility:\t" + WorldData.gameData.Stats.Agility  + " + " + testInt);
-                GUILayout.Label("Luck:\t" + WorldData.gameData.Stats.Luck  + " + " + testInt);
-                GUILayout.Label("Armor:\t" + testInt  + " + " + testInt);
+                GUILayout.Label("Per. :\t" + WorldData.gameData.Stats.Perception + " + " + testInt);
+                GUILayout.Label("End. :\t" + WorldData.gameData.Stats.Endurance + " + " + testInt);
+                GUILayout.Label("Agility:\t" + WorldData.gameData.Stats.Agility + " + " + testInt);
+                GUILayout.Label("Luck:\t" + WorldData.gameData.Stats.Luck + " + " + testInt);
+                GUILayout.Label("Armor:\t" + testInt + " + " + testInt);
+
                 GUILayout.EndScrollView();
                 GUI.skin = Resources.Load("GUI Assets/Stats_Centered") as GUISkin;
                 GUILayout.Label("Equipped Items");
                 GUI.skin = Resources.Load("GUI Assets/Stats") as GUISkin;
-                ScrollPosition3 = GUILayout.BeginScrollView(ScrollPosition3,GUILayout.Width(stats.width * 19 / 20), GUILayout.Height(stats.height * 3 /10));
+                ScrollPosition3 = GUILayout.BeginScrollView(ScrollPosition3, GUILayout.Width(stats.width * 19 / 20), GUILayout.Height(stats.height * 3 / 10));
                 // 0 not usable
                 // 1 usable
                 // 2 head
@@ -117,13 +132,14 @@ public class GUI_Terminal : MonoBehaviour
                 // 6 pants
                 // 7 shoes
                 // 8 weapon
-                GUILayout.Label("Head:\tasdf");
-                GUILayout.Label("Chest:\tasdf");
-                GUILayout.Label("Gauntlets:\tasdf");
-                GUILayout.Label("Belt:\tasdf");
-                GUILayout.Label("Pants:\tasdf");
-                GUILayout.Label("Shoes:\tasdf");
-                GUILayout.Label("Weapon:\tasdf");
+                string testString = "";
+                GUILayout.Label("Head:\t" + WorldData.gameData.InventoryData[0]);
+                GUILayout.Label("Chest:\t" + WorldData.gameData.InventoryData[1]);
+                GUILayout.Label("Gauntlets:\t" + WorldData.gameData.InventoryData[2]);
+                GUILayout.Label("Belt:\t" + WorldData.gameData.InventoryData[3]);
+                GUILayout.Label("Pants:\t" + WorldData.gameData.InventoryData[4]);
+                GUILayout.Label("Shoes:\t" + WorldData.gameData.InventoryData[5]);
+                GUILayout.Label("Weapon:\t" + WorldData.gameData.InventoryData[6]);
                 GUILayout.EndScrollView();
                 GUILayout.EndVertical();
                 GUILayout.EndArea();

@@ -34,7 +34,8 @@ public class WorldData : MonoBehaviour
     {
         playerStats baseStats = new playerStats(playerClass, playerGender); 
         gameData = new GameData.GameInformation(loadLocationData(xmlFile), loadItemData(xmlFile), playerName, playerGender, playerClass, 0, baseStats, 0);
-        return "\n<<Game Started>>\n\n" + gameData.Locations [gameData.currentLoc].getDescription(); //New Game Message here instead of currentloc <- add that to XML
+        gameData.loadGameInfo(xmlFile);
+        return "\n<<Game Started>>\n\n" + gameData.IntroText;
     }
 
     public static bool inBattle()

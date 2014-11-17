@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <World>
+	<Game_Info>
+		<GameName>Claw of Kraymoar</GameName>
+		<IntroString>you have arived in the world!</IntroString>
+	</Game_Info>
 	<Locations>
 		<Location>
 			<Location_Name>LocA</Location_Name>
@@ -144,7 +148,7 @@
 			<Item_Location>-1</Item_Location>
 			<Item_Weight>2</Item_Weight>
 			<Item_OpenState>-1</Item_OpenState>
-			<Item_Type>0</Item_Type>
+			<Item_Type>8</Item_Type>
 			<Item_Uses>0</Item_Uses>
 			<Item_Strength>0</Item_Strength>
 			<Item_Perception>0</Item_Perception>

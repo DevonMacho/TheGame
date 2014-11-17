@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml.Linq;
 using System.Security.AccessControl;
 
 public class GameData : MonoBehaviour
@@ -45,6 +46,46 @@ public class GameData : MonoBehaviour
         string playerGender;
         string playerClass;
         playerStats stats;
+        string gameName;
+        string[] inventoryData;
+
+        public string[] InventoryData
+        {
+            get
+            {
+                return inventoryData;
+            }
+            set
+            {
+                inventoryData = value;
+            }
+        }
+
+        public string GameName
+        {
+            get
+            {
+                return gameName;
+            }
+            set
+            {
+                gameName = value;
+            }
+        }
+
+        string introText;
+
+        public string IntroText
+        {
+            get
+            {
+                return introText;
+            }
+            set
+            {
+                introText = value;
+            }
+        }
 
         public GameInformation(List<LocationData.Location> locations, List<ItemData.Item> items, string playerName, string playerGender, string playerClass, int currentLoc, playerStats stats, int turn)
         {
@@ -82,7 +123,31 @@ public class GameData : MonoBehaviour
                 return "error";
             }
         }
-       
+
+        public void loadGameInfo(string xmlLocation)
+        {
+            XDocument gameInfo = null;
+            
+            try
+            {
+                //Debug.Log(xmlLocation);
+                gameInfo = XDocument.Load(Application.persistentDataPath + "/Scenarios/" + xmlLocation, LoadOptions.PreserveWhitespace);
+                
+            }
+            catch
+            {
+                GUISelector.message = "There was an error loading this scenario, please select another scenario.";
+                GUISelector.Gui = 3;
+                GUISelector.PreviousGui = 0;
+                //Debug.Log("error reading XML");
+            }
+            if (gameInfo != null)
+            {
+                this.gameName = gameInfo.Element("World").Element("Game_Info").Element("GameName").Value.ToString();
+                this.introText = gameInfo.Element("World").Element("Game_Info").Element("IntroString").Value.ToString();
+            }
+        }
+
         public static GameInformation deserialize(string fileName)
         {
             if (File.Exists(Application.persistentDataPath + "/SaveGames/" + fileName))

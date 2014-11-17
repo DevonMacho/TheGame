@@ -5,16 +5,19 @@ public class MainMenuGUI : MonoBehaviour
 {
 
     public static Rect background;
-    
+    public static Texture2D backgroundImage = Resources.Load("GUI Assets/spacebackground") as Texture2D;
+    static float x;
+
     public static void Update()
     {
         background = new Rect(Screen.width / 7, Screen.height / 12, Screen.width * 5 / 7, Screen.height * 6 / 7);
+        x = Mathf.PingPong(Time.time * 100, 16384);
     }
     
     public static void OnGUI()
     {
 
-
+        GUI.DrawTexture(new Rect(-x, 0, 16384 + Screen.width, 768), backgroundImage);
         GUI.BeginGroup(background);
         GUI.Box(new Rect(0, 0, background.width, background.height), "");
 
