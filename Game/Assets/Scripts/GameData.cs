@@ -8,10 +8,11 @@ using System.Security.AccessControl;
 
 public class GameData : MonoBehaviour
 {
+    public static List<Texture2D> backgroundList = new List<Texture2D>();
+    public static Texture2D minimapTexture;
     [System.Serializable]
     public class GameInformation
     {
-
         List<LocationData.Location> locations = new List<LocationData.Location>();
         List<ItemData.Item> items = new List<ItemData.Item>();
 
@@ -46,11 +47,13 @@ public class GameData : MonoBehaviour
         string playerGender;
         string playerClass;
         playerStats stats;
-        string gameName;
-        string xmlName;
-        List<Texture2D> backgroundList;
-        Texture2D minimapTexture;
-        string[] inventoryData;
+
+
+        string gameName = "Blank";
+        string xmlName = "Blank";
+
+
+        string[] inventoryData = new string[10];
 
         public List<Texture2D> BackgroundList
         {
@@ -183,9 +186,9 @@ public class GameData : MonoBehaviour
 
 
 
-                this.minimapTexture = new Texture2D(1024,1024);
-                this.minimapTexture.LoadImage(File.ReadAllBytes(Application.persistentDataPath + "/Scenarios/"+ this.xmlName + "/minimap.png"));
-                this.backgroundList = new List<Texture2D>();
+               minimapTexture = new Texture2D(1024,1024);
+                minimapTexture.LoadImage(File.ReadAllBytes(Application.persistentDataPath + "/Scenarios/"+ this.xmlName + "/minimap.png"));
+                backgroundList = new List<Texture2D>();
                 foreach(string a in Directory.GetFiles(Application.persistentDataPath + "/Scenarios/"+ this.xmlName +"/Backgrounds"))
                 {
                     if(a != Application.persistentDataPath + "/Scenarios/"+ this.xmlName +"/Backgrounds" + "/.DS_Store")
@@ -193,7 +196,7 @@ public class GameData : MonoBehaviour
                     {Texture2D b = new Texture2D(1024,1024);
                     b.LoadImage(File.ReadAllBytes(a));
                     //Debug.Log(a);
-                    this.backgroundList.Add(b);
+                    backgroundList.Add(b);
                     }
                 }
                 //FileStream f1 = File.Create(Application.persistentDataPath + "/Scenarios/BaseGame/Backgrounds/" + b.name +".png");
@@ -273,6 +276,17 @@ public class GameData : MonoBehaviour
             locations.Add(new LocationData.Location(name, description, nodeNumber, adjacentNodes, adjacentDirections, reqItem, reqUse, reqOpen, reqClosed, lox, loy));
         }
     }
+
+
+
+
+
+
+
+
+
+
+
     static int saveState = 0;
     static int gameState;
 
