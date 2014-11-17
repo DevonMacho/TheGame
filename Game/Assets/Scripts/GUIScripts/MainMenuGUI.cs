@@ -16,7 +16,7 @@ public class MainMenuGUI : MonoBehaviour
     
     public static void OnGUI()
     {
-
+        GUI.skin = Resources.Load("GUI Assets/MainMenuSkin") as GUISkin;
         GUI.DrawTexture(new Rect(-x, 0, 16384 + Screen.width, 768), backgroundImage);
         GUI.BeginGroup(background);
         GUI.Box(new Rect(0, 0, background.width, background.height), "");
@@ -85,7 +85,7 @@ public class MainMenuGUI : MonoBehaviour
         
         GUI.EndGroup();
 
-        GUI.skin = Resources.Load("GUI Assets/MainMenuSkin") as GUISkin;
+
         GUILayout.BeginArea(new Rect(Screen.width / 7, Screen.height / 9, background.width, background.height));
         GUILayout.Label(GlobalSettings.GameName);
         GUILayout.EndArea();

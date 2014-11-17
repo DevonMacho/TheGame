@@ -8,7 +8,7 @@ public class GUISelector : MonoBehaviour
     public static string message = "";
     public static string FileType = "";
     public static string FilePath = "";
-    public static GUISkin skin; //= Resources.Load("GUI Assets/fore") as GUISkin;
+    public static GUISkin skin; //= Resources.Load("GUI Assets/generic") as GUISkin;
     //public static GUISkin skin2;// = Resources.Load("GUI Assets/MainMenuSkin") as GUISkin;
     void Awake()
     {

@@ -3,6 +3,7 @@
 	<Game_Info>
 		<GameName>Claw of Kraymoar</GameName>
 		<IntroString>you have arived in the world!</IntroString>
+		<XMLName>BaseGame</XMLName>
 	</Game_Info>
 	<Locations>
 		<Location>

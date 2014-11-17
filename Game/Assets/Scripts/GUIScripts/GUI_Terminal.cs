@@ -97,12 +97,13 @@ public class GUI_Terminal : MonoBehaviour
                 {
                     Inventory.updateInventory();
                 }
+                GUI.skin = Resources.Load("GUI Assets/Stats_Centered") as GUISkin;
                 GUI.Box(stats, "");
                 GUI.BeginGroup(stats);
 
                 GUILayout.BeginArea(new Rect(stats.x / 100, 0, stats.width * 19 / 20, stats.height));
                 GUILayout.BeginVertical();
-                GUI.skin = Resources.Load("GUI Assets/Stats_Centered") as GUISkin;
+
                 GUILayout.Label("Name: " + "\"" + WorldData.gameData.getName() + "\"");
                 GUILayout.Space(stats.height * 1 / 20);
                 GUILayout.Label("Stats");

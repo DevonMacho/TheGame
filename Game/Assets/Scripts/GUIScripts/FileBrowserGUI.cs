@@ -47,7 +47,7 @@ public class FileBrowserGUI : MonoBehaviour
 
     public static void OnGUIMain()
     {
-        GUI.skin = Resources.Load("GUI Assets/fore") as GUISkin;
+        GUI.skin = Resources.Load("GUI Assets/generic") as GUISkin;
 
         m_fileBrowser = new FileBrowser(
                 new Rect(0, 100, Screen.width, Screen.height * .5f),

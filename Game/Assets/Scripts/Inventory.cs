@@ -396,6 +396,10 @@ public class Inventory : MonoBehaviour
     {
 
         string[] inventory = new string[7];
+        for(int i = 0; i < inventory.Length; i++)
+        {
+            inventory[i] = "None";
+        }
         foreach (ItemData.Item a in WorldData.gameData.Items)
         {
             if (a.getLocation() <= -2)

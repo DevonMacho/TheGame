@@ -279,7 +279,7 @@ public class FileBrowser
     
     public void OnGUI()
     {
-        GUI.skin = Resources.Load("GUI Assets/fore") as GUISkin;
+        GUI.skin = Resources.Load("GUI Assets/generic") as GUISkin;
         GUILayout.BeginArea(
             m_screenRect,
             m_name,
