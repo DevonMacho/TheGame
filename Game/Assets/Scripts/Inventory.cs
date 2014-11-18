@@ -278,12 +278,20 @@ public class Inventory : MonoBehaviour
                     {
                         if (!checkItemEquipped(a.getItemType() * -1))
                         {
-                            WorldData.gameData.Items.Remove(a);
-                            a.setLocation(a.getItemType() * -1);
-                            WorldData.gameData.Items.Add(a);
-                            WorldData.gameData.playerTurn();
-                            updateInventory();
-                            return command [1] + " equipped";
+                            if (a.Ra <= WorldData.gameData.TotalAttack && a.Re <= WorldData.gameData.TotalEndurance && a.Rl <= WorldData.gameData.TotalLuck && a.Rp <= WorldData.gameData.TotalPerception && a.Rs <= WorldData.gameData.TotalStrength)
+                            {
+                                WorldData.gameData.Items.Remove(a);
+                                a.setLocation(a.getItemType() * -1);
+                                WorldData.gameData.Items.Add(a);
+                                WorldData.gameData.playerTurn();
+                                updateInventory();
+                                return command [1] + " equipped";
+                            }
+                            else
+                            {
+                                return "you do not meet the requirements for the equipped item, this item requires (a / an):\n" +
+                                    "Strength of " + a.Rs + "Perception of: " + a.Rp + "Endurance of: " + a.Re + "Agility of: " + a.Ra + "Luck of: " + a.Rl;
+                            }
                         }
                         else
                         {
@@ -388,25 +396,48 @@ public class Inventory : MonoBehaviour
             return "too many args";
         }
     }
+
     public static void updateInventory()
     {
         WorldData.gameData.InventoryData = getInventory();
     }
+
     public static string[] getInventory()
     {
-
+        WorldData.gameData.StrengthModifier = 0;
+        WorldData.gameData.PerceptionModifier = 0;
+        WorldData.gameData.EnduranceModifier = 0;
+        WorldData.gameData.AgilityModifier = 0;
+        WorldData.gameData.LuckModifier = 0;
+        WorldData.gameData.AttackMod = 0;
+        WorldData.gameData.Armor = 0;
         string[] inventory = new string[7];
-        for(int i = 0; i < inventory.Length; i++)
+        for (int i = 0; i < inventory.Length; i++)
         {
-            inventory[i] = "None";
+            inventory [i] = "None";
         }
         foreach (ItemData.Item a in WorldData.gameData.Items)
         {
             if (a.getLocation() <= -2)
             {
-                inventory [-2 - a.getLocation()] = a.getName();
+                string c = "";
+                foreach(string b in GenericCommands.tokenize(a.getName().Replace("-"," ")))
+                {
+                    c += char.ToUpper(b[0]) + b.Substring(1)+ " ";
+                }
+                inventory [-2 - a.getLocation()] = c;
+                WorldData.gameData.StrengthModifier += a.S;
+                WorldData.gameData.PerceptionModifier += a.P;
+                WorldData.gameData.EnduranceModifier += a.E;
+                WorldData.gameData.AgilityModifier += a.A;
+                WorldData.gameData.LuckModifier += a.L;
+                WorldData.gameData.AttackMod += a.Attack;
+                WorldData.gameData.Armor += a.Armor;
+
             }
         }
+        WorldData.gameData.Stats.RecalculateMaxHealth();
+
         return inventory;
     }
 

@@ -34,7 +34,7 @@ public class GameParser : MonoBehaviour
             "Allows you to toggle the minimap",
             "Allows you to return to the main menu",
             "Allows you to attack an enemy",
-            "Allows you to defend yourself",
+            "Allows you to defend yourself, doubles armor and regeneration for a turn",
             "Unless commands were added, you shouldnt see this",
             "Unless commands were added, you shouldnt see this"
         };
@@ -217,7 +217,10 @@ public class GameParser : MonoBehaviour
         }
         else if (command == 19)
         {
-            return "defend was entered";
+
+            WorldData.gameData.Armor = WorldData.gameData.Armor * 2;
+            WorldData.gameData.playerTurn();
+            return "You defend yourself" + WorldData.gameData.CombatLog;
         }
         else
         {

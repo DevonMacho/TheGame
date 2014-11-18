@@ -265,11 +265,19 @@ public class WorldData : MonoBehaviour
 
                 foreach (ItemData.Item a in gameData.Items)
                 {
-                    if (a.getName().Equals(command [2]) && (a.getLocation() == gameData.currentLoc || a.getLocation() <= -1 ))
+                    if (a.getName().Equals(command [2]) && (a.getLocation() == gameData.currentLoc || a.getLocation() <= -1))
                     {
                         if (a.getWeight() < 999)
                         {
-                            return a.getDescription() + "\nWeight: " + a.getWeight();
+                            return a.getDescription() + 
+                                "\nWeight: " + a.getWeight() +
+                                "\nAttack Bonus: " + a.Attack + "\n"+
+                                  "\nArmor: " + a.Armor +
+                                    "\nStrength: " + a.S + "\t\tRequired Strength: " + a.Rs + 
+                                    "\nPerception: " + a.S + "\t\tRequired Perception: " + a.Rp +
+                                    "\nEndurance: " + a.S + "\t\tRequired Endurance: " + a.Re +
+                                    "\nAgility: " + a.S + "\t\tRequired Agility: " + a.Ra +
+                                    "\nLuck: " + a.S + "\t\tRequired Luck: " + a.Rl;
                         }
                         else
                         {
@@ -295,5 +303,3 @@ public class WorldData : MonoBehaviour
 
 
 }
-
-

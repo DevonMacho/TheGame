@@ -110,21 +110,21 @@ public class GUI_Terminal : MonoBehaviour
                 GUILayout.Label("Stats");
                 GUI.skin = Resources.Load("GUI Assets/Stats") as GUISkin;
                 ScrollPosition2 = GUILayout.BeginScrollView(ScrollPosition2, GUILayout.Width(stats.width * 19 / 20), GUILayout.Height(stats.height * 3 / 10));
-                int testInt = 0;
-                GUILayout.Label("Health:\t" + WorldData.gameData.Stats.getHealth() + " / " + WorldData.gameData.Stats.getHealth());
-                GUILayout.Label("Attack:\t" + testInt + " + " + testInt);
-                GUILayout.Label("Strength:\t" + WorldData.gameData.Stats.Strength + " + " + testInt);
-                GUILayout.Label("Per. :\t" + WorldData.gameData.Stats.Perception + " + " + testInt);
-                GUILayout.Label("End. :\t" + WorldData.gameData.Stats.Endurance + " + " + testInt);
-                GUILayout.Label("Agility:\t" + WorldData.gameData.Stats.Agility + " + " + testInt);
-                GUILayout.Label("Luck:\t" + WorldData.gameData.Stats.Luck + " + " + testInt);
-                GUILayout.Label("Armor:\t" + testInt + " + " + testInt);
+                //int testInt = 0;
+                GUILayout.Label("Health:\t" + WorldData.gameData.Stats.getHealth() + " / " + WorldData.gameData.Stats.getHealth() );
+                GUILayout.Label("Attack:\t" + WorldData.gameData.Stats.BaseAttack + " + " + WorldData.gameData.AttackMod+ " = " + WorldData.gameData.TotalAttack);
+                GUILayout.Label("Strength:\t" + WorldData.gameData.Stats.Strength + " + " + WorldData.gameData.StrengthModifier+ " = " + WorldData.gameData.TotalStrength);
+                GUILayout.Label("Per. :\t" + WorldData.gameData.Stats.Perception + " + " + WorldData.gameData.PerceptionModifier+ " = " + WorldData.gameData.TotalPerception);
+                GUILayout.Label("End. :\t" + WorldData.gameData.Stats.Endurance + " + " + WorldData.gameData.EnduranceModifier+ " = " + WorldData.gameData.TotalEndurance);
+                GUILayout.Label("Agility:\t" + WorldData.gameData.Stats.Agility + " + " + WorldData.gameData.AgilityModifier+ " = " + WorldData.gameData.TotalAgility);
+                GUILayout.Label("Luck:\t" + WorldData.gameData.Stats.Luck + " + " + WorldData.gameData.LuckModifier+ " = " + WorldData.gameData.TotalLuck);
+                GUILayout.Label("Armor:\t" + WorldData.gameData.Armor);
 
                 GUILayout.EndScrollView();
                 GUI.skin = Resources.Load("GUI Assets/Stats_Centered") as GUISkin;
                 GUILayout.Label("Equipped Items");
                 GUI.skin = Resources.Load("GUI Assets/Stats") as GUISkin;
-                ScrollPosition3 = GUILayout.BeginScrollView(ScrollPosition3, GUILayout.Width(stats.width * 19 / 20), GUILayout.Height(stats.height * 3 / 10));
+                ScrollPosition3 = GUILayout.BeginScrollView(ScrollPosition3, GUILayout.Width(stats.width * 19 / 20), GUILayout.Height(stats.height * 2 / 5));
                 // 0 not usable
                 // 1 usable
                 // 2 head

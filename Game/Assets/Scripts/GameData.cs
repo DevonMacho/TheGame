@@ -15,7 +15,6 @@ public class GameData : MonoBehaviour
     {
         List<LocationData.Location> locations = new List<LocationData.Location>();
         List<ItemData.Item> items = new List<ItemData.Item>();
-
         string _combatLog;
         //access all variables from WorldData.gameData.<modifier>
         public string CombatLog
@@ -61,12 +60,106 @@ public class GameData : MonoBehaviour
         string playerGender;
         string playerClass;
         playerStats stats;
+        int _armor;
 
+        public int Armor
+        {
+            get
+            {
+                return _armor;
+            }
+            set
+            {
+                _armor = value;
+            }
+        }
+
+        int _attackmod;
+
+        public int AttackMod
+        {
+            get
+            {
+                return _attackmod;
+            }
+            set
+            {
+                _attackmod = value;
+            }
+        }
+
+        int _strMod;
+
+        public int StrengthModifier
+        {
+            get
+            {
+                return _strMod;
+            }
+            set
+            {
+                _strMod = value;
+            }
+        }
+
+        int _perMod;
+
+        public int PerceptionModifier
+        {
+            get
+            {
+                return _perMod;
+            }
+            set
+            {
+                _perMod = value;
+            }
+        }
+
+        int _endMod;
+
+        public int EnduranceModifier
+        {
+            get
+            {
+                return _endMod;
+            }
+            set
+            {
+                _endMod = value;
+            }
+        }
+
+        int _agilMod;
+
+        public int AgilityModifier
+        {
+            get
+            {
+                return _agilMod;
+            }
+            set
+            {
+                _agilMod = value;
+            }
+        }
+
+        int _luckMod;
+
+        public int LuckModifier
+        {
+            get
+            {
+                return _luckMod;
+            }
+            set
+            {
+                _luckMod = value;
+            }
+        }
 
         string gameName = "Blank";
         string xmlName = "Blank";
-
-
         string[] inventoryData = new string[10];
 
         public List<Texture2D> BackgroundList
@@ -89,17 +182,64 @@ public class GameData : MonoBehaviour
             }
         }
 
-    public string XmlName
-      {
-        get
-          {
-            return xmlName;
-          }
-        set
-          {
-            xmlName = value;
-          }
-      }
+        public string XmlName
+        {
+            get
+            {
+                return xmlName;
+            }
+            set
+            {
+                xmlName = value;
+            }
+        }
+        public int TotalAttack
+            
+        {
+            get
+            {
+                return _attackmod + stats.BaseAttack;
+            }
+        }
+        public int TotalStrength            
+        {
+            get
+            {
+                return _strMod + stats.Strength;
+            }
+        }
+        public int TotalPerception
+            
+        {
+            get
+            {
+                return _perMod + stats.Perception;
+            }
+        }
+        public int TotalEndurance
+            
+        {
+            get
+            {
+                return _endMod + stats.Endurance;
+            }
+        }
+        public int TotalAgility
+            
+        {
+            get
+            {
+                return _agilMod + stats.Agility;
+            }
+        }
+        public int TotalLuck
+            
+        {
+            get
+            {
+                return _luckMod + stats.Luck;
+            }
+        }
         public string[] InventoryData
         {
             get
@@ -154,6 +294,7 @@ public class GameData : MonoBehaviour
         {
             //Put world moves here
 
+            Inventory.updateInventory();
             this.turn++;
         }
 
@@ -202,17 +343,17 @@ public class GameData : MonoBehaviour
 
 
 
-               minimapTexture = new Texture2D(1024,1024);
-                minimapTexture.LoadImage(File.ReadAllBytes(Application.persistentDataPath + "/Scenarios/"+ this.xmlName + "/minimap.png"));
+                minimapTexture = new Texture2D(1024, 1024);
+                minimapTexture.LoadImage(File.ReadAllBytes(Application.persistentDataPath + "/Scenarios/" + this.xmlName + "/minimap.png"));
                 backgroundList = new List<Texture2D>();
-                foreach(string a in Directory.GetFiles(Application.persistentDataPath + "/Scenarios/"+ this.xmlName +"/Backgrounds"))
+                foreach (string a in Directory.GetFiles(Application.persistentDataPath + "/Scenarios/"+ this.xmlName +"/Backgrounds"))
                 {
-                    if(a != Application.persistentDataPath + "/Scenarios/"+ this.xmlName +"/Backgrounds" + "/.DS_Store")
-                    
-                    {Texture2D b = new Texture2D(1024,1024);
-                    b.LoadImage(File.ReadAllBytes(a));
-                    //Debug.Log(a);
-                    backgroundList.Add(b);
+                    if (a != Application.persistentDataPath + "/Scenarios/" + this.xmlName + "/Backgrounds" + "/.DS_Store")
+                    {
+                        Texture2D b = new Texture2D(1024, 1024);
+                        b.LoadImage(File.ReadAllBytes(a));
+                        //Debug.Log(a);
+                        backgroundList.Add(b);
                     }
                 }
                 //FileStream f1 = File.Create(Application.persistentDataPath + "/Scenarios/BaseGame/Backgrounds/" + b.name +".png");
@@ -463,7 +604,7 @@ public class GameData : MonoBehaviour
         }
         loadStatus = 1;
         gameState = ParserSelect.parserSelect;
-        WorldData.gameData.loadGameInfo(WorldData.gameData.XmlName+".xml");
+        WorldData.gameData.loadGameInfo(WorldData.gameData.XmlName + ".xml");
         Inventory.updateInventory();
         files = new List<string>();
         return "<<Loading>>\nAre you Sure that you want to load?";
@@ -652,10 +793,20 @@ public class playerStats
     int _luck;
     int _playerHealth;
     int _playerHealthMax;
-    
+    int _baseAttack;
+
     public int getHealth()
     {
         return _playerHealth;
+    }
+
+
+    public int BaseAttack
+    {
+        get
+        {
+            return _baseAttack;
+        }
     }
 
     public string displayStats()
@@ -683,7 +834,7 @@ public class playerStats
 
     public void RecalculateMaxHealth()
     {
-        _playerHealthMax = (Mathf.CeilToInt((_str / 2 + _end * 2) * 10));
+        _playerHealthMax = (Mathf.CeilToInt(((_str + WorldData.gameData.StrengthModifier)/ 2 + (_end + WorldData.gameData.EnduranceModifier) * 2) * 10));
     }
 
     public int MaxHealth
@@ -826,6 +977,7 @@ public class playerStats
             }
 
         }
+        _baseAttack = (Mathf.CeilToInt((_str * 3 + _luck / 3) ));
         _playerHealth = _playerHealthMax = (Mathf.CeilToInt((_str / 2 + _end * 2) * 10));
     }
 }
