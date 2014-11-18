@@ -150,7 +150,7 @@ public class Inventory : MonoBehaviour
                     a.setLocation(-1);
                     WorldData.gameData.playerTurn();
                     WorldData.gameData.Items.Add(a);
-                    return command [1] + " picked up";
+                    return command [1] + " picked up\n" + WorldData.gameData.CombatLog;
                 } 
             }
             return "Item not found at current location";
@@ -175,7 +175,7 @@ public class Inventory : MonoBehaviour
                     a.setLocation(WorldData.gameData.currentLoc);
                     WorldData.gameData.playerTurn();
                     WorldData.gameData.Items.Add(a);
-                    return command [1] + " dropped";
+                    return command [1] + " dropped\n" + WorldData.gameData.CombatLog;
                 } 
             }
             return "Item not found in inventory";
@@ -206,7 +206,7 @@ public class Inventory : MonoBehaviour
                         a.setOpenState(1);
                         WorldData.gameData.playerTurn();
                         WorldData.gameData.Items.Add(a);
-                        return command [1] + " opened";
+                        return command [1] + " opened\n" + WorldData.gameData.CombatLog;
                     }
                     else if (a.getOpenState() == 1)
                     {
@@ -245,7 +245,7 @@ public class Inventory : MonoBehaviour
                         a.setOpenState(0);
                         WorldData.gameData.playerTurn();
                         WorldData.gameData.Items.Add(a);
-                        return command [1] + " closed";
+                        return command [1] + " closed\n" + WorldData.gameData.CombatLog;
                     }
                     else if (a.getOpenState() == 0)
                     {
@@ -285,7 +285,7 @@ public class Inventory : MonoBehaviour
                                 WorldData.gameData.Items.Add(a);
                                 WorldData.gameData.playerTurn();
                                 updateInventory();
-                                return command [1] + " equipped";
+                                return command [1] + " equipped\n" + WorldData.gameData.CombatLog;
                             }
                             else
                             {

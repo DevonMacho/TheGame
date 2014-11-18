@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class Enemies : MonoBehaviour
 {
+    [Serializable]
     public struct Enemy
     {
       public  string name;

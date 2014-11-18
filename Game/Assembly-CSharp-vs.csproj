@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Enemies.cs" />
      <Compile Include="Assets\Scripts\GUIScripts\ConfigureHUD_GUI.cs" />
      <Compile Include="Assets\Scripts\GUIScripts\FileBrowser.cs" />
      <Compile Include="Assets\Scripts\GUIScripts\FileBrowserGUI.cs" />
@@ -65,6 +66,7 @@
      <Compile Include="Assets\Scripts\NewGameParser.cs" />
      <Compile Include="Assets\Scripts\ParserSelect.cs" />
      <Compile Include="Assets\Scripts\WorldData.cs" />
+     <Compile Include="Assets\Scripts\WorldMoves.cs" />
      <None Include="Assets\Shaders\Background.shader" />
      <None Include="Assets\Resources\Scenarios\BaseGame.xml" />
      <None Include="Assets\Resources\Scenarios\Readme.txt" />

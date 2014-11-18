@@ -1,172 +1,408 @@
 <?xml version="1.0" encoding="utf-8"?>
 <World>
-	<Game_Info>
+		<Game_Info>
 		<GameName>Claw of Kraymoar</GameName>
-		<IntroString>you have arived in the world!</IntroString>
+		<IntroString>You are a researcher working in advanced worm hole analysis on the distant Uranus. You hear a crash outside. When you investigate the strange noise you find the most hideous creature you have ever seen, however it is freezing outside an you take pity on this horrendous monster and decide to drag it into the lab to thaw it out. You then return to research, by firing up the worm hole generator to take test data. While waiting for the worm hole generator to fire up you notice that you have recently run out of cats to throw into the worm hole to test if they can inter-dimensionally land on their feet. Its at that moment that you remember the creature you dragged in seems to have a few spare limbs anyway so you take one in compensation for saving his freezing butt. Right after you remove the limb and clean your favorite hacksaw you are standing in front of the wormhole generator when the creature wakes up, sees his brand new stump and for some reason gets enraged and tackles you to the ground causing the claw to fly from your grasp the moment the wormhole is generated. There is a bright flash and everything went white.</IntroString>
 		<XMLName>BaseGame</XMLName>
 	</Game_Info>
 	<Locations>
 		<Location>
-			<Location_Name>LocA</Location_Name>
-			<Location_Description>Location A</Location_Description>
+			<Location_Name>1</Location_Name>
+			<Location_Description>This is certainly not earth, and doesn’t appear to be Uranus either (Although the smell is reminiscent of it).Scraps of what appears to be the research facility are scattered around, but the only useful thing seems to be a length of pipe.</Location_Description>
 			<Location_NodeNumber>0</Location_NodeNumber>
 			<Location_AdjacentNodes>1</Location_AdjacentNodes>
-			<Location_AdjacentDirections>southwest</Location_AdjacentDirections>
-			<Location_AdjacentNodes>2</Location_AdjacentNodes>
-			<Location_AdjacentDirections>southeast</Location_AdjacentDirections>
+			<Location_AdjacentDirections>east</Location_AdjacentDirections>
 			<Location_Required_Item>0</Location_Required_Item>
 			<Location_Required_Use>0</Location_Required_Use>
 			<Location_Required_Open>0</Location_Required_Open>
 			<Location_Required_Close>0</Location_Required_Close>
-			<GridLocationX>512</GridLocationX>
-			<GridLocationY>256</GridLocationY>
+			<GridLocationX>117</GridLocationX>
+			<GridLocationY>736</GridLocationY>
 		</Location>
 		<Location>
-			<Location_Name>LocB</Location_Name>
-			<Location_Description>Location B</Location_Description>
+			<Location_Name>2</Location_Name>
+			<Location_Description>You follow a faint trail through a dense forest, ahead in the trail you see a strange creature. It doesn’t appear to have spotted you yet.</Location_Description>
 			<Location_NodeNumber>1</Location_NodeNumber>
 			<Location_AdjacentNodes>0</Location_AdjacentNodes>
-			<Location_AdjacentDirections>northeast</Location_AdjacentDirections>
+			<Location_AdjacentDirections>west</Location_AdjacentDirections>
 			<Location_AdjacentNodes>2</Location_AdjacentNodes>
 			<Location_AdjacentDirections>east</Location_AdjacentDirections>
+			<Location_Required_Item>0</Location_Required_Item>
+			<Location_Required_Use>0</Location_Required_Use>
+			<Location_Required_Open>0</Location_Required_Open>
+			<Location_Required_Close>0</Location_Required_Close>
+			<GridLocationX>240</GridLocationX>
+			<GridLocationY>740</GridLocationY>
+		</Location>
+		<Location>
+			<Location_Name>3</Location_Name>
+			<Location_Description>You come to a fork in the road. One trail leads northeast, the other leads southeast. The paths around here are dusty but seem well worn. </Location_Description>
+			<Location_NodeNumber>2</Location_NodeNumber>
+			<Location_AdjacentNodes>1</Location_AdjacentNodes>
+			<Location_AdjacentDirections>west</Location_AdjacentDirections>
 			<Location_AdjacentNodes>3</Location_AdjacentNodes>
-			<Location_AdjacentDirections>south</Location_AdjacentDirections>
+			<Location_AdjacentDirections>northeast</Location_AdjacentDirections>
 			<Location_AdjacentNodes>4</Location_AdjacentNodes>
 			<Location_AdjacentDirections>southeast</Location_AdjacentDirections>
 			<Location_Required_Item>0</Location_Required_Item>
 			<Location_Required_Use>0</Location_Required_Use>
 			<Location_Required_Open>0</Location_Required_Open>
 			<Location_Required_Close>0</Location_Required_Close>
-			<GridLocationX>384</GridLocationX>
-			<GridLocationY>384</GridLocationY>
+			<GridLocationX>361</GridLocationX>
+			<GridLocationY>731</GridLocationY>
 		</Location>
 		<Location>
-			<Location_Name>LocC</Location_Name>
-			<Location_Description>Location C</Location_Description>
-			<Location_NodeNumber>2</Location_NodeNumber>
-			<Location_AdjacentNodes>0</Location_AdjacentNodes>
-			<Location_AdjacentDirections>northwest</Location_AdjacentDirections>
-			<Location_AdjacentNodes>1</Location_AdjacentNodes>
-			<Location_AdjacentDirections>west</Location_AdjacentDirections>
-			<Location_AdjacentNodes>3</Location_AdjacentNodes>
-			<Location_AdjacentDirections>southwest</Location_AdjacentDirections>
-			<Location_AdjacentNodes>4</Location_AdjacentNodes>
-			<Location_AdjacentDirections>south</Location_AdjacentDirections>
-			<Location_Required_Item>0</Location_Required_Item>
-			<Location_Required_Use>0</Location_Required_Use>
-			<Location_Required_Open>0</Location_Required_Open>
-			<Location_Required_Close>0</Location_Required_Close>
-			<GridLocationX>640</GridLocationX>
-			<GridLocationY>384</GridLocationY>
-		</Location>
-		<Location>
-			<Location_Name>LocD</Location_Name>
-			<Location_Description>Location D</Location_Description>
+			<Location_Name>4</Location_Name>
+			<Location_Description>You find some more pieces of the research facility scattered about including one storage container. </Location_Description>
 			<Location_NodeNumber>3</Location_NodeNumber>
-			<Location_AdjacentNodes>1</Location_AdjacentNodes>
-			<Location_AdjacentDirections>north</Location_AdjacentDirections>
 			<Location_AdjacentNodes>2</Location_AdjacentNodes>
-			<Location_AdjacentDirections>northeast</Location_AdjacentDirections>
-			<Location_AdjacentNodes>4</Location_AdjacentNodes>
+			<Location_AdjacentDirections>southwest</Location_AdjacentDirections>
+			<Location_AdjacentNodes>5</Location_AdjacentNodes>
 			<Location_AdjacentDirections>east</Location_AdjacentDirections>
 			<Location_Required_Item>0</Location_Required_Item>
 			<Location_Required_Use>0</Location_Required_Use>
 			<Location_Required_Open>0</Location_Required_Open>
 			<Location_Required_Close>0</Location_Required_Close>
-			<GridLocationX>384</GridLocationX>
-			<GridLocationY>512</GridLocationY>
+			<GridLocationX>465</GridLocationX>
+			<GridLocationY>664</GridLocationY>
 		</Location>
 		<Location>
-			<Location_Name>LocE</Location_Name>
-			<Location_Description>Location E</Location_Description>
+			<Location_Name>5</Location_Name>
+			<Location_Description>A small grassy area. There is not much here. </Location_Description>
 			<Location_NodeNumber>4</Location_NodeNumber>
-			<Location_AdjacentNodes>1</Location_AdjacentNodes>
-			<Location_AdjacentDirections>northwest</Location_AdjacentDirections>
 			<Location_AdjacentNodes>2</Location_AdjacentNodes>
-			<Location_AdjacentDirections>north</Location_AdjacentDirections>
+			<Location_AdjacentDirections>northwest</Location_AdjacentDirections>
+			<Location_AdjacentNodes>7</Location_AdjacentNodes>
+			<Location_AdjacentDirections>northeast</Location_AdjacentDirections>
+			<Location_AdjacentNodes>6</Location_AdjacentNodes>
+			<Location_AdjacentDirections>east</Location_AdjacentDirections>
+			<Location_Required_Item>0</Location_Required_Item>
+			<Location_Required_Use>0</Location_Required_Use>
+			<Location_Required_Open>0</Location_Required_Open>
+			<Location_Required_Close>0</Location_Required_Close>
+			<GridLocationX>521</GridLocationX>
+			<GridLocationY>767</GridLocationY>
+		</Location>
+		<Location>
+			<Location_Name>6</Location_Name>
+			<Location_Description>More forest, but it seems to be thinning.</Location_Description>
+			<Location_NodeNumber>5</Location_NodeNumber>
 			<Location_AdjacentNodes>3</Location_AdjacentNodes>
+			<Location_AdjacentDirections>west</Location_AdjacentDirections>
+			<Location_AdjacentNodes>7</Location_AdjacentNodes>
+			<Location_AdjacentDirections>east</Location_AdjacentDirections>
+			<Location_Required_Item>0</Location_Required_Item>
+			<Location_Required_Use>0</Location_Required_Use>
+			<Location_Required_Open>0</Location_Required_Open>
+			<Location_Required_Close>0</Location_Required_Close>
+			<GridLocationX>577</GridLocationX>
+			<GridLocationY>660</GridLocationY>
+		</Location>
+		<Location>
+			<Location_Name>7</Location_Name>
+			<Location_Description>You run into what appears to be an alien that isn’t bent on your destruction.He greets you with “mor thalas”. While talking to him he tells you absolutely must go on pilgrimage like him to see the holy Claw.  </Location_Description>
+			<Location_NodeNumber>6</Location_NodeNumber>
+			<Location_AdjacentNodes>4</Location_AdjacentNodes>
+			<Location_AdjacentDirections>west</Location_AdjacentDirections>
+			<Location_AdjacentNodes>7</Location_AdjacentNodes>
+			<Location_AdjacentDirections>north</Location_AdjacentDirections>\
+			<Location_Required_Item>0</Location_Required_Item>
+			<Location_Required_Use>0</Location_Required_Use>
+			<Location_Required_Open>0</Location_Required_Open>
+			<Location_Required_Close>0</Location_Required_Close>
+			<GridLocationX>717</GridLocationX>
+			<GridLocationY>788</GridLocationY>
+		</Location>
+		<Location>
+			<Location_Name>8</Location_Name>
+			<Location_Description>There is a village up ahead, the sign says "Scrub Village".You hear a tale from the head of the villagers the duke of Brillo that while they were worshipping the mighty Claw that fell from the heavens, the evil crayfish looking beast Kraymoar appeared and stole it then quickly retreated behind the massive stone gate to the east. The only way to open this gate is with the divine key which was lost in the wilds to the north long ago, but to this day no one has been brave enough to retrieve it.  </Location_Description>
+			<Location_NodeNumber>7</Location_NodeNumber>
+			<Location_AdjacentNodes>5</Location_AdjacentNodes>
+			<Location_AdjacentDirections>west</Location_AdjacentDirections>
+			<Location_AdjacentNodes>4</Location_AdjacentNodes>
+			<Location_AdjacentDirections>southwest</Location_AdjacentDirections>
+			<Location_AdjacentNodes>6</Location_AdjacentNodes>
+			<Location_AdjacentDirections>south</Location_AdjacentDirections>
+			<Location_AdjacentNodes>18</Location_AdjacentNodes>
+			<Location_AdjacentDirections>east</Location_AdjacentDirections>
+			<Location_AdjacentNodes>8</Location_AdjacentNodes>
+			<Location_AdjacentDirections>north</Location_AdjacentDirections>
+			<Location_Required_Item>0</Location_Required_Item>
+			<Location_Required_Use>0</Location_Required_Use>
+			<Location_Required_Open>0</Location_Required_Open>
+			<Location_Required_Close>0</Location_Required_Close>
+			<GridLocationX>717</GridLocationX>
+			<GridLocationY>686</GridLocationY>
+		</Location>
+		<Location>
+			<Location_Name>9</Location_Name>
+			<Location_Description>You step into an area unlike anything you have seen before. Strange plants like ferns with tentacles surround you and the area reeks of monsters. </Location_Description>
+			<Location_NodeNumber>8</Location_NodeNumber>
+			<Location_AdjacentNodes>10</Location_AdjacentNodes>
+			<Location_AdjacentDirections>north</Location_AdjacentDirections>
+			<Location_AdjacentNodes>9</Location_AdjacentNodes>
+			<Location_AdjacentDirections>northeast</Location_AdjacentDirections>
+			<Location_AdjacentNodes>11</Location_AdjacentNodes>
+			<Location_AdjacentDirections>northwest</Location_AdjacentDirections>
+			<Location_AdjacentNodes>7</Location_AdjacentNodes>
+			<Location_AdjacentDirections>south</Location_AdjacentDirections>
+			<Location_Required_Item>0</Location_Required_Item>
+			<Location_Required_Use>0</Location_Required_Use>
+			<Location_Required_Open>0</Location_Required_Open>
+			<Location_Required_Close>0</Location_Required_Close>
+			<GridLocationX>712</GridLocationX>
+			<GridLocationY>549</GridLocationY>
+		</Location>
+		<Location>
+			<Location_Name>10</Location_Name>
+			<Location_Description>This area has the same strange ferns in it. Upon further inspection you see several items scattered about.</Location_Description>
+			<Location_NodeNumber>9</Location_NodeNumber>
+			<Location_AdjacentNodes>8</Location_AdjacentNodes>
+			<Location_AdjacentDirections>southeast</Location_AdjacentDirections>
+			<Location_AdjacentNodes>10</Location_AdjacentNodes>
+			<Location_AdjacentDirections>west</Location_AdjacentDirections>
+			<Location_AdjacentNodes>12</Location_AdjacentNodes>
+			<Location_AdjacentDirections>north</Location_AdjacentDirections>
+			<Location_Required_Item>0</Location_Required_Item>
+			<Location_Required_Use>0</Location_Required_Use>
+			<Location_Required_Open>0</Location_Required_Open>
+			<Location_Required_Close>0</Location_Required_Close>
+			<GridLocationX>866</GridLocationX>
+			<GridLocationY>552</GridLocationY>
+		</Location>
+		<Location>
+			<Location_Name>11</Location_Name>
+			<Location_Description>You come across an almost perfectly circular area with many paths. You feel like this may be a representation of how life always moves in a circle, and that it might have some deeper insight into the meaning of life, or it could mean that you are lost in a strange land and your mind is starting to unravel slowly. Its probably the meaning of life though... sure. </Location_Description>
+			<Location_NodeNumber>10</Location_NodeNumber>
+			<Location_AdjacentNodes>8</Location_AdjacentNodes>
+			<Location_AdjacentDirections>south</Location_AdjacentDirections>
+			<Location_AdjacentNodes>9</Location_AdjacentNodes>
+			<Location_AdjacentDirections>east</Location_AdjacentDirections>
+			<Location_AdjacentNodes>14</Location_AdjacentNodes>
+			<Location_AdjacentDirections>north</Location_AdjacentDirections>
+			<Location_Required_Item>0</Location_Required_Item>
+			<Location_Required_Use>0</Location_Required_Use>
+			<Location_Required_Open>0</Location_Required_Open>
+			<Location_Required_Close>0</Location_Required_Close>
+			<GridLocationX>717</GridLocationX>
+			<GridLocationY>449</GridLocationY>
+		</Location>
+		<Location>
+			<Location_Name>12</Location_Name>
+			<Location_Description>There is a small ledge running along a steep cliff face with a long drop below it. You might be able to squeeze by. </Location_Description>
+			<Location_NodeNumber>11</Location_NodeNumber>
+			<Location_AdjacentNodes>8</Location_AdjacentNodes>
+			<Location_AdjacentDirections>southeast</Location_AdjacentDirections>
+			<Location_AdjacentNodes>15</Location_AdjacentNodes>
+			<Location_AdjacentDirections>north</Location_AdjacentDirections>
+			<Location_Required_Item>0</Location_Required_Item>
+			<Location_Required_Use>0</Location_Required_Use>
+			<Location_Required_Open>0</Location_Required_Open>
+			<Location_Required_Close>0</Location_Required_Close>
+			<GridLocationX>532</GridLocationX>
+			<GridLocationY>476</GridLocationY>
+		</Location>
+		<Location>
+			<Location_Name>13</Location_Name>
+			<Location_Description>The landscape has changed slightly here, the ferns have given way to towering mushrooms in an array of spectacular colors.  </Location_Description>
+			<Location_NodeNumber>12</Location_NodeNumber>
+			<Location_AdjacentNodes>9</Location_AdjacentNodes>
+			<Location_AdjacentDirections>south</Location_AdjacentDirections>
+			<Location_AdjacentNodes>14</Location_AdjacentNodes>
+			<Location_AdjacentDirections>west</Location_AdjacentDirections>
+			<Location_AdjacentNodes>13</Location_AdjacentNodes>
+			<Location_AdjacentDirections>north</Location_AdjacentDirections>
+			<Location_Required_Item>0</Location_Required_Item>
+			<Location_Required_Use>0</Location_Required_Use>
+			<Location_Required_Open>0</Location_Required_Open>
+			<Location_Required_Close>0</Location_Required_Close>
+			<GridLocationX>863</GridLocationX>
+			<GridLocationY>431</GridLocationY>
+		</Location>
+		<Location>
+			<Location_Name>14</Location_Name>
+			<Location_Description>There is a wide open area that seems to be surrounded by an almost impenetrable wall of towering mushrooms. </Location_Description>
+			<Location_NodeNumber>13</Location_NodeNumber>
+			<Location_AdjacentNodes>12</Location_AdjacentNodes>
+			<Location_AdjacentDirections>south</Location_AdjacentDirections>
+			<Location_AdjacentNodes>14</Location_AdjacentNodes>
+			<Location_AdjacentDirections>southwest</Location_AdjacentDirections>
+			<Location_AdjacentNodes>16</Location_AdjacentNodes>
 			<Location_AdjacentDirections>west</Location_AdjacentDirections>
 			<Location_Required_Item>0</Location_Required_Item>
 			<Location_Required_Use>0</Location_Required_Use>
 			<Location_Required_Open>0</Location_Required_Open>
 			<Location_Required_Close>0</Location_Required_Close>
-			<GridLocationX>640</GridLocationX>
-			<GridLocationY>512</GridLocationY>
+			<GridLocationX>831</GridLocationX>
+			<GridLocationY>297</GridLocationY>
+		</Location><Location>
+			<Location_Name>15</Location_Name>
+			<Location_Description>There is a statue of a man with a short beard and glasses pointing north. The inscription in the base reads “He points to the heavens and the heavens return NULL. - Great Adventurer Richard Hershey” </Location_Description>
+			<Location_NodeNumber>14</Location_NodeNumber>
+			<Location_AdjacentNodes>10</Location_AdjacentNodes>
+			<Location_AdjacentDirections>south</Location_AdjacentDirections>
+			<Location_AdjacentNodes>12</Location_AdjacentNodes>
+			<Location_AdjacentDirections>east</Location_AdjacentDirections>
+			<Location_AdjacentNodes>13</Location_AdjacentNodes>
+			<Location_AdjacentDirections>northeast</Location_AdjacentDirections>
+			<Location_AdjacentNodes>16</Location_AdjacentNodes>
+			<Location_AdjacentDirections>north</Location_AdjacentDirections>
+			<Location_AdjacentNodes>15</Location_AdjacentNodes>
+			<Location_AdjacentDirections>west</Location_AdjacentDirections>
+			<Location_Required_Item>0</Location_Required_Item>
+			<Location_Required_Use>0</Location_Required_Use>
+			<Location_Required_Open>0</Location_Required_Open>
+			<Location_Required_Close>0</Location_Required_Close>
+			<GridLocationX>703</GridLocationX>
+			<GridLocationY>330</GridLocationY>
+		</Location>
+		<Location>
+			<Location_Name>16</Location_Name>
+			<Location_Description>There is a small open rocky area here, there isn’t much plant life, but there appears to be and old box sitting to the side. </Location_Description>
+			<Location_NodeNumber>15</Location_NodeNumber>
+			<Location_AdjacentNodes>11</Location_AdjacentNodes>
+			<Location_AdjacentDirections>south</Location_AdjacentDirections>
+			<Location_AdjacentNodes>14</Location_AdjacentNodes>
+			<Location_AdjacentDirections>east</Location_AdjacentDirections>
+			<Location_AdjacentNodes>17</Location_AdjacentNodes>
+			<Location_AdjacentDirections>north</Location_AdjacentDirections>
+			<Location_Required_Item>0</Location_Required_Item>
+			<Location_Required_Use>0</Location_Required_Use>
+			<Location_Required_Open>0</Location_Required_Open>
+			<Location_Required_Close>0</Location_Required_Close>
+			<GridLocationX>533</GridLocationX>
+			<GridLocationY>337</GridLocationY>
+		</Location>
+		<Location>
+			<Location_Name>17</Location_Name>
+			<Location_Description>There is a snaking pathway weaving between the local flora, which consists of both the towering mushrooms and the tentacle like ferns.  </Location_Description>
+			<Location_NodeNumber>16</Location_NodeNumber>
+			<Location_AdjacentNodes>13</Location_AdjacentNodes>
+			<Location_AdjacentDirections>east</Location_AdjacentDirections>
+			<Location_AdjacentNodes>14</Location_AdjacentNodes>
+			<Location_AdjacentDirections>south</Location_AdjacentDirections>
+			<Location_AdjacentNodes>17</Location_AdjacentNodes>
+			<Location_AdjacentDirections>west</Location_AdjacentDirections>
+			<Location_Required_Item>0</Location_Required_Item>
+			<Location_Required_Use>0</Location_Required_Use>
+			<Location_Required_Open>0</Location_Required_Open>
+			<Location_Required_Close>0</Location_Required_Close>
+			<GridLocationX>701</GridLocationX>
+			<GridLocationY>251</GridLocationY>
+		</Location>
+		<Location>
+			<Location_Name>18</Location_Name>
+			<Location_Description>You can see the key the villagers spoke of, however it is hanging aroung the neck of a marble statue.As you approach the statue it begins to move. </Location_Description>
+			<Location_NodeNumber>17</Location_NodeNumber>
+			<Location_AdjacentNodes>16</Location_AdjacentNodes>
+			<Location_AdjacentDirections>east</Location_AdjacentDirections>
+			<Location_AdjacentNodes>15</Location_AdjacentNodes>
+			<Location_AdjacentDirections>south</Location_AdjacentDirections>
+			<Location_Required_Item>0</Location_Required_Item>
+			<Location_Required_Use>0</Location_Required_Use>
+			<Location_Required_Open>0</Location_Required_Open>
+			<Location_Required_Close>0</Location_Required_Close>
+			<GridLocationX>483</GridLocationX>
+			<GridLocationY>220</GridLocationY>
+		</Location>
+		<Location>
+			<Location_Name>19</Location_Name>
+			<Location_Description>There stands before you a massive stone gate set between two un-scalable cliffs, you need a key to unlock it.  </Location_Description>
+			<Location_NodeNumber>18</Location_NodeNumber>
+			<Location_AdjacentNodes>19</Location_AdjacentNodes>
+			<Location_AdjacentDirections>east</Location_AdjacentDirections>
+			<Location_AdjacentNodes>7</Location_AdjacentNodes>
+			<Location_AdjacentDirections>west</Location_AdjacentDirections>
+			<Location_Required_Item>18</Location_Required_Item>
+			<Location_Required_Use>0</Location_Required_Use>
+			<Location_Required_Open>0</Location_Required_Open>
+			<Location_Required_Close>0</Location_Required_Close>
+			<GridLocationX>868</GridLocationX>
+			<GridLocationY>679</GridLocationY>
+		</Location>
+		<Location>
+			<Location_Name>20</Location_Name>
+			<Location_Description>This area is covered by trees larger than any you’ve ever seen before. The atmosphere here seems a little off, anything that survives in a place like this must be tough. </Location_Description>
+			<Location_NodeNumber>19</Location_NodeNumber>
+			<Location_AdjacentNodes>18</Location_AdjacentNodes>
+			<Location_AdjacentDirections>west</Location_AdjacentDirections>
+			<Location_AdjacentNodes>20</Location_AdjacentNodes>
+			<Location_AdjacentDirections>south</Location_AdjacentDirections>
+			<Location_AdjacentNodes>21</Location_AdjacentNodes>
+			<Location_AdjacentDirections>east</Location_AdjacentDirections>
+			<Location_Required_Item>0</Location_Required_Item>
+			<Location_Required_Use>0</Location_Required_Use>
+			<Location_Required_Open>0</Location_Required_Open>
+			<Location_Required_Close>0</Location_Required_Close>
+			<GridLocationX>-1024</GridLocationX>
+			<GridLocationY>-1024</GridLocationY>
+		</Location>
+		<Location>
+			<Location_Name>21</Location_Name>
+			<Location_Description>There is only small patches of light filtering down from the impossibly high canopy. </Location_Description>
+			<Location_NodeNumber>20</Location_NodeNumber>
+			<Location_AdjacentNodes>19</Location_AdjacentNodes>
+			<Location_AdjacentDirections>north</Location_AdjacentDirections>
+			<Location_AdjacentNodes>21</Location_AdjacentNodes>
+			<Location_AdjacentDirections>northeast</Location_AdjacentDirections>
+			<Location_AdjacentNodes>22</Location_AdjacentNodes>
+			<Location_AdjacentDirections>east</Location_AdjacentDirections>
+			<Location_Required_Item>0</Location_Required_Item>
+			<Location_Required_Use>0</Location_Required_Use>
+			<Location_Required_Open>0</Location_Required_Open>
+			<Location_Required_Close>0</Location_Required_Close>
+			<GridLocationX>-1024</GridLocationX>
+			<GridLocationY>-1024</GridLocationY>
+		</Location>
+		<Location>
+			<Location_Name>22</Location_Name>
+			<Location_Description>As you enter this area small bug like creatures scuttle away into the darkness. While nothing seems different about this area you can feel an evil aura emanating from the path eastward. </Location_Description>
+			<Location_NodeNumber>21</Location_NodeNumber>
+			<Location_AdjacentNodes>19</Location_AdjacentNodes>
+			<Location_AdjacentDirections>west</Location_AdjacentDirections>
+			<Location_AdjacentNodes>20</Location_AdjacentNodes>
+			<Location_AdjacentDirections>southwest</Location_AdjacentDirections>
+			<Location_AdjacentNodes>23</Location_AdjacentNodes>
+			<Location_AdjacentDirections>east</Location_AdjacentDirections>
+			<Location_Required_Item>0</Location_Required_Item>
+			<Location_Required_Use>0</Location_Required_Use>
+			<Location_Required_Open>0</Location_Required_Open>
+			<Location_Required_Close>0</Location_Required_Close>
+			<GridLocationX>-1024</GridLocationX>
+			<GridLocationY>-1024</GridLocationY>
+		</Location>
+		<Location>
+			<Location_Name>23</Location_Name>
+			<Location_Description>You are beginning to feel like you will never escape this gloomy collection of giants. Just as you start to dismiss this area you begin to feel something watching you from the path to the northeast.  </Location_Description>
+			<Location_NodeNumber>22</Location_NodeNumber>
+			<Location_AdjacentNodes>20</Location_AdjacentNodes>
+			<Location_AdjacentDirections>west</Location_AdjacentDirections>
+			<Location_AdjacentNodes>23</Location_AdjacentNodes>
+			<Location_AdjacentDirections>northeast</Location_AdjacentDirections>
+			<Location_Required_Item>0</Location_Required_Item>
+			<Location_Required_Use>0</Location_Required_Use>
+			<Location_Required_Open>0</Location_Required_Open>
+			<Location_Required_Close>0</Location_Required_Close>
+			<GridLocationX>-1024</GridLocationX>
+			<GridLocationY>-1024</GridLocationY>
+		</Location>
+		<Location>
+			<Location_Name>24</Location_Name>
+			<Location_Description>You enter the area and it seems to be the first break from in the giant trees you’ve seen in ages. On the other side of this small clearing you see the grotesque Kraymoar. </Location_Description>
+			<Location_NodeNumber>23</Location_NodeNumber>
+			<Location_AdjacentNodes>21</Location_AdjacentNodes>
+			<Location_AdjacentDirections>west</Location_AdjacentDirections>
+			<Location_AdjacentNodes>22</Location_AdjacentNodes>
+			<Location_AdjacentDirections>southwest</Location_AdjacentDirections>
+			<Location_Required_Item>0</Location_Required_Item>
+			<Location_Required_Use>0</Location_Required_Use>
+			<Location_Required_Open>0</Location_Required_Open>
+			<Location_Required_Close>0</Location_Required_Close>
+			<GridLocationX>-1024</GridLocationX>
+			<GridLocationY>-1024</GridLocationY>
 		</Location>
 	</Locations>
 	<Items>
-		<Item>
-			<Item_Name>rock</Item_Name>
-			<Item_Description>A heavy blunt object that can be used to hurt Kraymoar</Item_Description>
-			<Item_Location>4</Item_Location>
-			<Item_Weight>5</Item_Weight>
-			<Item_OpenState>-1</Item_OpenState>
-			<Item_Type>0</Item_Type>
-			<Item_Uses>0</Item_Uses>
-			<Item_Strength>0</Item_Strength>
-			<Item_Perception>0</Item_Perception>
-			<Item_Endurance>0</Item_Endurance>
-			<Item_Agility>0</Item_Agility>
-			<Item_Luck>0</Item_Luck>
-			<Item_REQ_Strength>0</Item_REQ_Strength>
-			<Item_REQ_Perception>0</Item_REQ_Perception>
-			<Item_REQ_Endurance>0</Item_REQ_Endurance>
-			<Item_REQ_Agility>0</Item_REQ_Agility>
-			<Item_REQ_Luck>0</Item_REQ_Luck>
-			<Item_Armor>0</Item_Armor>
-			<Item_Attack>0</Item_Attack>
-			<Item_Use_Effect>0</Item_Use_Effect>
-			<Item_Use_Mod>0</Item_Use_Mod>
-			<Item_ID>-3</Item_ID>
-		</Item>
-		<Item>
-			<Item_Name>paper</Item_Name>
-			<Item_Description>lighter and flatter than the rock</Item_Description>
-			<Item_Location>2</Item_Location>
-			<Item_Weight>1</Item_Weight>
-			<Item_OpenState>-1</Item_OpenState>
-			<Item_Type>0</Item_Type>
-			<Item_Uses>0</Item_Uses>
-			<Item_Strength>0</Item_Strength>
-			<Item_Perception>0</Item_Perception>
-			<Item_Endurance>0</Item_Endurance>
-			<Item_Agility>0</Item_Agility>
-			<Item_Luck>0</Item_Luck>
-			<Item_REQ_Strength>0</Item_REQ_Strength>
-			<Item_REQ_Perception>0</Item_REQ_Perception>
-			<Item_REQ_Endurance>0</Item_REQ_Endurance>
-			<Item_REQ_Agility>0</Item_REQ_Agility>
-			<Item_REQ_Luck>0</Item_REQ_Luck>
-			<Item_Armor>0</Item_Armor>
-			<Item_Attack>0</Item_Attack>
-			<Item_Use_Effect>0</Item_Use_Effect>
-			<Item_Use_Mod>0</Item_Use_Mod>
-			<Item_ID>-2</Item_ID>
-		</Item>
-		<Item>
-			<Item_Name>scissors</Item_Name>
-			<Item_Description>It would be able to hurt anyone if they weren't safety scissors</Item_Description>
-			<Item_Location>-1</Item_Location>
-			<Item_Weight>2</Item_Weight>
-			<Item_OpenState>-1</Item_OpenState>
-			<Item_Type>8</Item_Type>
-			<Item_Uses>0</Item_Uses>
-			<Item_Strength>0</Item_Strength>
-			<Item_Perception>0</Item_Perception>
-			<Item_Endurance>0</Item_Endurance>
-			<Item_Agility>0</Item_Agility>
-			<Item_Luck>0</Item_Luck>
-			<Item_REQ_Strength>0</Item_REQ_Strength>
-			<Item_REQ_Perception>0</Item_REQ_Perception>
-			<Item_REQ_Endurance>0</Item_REQ_Endurance>
-			<Item_REQ_Agility>0</Item_REQ_Agility>
-			<Item_REQ_Luck>0</Item_REQ_Luck>
-			<Item_Armor>0</Item_Armor>
-			<Item_Attack>0</Item_Attack>
-			<Item_Use_Effect>0</Item_Use_Effect>
-			<Item_Use_Mod>0</Item_Use_Mod>
-			<Item_ID>-1</Item_ID>
-		</Item>
 		<Item>
 			<Item_Name>cap</Item_Name>
 			<Item_Description>The cap of Dunesay</Item_Description>
@@ -189,13 +425,181 @@
 			<Item_Attack>0</Item_Attack>
 			<Item_Use_Effect>0</Item_Use_Effect>
 			<Item_Use_Mod>0</Item_Use_Mod>
-			<Item_ID>-4</Item_ID>
+			<Item_ID>4</Item_ID>
 		</Item>
 		<Item>
-			<Item_Name>hat</Item_Name>
-			<Item_Description>The hat of Dunesay</Item_Description>
-			<Item_Location>2</Item_Location>
+			<Item_Name>knit-helmet</Item_Name>
+			<Item_Description>A helmet knit of strong wool, better for warmth than protection</Item_Description>
+			<Item_Location>6</Item_Location>
+			<Item_Weight>1</Item_Weight>
+			<Item_OpenState>1</Item_OpenState>
+			<Item_Type>2</Item_Type>
+			<Item_Uses>0</Item_Uses>
+			<Item_Strength>0</Item_Strength>
+			<Item_Perception>0</Item_Perception>
+			<Item_Endurance>0</Item_Endurance>
+			<Item_Agility>0</Item_Agility>
+			<Item_Luck>0</Item_Luck>
+			<Item_REQ_Strength>0</Item_REQ_Strength>
+			<Item_REQ_Perception>0</Item_REQ_Perception>
+			<Item_REQ_Endurance>0</Item_REQ_Endurance>
+			<Item_REQ_Agility>0</Item_REQ_Agility>
+			<Item_REQ_Luck>0</Item_REQ_Luck>
+			<Item_Armor>1</Item_Armor>
+			<Item_Attack>0</Item_Attack>
+			<Item_Use_Effect>0</Item_Use_Effect>
+			<Item_Use_Mod>0</Item_Use_Mod>
+			<Item_ID>1</Item_ID>
+		</Item>
+		<Item>
+			<Item_Name>lab-coat</Item_Name>
+			<Item_Description>Lab coat of SCIENCE!!!</Item_Description>
+			<Item_Location>-3</Item_Location>
 			<Item_Weight>2</Item_Weight>
+			<Item_OpenState>1</Item_OpenState>
+			<Item_Type>3</Item_Type>
+			<Item_Uses>0</Item_Uses>
+			<Item_Strength>0</Item_Strength>
+			<Item_Perception>1</Item_Perception>
+			<Item_Endurance>0</Item_Endurance>
+			<Item_Agility>0</Item_Agility>
+			<Item_Luck>0</Item_Luck>
+			<Item_REQ_Strength>0</Item_REQ_Strength>
+			<Item_REQ_Perception>0</Item_REQ_Perception>
+			<Item_REQ_Endurance>0</Item_REQ_Endurance>
+			<Item_REQ_Agility>0</Item_REQ_Agility>
+			<Item_REQ_Luck>0</Item_REQ_Luck>
+			<Item_Armor>2</Item_Armor>
+			<Item_Use_Effect>0</Item_Use_Effect>
+			<Item_Use_Mod>0</Item_Use_Mod>
+			<Item_Attack>0</Item_Attack>
+			<Item_ID>5</Item_ID>
+		</Item>
+		<Item>
+			<Item_Name>khakis</Item_Name>
+			<Item_Description>like jake from statefarm</Item_Description>
+			<Item_Location>-6</Item_Location>
+			<Item_Weight>1</Item_Weight>
+			<Item_OpenState>1</Item_OpenState>
+			<Item_Type>6</Item_Type>
+			<Item_Uses>0</Item_Uses>
+			<Item_Strength>0</Item_Strength>
+			<Item_Perception>0</Item_Perception>
+			<Item_Endurance>0</Item_Endurance>
+			<Item_Agility>0</Item_Agility>
+			<Item_Luck>0</Item_Luck>
+			<Item_REQ_Strength>0</Item_REQ_Strength>
+			<Item_REQ_Perception>0</Item_REQ_Perception>
+			<Item_REQ_Endurance>0</Item_REQ_Endurance>
+			<Item_REQ_Agility>0</Item_REQ_Agility>
+			<Item_REQ_Luck>0</Item_REQ_Luck>
+			<Item_Armor>1</Item_Armor>
+			<Item_Use_Effect>0</Item_Use_Effect>
+			<Item_Use_Mod>0</Item_Use_Mod>
+			<Item_Attack>0</Item_Attack>
+			<Item_ID>6</Item_ID>
+		</Item>
+		<Item>
+			<Item_Name>crocs</Item_Name>
+			<Item_Description>why would you wear these?</Item_Description>
+			<Item_Location>-7</Item_Location>
+			<Item_Weight>3</Item_Weight>
+			<Item_OpenState>1</Item_OpenState>
+			<Item_Type>7</Item_Type>
+			<Item_Uses>0</Item_Uses>
+			<Item_Strength>0</Item_Strength>
+			<Item_Perception>0</Item_Perception>
+			<Item_Endurance>0</Item_Endurance>
+			<Item_Agility>0</Item_Agility>
+			<Item_Luck>0</Item_Luck>
+			<Item_REQ_Strength>0</Item_REQ_Strength>
+			<Item_REQ_Perception>0</Item_REQ_Perception>
+			<Item_REQ_Endurance>0</Item_REQ_Endurance>
+			<Item_REQ_Agility>0</Item_REQ_Agility>
+			<Item_REQ_Luck>0</Item_REQ_Luck>
+			<Item_Armor>0</Item_Armor>
+			<Item_Use_Effect>0</Item_Use_Effect>
+			<Item_Use_Mod>0</Item_Use_Mod>
+			<Item_Attack>0</Item_Attack>
+			<Item_ID>7</Item_ID>
+		</Item>
+		<Item>
+			<Item_Name>gloves</Item_Name>
+			<Item_Description>Mad scientist gloves</Item_Description>
+			<Item_Location>-4</Item_Location>
+			<Item_Weight>1</Item_Weight>
+			<Item_OpenState>1</Item_OpenState>
+			<Item_Type>4</Item_Type>
+			<Item_Uses>0</Item_Uses>
+			<Item_Strength>0</Item_Strength>
+			<Item_Perception>0</Item_Perception>
+			<Item_Endurance>0</Item_Endurance>
+			<Item_Agility>0</Item_Agility>
+			<Item_Luck>0</Item_Luck>
+			<Item_REQ_Strength>0</Item_REQ_Strength>
+			<Item_REQ_Perception>0</Item_REQ_Perception>
+			<Item_REQ_Endurance>0</Item_REQ_Endurance>
+			<Item_REQ_Agility>0</Item_REQ_Agility>
+			<Item_REQ_Luck>0</Item_REQ_Luck>
+			<Item_Armor>1</Item_Armor>
+			<Item_Use_Effect>0</Item_Use_Effect>
+			<Item_Use_Mod>0</Item_Use_Mod>
+			<Item_Attack>1</Item_Attack>
+			<Item_ID>8</Item_ID>
+		</Item>
+		<Item>
+			<Item_Name>utility-belt</Item_Name>
+			<Item_Description>Utility belt that can hold many tools. if only you had tools...</Item_Description>
+			<Item_Location>3</Item_Location>
+			<Item_Weight>2</Item_Weight>
+			<Item_OpenState>1</Item_OpenState>
+			<Item_Type>5</Item_Type>
+			<Item_Uses>0</Item_Uses>
+			<Item_Strength>0</Item_Strength>
+			<Item_Perception>0</Item_Perception>
+			<Item_Endurance>0</Item_Endurance>
+			<Item_Agility>0</Item_Agility>
+			<Item_Luck>0</Item_Luck>
+			<Item_REQ_Strength>0</Item_REQ_Strength>
+			<Item_REQ_Perception>0</Item_REQ_Perception>
+			<Item_REQ_Endurance>0</Item_REQ_Endurance>
+			<Item_REQ_Agility>0</Item_REQ_Agility>
+			<Item_REQ_Luck>0</Item_REQ_Luck>
+			<Item_Armor>2</Item_Armor>
+			<Item_Use_Effect>0</Item_Use_Effect>
+			<Item_Use_Mod>0</Item_Use_Mod>
+			<Item_Attack>0</Item_Attack>
+			<Item_ID>9</Item_ID>
+		</Item>
+		<Item>
+			<Item_Name>rock</Item_Name>
+			<Item_Description>an inscription in it reads "immovable object"</Item_Description>
+			<Item_Location>4</Item_Location>
+			<Item_Weight>1000</Item_Weight>
+			<Item_OpenState>1</Item_OpenState>
+			<Item_Type>0</Item_Type>
+			<Item_Uses>0</Item_Uses>
+			<Item_Strength>0</Item_Strength>
+			<Item_Perception>0</Item_Perception>
+			<Item_Endurance>0</Item_Endurance>
+			<Item_Agility>0</Item_Agility>
+			<Item_Luck>0</Item_Luck>
+			<Item_REQ_Strength>0</Item_REQ_Strength>
+			<Item_REQ_Perception>0</Item_REQ_Perception>
+			<Item_REQ_Endurance>0</Item_REQ_Endurance>
+			<Item_REQ_Agility>0</Item_REQ_Agility>
+			<Item_REQ_Luck>0</Item_REQ_Luck>
+			<Item_Armor>0</Item_Armor>
+			<Item_Use_Effect>0</Item_Use_Effect>
+			<Item_Use_Mod>0</Item_Use_Mod>
+			<Item_Attack>0</Item_Attack>
+			<Item_ID>10</Item_ID>
+		</Item>
+		<Item>
+			<Item_Name>cat</Item_Name>
+			<Item_Description>it appears to be one of the cats from your experimentation.It looks tasty, but Eric said no eating cats, although it could be worn as a hat.</Item_Description>
+			<Item_Location>0</Item_Location>
+			<Item_Weight>0</Item_Weight>
 			<Item_OpenState>1</Item_OpenState>
 			<Item_Type>2</Item_Type>
 			<Item_Uses>0</Item_Uses>
@@ -210,20 +614,261 @@
 			<Item_REQ_Agility>0</Item_REQ_Agility>
 			<Item_REQ_Luck>0</Item_REQ_Luck>
 			<Item_Armor>0</Item_Armor>
-			<Item_Attack>0</Item_Attack>
 			<Item_Use_Effect>0</Item_Use_Effect>
 			<Item_Use_Mod>0</Item_Use_Mod>
-			<Item_ID>1</Item_ID>
+			<Item_Attack>1</Item_Attack>
+			<Item_ID>11</Item_ID>
+		</Item>
+		<Item>
+			<Item_Name>pipe</Item_Name>
+			<Item_Description>a length of pipe from the destroyed research facility</Item_Description>
+			<Item_Location>0</Item_Location>
+			<Item_Weight>2</Item_Weight>
+			<Item_OpenState>1</Item_OpenState>
+			<Item_Type>8</Item_Type>
+			<Item_Uses>0</Item_Uses>
+			<Item_Strength>0</Item_Strength>
+			<Item_Perception>0</Item_Perception>
+			<Item_Endurance>0</Item_Endurance>
+			<Item_Agility>0</Item_Agility>
+			<Item_Luck>0</Item_Luck>
+			<Item_REQ_Strength>0</Item_REQ_Strength>
+			<Item_REQ_Perception>0</Item_REQ_Perception>
+			<Item_REQ_Endurance>0</Item_REQ_Endurance>
+			<Item_REQ_Agility>0</Item_REQ_Agility>
+			<Item_REQ_Luck>0</Item_REQ_Luck>
+			<Item_Armor>0</Item_Armor>
+			<Item_Use_Effect>0</Item_Use_Effect>
+			<Item_Use_Mod>0</Item_Use_Mod>
+			<Item_Attack>5</Item_Attack>
+			<Item_ID>12</Item_ID>
+		</Item>
+		<Item>
+			<Item_Name>laser-knife</Item_Name>
+			<Item_Description>used for toasting bread as you slice it.</Item_Description>
+			<Item_Location>9</Item_Location>
+			<Item_Weight>2</Item_Weight>
+			<Item_OpenState>1</Item_OpenState>
+			<Item_Type>8</Item_Type>
+			<Item_Uses>0</Item_Uses>
+			<Item_Strength>0</Item_Strength>
+			<Item_Perception>0</Item_Perception>
+			<Item_Endurance>0</Item_Endurance>
+			<Item_Agility>0</Item_Agility>
+			<Item_Luck>0</Item_Luck>
+			<Item_REQ_Strength>0</Item_REQ_Strength>
+			<Item_REQ_Perception>0</Item_REQ_Perception>
+			<Item_REQ_Endurance>0</Item_REQ_Endurance>
+			<Item_REQ_Agility>0</Item_REQ_Agility>
+			<Item_REQ_Luck>0</Item_REQ_Luck>
+			<Item_Armor>0</Item_Armor>
+			<Item_Use_Effect>0</Item_Use_Effect>
+			<Item_Use_Mod>0</Item_Use_Mod>
+			<Item_Attack>10</Item_Attack>
+			<Item_ID>13</Item_ID>
+		</Item>
+		<Item>
+			<Item_Name>chaps</Item_Name>
+			<Item_Description>leather chaps retains armor value even while pooping</Item_Description>
+			<Item_Location>13</Item_Location>
+			<Item_Weight>2</Item_Weight>
+			<Item_OpenState>1</Item_OpenState>
+			<Item_Type>6</Item_Type>
+			<Item_Uses>0</Item_Uses>
+			<Item_Strength>0</Item_Strength>
+			<Item_Perception>0</Item_Perception>
+			<Item_Endurance>0</Item_Endurance>
+			<Item_Agility>0</Item_Agility>
+			<Item_Luck>0</Item_Luck>
+			<Item_REQ_Strength>0</Item_REQ_Strength>
+			<Item_REQ_Perception>0</Item_REQ_Perception>
+			<Item_REQ_Endurance>0</Item_REQ_Endurance>
+			<Item_REQ_Agility>0</Item_REQ_Agility>
+			<Item_REQ_Luck>0</Item_REQ_Luck>
+			<Item_Armor>0</Item_Armor>
+			<Item_Use_Effect>3</Item_Use_Effect>
+			<Item_Use_Mod>0</Item_Use_Mod>
+			<Item_Attack>0</Item_Attack>
+			<Item_ID>14</Item_ID>
+		</Item>
+		<Item>
+			<Item_Name>fingerless-gloves</Item_Name>
+			<Item_Description>used for toasting bread as you slice it.</Item_Description>
+			<Item_Location>16</Item_Location>
+			<Item_Weight>2</Item_Weight>
+			<Item_OpenState>1</Item_OpenState>
+			<Item_Type>4</Item_Type>
+			<Item_Uses>0</Item_Uses>
+			<Item_Strength>-1</Item_Strength>
+			<Item_Perception>-1</Item_Perception>
+			<Item_Endurance>-1</Item_Endurance>
+			<Item_Agility>-1</Item_Agility>
+			<Item_Luck>-1</Item_Luck>
+			<Item_REQ_Strength>0</Item_REQ_Strength>
+			<Item_REQ_Perception>0</Item_REQ_Perception>
+			<Item_REQ_Endurance>0</Item_REQ_Endurance>
+			<Item_REQ_Agility>0</Item_REQ_Agility>
+			<Item_REQ_Luck>0</Item_REQ_Luck>
+			<Item_Armor>0</Item_Armor>
+			<Item_Use_Effect>0</Item_Use_Effect>
+			<Item_Use_Mod>0</Item_Use_Mod>
+			<Item_Attack>0</Item_Attack>
+			<Item_ID>15</Item_ID>
+		</Item>
+		<Item>
+			<Item_Name>gauntlets</Item_Name>
+			<Item_Description>Gauntlets of gauntleting</Item_Description>
+			<Item_Location>11</Item_Location>
+			<Item_Weight>3</Item_Weight>
+			<Item_OpenState>1</Item_OpenState>
+			<Item_Type>4</Item_Type>
+			<Item_Uses>0</Item_Uses>
+			<Item_Strength>1</Item_Strength>
+			<Item_Perception>0</Item_Perception>
+			<Item_Endurance>0</Item_Endurance>
+			<Item_Agility>0</Item_Agility>
+			<Item_Luck>0</Item_Luck>
+			<Item_REQ_Strength>0</Item_REQ_Strength>
+			<Item_REQ_Perception>0</Item_REQ_Perception>
+			<Item_REQ_Endurance>0</Item_REQ_Endurance>
+			<Item_REQ_Agility>0</Item_REQ_Agility>
+			<Item_REQ_Luck>0</Item_REQ_Luck>
+			<Item_Armor>4</Item_Armor>
+			<Item_Use_Effect>0</Item_Use_Effect>
+			<Item_Use_Mod>0</Item_Use_Mod>
+			<Item_Attack>1</Item_Attack>
+			<Item_ID>17</Item_ID>
+		</Item>
+		<Item>
+			<Item_Name>key</Item_Name>
+			<Item_Description>Shiny golden key, it must be important</Item_Description>
+			<Item_Location>17</Item_Location>
+			<Item_Weight>0</Item_Weight>
+			<Item_OpenState>1</Item_OpenState>
+			<Item_Type>0</Item_Type>
+			<Item_Uses>0</Item_Uses>
+			<Item_Strength>0</Item_Strength>
+			<Item_Perception>0</Item_Perception>
+			<Item_Endurance>0</Item_Endurance>
+			<Item_Agility>0</Item_Agility>
+			<Item_Luck>0</Item_Luck>
+			<Item_REQ_Strength>0</Item_REQ_Strength>
+			<Item_REQ_Perception>0</Item_REQ_Perception>
+			<Item_REQ_Endurance>0</Item_REQ_Endurance>
+			<Item_REQ_Agility>0</Item_REQ_Agility>
+			<Item_REQ_Luck>0</Item_REQ_Luck>
+			<Item_Armor>0</Item_Armor>
+			<Item_Use_Effect>0</Item_Use_Effect>
+			<Item_Use_Mod>0</Item_Use_Mod>
+			<Item_Attack>0</Item_Attack>
+			<Item_ID>18</Item_ID>
+		</Item>
+		<Item>
+			<Item_Name>knights-helmet</Item_Name>
+			<Item_Description>Helmet of a brave knight. it is unscracthed as the brave knight didnt feel the need to wear it in battle</Item_Description>
+			<Item_Location>9</Item_Location>
+			<Item_Weight>2</Item_Weight>
+			<Item_OpenState>1</Item_OpenState>
+			<Item_Type>2</Item_Type>
+			<Item_Uses>0</Item_Uses>
+			<Item_Strength>1</Item_Strength>
+			<Item_Perception>1</Item_Perception>
+			<Item_Endurance>0</Item_Endurance>
+			<Item_Agility>0</Item_Agility>
+			<Item_Luck>0</Item_Luck>
+			<Item_REQ_Strength>0</Item_REQ_Strength>
+			<Item_REQ_Perception>0</Item_REQ_Perception>
+			<Item_REQ_Endurance>0</Item_REQ_Endurance>
+			<Item_REQ_Agility>0</Item_REQ_Agility>
+			<Item_REQ_Luck>0</Item_REQ_Luck>
+			<Item_Armor>3</Item_Armor>
+			<Item_Use_Effect>0</Item_Use_Effect>
+			<Item_Use_Mod>0</Item_Use_Mod>
+			<Item_Attack>0</Item_Attack>
+			<Item_ID>19</Item_ID>
+		</Item>
+		<Item>
+			<Item_Name>boots</Item_Name>
+			<Item_Description>savety boots</Item_Description>
+			<Item_Location>9</Item_Location>
+			<Item_Weight>2</Item_Weight>
+			<Item_OpenState>1</Item_OpenState>
+			<Item_Type>7</Item_Type>
+			<Item_Uses>0</Item_Uses>
+			<Item_Strength>1</Item_Strength>
+			<Item_Perception>1</Item_Perception>
+			<Item_Endurance>0</Item_Endurance>
+			<Item_Agility>0</Item_Agility>
+			<Item_Luck>0</Item_Luck>
+			<Item_REQ_Strength>0</Item_REQ_Strength>
+			<Item_REQ_Perception>0</Item_REQ_Perception>
+			<Item_REQ_Endurance>0</Item_REQ_Endurance>
+			<Item_REQ_Agility>0</Item_REQ_Agility>
+			<Item_REQ_Luck>0</Item_REQ_Luck>
+			<Item_Armor>3</Item_Armor>
+			<Item_Use_Effect>0</Item_Use_Effect>
+			<Item_Use_Mod>0</Item_Use_Mod>
+			<Item_Attack>0</Item_Attack>
+			<Item_ID>20</Item_ID>
+		</Item>
+
+		<Item>
+			<Item_Name>buster-sword</Item_Name>
+			<Item_Description>every game needs a giant oversized sword</Item_Description>
+			<Item_Location>9</Item_Location>
+			<Item_Weight>4</Item_Weight>
+			<Item_OpenState>1</Item_OpenState>
+			<Item_Type>8</Item_Type>
+			<Item_Uses>0</Item_Uses>
+			<Item_Strength>0</Item_Strength>
+			<Item_Perception>0</Item_Perception>
+			<Item_Endurance>0</Item_Endurance>
+			<Item_Agility>0</Item_Agility>
+			<Item_Luck>0</Item_Luck>
+			<Item_REQ_Strength>12</Item_REQ_Strength>
+			<Item_REQ_Perception>0</Item_REQ_Perception>
+			<Item_REQ_Endurance>0</Item_REQ_Endurance>
+			<Item_REQ_Agility>0</Item_REQ_Agility>
+			<Item_REQ_Luck>0</Item_REQ_Luck>
+			<Item_Armor>0</Item_Armor>
+			<Item_Use_Effect>0</Item_Use_Effect>
+			<Item_Use_Mod>0</Item_Use_Mod>
+			<Item_Attack>14</Item_Attack>
+			<Item_ID>21</Item_ID>
+		</Item>
+		<Item>
+			<Item_Name>anti-pointers</Item_Name>
+			<Item_Description>it is a book written by Aarron Kramer detailing how bad pointers are and why they should not be used.It looks like it could be worn as a hat.</Item_Description>
+			<Item_Location>21</Item_Location>
+			<Item_Weight>1</Item_Weight>
+			<Item_OpenState>1</Item_OpenState>
+			<Item_Type>2</Item_Type>
+			<Item_Uses>0</Item_Uses>
+			<Item_Strength>0</Item_Strength>
+			<Item_Perception>5</Item_Perception>
+			<Item_Endurance>0</Item_Endurance>
+			<Item_Agility>0</Item_Agility>
+			<Item_Luck>-1</Item_Luck>
+			<Item_REQ_Strength>0</Item_REQ_Strength>
+			<Item_REQ_Perception>0</Item_REQ_Perception>
+			<Item_REQ_Endurance>0</Item_REQ_Endurance>
+			<Item_REQ_Agility>0</Item_REQ_Agility>
+			<Item_REQ_Luck>0</Item_REQ_Luck>
+			<Item_Armor>0</Item_Armor>
+			<Item_Use_Effect>0</Item_Use_Effect>
+			<Item_Use_Mod>0</Item_Use_Mod>
+			<Item_Attack>0</Item_Attack>
+			<Item_ID>22</Item_ID>
 		</Item>
 		<Item>
 			<Item_Name>potion</Item_Name>
-			<Item_Description>The potion of health</Item_Description>
+			<Item_Description>The potion of strength</Item_Description>
 			<Item_Location>2</Item_Location>
 			<Item_Weight>2</Item_Weight>
 			<Item_OpenState>1</Item_OpenState>
 			<Item_Type>1</Item_Type>
 			<Item_Uses>1</Item_Uses>
-			<Item_Strength>0</Item_Strength>
+			<Item_Strength>2</Item_Strength>
 			<Item_Perception>0</Item_Perception>
 			<Item_Endurance>0</Item_Endurance>
 			<Item_Agility>0</Item_Agility>
@@ -241,12 +886,12 @@
 		</Item>
 		<Item>
 			<Item_Name>potion2</Item_Name>
-			<Item_Description>The potion of health</Item_Description>
+			<Item_Description>LOLZ only newfags use potions, get wrktfgt.</Item_Description>
 			<Item_Location>2</Item_Location>
-			<Item_Weight>2</Item_Weight>
+			<Item_Weight>8</Item_Weight>
 			<Item_OpenState>1</Item_OpenState>
-			<Item_Type>1</Item_Type>
-			<Item_Uses>2</Item_Uses>
+			<Item_Type>0</Item_Type>
+			<Item_Uses>0</Item_Uses>
 			<Item_Strength>0</Item_Strength>
 			<Item_Perception>0</Item_Perception>
 			<Item_Endurance>0</Item_Endurance>
@@ -263,16 +908,48 @@
 			<Item_Attack>0</Item_Attack>
 			<Item_ID>2</Item_ID>
 		</Item>
+		<Item>
+			<Item_Name>potion3</Item_Name>
+			<Item_Description>Frenzy potion.Contains a lot of caffeine</Item_Description>
+			<Item_Location>20</Item_Location>
+			<Item_Weight>1</Item_Weight>
+			<Item_OpenState>1</Item_OpenState>
+			<Item_Type>1</Item_Type>
+			<Item_Uses>1</Item_Uses>
+			<Item_Strength>2</Item_Strength>
+			<Item_Perception>-2</Item_Perception>
+			<Item_Endurance>-2</Item_Endurance>
+			<Item_Agility>5</Item_Agility>
+			<Item_Luck>0</Item_Luck>
+			<Item_REQ_Strength>0</Item_REQ_Strength>
+			<Item_REQ_Perception>0</Item_REQ_Perception>
+			<Item_REQ_Endurance>0</Item_REQ_Endurance>
+			<Item_REQ_Agility>0</Item_REQ_Agility>
+			<Item_REQ_Luck>0</Item_REQ_Luck>
+			<Item_Armor>0</Item_Armor>
+			<Item_Use_Effect>0</Item_Use_Effect>
+			<Item_Use_Mod>0</Item_Use_Mod>
+			<Item_Attack>0</Item_Attack>
+			<Item_ID>16</Item_ID>
+		</Item>
 	</Items>
 	<Containers>
 		<Container>
 			<Container_Name>container 1</Container_Name>
-			<Container_Description> a box</Container_Description>
-			<Container_Location> 2</Container_Location>
+			<Container_Description>a chest from the research facility</Container_Description>
+			<Container_Location> 3</Container_Location>
 			<Container_OpenState> 0</Container_OpenState>
 			<Container_Items> 1</Container_Items>
 			<Container_Item_Chance>1</Container_Item_Chance>
 			<Container_Items> 3</Container_Items>
+			<Container_Item_Chance>.5</Container_Item_Chance>
+		</Container>
+		<Container>
+			<Container_Name>container 2</Container_Name>
+			<Container_Description>a small chest that was almost hidden by foliage</Container_Description>
+			<Container_Location> 9</Container_Location>
+			<Container_OpenState> 0</Container_OpenState>
+			<Container_Items> 13</Container_Items>
 			<Container_Item_Chance>.5</Container_Item_Chance>
 		</Container>
 	</Containers>

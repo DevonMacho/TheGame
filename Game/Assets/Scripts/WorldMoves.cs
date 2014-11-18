@@ -5,43 +5,48 @@ using System.Collections.Generic;
 
 public class WorldMoves : MonoBehaviour
 {
-    public static int totalEnemies = 3;
-    public static List<Enemies.Enemy> enemy = new List<Enemies.Enemy>();
+    public static int totalEnemies;
+
+
+    public static void initEnemyList()
+    {
+        WorldData.gameData.Enemy = new List<Enemies.Enemy>();
+        WorldData.gameData.Enemy .Add(new Enemies.Enemy("Electric Elemental", "Shocky Shcok Shock!!!", 20 , 5, 40,1));
+    }
 
     public static void worldMoves()
     {
-
-        for (int i = 0; i<totalEnemies; i++)
+        totalEnemies = WorldData.gameData.Enemy .Count;
+        for (int i = 0; i < totalEnemies; i++)
         {
-            if (enemy [i].location == WorldData.gameData.currentLoc)
+            if (WorldData.gameData.Enemy  [i].location == WorldData.gameData.currentLoc)
             {                     
                 if (Mathf.Clamp((int)Mathf.Ceil(Random.Range(0, 9)), 0, 10) <= 7)
                 {
-                    enemyAction(enemy[i]);
+                    enemyAction(WorldData.gameData.Enemy [i]);
                     break;
                 }
             }         
 
 
-            for (int j = 0; j< (WorldData.gameData.Locations[enemy[i].location].getAdjacentNodes()).Length; j++)
+            for (int j = 0; j< (WorldData.gameData.Locations[WorldData.gameData.Enemy [i].location].getAdjacentNodes()).Length; j++)
             {
-                if (WorldData.gameData.Locations [WorldData.gameData.Locations [enemy [i].location].getAdjacentNodes() [j]].EnemyAtLocation == true)
-                    ;
+                if (WorldData.gameData.Locations [WorldData.gameData.Locations [WorldData.gameData.Enemy  [i].location].getAdjacentNodes() [j]].EnemyAtLocation == true)
                 {
                     if (Mathf.Clamp((int)Mathf.Ceil(Random.Range(0, 1)), 0, 2) == 1)
                     {
-                        LocationData.Location a = WorldData.gameData.Locations [enemy [i].location];
-                        WorldData.gameData.Locations.Remove(WorldData.gameData.Locations [enemy [i].location]);
+                        LocationData.Location a = WorldData.gameData.Locations [WorldData.gameData.Enemy  [i].location];
+                        WorldData.gameData.Locations.Remove(WorldData.gameData.Locations [WorldData.gameData.Enemy  [i].location]);
                         a.EnemyAtLocation = true;
                         WorldData.gameData.Locations.Add(a);
 
-                        Enemies.Enemy temp = enemy[i];
-                        enemy.Remove(enemy[i]);
-                        temp.location = WorldData.gameData.Locations [WorldData.gameData.Locations [enemy [i].location].getAdjacentNodes() [j]].getNodeNumber();
-                        enemy.Add(temp);
+                        Enemies.Enemy temp = WorldData.gameData.Enemy [i];
+                        WorldData.gameData.Enemy .Remove(WorldData.gameData.Enemy [i]);
+                        temp.location = WorldData.gameData.Locations [WorldData.gameData.Locations [WorldData.gameData.Enemy  [i].location].getAdjacentNodes() [j]].getNodeNumber();
+                        WorldData.gameData.Enemy .Add(temp);
 
-                        a= WorldData.gameData.Locations [enemy [i].location];
-                        WorldData.gameData.Locations.Remove(WorldData.gameData.Locations [enemy [i].location]);
+                        a= WorldData.gameData.Locations [WorldData.gameData.Enemy  [i].location];
+                        WorldData.gameData.Locations.Remove(WorldData.gameData.Locations [WorldData.gameData.Enemy  [i].location]);
                         a.EnemyAtLocation=false;
                         WorldData.gameData.Locations.Add(a);
                         break;
@@ -96,7 +101,8 @@ public class WorldMoves : MonoBehaviour
     {
         const float combatConstant = .01f;
         const float e = 2.71828f;
-        int damage = Mathf.Clamp((int)Mathf.Ceil(Random.Range(-3, 3)), -3, 3) + (int)(enemy.attack * ((Mathf.Pow (e,-1 * combatConstant * WorldData.gameData.Stats.Endurance))));
+        int damage = Mathf.Clamp((int)Mathf.Ceil(Random.Range(0, (int)(enemy.attack * ((Mathf.Pow (e,-1 * combatConstant * WorldData.gameData.Stats.Endurance)))))), 0, (int)(enemy.attack * ((Mathf.Pow (e,-1 * combatConstant * WorldData.gameData.Stats.Endurance)))));
+
 
         return damage;  
         
@@ -107,7 +113,6 @@ public class WorldMoves : MonoBehaviour
         for (int j = 0; j< (WorldData.gameData.Locations[en.location].getAdjacentNodes()).Length; j++)
         {
             if (WorldData.gameData.Locations [WorldData.gameData.Locations [en.location].getAdjacentNodes() [j]].EnemyAtLocation == true)
-                ;
             {
                 LocationData.Location a = WorldData.gameData.Locations [en.location];
                 WorldData.gameData.Locations.Remove(WorldData.gameData.Locations [en.location]);
@@ -115,9 +120,9 @@ public class WorldMoves : MonoBehaviour
                 WorldData.gameData.Locations.Add(a);
                 
                 Enemies.Enemy temp = en;
-                enemy.Remove(en);
+                WorldData.gameData.Enemy .Remove(en);
                 temp.location = WorldData.gameData.Locations [WorldData.gameData.Locations [en .location].getAdjacentNodes() [j]].getNodeNumber();
-                enemy.Add(temp);
+                WorldData.gameData.Enemy .Add(temp);
                 
                 a= WorldData.gameData.Locations [en .location];
                 WorldData.gameData.Locations.Remove(WorldData.gameData.Locations [en.location]);

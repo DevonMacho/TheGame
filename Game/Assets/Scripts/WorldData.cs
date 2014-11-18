@@ -54,14 +54,20 @@ public class WorldData : MonoBehaviour
         gameData = new GameData.GameInformation(loadLocationData(xmlFile), loadItemData(xmlFile), playerName, playerGender, playerClass, 0, baseStats, 0);
         gameData.loadGameInfo(xmlFile);
         Inventory.updateInventory();
-        //put enemy creation here
+        WorldMoves.initEnemyList();
         return "\n<<Game Started>>\n\n" + gameData.IntroText;
     }
 
     public static bool inBattle()
     {
-        //if enemy is at location, return true
-        // else return false
+        foreach(Enemies.Enemy e in gameData.Enemy)
+        {
+            if(e.location == gameData.currentLoc)
+            {
+                Debug.Log(e.location);
+                return true;
+            }
+        }
         return false;
     }
 
@@ -102,7 +108,7 @@ public class WorldData : MonoBehaviour
                             {
                                 gameData.currentLoc = a.getAdjacentNodes() [i];
                                 gameData.playerTurn();
-                                return "Going: " + a.getAdjacentDirections() [i] + "\n" + gameData.Locations [gameData.currentLoc].getDescription();
+                                return "Going: " + a.getAdjacentDirections() [i] + "\n" + gameData.Locations [gameData.currentLoc].getDescription()+ "\n" + WorldData.gameData.CombatLog;
 
                             }
                             else
@@ -111,11 +117,11 @@ public class WorldData : MonoBehaviour
                                 if (escapeRoll())
                                 {
                                     gameData.currentLoc = a.getAdjacentNodes() [i];
-                                    return "Going: " + a.getAdjacentDirections() [i] + "\n" + gameData.Locations [gameData.currentLoc].getDescription();
+                                    return "Going: " + a.getAdjacentDirections() [i] + "\n" + gameData.Locations [gameData.currentLoc].getDescription() + "\n" + WorldData.gameData.CombatLog;
                                 }
                                 else
                                 {
-                                    return "you failed to escape...";
+                                    return "you failed to escape...\n" + WorldData.gameData.CombatLog;
                                 }
                             }
                         }

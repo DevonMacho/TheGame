@@ -13,6 +13,7 @@ public class GameData : MonoBehaviour
     [System.Serializable]
     public class GameInformation
     {
+        List<Enemies.Enemy> enemy = new List<Enemies.Enemy>();
         List<LocationData.Location> locations = new List<LocationData.Location>();
         List<ItemData.Item> items = new List<ItemData.Item>();
         string _combatLog;
@@ -26,6 +27,18 @@ public class GameData : MonoBehaviour
             set
             {
                 _combatLog = value;
+            }
+        }
+
+        public List<Enemies.Enemy> Enemy
+        {
+            get
+            {
+                return enemy;
+            }
+            set
+            {
+                enemy = value;
             }
         }
 
@@ -193,53 +206,55 @@ public class GameData : MonoBehaviour
                 xmlName = value;
             }
         }
+
         public int TotalAttack
-            
         {
             get
             {
                 return _attackmod + stats.BaseAttack;
             }
         }
-        public int TotalStrength            
+
+        public int TotalStrength
         {
             get
             {
                 return _strMod + stats.Strength;
             }
         }
+
         public int TotalPerception
-            
         {
             get
             {
                 return _perMod + stats.Perception;
             }
         }
+
         public int TotalEndurance
-            
         {
             get
             {
                 return _endMod + stats.Endurance;
             }
         }
+
         public int TotalAgility
-            
         {
             get
             {
                 return _agilMod + stats.Agility;
             }
         }
+
         public int TotalLuck
-            
         {
             get
             {
                 return _luckMod + stats.Luck;
             }
         }
+
         public string[] InventoryData
         {
             get
@@ -293,7 +308,12 @@ public class GameData : MonoBehaviour
         public void playerTurn()
         {
             //Put world moves here
-
+            foreach (Enemies.Enemy e in Enemy)
+            {
+                Debug.Log(e.location);
+            }
+            CombatLog = "";
+            WorldMoves.worldMoves();
             Inventory.updateInventory();
             this.turn++;
         }
@@ -800,7 +820,6 @@ public class playerStats
         return _playerHealth;
     }
 
-
     public int BaseAttack
     {
         get
@@ -834,7 +853,7 @@ public class playerStats
 
     public void RecalculateMaxHealth()
     {
-        _playerHealthMax = (Mathf.CeilToInt(((_str + WorldData.gameData.StrengthModifier)/ 2 + (_end + WorldData.gameData.EnduranceModifier) * 2) * 10));
+        _playerHealthMax = (Mathf.CeilToInt(((_str + WorldData.gameData.StrengthModifier) / 2 + (_end + WorldData.gameData.EnduranceModifier) * 2) * 10));
     }
 
     public int MaxHealth
@@ -977,7 +996,8 @@ public class playerStats
             }
 
         }
-        _baseAttack = (Mathf.CeilToInt((_str * 3 + _luck / 3) ));
-        _playerHealth = _playerHealthMax = (Mathf.CeilToInt((_str / 2 + _end * 2) * 10));
+        _baseAttack = (Mathf.CeilToInt((_str * 3 + _luck / 3)));
+        _playerHealth = (Mathf.CeilToInt((_str / 2 + _end * 2) * 10));
+        _playerHealthMax = (Mathf.CeilToInt((_str / 2 + _end * 2) * 10));
     }
 }

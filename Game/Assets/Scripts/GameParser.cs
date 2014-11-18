@@ -192,7 +192,7 @@ public class GameParser : MonoBehaviour
             }
             else
             {
-                return "you can not save your game combat!";
+                return "you can not save your game in combat!";
             }
         }
         else if (command == 14)
@@ -220,7 +220,7 @@ public class GameParser : MonoBehaviour
 
             WorldData.gameData.Armor = WorldData.gameData.Armor * 2;
             WorldData.gameData.playerTurn();
-            return "You defend yourself" + WorldData.gameData.CombatLog;
+            return "You defend yourself!\n" + WorldData.gameData.CombatLog;
         }
         else
         {

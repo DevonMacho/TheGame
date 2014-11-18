@@ -102,7 +102,7 @@ public class GUI_Terminal : MonoBehaviour
                 GUI.Box(stats, "");
                 GUI.BeginGroup(stats);
 
-                GUILayout.BeginArea(new Rect(stats.x / 100, 0, stats.width * 19 / 20, stats.height));
+                GUILayout.BeginArea(new Rect(stats.x / 40, 0, stats.width * 19 / 20, stats.height));
                 GUILayout.BeginVertical();
 
                 GUILayout.Label("Name: " + "\"" + WorldData.gameData.getName() + "\"");
@@ -111,7 +111,7 @@ public class GUI_Terminal : MonoBehaviour
                 GUI.skin = Resources.Load("GUI Assets/Stats") as GUISkin;
                 ScrollPosition2 = GUILayout.BeginScrollView(ScrollPosition2, GUILayout.Width(stats.width * 19 / 20), GUILayout.Height(stats.height * 3 / 10));
                 //int testInt = 0;
-                GUILayout.Label("Health:\t" + WorldData.gameData.Stats.getHealth() + " / " + WorldData.gameData.Stats.getHealth() );
+                GUILayout.Label("Health:\t" + WorldData.gameData.Stats.getHealth() + " / " + WorldData.gameData.Stats.MaxHealth );
                 GUILayout.Label("Attack:\t" + WorldData.gameData.Stats.BaseAttack + " + " + WorldData.gameData.AttackMod+ " = " + WorldData.gameData.TotalAttack);
                 GUILayout.Label("Strength:\t" + WorldData.gameData.Stats.Strength + " + " + WorldData.gameData.StrengthModifier+ " = " + WorldData.gameData.TotalStrength);
                 GUILayout.Label("Per. :\t" + WorldData.gameData.Stats.Perception + " + " + WorldData.gameData.PerceptionModifier+ " = " + WorldData.gameData.TotalPerception);
