@@ -29,7 +29,14 @@ public class GameParser : MonoBehaviour
             "Allows you to unequip an item",
             "Allows you to use an object",
             "Allows you to save your progress",
-            "Allows you to load your progress"
+            "Allows you to load your progress",
+            "Allows you to toggle your stats",
+            "Allows you to toggle the minimap",
+            "Allows you to return to the main menu",
+            "Allows you to attack an enemy",
+            "Allows you to defend yourself",
+            "Unless commands were added, you shouldnt see this",
+            "Unless commands were added, you shouldnt see this"
         };
         genHelpMod = new string[]
         {
@@ -46,6 +53,13 @@ public class GameParser : MonoBehaviour
             "Equip <Item>",
             "Unequip <Item>",
             "Use <Object>",
+            "None",
+            "None",
+            "None",
+            "None",
+            "None",
+            "None",
+            "None",
             "None",
             "None"
         };

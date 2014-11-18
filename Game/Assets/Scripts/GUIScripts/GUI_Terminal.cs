@@ -106,7 +106,7 @@ public class GUI_Terminal : MonoBehaviour
                 GUILayout.BeginVertical();
 
                 GUILayout.Label("Name: " + "\"" + WorldData.gameData.getName() + "\"");
-                GUILayout.Space(stats.height * 1 / 20);
+                //GUILayout.Space(stats.height * 1 / 20);
                 GUILayout.Label("Stats");
                 GUI.skin = Resources.Load("GUI Assets/Stats") as GUISkin;
                 ScrollPosition2 = GUILayout.BeginScrollView(ScrollPosition2, GUILayout.Width(stats.width * 19 / 20), GUILayout.Height(stats.height * 3 / 10));

@@ -61,7 +61,7 @@ public class SettingsGUI : MonoBehaviour
         GUI.BeginGroup(videoOptions);
         GUI.Box(resolutions, "Resolutions");
         GUI.skin = Resources.Load("GUI Assets/Settings2") as GUISkin;
-        GUILayout.BeginArea(new Rect(resolutions.x, resolutions.y * 1.5f, resolutions.width, resolutions.height * 2));
+        GUILayout.BeginArea(new Rect(resolutions.x + 10, resolutions.y * 1.5f, resolutions.width - 20, resolutions.height * 2));
         GUILayout.BeginHorizontal("box");
                 
         if (GUILayout.Button("800 x 600"))

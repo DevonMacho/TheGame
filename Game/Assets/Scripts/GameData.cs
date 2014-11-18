@@ -463,6 +463,8 @@ public class GameData : MonoBehaviour
         }
         loadStatus = 1;
         gameState = ParserSelect.parserSelect;
+        WorldData.gameData.loadGameInfo(WorldData.gameData.XmlName+".xml");
+        Inventory.updateInventory();
         files = new List<string>();
         return "<<Loading>>\nAre you Sure that you want to load?";
     }

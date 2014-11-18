@@ -65,6 +65,7 @@ public class GUISelector : MonoBehaviour
                 }
                 else if (FileType == ".xml")
                 {
+                    WorldData.gameData = null;
                     message = "File Selected!!!\nstarting new game";
                     ParserSelect.parserSelect = 4;
                     PreviousGui = 5;
@@ -81,6 +82,7 @@ public class GUISelector : MonoBehaviour
                     if (testNull != null)
                     {
                         WorldData.gameData = testNull;
+                        WorldData.gameData.loadGameInfo(WorldData.gameData.XmlName+".xml");
                         GUI_Terminal.consoleLog = "<<Resuming Game>>\n";
                     }
                     else
