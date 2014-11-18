@@ -53,22 +53,59 @@ public class WorldData : MonoBehaviour
         playerStats baseStats = new playerStats(playerClass, playerGender); 
         gameData = new GameData.GameInformation(loadLocationData(xmlFile), loadItemData(xmlFile), playerName, playerGender, playerClass, 0, baseStats, 0);
         gameData.loadGameInfo(xmlFile);
+        GUI_Terminal.consoleLog = "";
+        GUI_Terminal.ScrollPosition = new Vector2(0,0);
         Inventory.updateInventory();
         WorldMoves.initEnemyList();
-        return "\n<<Game Started>>\n\n" + gameData.IntroText;
+        return "\n<<Game Started>>\n\n" + gameData.IntroText + "\n\n" + gameData.Locations[0].getDescription();
     }
 
     public static bool inBattle()
     {
-        foreach(Enemies.Enemy e in gameData.Enemy)
+        foreach (Enemies.Enemy e in gameData.Enemy)
         {
-            if(e.location == gameData.currentLoc)
+            if (e.location == gameData.currentLoc)
             {
-                Debug.Log(e.location);
+                //Debug.Log(e.location);
                 return true;
             }
         }
         return false;
+    }
+
+    public static string attack()
+    {
+        foreach (Enemies.Enemy e in gameData.Enemy)
+        {
+            if (e.location == gameData.currentLoc)
+            {
+
+                Enemies.Enemy a = e;
+
+                int damage =  Mathf.CeilToInt(Random.Range(0, gameData.TotalAttack)); 
+               
+                a.hp = (a.hp - damage);
+
+                gameData.Enemy.Remove(e);
+
+                if (a.hp <= 0)
+                {
+
+
+                    gameData.playerTurn();
+                    gameData.CombatLog += "\nyou have attacked for " + damage + " damage!";
+                    gameData.CombatLog += "\nenemy has been slain!";
+                    return gameData.CombatLog; 
+                    //drop
+                }
+            
+                gameData.Enemy.Add(a);
+                gameData.playerTurn(); 
+                gameData.CombatLog += "\nyou have attacked for " + damage + " damage!";
+                return gameData.CombatLog;
+            }
+        }
+        return "there isn't an enemy here";
     }
 
     public static bool escapeRoll()
@@ -108,7 +145,7 @@ public class WorldData : MonoBehaviour
                             {
                                 gameData.currentLoc = a.getAdjacentNodes() [i];
                                 gameData.playerTurn();
-                                return "Going: " + a.getAdjacentDirections() [i] + "\n" + gameData.Locations [gameData.currentLoc].getDescription()+ "\n" + WorldData.gameData.CombatLog;
+                                return "Going: " + a.getAdjacentDirections() [i] + "\n" + gameData.Locations [gameData.currentLoc].getDescription() + "\n" + WorldData.gameData.CombatLog;
 
                             }
                             else
@@ -277,13 +314,13 @@ public class WorldData : MonoBehaviour
                         {
                             return a.getDescription() + 
                                 "\nWeight: " + a.getWeight() +
-                                "\nAttack Bonus: " + a.Attack + "\n"+
-                                  "\nArmor: " + a.Armor +
-                                    "\nStrength: " + a.S + "\t\tRequired Strength: " + a.Rs + 
-                                    "\nPerception: " + a.S + "\t\tRequired Perception: " + a.Rp +
-                                    "\nEndurance: " + a.S + "\t\tRequired Endurance: " + a.Re +
-                                    "\nAgility: " + a.S + "\t\tRequired Agility: " + a.Ra +
-                                    "\nLuck: " + a.S + "\t\tRequired Luck: " + a.Rl;
+                                "\nAttack Bonus: " + a.Attack + "\n" +
+                                "\nArmor: " + a.Armor +
+                                "\nStrength: " + a.S + "\t\tRequired Strength: " + a.Rs + 
+                                "\nPerception: " + a.S + "\t\tRequired Perception: " + a.Rp +
+                                "\nEndurance: " + a.S + "\t\tRequired Endurance: " + a.Re +
+                                "\nAgility: " + a.S + "\t\tRequired Agility: " + a.Ra +
+                                "\nLuck: " + a.S + "\t\tRequired Luck: " + a.Rl;
                         }
                         else
                         {

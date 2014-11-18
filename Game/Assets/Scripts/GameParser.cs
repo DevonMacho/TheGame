@@ -197,7 +197,7 @@ public class GameParser : MonoBehaviour
         }
         else if (command == 14)
         {
-                return GameData.startLoad(token);
+            return GameData.startLoad(token);
         }
         else if (command == 15)
         {
@@ -213,14 +213,25 @@ public class GameParser : MonoBehaviour
         }
         else if (command == 18)
         {
-            return "attack was eneterd";
+            if (token.Length == 1)
+            {
+                return WorldData.attack();
+            }
+
+            return "Invalid modifier"; 
+           
         }
         else if (command == 19)
         {
+            if (WorldData.inBattle())
+            {
+                WorldData.gameData.Armor = WorldData.gameData.Armor * 2;
+                WorldData.gameData.Stats.setHealth(WorldData.gameData.Stats.getHealth() + (WorldData.gameData.TotalEndurance));
+                WorldData.gameData.playerTurn();
+                return "You defend yourself!\n" + WorldData.gameData.CombatLog;
+            }
+            return "You can not defend if you are not in combat";
 
-            WorldData.gameData.Armor = WorldData.gameData.Armor * 2;
-            WorldData.gameData.playerTurn();
-            return "You defend yourself!\n" + WorldData.gameData.CombatLog;
         }
         else
         {

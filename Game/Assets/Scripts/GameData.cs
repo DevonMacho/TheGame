@@ -308,12 +308,13 @@ public class GameData : MonoBehaviour
         public void playerTurn()
         {
             //Put world moves here
-            foreach (Enemies.Enemy e in Enemy)
-            {
-                Debug.Log(e.location);
-            }
+            WorldData.gameData.Stats.setHealth( WorldData.gameData.Stats.getHealth() + (int)(WorldData.gameData.TotalEndurance/2));
             CombatLog = "";
             WorldMoves.worldMoves();
+            if(this.Stats.getHealth() <= 0)
+            {
+                playerDeath();
+            }
             Inventory.updateInventory();
             this.turn++;
         }
@@ -336,6 +337,11 @@ public class GameData : MonoBehaviour
             {
                 return "error";
             }
+        }
+
+        public void playerDeath()
+        {
+            GenericCommands.returnToMenu(CombatLog + "\nYou have died!");
         }
 
         public void loadGameInfo(string xmlLocation)

@@ -18,6 +18,18 @@ public class GUI_Terminal : MonoBehaviour
     static GUISkin skin;
     static int commandIndex;
 
+    public static Vector2 ScrollPosition
+    {
+        get
+        {
+            return scrollPosition;
+        }
+        set
+        {
+            scrollPosition = value;
+        }
+    }
+
     public static void Start()
     {
         consoleLog = "";
