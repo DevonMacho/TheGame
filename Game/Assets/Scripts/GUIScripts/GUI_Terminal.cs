@@ -76,12 +76,15 @@ public class GUI_Terminal : MonoBehaviour
     {
         if (WorldData.gameData != null)
         {
-            if(WorldData.gameData.BackgroundList != null)
+            if (WorldData.gameData.BackgroundList != null)
             {
                 //Debug.Log(WorldData.gameData.BackgroundList.Count);
-            GUI.DrawTexture(new Rect(0,0,Screen.width,Screen.height * 2 / 3),WorldData.gameData.BackgroundList[WorldData.gameData.currentLoc],ScaleMode.ScaleToFit);
+                if (WorldData.gameData.currentLoc < WorldData.gameData.BackgroundList.Count)
+                {
+                    GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height * 2 / 3), WorldData.gameData.BackgroundList [WorldData.gameData.currentLoc], ScaleMode.ScaleToFit);
+                }  
             }
-                if (mini)
+            if (mini)
             {
                 GUI.Box(miniMap, "");
                 GUI.BeginGroup(miniMap);
@@ -132,13 +135,13 @@ public class GUI_Terminal : MonoBehaviour
                 // 7 shoes
                 // 8 weapon
                
-                GUILayout.Label("Head:\t" + WorldData.gameData.InventoryData[0]);
-                GUILayout.Label("Chest:\t" + WorldData.gameData.InventoryData[1]);
-                GUILayout.Label("Gauntlets:\t" + WorldData.gameData.InventoryData[2]);
-                GUILayout.Label("Belt:\t" + WorldData.gameData.InventoryData[3]);
-                GUILayout.Label("Pants:\t" + WorldData.gameData.InventoryData[4]);
-                GUILayout.Label("Shoes:\t" + WorldData.gameData.InventoryData[5]);
-                GUILayout.Label("Weapon:\t" + WorldData.gameData.InventoryData[6]);
+                GUILayout.Label("Head:\t" + WorldData.gameData.InventoryData [0]);
+                GUILayout.Label("Chest:\t" + WorldData.gameData.InventoryData [1]);
+                GUILayout.Label("Gauntlets:\t" + WorldData.gameData.InventoryData [2]);
+                GUILayout.Label("Belt:\t" + WorldData.gameData.InventoryData [3]);
+                GUILayout.Label("Pants:\t" + WorldData.gameData.InventoryData [4]);
+                GUILayout.Label("Shoes:\t" + WorldData.gameData.InventoryData [5]);
+                GUILayout.Label("Weapon:\t" + WorldData.gameData.InventoryData [6]);
                 GUILayout.EndScrollView();
                 GUILayout.EndVertical();
                 GUILayout.EndArea();

@@ -35,11 +35,11 @@ public class NewGameParser : MonoBehaviour
 
         if (stage == 2)
         {
-            if (input == "mor'falas")
+            if (input == "mor'thalas")
             {
                 return "Well hello to you too! I did not know that you spoke Scrubbish! Although did I ask for your name, what is it?";
             }
-            if (input == "les'falas")
+            if (input == "les'thalas")
             {
                 return "Wait, why are you saing goodbye, you just got here! Also, I did not know that you spoke Scrubbish. Although did I ask for your name, what is it?";
             }

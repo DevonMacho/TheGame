@@ -33,7 +33,7 @@ public class SettingsGUI : MonoBehaviour
                 
         videoOptions = new Rect(background.width / 12, background.height / 20, background.width * 5 / 6, background.height * 1 / 3);
         soundOptions = new Rect(background.width / 12, background.height * 2 / 5, background.width * 5 / 6, background.height * 1 / 6);
-        resolutions = new Rect(videoOptions.x / 2, videoOptions.y, videoOptions.width * 9 / 10, videoOptions.height * 2 / 5);
+        resolutions = new Rect(videoOptions.x / 2, videoOptions.y + videoOptions.height / 5, videoOptions.width * 9 / 10, videoOptions.height * 2 / 5);
         //fullScreenOptions = new Rect (videoOptions.x / 2, videoOptions.y * 16 / 4, videoOptions.width * 9 / 10, videoOptions.height * 1 / 5);
                 
 
@@ -52,6 +52,7 @@ public class SettingsGUI : MonoBehaviour
 
     public static void OnGUI()
     {
+        GUI.skin = Resources.Load("GUI Assets/Settings") as GUISkin;
         GUI.BeginGroup(background);
         GUI.Box(new Rect(0, 0, background.width, background.height), "Settings");
         GUI.Box(new Rect(videoOptions), "Video Options");
@@ -59,7 +60,8 @@ public class SettingsGUI : MonoBehaviour
         #region Video Options       
         GUI.BeginGroup(videoOptions);
         GUI.Box(resolutions, "Resolutions");
-        GUILayout.BeginArea(new Rect(resolutions.x, resolutions.y * 2, resolutions.width, resolutions.height * 2));
+        GUI.skin = Resources.Load("GUI Assets/Settings2") as GUISkin;
+        GUILayout.BeginArea(new Rect(resolutions.x, resolutions.y * 1.5f, resolutions.width, resolutions.height * 2));
         GUILayout.BeginHorizontal("box");
                 
         if (GUILayout.Button("800 x 600"))
@@ -75,7 +77,7 @@ public class SettingsGUI : MonoBehaviour
         {
             Screen.SetResolution(1152, 864, fullscreen);
         }
-                
+        GUI.skin = Resources.Load("GUI Assets/Settings") as GUISkin;
         GUILayout.EndHorizontal();
         GUILayout.EndArea();
         GUI.EndGroup();

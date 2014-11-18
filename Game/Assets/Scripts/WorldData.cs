@@ -27,16 +27,16 @@ public class WorldData : MonoBehaviour
         foreach (object a in textures)
         {
 
-            if(a.GetType() == typeof(Texture2D))
+            if (a.GetType() == typeof(Texture2D))
             {
                 Texture2D b = a as Texture2D;
-                FileStream f1 = File.Create(Application.persistentDataPath + "/Scenarios/BaseGame/Backgrounds/" + b.name +".png");
-                f1.Write(b.EncodeToPNG(),0,b.EncodeToPNG().Length);
+                FileStream f1 = File.Create(Application.persistentDataPath + "/Scenarios/BaseGame/Backgrounds/" + b.name + ".png");
+                f1.Write(b.EncodeToPNG(), 0, b.EncodeToPNG().Length);
                 f1.Close();
             }
         }
-        FileStream f2 = File.Create( Application.persistentDataPath + "/Scenarios/BaseGame/minimap.png");
-        f2.Write(minimap.EncodeToPNG(),0,minimap.EncodeToPNG().Length);
+        FileStream f2 = File.Create(Application.persistentDataPath + "/Scenarios/BaseGame/minimap.png");
+        f2.Write(minimap.EncodeToPNG(), 0, minimap.EncodeToPNG().Length);
         f2.Close();
         byte[] baseText = basegame.bytes;
         byte[] readText = readme.bytes;
@@ -53,6 +53,7 @@ public class WorldData : MonoBehaviour
         playerStats baseStats = new playerStats(playerClass, playerGender); 
         gameData = new GameData.GameInformation(loadLocationData(xmlFile), loadItemData(xmlFile), playerName, playerGender, playerClass, 0, baseStats, 0);
         gameData.loadGameInfo(xmlFile);
+        Inventory.updateInventory();
         //put enemy creation here
         return "\n<<Game Started>>\n\n" + gameData.IntroText;
     }
@@ -150,6 +151,7 @@ public class WorldData : MonoBehaviour
 
             foreach (var a in location)
             {
+
                 string n = a.Element("Location_Name").Value.ToString();
                 string d = a.Element("Location_Description").Value.ToString();
                 int nn = (int)a.Element("Location_NodeNumber");
@@ -170,7 +172,7 @@ public class WorldData : MonoBehaviour
                 int rc = (int)a.Element("Location_Required_Close");
                 int lox = (int)a.Element("GridLocationX");
                 int loy = (int)a.Element("GridLocationY");
-                locData.Add(new LocationData.Location(n, d, nn, an.ToArray(), ad.ToArray(), ri, ru, ro, rc,lox,loy));
+                locData.Add(new LocationData.Location(n, d, nn, an.ToArray(), ad.ToArray(), ri, ru, ro, rc, lox, loy));       
             }
         }
         return locData;
@@ -221,11 +223,11 @@ public class WorldData : MonoBehaviour
                 int attack = (int)a.Element("Item_Attack");
 
                 int useEffect = (int)a.Element("Item_Use_Effect");
-                int useModifier = (int) a.Element("Item_Use_Mod");
+                int useModifier = (int)a.Element("Item_Use_Mod");
 
                 int id = (int)a.Element("Item_ID");
                
-                itemData.Add(new ItemData.Item(n, d, nn, w, os, it, ul, s, p, e, i, l, rs, rp, re, ra, rl, armor, attack,useEffect, useModifier, id));
+                itemData.Add(new ItemData.Item(n, d, nn, w, os, it, ul, s, p, e, i, l, rs, rp, re, ra, rl, armor, attack, useEffect, useModifier, id));
             }
         }
         return itemData;
@@ -263,7 +265,7 @@ public class WorldData : MonoBehaviour
 
                 foreach (ItemData.Item a in gameData.Items)
                 {
-                    if (a.getName().Equals(command [2]) && (a.getLocation() == gameData.currentLoc || a.getLocation() == -1))
+                    if (a.getName().Equals(command [2]) && (a.getLocation() == gameData.currentLoc || a.getLocation() <= -1 ))
                     {
                         if (a.getWeight() < 999)
                         {

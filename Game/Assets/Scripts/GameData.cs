@@ -678,7 +678,12 @@ public class playerStats
     {
         _playerHealth = Mathf.Clamp(playerHealth, -10, _playerHealthMax);
     }
-    
+
+    public void RecalculateMaxHealth()
+    {
+        _playerHealthMax = (Mathf.CeilToInt((_str / 2 + _end * 2) * 10));
+    }
+
     public int MaxHealth
     {
         get
