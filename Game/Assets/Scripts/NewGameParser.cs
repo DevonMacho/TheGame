@@ -6,67 +6,20 @@ using System.Collections.Generic;
 public class NewGameParser : MonoBehaviour
 {
 
-    // Use this for initialization
-     
-    public static List<string> files;
     public static int fileCount;
-    private static int stage = 0;
-    public static string xmlFile = "";
-    private static string characterName = "";
+    private static int stage = 1;
+    static string characterName = "";
     private static string type = "";
     private static string gender = "";
     private static int timesSubmitted = 0;
 
-    public static string startNewGame(string[] token)
+    public static void startNewGame()
     {
-        //change background to black
-        if (token.Length > 1)
-        {
-            return "too many args";
-        }
-
-
-        files = new List<string>();
-        listXML();
-
-
-        if (files.Count >= 1)
-        {
-            string baseline = "<<Starting New Game>>\n";
-            stage = 1;
-            return baseline + listXML();
-        }
-        else
-        {
-            return "there aren't any scenarios in the folder, try using the 'import' command";
-        }
+        stage = 2;
+        GUI_Terminal.consoleLog = "You find yourself floating, alone in a dark space." +
+            "\nYou wonder who brought you here, or even why you are here.\nSuddenly a voice echoes out of the darkness:\n\n" +
+            "You look familiar, by what name do you call yourself traveler?\n";
     }
-
-    public static string listXML()
-    {
-        fileCount = 0;
-        string baseline = "Enter in the number of the scenario that you want to load\n--------Scenarios--------";
-        
-        string[] UncleanScenarios = Directory.GetFiles(Application.persistentDataPath + "/Scenarios/");
-        string midline = "";
-
-        foreach (string a in UncleanScenarios)
-        {
-
-            string[] cleaner = a.Trim().Replace("/", " ").Split(default(string[]), System.StringSplitOptions.RemoveEmptyEntries);
-            if(cleaner [cleaner.Length - 1].ToLower().Contains(".xml"))
-            {
-                fileCount ++;
-                files.Add(cleaner [cleaner.Length - 1]);
-                midline = "\n" + fileCount + ") " + cleaner [cleaner.Length - 1] + midline;
-            }
-
-        }
-        
-        string final = baseline + midline + "\n------------------------";
-        return final;
-    }
-    //get work done on stuff...
 
     public static string Parse(string input)
     {
@@ -79,66 +32,49 @@ public class NewGameParser : MonoBehaviour
         {
             token = GenericCommands.tokenizeKeepCase(input);
         }
-        if (stage == 1)
-        {
-            if (token.Length <= 0)
-            {
-                return "Invalid Input";
-            }
-            if (token.Length > 1)
-            {
-                return "too many args";
-            }
-            int parsed;
-            int.TryParse(token [0], out parsed);
-            if (parsed > 0 && parsed <= fileCount)
-            {
-                xmlFile = files [parsed - 1];
 
-                stage = 2;
-                return "Scenario input accepted! transporting to the between zone...\n\nYou find yourself floating, alone in a dark space." +
-                    "\nYou wonder who brought you here, or even why you are here.\nSuddenly a voice echoes out of the darkness:\n" +
-                    "You look familiar, by what name do you call yourself traveler?";
-            }
-            else
-            {
-                return "Invalid Input\n" + listXML();
-            }
-        }
-        else if (stage == 2)
+        if (stage == 2)
         {
+            if (input == "mor'thalas")
+            {
+                return "Well hello to you too! I did not know that you spoke Scrubbish! Although did I ask for your name, what is it?";
+            }
+            if (input == "les'thalas")
+            {
+                return "Wait, why are you saing goodbye, you just got here! Also, I did not know that you spoke Scrubbish. Although did I ask for your name, what is it?";
+            }
             if (token.Length <= 0)
             {
-                return "\nI can't quite hear you, you sound muffled.";
+                return "I can't quite hear you, you sound muffled.";
             }
             if (token [0].Contains("!") || token [0].Equals(token [0].ToUpper()))
             {
-                return "\nI'm a tad deaf in this ear, could you try speaking louder next time *Sarcasm*.";
+                return "I'm a tad deaf in this ear, could you try speaking louder next time *Sarcasm*.";
             }
-            if (token.Length > 1 || token[0].Length > 32)
+            if (token.Length > 1 || token [0].Length > 32)
             {
-                return "\nThat is too complicated for me to remember, what do you call yourself for short?";
+                return "That is too complicated for me to remember, what do you call yourself for short?";
             }
             else if (token.Length == 1)
             {
                 characterName = token [0];
                 stage = 3;
-                return "\nAh! " + characterName + ", you do sound like one of those. Are you here for fame, fortune, or power?";
+                return "Ah! " + characterName + ", you do sound like one of those. Are you here for fame, fortune, or power?";
             }
         }
         else if (stage == 3)
         {
             if (token.Length <= 0)
             {
-                return "\nWhat was that? Are you here for fame, fortune, or power?";
+                return "What was that? Are you here for fame, fortune, or power?";
             }
-            if (input.ToLower().Equals("are all 3 an option?\n"))
+            if (input.ToLower().Equals("are all 3 an option?"))
             {
-                return "\nsadly no, you have to choose either fame, fortune, or power.";
+                return "sadly no, you have to choose either fame, fortune, or power.";
             }
             if (token.Length > 1)
             {
-                return "\nwoah, repeat that one more time, but be quick about it and to the point; fame, fortune, or power.";
+                return "woah, repeat that one more time, but be quick about it and to the point; fame, fortune, or power.";
             }
             if (token [0].Equals("fame"))
             {
@@ -154,13 +90,13 @@ public class NewGameParser : MonoBehaviour
             }
             else
             {
-                return "\nyou're here for what now?";
+                return "you're here for what now?";
             }
             if (type != "")
             {
                 stage = 4;
                 timesSubmitted = 0;
-                return "\nI didn't take you for a " + type + ", are you sure that you are a " + type + "?";
+                return "I didn't take you for a " + type + ", are you sure that you are a " + type + "?";
             }
 
 
@@ -173,7 +109,7 @@ public class NewGameParser : MonoBehaviour
                 timesSubmitted++;
                 if (timesSubmitted == 1)
                 {
-                    return "\nHmmm? did you say something. Just tell me yes or no";
+                    return "Hmmm? did you say something. Just tell me yes or no";
                 }
                 if (timesSubmitted == 2)
                 {
@@ -258,26 +194,26 @@ public class NewGameParser : MonoBehaviour
            
             if (token.Length > 1 && token.Length < 3)
             {
-                return "\nIt's a simple yes or no";
+                return "It's a simple yes or no";
             }
             else if (token.Length > 3)
             {
-                return "\nIt's a simple yes or no not the story of your life and your indecisiveness";
+                return "It's a simple yes or no not the story of your life and your indecisiveness";
             }
             else if (token [0].Equals("yes"))
             {
                 stage = 5;
                 timesSubmitted = 0;
-                return "\nAlright then. By the way, not to be rude or anything, but I can’t tell if you are a man or woman with that mask on. what exactly are you?";
+                return "Alright then. By the way, not to be rude or anything, but I can’t tell if you are a man or woman with that mask on. what exactly are you?";
             }
             else if (token [0].Equals("no"))
             {
                 stage = 3;
-                return "\nwell if you're not that, what are you here for; fame, fortune or power?";
+                return "well if you're not that, what are you here for; fame, fortune or power?";
             }
             else
             {
-                return "\nI didn't quite hear you, was that a yes or a no?";
+                return "I didn't quite hear you, was that a yes or a no?";
             }
           
         }
@@ -286,12 +222,11 @@ public class NewGameParser : MonoBehaviour
 
             if (token.Length <= 0)
             {
-                return "\nWhat was that? I asked if you were a man or a woman.";
+                return "What was that? I asked if you were a man or a woman.";
             }
-
             else if (token.Length > 1)
             {
-                return "\nJust tell me if you are a man or woman.";
+                return "Just tell me if you are a man or woman.";
             }
             else if (token [0].Equals("man"))
             {
@@ -308,23 +243,23 @@ public class NewGameParser : MonoBehaviour
             timesSubmitted++;
             if (timesSubmitted == 1)
             {
-                return "\nthat was completely unintelligible, are you a man or a woman?";
+                return "that was completely unintelligible, are you a man or a woman?";
             }
             else if (timesSubmitted == 2)
             {
-                return "\nthere are two choices, man or woman";
+                return "there are two choices, man or woman";
             }
             else if (timesSubmitted == 3)
             {
-                return "\nman / woman";
+                return "man / woman";
             }
             else if (timesSubmitted == 4)
             {
-                return "\nMAN / WOMAN";
+                return "MAN / WOMAN";
             }
             else if (timesSubmitted >= 5)
             {
-                return "\nHey look, the programmer is lazy and didn't put in more than two of the infinite options that are out there for gender." +
+                return "Hey look, the programmer is lazy and didn't put in more than two of the infinite options that are out there for gender." +
                     " Trust me, he is more lazy than insensitive to the several other options for gender. Hell, he even told me to tell you that. " +
                     "So please, just for time's sake, pick either man or woman.";
             }
@@ -341,7 +276,7 @@ public class NewGameParser : MonoBehaviour
         }
         else if (stage == 8)
         {
-            return WorldData.StartNewGame(characterName, gender, type, xmlFile);
+            return WorldData.StartNewGame(characterName, gender, type, GUISelector.FilePath);
         }
 
         return "Guru Mediation x0000005";
@@ -351,17 +286,17 @@ public class NewGameParser : MonoBehaviour
     {
         if (step == 0)
         {
-            return "\nI can kinda see that now, yeah....\n<input anything to advance>";
+            return "I can kinda see that now, yeah....\n<input anything to advance>";
         }
         if (step == 1)
         {
             //fade to white
-            return "\nA white light surrounds you as you start to feel heavier and heavier.\n<input anything to advance>";
+            return "A white light surrounds you as you start to feel heavier and heavier.\n<input anything to advance>";
         }
         if (step == 2)
         {
 
-            return "\nWell, its time for me to go, good luck on your adventure!\n<input anything to start your adventure>";
+            return "Well, its time for me to go, good luck on your adventure!\n<input anything to start your adventure>";
         }
         return "Guru Meditation x0000006";
     }
