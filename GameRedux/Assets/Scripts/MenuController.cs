@@ -4,8 +4,22 @@ using System.Collections;
 public class MenuController : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
-	
+	public Options Opt;
+	void Awake () 
+	{
+		#if UNITY_EDITOR
+			//YOU HAVE TO PURGE PLAYERPREFS BEFORE DEPLOY!!!
+			PlayerPrefs.DeleteAll();
+		#endif
+		if (Opt.CheckPrefs())
+		{
+			Opt.LoadPrefs();
+		}
+		else
+		{
+			Opt.SetPrefDefaults();
+			Opt.LoadPrefs();
+		}
 	}
 	
 	// Update is called once per frame
@@ -23,6 +37,6 @@ public class MenuController : MonoBehaviour {
 
 	public void QuitGame()
 	{
-		Debug.Log("Quitting Game");
+		Application.Quit();
 	}
 }

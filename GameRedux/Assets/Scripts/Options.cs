@@ -7,38 +7,64 @@ public class Options : MonoBehaviour {
 	public GameObject ResText;
 	public GameObject MSlider;
 	public GameObject ESlider;
-	public float MusicVolume;
-	public float EffectVolume;
-	float tempEV;
-	float tempMV;
-	// Use this for initialization
-	public void Awake ()
-	{
-		//load every time options is clicked
-		//load volume from file
-		//load resolution from file
-		Debug.Log( "Options is awake");
-		ResText.GetComponent<Text>().text = Screen.width + "x" + Screen.height;
+	int width;
+	int height;
 
-		//set Volume Sliders
-		//Debug.Log(Screen.width + "x" + Screen.height);
-	}
-	
-	// Update is called once per frame
 	void Update () 
 	{
 	
 	}
-		public void ToggleRes()
+
+	public void SetPrefDefaults()
+	{
+		PlayerPrefs.SetFloat("MusicVolume",1.0f);
+		PlayerPrefs.SetFloat("EffectVolume",1.0f);
+		PlayerPrefs.SetInt("ResWidth",1024);
+		PlayerPrefs.SetInt("ResHeight",768);
+		PlayerPrefs.Save();
+	}
+	public bool CheckPrefs()
+	{
+		if (!PlayerPrefs.HasKey("MusicVolume") || !PlayerPrefs.HasKey("EffectVolume") || !PlayerPrefs.HasKey("ResWidth")|| !PlayerPrefs.HasKey("ResHeight"))
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+	public void ToggleRes()
 	{
 		ResPanel.SetActive(!ResPanel.activeSelf);
 	}
-	public void setTempEV(float tmp)
+	public void LoadPrefs()
 	{
-		tempEV = tmp;
+		Screen.SetResolution(PlayerPrefs.GetInt("ResWidth"),PlayerPrefs.GetInt("ResHeight"),false);
+		ResText.GetComponent<Text>().text = PlayerPrefs.GetInt("ResWidth")+ "x" + PlayerPrefs.GetInt("ResHeight");
+		MSlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("MusicVolume");
+		ESlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("EffectVolume");
 	}
-	public void setTempMV(float tmp)
+	public void SavePrefs()
 	{
-		tempMV = tmp;
+		PlayerPrefs.SetFloat("MusicVolume", MSlider.GetComponent<Slider>().value);
+		PlayerPrefs.SetFloat("EffectVolume",ESlider.GetComponent<Slider>().value);
+		PlayerPrefs.SetInt("ResWidth",Screen.width);
+		PlayerPrefs.SetInt("ResHeight",Screen.height);
+		PlayerPrefs.Save();
+	}
+	public void SetHeight(int temp)
+	{
+		height = temp;
+	}
+	public void SetWidth(int temp)
+	{
+		width = temp;
+	}
+	public void SetResolution()
+	{
+		Screen.SetResolution(width,height,false);
+		height = 0;
+		width = 0;
 	}
 }
