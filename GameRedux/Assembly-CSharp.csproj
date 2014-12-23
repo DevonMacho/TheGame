@@ -46,9 +46,11 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\GameSelector.cs" />
-     <Compile Include="Assets\Scripts\MenuController.cs" />
-     <Compile Include="Assets\Scripts\Options.cs" />
+     <Compile Include="Assets\Scripts\DataStructures\BasicGameInfo.cs" />
+     <Compile Include="Assets\Scripts\MenuScripts\GameSelectButton.cs" />
+     <Compile Include="Assets\Scripts\MenuScripts\GameSelectController.cs" />
+     <Compile Include="Assets\Scripts\MenuScripts\MenuController.cs" />
+     <Compile Include="Assets\Scripts\MenuScripts\Options.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>

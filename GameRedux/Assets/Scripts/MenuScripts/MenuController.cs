@@ -23,16 +23,9 @@ public class MenuController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 	
-	}
-	public void StartNewGame()
-	{
-		Debug.Log("Starting New Game");
-	}
-	public void LoadGame()
-	{
-		Debug.Log("Loading Game");
 	}
 
 	public void QuitGame()
