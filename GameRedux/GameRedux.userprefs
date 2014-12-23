@@ -1,8 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/DataStructures/BasicGameInfo.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MenuScripts/GameSelectButton.cs">
     <Files>
-      <File FileName="Assets/Scripts/DataStructures/BasicGameInfo.cs" Line="20" Column="22" />
+      <File FileName="Assets/Scripts/DataStructures/BasicGameInfo.cs" Line="11" Column="11" />
+      <File FileName="Assets/Scripts/MenuScripts/GameSelectController.cs" Line="8" Column="19" />
+      <File FileName="Assets/Scripts/MenuScripts/GameSelectButton.cs" Line="28" Column="17" />
+      <File FileName="Assets/Scripts/MenuScripts/MenuController.cs" Line="27" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
