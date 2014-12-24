@@ -24,17 +24,11 @@ public class BasicGameInfo {
 		get {
 			return name;
 		}
-		set {
-			name = value;
-		}
 	}
 
 	public string CharClass {
 		get {
 			return charClass;
-		}
-		set {
-			charClass = value;
 		}
 	}
 

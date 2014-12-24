@@ -9,10 +9,11 @@ public class GameSelectButton : MonoBehaviour {
 	public GameObject Background;
 	public GameObject MessageBox;
 	public GameObject MessageBoxYes;
+	GameMaster GM;
 	public void UpdateBackground(BasicGameInfo info)
 	{
 		GetComponent<Button>().onClick.RemoveAllListeners();
-
+		GM = GameObject.FindObjectOfType<GameMaster>();
 
 		Transform gameData = transform.GetChild(0);
 		Transform noData = transform.GetChild(1);
@@ -21,11 +22,11 @@ public class GameSelectButton : MonoBehaviour {
 		{
 			if(Controller.GetComponent<GameSelectController>().Load)
 			{
-				//add load specific command
+
 				GetComponent<Button>().onClick.AddListener(delegate 
 				{
 					Background.SetActive(false);
-					//load game
+					GM.LoadGame(SlotNumber);
 				});
 			}
 			else
@@ -39,7 +40,7 @@ public class GameSelectButton : MonoBehaviour {
 					MessageBoxYes.GetComponent<Button>().onClick.AddListener(delegate
 					{
 						MessageBox.SetActive(false);
-						//start new game
+						GM.StartNewGame(SlotNumber);
 					});
 
 				});
@@ -61,11 +62,10 @@ public class GameSelectButton : MonoBehaviour {
 			noData.gameObject.SetActive(true);
 			if(!Controller.GetComponent<GameSelectController>().Load)
 			{
-				//add NewGame specific command for if there is an open space (just start the game)
 				GetComponent<Button>().onClick.AddListener(delegate 
 				{
 					Background.SetActive(false);
-					//start new gameß
+					GM.StartNewGame(SlotNumber);
 				});
 			}
 		}
