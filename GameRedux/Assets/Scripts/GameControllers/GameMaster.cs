@@ -14,20 +14,21 @@ public class GameMaster : MonoBehaviour {
 
 	public void StartNewGame(int slot)
 	{
-		//change level to new game level
+		Application.LoadLevel("NewCharacter");
 		Debug.Log("Starting new game in slot " + slot);
 	}
 	public void LoadGame(int slot)
 	{
-		//load data from file then load level
+		//load data from file then load level IENumerable?
+		Application.LoadLevel("Game");
 		Debug.Log("Loading from slot " + slot);
 	}
 	public void SaveGame(int slot)
 	{
-
+		//add save funciton
 		Data.BasicInfo.Location = "here"; //set location to actual world value
 		Debug.Log("Saving to slot " + slot);
 	}
-	//add save funciton
+
 	
 }
