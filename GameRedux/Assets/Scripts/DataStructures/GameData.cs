@@ -29,7 +29,7 @@ public class GameData
 					Ranger: Dex, Str, Wis
 					Rogue: Dex, Cha, Int
 					Wizard: Wis, Cha, Str
-					Paladin: Con Str, Wis
+					=========> Paladin: Con Str, Wis <========= Excluding due to forced alignment (Lawful Good. eww...)
 					Sorcerer: Cha, Int, Con
 					Cleric: Wis, Str, Con
 

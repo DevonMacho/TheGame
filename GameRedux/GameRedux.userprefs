@@ -1,8 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/NewGameScripts/NewGameInput.cs">
     <Files>
-      <File FileName="Assets/Scripts/NewGameScripts/NewGameInput.cs" Line="53" Column="31" />
+      <File FileName="Assets/Scripts/NewGameScripts/NewGameInput.cs" Line="21" Column="60" />
       <File FileName="../../../Users/JPEG/Desktop/Chat/Assets/Chat.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
