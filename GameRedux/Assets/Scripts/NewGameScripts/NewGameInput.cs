@@ -157,7 +157,7 @@ public class NewGameInput : MonoBehaviour {
 		{
 
 
-			if(tkn != null && tkn.Length == 1 && input.Length < 16)
+			if(tkn != null && tkn.Length == 1 && input.Length <= 16)
 			{
 				_attempts = 0;
 				_newGameStage = 1;
