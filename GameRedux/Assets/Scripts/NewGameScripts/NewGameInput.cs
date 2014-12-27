@@ -145,20 +145,29 @@ public class NewGameInput : MonoBehaviour {
 		string name = "Nar'Hator: "; //Narrator name
 		string[] tkn = tokenize(input);
 		_attempts++;
+		string[] nullResponse = {
+			"What was that? I asked what your name was","Hmm? I asked what class you were. Are you a 'Fighter', 'Rogue', 'Ranger', 'Cleric', 'Sorcerer', or 'Wizard'?"
+			,"Wazzat? Are you sure that you are a "+ _characterClass+ "? Its a simple 'Yes' or 'No'.", "Huh? I asked if you were a 'Man' or a 'Woman'.", "What? I told you to take off the mask\n<Type in 'unequip mask'>"
+			};//add more after you add in more steps
+		if(tkn == null)
+		{
+			return name + nullResponse[_newGameStage];
+		}
 		if(_newGameStage == 0)
 		{
 
-			if(tkn.Length > 1 || input.Length > 16)
-			{
-				return name + "That is too complicated for me to remember, do you go by something shorter?";
-			}
-			else if(tkn != null)
+
+			if(tkn != null && tkn.Length == 1 && input.Length < 16)
 			{
 				_attempts = 0;
 				_newGameStage = 1;
 				_characterName = tkn[0]; // set caps on name
 				return name + "Ah! You do sound like one of those! Is the owner of this name a brave 'Fighter' or possibly a sneaky 'Rogue', or a skilled 'Ranger'. " +
 					"Or are you of the magic variety? Possibly a regenerative 'Cleric', a master 'Sorcerer', or a grand 'Wizard'."; 
+			} 
+			else if(tkn.Length > 1 || input.Length > 16)
+			{
+				return name + "That is too complicated for me to remember, do you go by something shorter?";
 			}
 			else if(input.ToLower() == "mor'thalas")
 			{
@@ -168,7 +177,10 @@ public class NewGameInput : MonoBehaviour {
 			{
 				return name + "Don't go so soon, you just got here, oh wait you can't leave, I'm holding you here until I get to know you better. So, what is your name?";
 			}
-			return name + "I can't quite understand you. What was your name?";
+			else
+			{
+				return name + "I can't quite understand you. What was your name?";
+			}
 		}
 		else if (_newGameStage == 1)
 		{
@@ -209,7 +221,7 @@ public class NewGameInput : MonoBehaviour {
 				else if(_attempts == 4)
 				{
 					return name + "Ok, I'm done. You have brought me to the point were I'm breaking character as the narrator of this story, actually I'm more like the Game Master for this whole journey. Yeah, I'm the GM and you are a PC. That " +
-						"means that I can kill you at any moment.\nJPEG: Woah wait there buddy, you can't just kill the player, they are just trying to play the game\n" + name +" But it's MY game. I can have control over it if I want to" +
+						"means that I can kill you at any moment!\nJPEG: Woah wait there buddy, you can't just kill the player, they are just trying to play the game.\n" + name +" But it's MY game. I can have control over it if I want to!" +
 						"\nJPEG: Nope it's my game. I control everything. I'm going to let the player live.\n"+ name +"But...\nJPEG: No Buts. Be nice to the player. Do you want me to rename you to Coq of the Bah'llz clan?\n" +name + "No, No, No, I'll play nice. Player, just pick a class 'Fighter', 'Rogue', 'Ranger', 'Cleric', 'Sorcerer', or 'Wizard'.";
 				}
 				else
