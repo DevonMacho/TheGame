@@ -256,7 +256,7 @@ public class NewGameInput : MonoBehaviour {
 		}
 		else if(_newGameStage == 3)
 		{
-			string end = name + "Yeah, I do sort of see that now. Anyways, Lets get a better look at you. \n<Type in 'unequip mask'>";
+			string end = name + "Yeah, I do sort of see that now. Anyways, Lets get a better look at you.\n<Type in 'unequip mask'>";
 			if(tkn.Length > 1)
 			{
 				return name + "It really is a one word answer, you are either a 'Man' or a 'Woman.'";
@@ -298,7 +298,33 @@ public class NewGameInput : MonoBehaviour {
 			}
 		}else if (_newGameStage == 4)
 		{
-			return "unequip mask";
+			//begin proto unequip function
+			if(tkn[0].ToLower() == "unequip")
+			{
+				if(tkn.Length == 1)
+				{
+					return "Unequip what?";
+				}
+				else if(tkn.Length == 2)
+				{
+					if(tkn[1].ToLower() == "mask")
+					{
+						_newGameStage = 5;
+						return name + "Ah, much better! I can finally see your face. Here take a look into this mirror\nA mirror materializes infront of you. <type in 'look at mirror'>";
+					}
+					else
+					{
+						return "You do not have that item equipped";
+					}
+				}else
+				{
+					return "You only have two arms and can not unequip more than one item at a time.";
+				}
+			}
+			else
+			{
+				return name + "Just take off the mask already, I'm tired of waiting!\n<Type in 'unequip mask'>";
+			}
 		}else if (_newGameStage == 5)
 		{
 			return "Look at mirror";
