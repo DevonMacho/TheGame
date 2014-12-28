@@ -130,14 +130,15 @@ public class NewGameInput : MonoBehaviour {
 		if(tokens.Length <= 0)
 		{
 			return null;
-		}else if(!input.All(char.IsLetter))
-		{
-			return null;
 		}
-		else
+		foreach(string sub in tokens)
 		{
-			return tokens;
+			if(!sub.All(char.IsLetter))
+			{
+				return null;
+			}
 		}
+		return tokens;
 	}
 
 	string parse(string input)
