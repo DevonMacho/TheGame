@@ -332,10 +332,10 @@ public class NewGameInput : MonoBehaviour {
 			{
 				if(tkn[0].ToLower()  == "look")
 				{
-					return "look where?";
+					return "you are completely surrounded by darkness, there is a single handheld mirror in front of you.";
 				}else
 				{
-					return name + "What? I told you to look at the mirror\n<Type in 'look at mirror'>";
+					return name + "What are you doing? I told you to look at the mirror\n<Type in 'look at mirror'>";
 				}
 			}else if(tkn.Length <= 3)
 			{
@@ -356,23 +356,23 @@ public class NewGameInput : MonoBehaviour {
 						}
 						else
 						{
-							return "look at what?";
+							return "Look at what?";
 						}
 
 					}
 					else
 					{
-						return name + "What was that? I told you to look at the mirror.\n<Type in 'look at mirror'>";
+						return name + "Why are you looking around franticly? I told you to look at the mirror.\n<Type in 'look at mirror'>";
 					}
 				}
 				else
 				{
-					return name + "What? I told you to look at the mirror.\n<Type in 'look at mirror'>";
+					return name + "What are you doing? I told you to look at the mirror.\n<Type in 'look at mirror'>";
 				}
 			}
 			else
 			{
-				return "*snaps fingers loudly* are you awake in there? I asked you to look at the mirror.\n<Type in 'look at mirror'>";
+				return "*snaps fingers loudly* Are you awake in there? I asked you to look at the mirror.\n<Type in 'look at mirror'>";
 			}
 
 		}
