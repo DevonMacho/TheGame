@@ -149,6 +149,7 @@ public class NewGameInput : MonoBehaviour {
 		string[] nullResponse = {
 			"What was that? I asked what your name was","Hmm? I asked what class you were. Are you a 'Fighter', 'Rogue', 'Ranger', 'Cleric', 'Sorcerer', or 'Wizard'?"
 			,"Wazzat? Are you sure that you are a "+ _characterClass+ "? Its a simple 'Yes' or 'No'.", "Huh? I asked if you were a 'Man' or a 'Woman'.", "What? I told you to take off the mask\n<Type in 'unequip mask'>"
+			,"Why are you just staring into the darkness? I asked you to look into the mirror.\n<Type in 'look at mirror'>"
 			};//add more after you add in more steps
 		if(tkn == null)
 		{
@@ -327,7 +328,53 @@ public class NewGameInput : MonoBehaviour {
 			}
 		}else if (_newGameStage == 5)
 		{
-			return "Look at mirror";
+			if(tkn.Length == 1)
+			{
+				if(tkn[0].ToLower()  == "look")
+				{
+					return "look where?";
+				}else
+				{
+					return name + "What? I told you to look at the mirror\n<Type in 'look at mirror'>";
+				}
+			}else if(tkn.Length <= 3)
+			{
+				if(tkn[0].ToLower() == "look")
+				{
+					if(tkn[1].ToLower() == "at")
+					{
+						if(tkn.Length == 3)
+						{
+							if(tkn[2].ToLower() == "mirror")
+							{
+								return "looking at the mirror";
+							}
+							else
+							{
+								return "That object is not in this plane of existence.";
+							}
+						}
+						else
+						{
+							return "look at what?";
+						}
+
+					}
+					else
+					{
+						return name + "What was that? I told you to look at the mirror.\n<Type in 'look at mirror'>";
+					}
+				}
+				else
+				{
+					return name + "What? I told you to look at the mirror.\n<Type in 'look at mirror'>";
+				}
+			}
+			else
+			{
+				return "*snaps fingers loudly* are you awake in there? I asked you to look at the mirror.\n<Type in 'look at mirror'>";
+			}
+
 		}
 		else
 		{
