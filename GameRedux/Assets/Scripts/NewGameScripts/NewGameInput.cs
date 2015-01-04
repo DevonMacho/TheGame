@@ -11,6 +11,8 @@ public class NewGameInput : MonoBehaviour {
 	public GameObject InputText;
 	public GameObject OutputText;
 	public GameObject ScrollBar;
+	public GameObject CharacterCreationBackground;
+	public Button CharacterCreationAcceptButton;
 	bool _acceptInput;
 	int _responseNo = 0;
 	int _newGameStage = 0;
@@ -347,7 +349,10 @@ public class NewGameInput : MonoBehaviour {
 						{
 							if(tkn[2].ToLower() == "mirror")
 							{
-								return "looking at the mirror";
+								_newGameStage = 6;
+								deselectInput();
+								CharacterCreationBackground.SetActive(true);
+								return name + "Ah yes, you look like you are just about ready to go. Just open that door behind you and you can be on your way.\nAn average sized door suddenly materializes behind you <Type in 'open door' to leave>";//name +"Good luck on your adventure traveler! Oh, and do say hello to the Duke of Brillo over in Scrubbington for me, he might be able to help you out in your travels.";
 							}
 							else
 							{
@@ -376,9 +381,44 @@ public class NewGameInput : MonoBehaviour {
 			}
 
 		}
+		else if (_newGameStage == 6)
+		{
+			if(tkn[0].ToLower() == "open")
+			{
+				if(tkn.Length == 1)
+				{
+					return "Open what?";
+				}
+				else if (tkn.Length == 2)
+				{
+					if(tkn[1] == "door")
+					{
+						return "A white light surrounds you as you open the door, you can hear a voice yelling behind you.\n" + name +"Good luck on your adventure traveler! Oh, and do say hello to the Duke of Brillo over in Scrubbington for me, he might be able to help you out in your travels!"+"\nThe game technically started but thats as far as I got so far. I also need to add in a large ass continue button for 'cutscenes' or large blocks of text";
+					}
+					else
+					{
+						return "That object does not exist on this plane of existence.";
+					}
+				}
+				else
+				{
+					return "You can only open one thing at a time, as you only have two hands.";
+				}
+			}
+			else
+			{
+				return name + "Why are you fiddling with your hands, open the door to leave.\n<Type in 'open door' to leave>";
+			}
+		}
 		else
 		{
 			return "Guru Meditation 0x0001";
 		}
+	}
+
+	void deselectInput()
+	{
+		_acceptInput = false;
+		InputField.GetComponent<InputField>().DeactivateInputField();
 	}
 }
