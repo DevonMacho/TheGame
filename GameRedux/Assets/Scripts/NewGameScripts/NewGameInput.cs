@@ -69,7 +69,7 @@ public class NewGameInput : MonoBehaviour {
 	{
 
 		string input = InputText.GetComponent<Text>().text;
-		InputField.GetComponent<InputField>().text = "";
+		InputField.GetComponent<InputField>().text = string.Empty;
 
 		//format the output properly
 		//do a check to see if the text is blank
@@ -117,12 +117,12 @@ public class NewGameInput : MonoBehaviour {
 
 	IEnumerator bottomScroll()
 	{
-		yield return new WaitForSeconds(.02f);
+		yield return new WaitForSeconds(.1f);
 		ScrollBar.GetComponent<Scrollbar>().value = 0.0000000000000f;
 	}
 	IEnumerator topScroll()
 	{
-		yield return new WaitForSeconds(.02f);
+		yield return new WaitForSeconds(.1f);
 		ScrollBar.GetComponent<Scrollbar>().value = 1.0000000000000f;
 	}
 	
