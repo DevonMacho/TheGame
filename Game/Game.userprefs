@@ -1,8 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../GameRedux/Assets/Scripts/MenuController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\GameRedux\Assets\Scripts\NewGameScripts\NewGameInput.cs">
     <Files>
-      <File FileName="../GameRedux/Assets/Scripts/MenuController.cs" Line="23" Column="2" />
+      <File FileName="..\GameRedux\Assets\Scripts\NewGameScripts\NewGameInput.cs" Line="180" Column="81" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

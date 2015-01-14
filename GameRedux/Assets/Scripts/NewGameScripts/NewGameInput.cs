@@ -23,6 +23,12 @@ public class NewGameInput : MonoBehaviour {
 
 	void Start()
 	{
+		#if UNITY_EDITOR
+			InputField.GetComponent<InputField>().contentType = UnityEngine.UI.InputField.ContentType.Name;
+		#else
+			InputField.GetComponent<InputField>().contentType = UnityEngine.UI.InputField.ContentType.Standard;
+		#endif
+
 		SubmitButton.GetComponent<Button>().onClick.RemoveAllListeners();
 		SubmitButton.GetComponent<Button>().onClick.AddListener(delegate {Submit();});
 		InputField.GetComponent<InputField>().onEndEdit.RemoveAllListeners();
