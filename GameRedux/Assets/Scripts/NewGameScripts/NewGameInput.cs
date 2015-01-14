@@ -163,6 +163,14 @@ public class NewGameInput : MonoBehaviour {
 
 			if(tkn != null && tkn.Length == 1 && input.Length <= 16)
 			{
+				if(input.ToLower() == "morthalas")
+				{
+					return name + "Well hello to you too! I didn't know that you spoke Scrubbish. Oh, right I got a bit carried away. What was your name?";
+				}
+				else if(input.ToLower() == "lesthalas")
+				{
+					return name + "Don't go so soon, you just got here, oh wait you can't leave, I'm holding you here until I get to know you better. So, what is your name?";
+				}
 				_attempts = 0;
 				_newGameStage = 1;
 				_characterName = tkn[0]; // set caps on name
@@ -172,14 +180,6 @@ public class NewGameInput : MonoBehaviour {
 			else if(tkn.Length > 1 || input.Length > 16)
 			{
 				return name + "That is too complicated for me to remember, do you go by something shorter?";
-			}
-			else if(input.ToLower() == "mor'thalas")
-			{
-				return name + "Well hello to you too! I didn't know that you spoke Scrubbish. Oh, right I got a bit carried away. What was your name?";
-			}
-			else if(input.ToLower() == "les'thalas")
-			{
-				return name + "Don't go so soon, you just got here, oh wait you can't leave, I'm holding you here until I get to know you better. So, what is your name?";
 			}
 			else
 			{
