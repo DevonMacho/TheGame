@@ -1,0 +1,30 @@
+Initialize engine version: 4.6.1f1 (d1db7a1b5196)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Intel(R) HD Graphics (ID=0x152)
+    Vendor:   Intel
+    VRAM:     128 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\JPEG\TheGame\GameRedux\ClawOfKraymoarV0.2_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\JPEG\TheGame\GameRedux\ClawOfKraymoarV0.2_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\JPEG\TheGame\GameRedux\ClawOfKraymoarV0.2_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\JPEG\TheGame\GameRedux\ClawOfKraymoarV0.2_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\JPEG\TheGame\GameRedux\ClawOfKraymoarV0.2_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\JPEG\TheGame\GameRedux\ClawOfKraymoarV0.2_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.039 seconds
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 1680x1050 59Hz; virtual: 3360x1050 at 0,0
+Platform assembly: C:\Users\JPEG\TheGame\GameRedux\ClawOfKraymoarV0.2_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\JPEG\TheGame\GameRedux\ClawOfKraymoarV0.2_Data\Managed\System.dll (this message is harmless)
+Starting new game in slot 2
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+UnloadTime: 1.561151 ms
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 267.
+Total: 0.515252 ms (FindLiveObjects: 0.009055 ms CreateObjectMapping: 0.008753 ms MarkObjects: 0.143377 ms  DeleteObjects: 0.008451 ms)
+
