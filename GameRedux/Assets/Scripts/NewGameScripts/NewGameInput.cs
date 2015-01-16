@@ -14,13 +14,15 @@ public class NewGameInput : MonoBehaviour {
 	public GameObject CharacterCreationBackground;
 	public Button CharacterCreationAcceptButton;
 	bool _acceptInput;
+	bool _cinematic;
 	int _responseNo = 0;
 	int _newGameStage = 0;
 	int _attempts = 0;
+	int _cinematicStage = 0;
 	string _characterName;
 	string _characterClass;
 	string _characterGender;
-
+	string[] _currentCinematic;
 	void Start()
 	{
 		#if UNITY_EDITOR
@@ -230,10 +232,16 @@ public class NewGameInput : MonoBehaviour {
 				}
 				else if(_attempts == 4)
 				{
+					_cinematic = true;
+					//set current cinematic.
+					return name + "testing";
+
+					/*
 					return name + "Ok, I'm done. You have brought me to the point were I'm breaking character as the narrator of this story, actually I'm more like the Game Master for this whole journey. Yeah, I'm the GM and you are a PC. That " +
 						"means that I can kill you at any moment!\nJPEG: Woah wait there buddy, you can't just kill the player, they are just trying to play the game.\n" + name +" But it's MY game. I can have control over it if I want to!" +
 						"\nJPEG: Nope it's my game. I control everything. I'm going to let the player live.\n"+ name +"But...\nJPEG: No Buts. Be nice to the player. Do you want me to rename you to Coq of the Bah'llz clan?\n" +name + "No, No, No, I'll play nice. Player, just pick a class 'Fighter', 'Rogue', 'Ranger', 'Cleric', 'Sorcerer', or 'Wizard'.";
-				}
+			        */
+}
 				else
 				{
 					return name + "'Fighter', 'Rogue', 'Ranger', 'Cleric', 'Sorcerer', or 'Wizard'.";
@@ -397,7 +405,7 @@ public class NewGameInput : MonoBehaviour {
 				}
 				else if (tkn.Length == 2)
 				{
-					if(tkn[1] == "door")
+					if(tkn[1].ToLower() == "door")
 					{
 						return "A white light surrounds you as you open the door, you can hear a voice yelling behind you.\n" + name +"Good luck on your adventure traveler! Oh, and do say hello to the Duke of Brillo over in Scrubbington for me, he might be able to help you out in your travels!"+"\nThe game technically started but thats as far as I got so far. I also need to add in a large ass continue button for 'cutscenes' or large blocks of text";
 					}
@@ -421,10 +429,20 @@ public class NewGameInput : MonoBehaviour {
 			return "Guru Meditation 0x0001";
 		}
 	}
-
 	void deselectInput()
 	{
 		_acceptInput = false;
 		InputField.GetComponent<InputField>().DeactivateInputField();
+	}
+	string cinematic(int stage, string[] content)
+	{
+		if(stage < 0 || stage >= content.Length)
+		{
+			return null;
+		}
+		else
+		{
+			return content[stage];
+		}
 	}
 }
