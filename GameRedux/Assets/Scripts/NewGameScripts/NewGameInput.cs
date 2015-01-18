@@ -12,6 +12,8 @@ public class NewGameInput : MonoBehaviour {
 	public GameObject OutputText;
 	public GameObject ScrollBar;
 	public GameObject CharacterCreationBackground;
+	public GameObject cinematicButton;
+	public GameObject inputHolder;
 	public Button CharacterCreationAcceptButton;
 	bool _acceptInput;
 	bool _cinematic;
@@ -33,6 +35,11 @@ public class NewGameInput : MonoBehaviour {
 
 		SubmitButton.GetComponent<Button>().onClick.RemoveAllListeners();
 		SubmitButton.GetComponent<Button>().onClick.AddListener(delegate {Submit();});
+		cinematicButton.GetComponent<Button>().onClick.RemoveAllListeners();
+		cinematicButton.GetComponent<Button>().onClick.AddListener(delegate 
+		{
+			Submit();
+		});	
 		InputField.GetComponent<InputField>().onEndEdit.RemoveAllListeners();
 
 		//ScrollBar.GetComponent<Scrollbar>().value = 1.0000000000000f;
@@ -46,7 +53,8 @@ public class NewGameInput : MonoBehaviour {
 	}
 	void Update()
 	{
-		if(_acceptInput)
+
+		if(_acceptInput && !_cinematic)
 		{
 			if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
 			{
@@ -81,6 +89,25 @@ public class NewGameInput : MonoBehaviour {
 
 		//format the output properly
 		//do a check to see if the text is blank
+		if(_cinematic)
+		{
+
+			string checkValid = cinematic(_cinematicStage,_currentCinematic);
+			if(checkValid != null)
+			{
+
+				OutputText.GetComponent<Text>().text = OutputText.GetComponent<Text>().text + checkValid + "\n";
+				StartCoroutine("bottomScroll");
+				_cinematicStage++;
+				return;
+			}
+			else
+			{
+				stopCinematic();
+				StartCoroutine("bottomScroll");
+				return;
+			}
+		}
 
 		if(input == "")
 		{
@@ -109,9 +136,6 @@ public class NewGameInput : MonoBehaviour {
 			//take input and output and 
 			OutputText.GetComponent<Text>().text = OutputText.GetComponent<Text>().text + "You: " + input + "\n\n" + response + "\n";
 			//Debug.Log(input);
-			
-
-
 		}
 
 		StartCoroutine("bottomScroll");
@@ -232,15 +256,25 @@ public class NewGameInput : MonoBehaviour {
 				}
 				else if(_attempts == 4)
 				{
-					_cinematic = true;
-					//set current cinematic.
-					return name + "testing";
-
 					/*
 					return name + "Ok, I'm done. You have brought me to the point were I'm breaking character as the narrator of this story, actually I'm more like the Game Master for this whole journey. Yeah, I'm the GM and you are a PC. That " +
 						"means that I can kill you at any moment!\nJPEG: Woah wait there buddy, you can't just kill the player, they are just trying to play the game.\n" + name +" But it's MY game. I can have control over it if I want to!" +
 						"\nJPEG: Nope it's my game. I control everything. I'm going to let the player live.\n"+ name +"But...\nJPEG: No Buts. Be nice to the player. Do you want me to rename you to Coq of the Bah'llz clan?\n" +name + "No, No, No, I'll play nice. Player, just pick a class 'Fighter', 'Rogue', 'Ranger', 'Cleric', 'Sorcerer', or 'Wizard'.";
 			        */
+					string[] cine1 = 
+					{
+						name + "Ok, I'm done. You have brought me to the point were I'm breaking character as the narrator of this story, actually I'm more like the Game Master for this whole journey. Yeah, I'm the GM and you are a PC. That means that I can kill you at any moment!",
+						"JPEG: Woah wait there buddy, you can't just kill the player, they are just trying to play the game.",
+						name +" But it's MY game. I can have control over it if I want to!",
+						"JPEG: Nope it's my game. I control everything. I'm going to let the player live.",
+						name +"But...",
+						"JPEG: No Buts. Be nice to the player. Do you want me to rename you to Coq of the Bah'llz clan?",
+						name + "No, No, No, I'll play nice. Player, just pick a class 'Fighter', 'Rogue', 'Ranger', 'Cleric', 'Sorcerer', or 'Wizard'."
+					};
+					//return cinematic part 1 (technically element 0)
+					return startCinematic(cine1); //get string array made
+
+
 }
 				else
 				{
@@ -434,9 +468,28 @@ public class NewGameInput : MonoBehaviour {
 		_acceptInput = false;
 		InputField.GetComponent<InputField>().DeactivateInputField();
 	}
+	string startCinematic(string[] cine)
+	{
+		_cinematic = true;
+		_currentCinematic = cine;
+		deselectInput();
+		cinematicButton.SetActive(true);
+		inputHolder.SetActive(false);
+		_cinematicStage = 1;
+		return cinematic(0,cine);
+	}
+	void stopCinematic()
+	{
+		_cinematic = false;
+		_currentCinematic = null;
+		deselectInput();
+		cinematicButton.SetActive(false);
+		inputHolder.SetActive(true);
+	}
 	string cinematic(int stage, string[] content)
 	{
-		if(stage < 0 || stage >= content.Length)
+
+		if(content == null || stage < 0 || stage >= content.Length)
 		{
 			return null;
 		}
