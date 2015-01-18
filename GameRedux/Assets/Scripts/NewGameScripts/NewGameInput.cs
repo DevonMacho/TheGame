@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
@@ -39,9 +40,8 @@ public class NewGameInput : MonoBehaviour {
 		cinematicButton.GetComponent<Button>().onClick.AddListener(delegate 
 		{
 			Submit();
-		});	
+		});
 		InputField.GetComponent<InputField>().onEndEdit.RemoveAllListeners();
-
 		//ScrollBar.GetComponent<Scrollbar>().value = 1.0000000000000f;
 		InputField.GetComponent<InputField>().characterLimit = 60;
 		OutputText.GetComponent<Text>().text = "You find yourself floating in a dark space. You are completely and totally alone. " +
@@ -86,9 +86,6 @@ public class NewGameInput : MonoBehaviour {
 
 		string input = InputText.GetComponent<Text>().text;
 		InputField.GetComponent<InputField>().text = string.Empty;
-
-		//format the output properly
-		//do a check to see if the text is blank
 		if(_cinematic)
 		{
 
@@ -103,8 +100,10 @@ public class NewGameInput : MonoBehaviour {
 			}
 			else
 			{
+
 				stopCinematic();
 				StartCoroutine("bottomScroll");
+				StartCoroutine("selectInput");
 				return;
 			}
 		}
@@ -135,7 +134,6 @@ public class NewGameInput : MonoBehaviour {
 			string response = parse(input);
 			//take input and output and 
 			OutputText.GetComponent<Text>().text = OutputText.GetComponent<Text>().text + "You: " + input + "\n\n" + response + "\n";
-			//Debug.Log(input);
 		}
 
 		StartCoroutine("bottomScroll");
@@ -183,7 +181,7 @@ public class NewGameInput : MonoBehaviour {
 		string[] nullResponse = {
 			"What was that? I asked what your name was","Hmm? I asked what class you were. Are you a 'Fighter', 'Rogue', 'Ranger', 'Cleric', 'Sorcerer', or 'Wizard'?"
 			,"Wazzat? Are you sure that you are a "+ _characterClass+ "? Its a simple 'Yes' or 'No'.", "Huh? I asked if you were a 'Man' or a 'Woman'.", "What? I told you to take off the mask\n<Type in 'unequip mask'>"
-			,"Why are you just staring into the darkness? I asked you to look into the mirror.\n<Type in 'look at mirror'>"
+			,"Why are you just staring into the darkness? I asked you to look into the mirror.\n<Type in 'look at mirror'>", "Step 1: put hand on handle. Step 2: (where you are failing)????. Step 3: profit!!!\n <Type in 'open door'>"
 			};//add more after you add in more steps
 		if(tkn == null)
 		{
@@ -261,7 +259,7 @@ public class NewGameInput : MonoBehaviour {
 						"means that I can kill you at any moment!\nJPEG: Woah wait there buddy, you can't just kill the player, they are just trying to play the game.\n" + name +" But it's MY game. I can have control over it if I want to!" +
 						"\nJPEG: Nope it's my game. I control everything. I'm going to let the player live.\n"+ name +"But...\nJPEG: No Buts. Be nice to the player. Do you want me to rename you to Coq of the Bah'llz clan?\n" +name + "No, No, No, I'll play nice. Player, just pick a class 'Fighter', 'Rogue', 'Ranger', 'Cleric', 'Sorcerer', or 'Wizard'.";
 			        */
-					string[] cine1 = 
+					string[] scene1 = 
 					{
 						name + "Ok, I'm done. You have brought me to the point were I'm breaking character as the narrator of this story, actually I'm more like the Game Master for this whole journey. Yeah, I'm the GM and you are a PC. That means that I can kill you at any moment!",
 						"JPEG: Woah wait there buddy, you can't just kill the player, they are just trying to play the game.",
@@ -272,7 +270,7 @@ public class NewGameInput : MonoBehaviour {
 						name + "No, No, No, I'll play nice. Player, just pick a class 'Fighter', 'Rogue', 'Ranger', 'Cleric', 'Sorcerer', or 'Wizard'."
 					};
 					//return cinematic part 1 (technically element 0)
-					return startCinematic(cine1); //get string array made
+					return startCinematic(scene1); //get string array made
 
 
 }
@@ -340,8 +338,7 @@ public class NewGameInput : MonoBehaviour {
 			{
 				return "JPEG: Hey, I'm the developer of this game. I just wanted to let you know that I am a lazy bastard and " +
 					"I only put in two options for gender. Now, I am more lazy than insensitive to the nearly infinite options that are out there for " +
-					"gender. To show how not insensitive I am, I included a gender neutral character option in the create a character step of the new game process (it's a checkbox up in the corner somewhere). " +
-					"This option allows you to use any face parts that you want on your character portrait. Anyways, for time sake, please choose either 'Man' or 'Woman'.";
+					"gender. Anyways, for time sake, please choose either 'Man' or 'Woman'.";
 			}
 			else
 			{
@@ -465,8 +462,16 @@ public class NewGameInput : MonoBehaviour {
 	}
 	void deselectInput()
 	{
+
 		_acceptInput = false;
 		InputField.GetComponent<InputField>().DeactivateInputField();
+	}
+	IEnumerator selectInput()
+	{
+		yield return new WaitForSeconds(.1f);
+		_acceptInput = true;
+		InputField.GetComponent<InputField>().ActivateInputField();
+		InputField.GetComponent<InputField>().Select();
 	}
 	string startCinematic(string[] cine)
 	{
@@ -474,8 +479,8 @@ public class NewGameInput : MonoBehaviour {
 		_currentCinematic = cine;
 		deselectInput();
 		cinematicButton.SetActive(true);
-		inputHolder.SetActive(false);
 		_cinematicStage = 1;
+		cinematicButton.GetComponent<Button>().Select();
 		return cinematic(0,cine);
 	}
 	void stopCinematic()
@@ -484,7 +489,8 @@ public class NewGameInput : MonoBehaviour {
 		_currentCinematic = null;
 		deselectInput();
 		cinematicButton.SetActive(false);
-		inputHolder.SetActive(true);
+
+
 	}
 	string cinematic(int stage, string[] content)
 	{
