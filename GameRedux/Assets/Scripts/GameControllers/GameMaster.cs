@@ -3,13 +3,16 @@ using System.Collections;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-public class GameMaster : MonoBehaviour {
+public class GameMaster : MonoBehaviour
+{
 
-	public GameData Data;
+	GameData _data;
+	WorldData _world;
 	public static GameMaster GM;
 	int _saveSlot;
 	string _saveLoc;
-	void Awake () 
+
+	void Awake()
 	{
 		if(GM == null)
 		{
@@ -27,27 +30,30 @@ public class GameMaster : MonoBehaviour {
 	public void StartNewGame(int slot)
 	{
 		_saveSlot = slot;
+		_world = new WorldData(0,_testWorld);
 		Application.LoadLevel("NewCharacter");
 		//Debug.Log("Starting new game in slot " + slot);
 
 	}
+
 	public bool LoadGame(int slot)
 	{
 		if(Directory.Exists(_saveLoc))
 		{
-			if(File.Exists(_saveLoc+"Save"+slot+".cok"))
+			if(File.Exists(_saveLoc + "Save" + slot + ".cok"))
 			{
 				try
 				{
 					BinaryFormatter formatter = new BinaryFormatter();
-					FileStream stream = File.Open(_saveLoc+"Save"+slot+".cok",FileMode.Open);
+					FileStream stream = File.Open(_saveLoc + "Save" + slot + ".cok", FileMode.Open);
 					GameData NullTest = (GameData)formatter.Deserialize(stream);
 					stream.Close();
 					if(NullTest == null)
 					{
 						return false;
 					}
-					Data = NullTest;
+					_data = NullTest;
+					_world = new WorldData(_data.Node,_testWorld);
 					_saveSlot = slot;
 					Application.LoadLevel("Game");
 					//Debug.Log("Loading from slot " + slot);
@@ -71,19 +77,20 @@ public class GameMaster : MonoBehaviour {
 		}
 
 	}
+
 	public BasicGameInfo LoadInfo(int slot)
 	{
 		if(Directory.Exists(_saveLoc))
 		{
 			//Debug.Log("Directory Exists");
-			if(File.Exists(_saveLoc+"Save"+slot+".cok"))
+			if(File.Exists(_saveLoc + "Save" + slot + ".cok"))
 			{
 				//Debug.Log("File Exists: " + slot);
 				try
 				{
 
 					BinaryFormatter formatter = new BinaryFormatter();
-					FileStream stream = File.Open(_saveLoc+"Save"+slot+".cok",FileMode.Open);
+					FileStream stream = File.Open(_saveLoc + "Save" + slot + ".cok", FileMode.Open);
 					//Debug.Log("Before Deserialize");
 					GameData Binfo = (GameData)formatter.Deserialize(stream);
 					//Debug.Log("After Deserialize");
@@ -107,6 +114,7 @@ public class GameMaster : MonoBehaviour {
 			return null;
 		}
 	}
+
 	public bool SaveGame(string location)
 	{
 
@@ -117,9 +125,9 @@ public class GameMaster : MonoBehaviour {
 		}
 		try
 		{
-			Data.BasicInfo.Location = location;
-			FileStream file = File.Open(_saveLoc + "Save"+_saveSlot+".cok",FileMode.Create);
-			formatter.Serialize(file,GM.Data);
+			_data.BasicInfo.Location = location;
+			FileStream file = File.Open(_saveLoc + "Save" + _saveSlot + ".cok", FileMode.Create);
+			formatter.Serialize(file, _data);
 			file.Close();
 			return true;
 		}
@@ -128,12 +136,49 @@ public class GameMaster : MonoBehaviour {
 			return false;
 		}
 	}
+
 	public void DebugShowInfo()
 	{
-		Debug.Log("Name: " + Data.BasicInfo.Name);
-		Debug.Log("Class: " + Data.BasicInfo.CharClass);
-		Debug.Log("Gender: " + Data.Gender);
+		Debug.Log("Name: " + _data.BasicInfo.Name);
+		Debug.Log("Class: " + _data.BasicInfo.CharClass);
+		Debug.Log("Gender: " + _data.Gender);
 	}
 
 	
+	public GameData Data
+	{
+		get
+		{
+			return _data;
+		}
+		set
+		{
+			_data = value;
+		}
+	}
+
+	public WorldData World
+	{
+		get
+		{
+			return _world;
+		}
+		set
+		{
+			_world = value;
+		}
+	}
+	Location[] _testWorld = 
+	{
+		new Location(0,"A","Node A / 0", new int[]{1,2}, new string[]{"southwest", "southeast"}), 
+		new Location(1,"B","Node B / 1", new int[]{0,2,3,4}, new string[]{"northeast", "east", "south", "southeast"}), 
+		new Location(2,"C","Node C / 2", new int[]{0,1,3,4}, new string[]{"northwest", "west", "southwest", "south"}), 
+		new Location(3,"D","Node D / 3", new int[]{1,2,4}, new string[]{"north", "northeast", "east"}), 
+		new Location(4,"E","Node E / 4", new int[]{1,2,3}, new string[]{"northwest", "north", "west"}) 
+		// 0: 1, 2
+		// 1: 0, 2, 3, 4
+		// 2: 0, 1, 3, 4
+		// 3: 1, 2, 4
+		// 4: 1, 2, 3
+	};
 }

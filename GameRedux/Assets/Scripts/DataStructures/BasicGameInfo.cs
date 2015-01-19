@@ -2,7 +2,8 @@
 using System.Collections;
 
 [System.Serializable]
-public class BasicGameInfo {
+public class BasicGameInfo
+{
 
 	[SerializeField]
 
@@ -12,7 +13,7 @@ public class BasicGameInfo {
 	int gold;
 	int level;
 
-	public BasicGameInfo(string name, string charClass,string location,int gold, int level)
+	public BasicGameInfo(string name, string charClass, string location, int gold, int level)
 	{
 		this.name = name;
 		this.charClass = charClass;
@@ -21,41 +22,54 @@ public class BasicGameInfo {
 		this.level = level;
 	}
 
-	public string Name {
-		get {
+	public string Name
+	{
+		get
+		{
 			return name;
 		}
 	}
 
-	public string CharClass {
-		get {
+	public string CharClass
+	{
+		get
+		{
 			return charClass;
 		}
 	}
 
-	public string Location {
-		get {
+	public string Location
+	{
+		get
+		{
 			return location;
 		}
-		set {
+		set
+		{
 			location = value;
 		}
 	}
 
-	public int Gold {
-		get {
+	public int Gold
+	{
+		get
+		{
 			return gold;
 		}
-		set {
+		set
+		{
 			gold = value;
 		}
 	}
 
-	public int Level {
-		get {
+	public int Level
+	{
+		get
+		{
 			return level;
 		}
-		set {
+		set
+		{
 			level = value;
 		}
 	}

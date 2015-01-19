@@ -1,17 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MenuController : MonoBehaviour {
+public class MenuController : MonoBehaviour
+{
 
 	// Use this for initialization
 	public Options Opt;
-	void Awake () 
+
+	void Awake()
 	{
 		#if UNITY_EDITOR
 			//YOU HAVE TO PURGE PLAYERPREFS BEFORE DEPLOY!!!
 			PlayerPrefs.DeleteAll();
 		#endif
-		if (Opt.CheckPrefs())
+		if(Opt.CheckPrefs())
 		{
 			Opt.LoadPrefs();
 		}
@@ -23,7 +25,7 @@ public class MenuController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	void Update()
 	{
 	
 	}

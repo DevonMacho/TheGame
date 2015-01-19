@@ -1,8 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\GameRedux\Assets\Scripts\NewGameScripts\NewGameInput.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\GameRedux\Assets\Scripts\DataStructures\GameData.cs">
     <Files>
-      <File FileName="..\GameRedux\Assets\Scripts\NewGameScripts\NewGameInput.cs" Line="180" Column="81" />
+      <File FileName="..\GameRedux\Assets\Scripts\DataStructures\GameData.cs" Line="5" Column="22" />
+      <File FileName="..\GameRedux\Assets\Scripts\DataStructures\WorldData.cs" Line="13" Column="17" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
