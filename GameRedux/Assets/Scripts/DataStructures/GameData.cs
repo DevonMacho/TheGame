@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+[System.Serializable]
 public class GameData
 {
-		[SerializeField]
+	[SerializeField]
 
 		BasicGameInfo _basic;
 		int _str;

@@ -9,11 +9,9 @@ public class GameSelectButton : MonoBehaviour {
 	public GameObject Background;
 	public GameObject MessageBox;
 	public GameObject MessageBoxYes;
-	GameMaster GM;
 	public void UpdateBackground(BasicGameInfo info)
 	{
 		GetComponent<Button>().onClick.RemoveAllListeners();
-		GM = GameObject.FindObjectOfType<GameMaster>();
 
 		Transform gameData = transform.GetChild(0);
 		Transform noData = transform.GetChild(1);
@@ -26,7 +24,7 @@ public class GameSelectButton : MonoBehaviour {
 				GetComponent<Button>().onClick.AddListener(delegate 
 				{
 					Background.SetActive(false);
-					GM.LoadGame(SlotNumber);
+					GameMaster.GM.LoadGame(SlotNumber);
 				});
 			}
 			else
@@ -40,7 +38,7 @@ public class GameSelectButton : MonoBehaviour {
 					MessageBoxYes.GetComponent<Button>().onClick.AddListener(delegate
 					{
 						MessageBox.SetActive(false);
-						GM.StartNewGame(SlotNumber);
+						GameMaster.GM.StartNewGame(SlotNumber);
 					});
 
 				});
@@ -51,7 +49,7 @@ public class GameSelectButton : MonoBehaviour {
 			gameData.GetChild(1).GetComponent<Text>().text = info.Name; //set character name
 			gameData.GetChild(2).GetComponent<Text>().text = info.CharClass; //set character class
 			Transform basicStats = fileData.GetChild (0);
-			basicStats.GetChild(0).GetComponent<Text>().text = "Loc:\t" + info.Name; //sets the location
+			basicStats.GetChild(0).GetComponent<Text>().text = "Loc:\t" + info.Location; //sets the location
 			basicStats.GetChild(1).GetComponent<Text>().text ="GP:\t"+ info.Gold; //sets the gold value
 			basicStats.GetChild(2).GetComponent<Text>().text ="LvL:\t"+ info.Level; //sets the gold value
 		}
@@ -65,7 +63,7 @@ public class GameSelectButton : MonoBehaviour {
 				GetComponent<Button>().onClick.AddListener(delegate 
 				{
 					Background.SetActive(false);
-					GM.StartNewGame(SlotNumber);
+					GameMaster.GM.StartNewGame(SlotNumber);
 				});
 			}
 		}

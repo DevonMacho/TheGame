@@ -25,8 +25,9 @@ public class GameSelectController : MonoBehaviour {
 	{
 		// pull in basic file info
 		//if null do nothing
-		FileInfo[0] = new BasicGameInfo("JPEG","Testing","Somewhere",20,69);
-		FileInfo[2] = new BasicGameInfo("JPEG2","Testing2","Somewhere Else",40,27);
+		FileInfo[0] = GameMaster.GM.LoadInfo(1);
+		FileInfo[1] = GameMaster.GM.LoadInfo(2);
+		FileInfo[2] = GameMaster.GM.LoadInfo(3);
 	}
 
 }

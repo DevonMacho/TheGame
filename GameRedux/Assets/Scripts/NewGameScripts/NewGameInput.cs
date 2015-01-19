@@ -16,6 +16,7 @@ public class NewGameInput : MonoBehaviour {
 	public GameObject cinematicButton;
 	public GameObject inputHolder;
 	public Button CharacterCreationAcceptButton;
+	GameData _char = null;
 	bool _acceptInput;
 	bool _cinematic;
 	int _responseNo = 0;
@@ -28,6 +29,7 @@ public class NewGameInput : MonoBehaviour {
 	string[] _currentCinematic;
 	void Start()
 	{
+
 		#if UNITY_EDITOR
 			InputField.GetComponent<InputField>().contentType = UnityEngine.UI.InputField.ContentType.Name;
 		#else
@@ -100,11 +102,19 @@ public class NewGameInput : MonoBehaviour {
 			}
 			else
 			{
+				if (_char != null)
+				{
 
-				stopCinematic();
-				StartCoroutine("bottomScroll");
-				StartCoroutine("selectInput");
-				return;
+					Application.LoadLevel("Game");
+					return;
+				}
+				else
+				{
+					stopCinematic();
+					StartCoroutine("bottomScroll");
+					StartCoroutine("selectInput");
+					return;
+				}
 			}
 		}
 
@@ -438,7 +448,19 @@ public class NewGameInput : MonoBehaviour {
 				{
 					if(tkn[1].ToLower() == "door")
 					{
-						return "A white light surrounds you as you open the door, you can hear a voice yelling behind you.\n" + name +"Good luck on your adventure traveler! Oh, and do say hello to the Duke of Brillo over in Scrubbington for me, he might be able to help you out in your travels!"+"\nThe game technically started but thats as far as I got so far. I also need to add in a large ass continue button for 'cutscenes' or large blocks of text";
+
+						string[] cine2 = 
+						{
+							"A white light surrounds you as you open the door, you can hear a voice yelling behind you.",
+							name +"Good luck on your adventure traveler! Oh, and do say hello to the Duke of Brillo over in Scrubbington for me, he might be able to help you out in your travels!"
+						};
+						_char = new GameData(_characterName,_characterClass,_characterGender);
+						GameMaster.GM.Data = _char;
+						GameMaster.GM.SaveGame("Crash Site");
+						//GameMaster.GM.DebugShowInfo();
+						return startCinematic(cine2);
+
+
 					}
 					else
 					{
