@@ -1,11 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\NewGameScripts\NewGameInput.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\DataStructures\GameCommands.cs">
     <Files>
       <File FileName="Assets\Scripts\DataStructures\WorldData.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\DataStructures\GameData.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\NewGameScripts\NewGameInput.cs" Line="443" Column="8" />
-      <File FileName="Assets\Scripts\GameScripts\GameInput.cs" Line="40" Column="3" />
+      <File FileName="Assets\Scripts\GameScripts\GameInput.cs" Line="4" Column="18" />
+      <File FileName="Assets\Scripts\DataStructures\GameCommands.cs" Line="24" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
