@@ -29,7 +29,7 @@ public class NewGameInput : MonoBehaviour
 	string _characterGender;
 	string[] _currentCinematic;
 
-	void Start()
+	void Awake()
 	{
 
 		#if UNITY_EDITOR
