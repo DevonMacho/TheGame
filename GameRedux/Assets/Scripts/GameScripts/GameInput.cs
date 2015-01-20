@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Linq;
-
+using System.Collections.Generic;
 public class GameInput : MonoBehaviour
 {
 	public GameObject SubmitButton;
@@ -12,9 +12,12 @@ public class GameInput : MonoBehaviour
 	public GameObject ScrollBar;
 	public GameObject cinematicButton;
 	public GameObject inputHolder;
+	List<Command> _commands = new List<Command>();
+	List<string> _cmdHist = new List<string>();
 	bool _acceptInput;
 	bool _cinematic;
 	int _cinematicStage = 0;
+	int _cmdLoc = 0;
 	string[] _currentCinematic;
 	// Use this for initialization
 	void Awake()
@@ -39,6 +42,9 @@ public class GameInput : MonoBehaviour
 		InputField.GetComponent<InputField>().onEndEdit.RemoveAllListeners();
 
 		InputField.GetComponent<InputField>().characterLimit = 60;
+		_commands.Add(new Command("help","lists availiable commands",false));
+		_commands.Add(new Command("go","goes places",true));
+		_commands.Add(new Command("look","looks at things",true));
 
 		 string[] introCine = 
 		{
@@ -82,7 +88,8 @@ public class GameInput : MonoBehaviour
 			{
 				//Debug.Log("Up");
 				//do something to blank the text
-				//InputField.GetComponent<InputField>().MoveTextEnd(true); // moves cursor to the end
+				InputField.GetComponent<InputField>().MoveTextEnd(true); // moves cursor to the end
+				_cmdLoc--;
 				//send in new text / stored text
 			}
 			else if(Input.GetKeyDown(KeyCode.DownArrow))
@@ -134,6 +141,8 @@ public class GameInput : MonoBehaviour
 		{
 			//send input text to the parser
 			string response = parse(input);
+			_cmdHist.Add(input);
+			_cmdLoc = 0;
 			//take input and output and 
 			OutputText.GetComponent<Text>().text = OutputText.GetComponent<Text>().text + "\n" + input + "\n" + response + "\n";
 		}
@@ -225,6 +234,43 @@ public class GameInput : MonoBehaviour
 	}
 	string parse(string input)
 	{
-		return "meh";
+		string[] tkn = tokenize(input);
+		if(tkn == null)
+		{
+			return "Invalid Command";
+		}
+		else
+		{
+			foreach(Command a in _commands)
+			{
+				if(tkn[0].ToLower() == a.CommandName)
+				{
+					if(tkn.Length > 1)
+					{
+						if(a.SubCommands)
+						{
+							return "I have subcommands";
+						}
+						else
+						{
+							return "This doesnt have modifiers";
+						}
+					}
+					else if (tkn.Length <= 1 && tkn.Length > 0)
+					{
+						if(a.SubCommands)
+						{
+							return "I have subcommands, enter them";
+						}
+						else
+						{
+							return "valid input";
+						}
+					}
+
+				}
+			}
+		}
+		return "Invalid Command";
 	}
 }
