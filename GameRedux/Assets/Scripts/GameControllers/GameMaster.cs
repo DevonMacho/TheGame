@@ -11,7 +11,7 @@ public class GameMaster : MonoBehaviour
 	public static GameMaster GM;
 	int _saveSlot;
 	string _saveLoc;
-
+	bool _newGame = true;
 	void Awake()
 	{
 		if(GM == null)
@@ -30,6 +30,7 @@ public class GameMaster : MonoBehaviour
 	public void StartNewGame(int slot)
 	{
 		_saveSlot = slot;
+		_newGame = true;
 		_world = new WorldData(0,_testWorld);
 		Application.LoadLevel("NewCharacter");
 		//Debug.Log("Starting new game in slot " + slot);
@@ -55,6 +56,14 @@ public class GameMaster : MonoBehaviour
 					_data = NullTest;
 					_world = new WorldData(_data.Node,_testWorld);
 					_saveSlot = slot;
+					if(_data.Node != 0)
+					{
+						_newGame = false;
+					}
+					else
+					{
+						_newGame = true;
+					}
 					Application.LoadLevel("Game");
 					//Debug.Log("Loading from slot " + slot);
 					//DebugShowInfo();
@@ -168,6 +177,19 @@ public class GameMaster : MonoBehaviour
 			_world = value;
 		}
 	}
+
+	public bool NewGame
+	{
+		get
+		{
+			return _newGame;
+		}
+		set
+		{
+			_newGame = value;
+		}
+	}
+
 	Location[] _testWorld = 
 	{
 		new Location(0,"A","Node A / 0", new int[]{1,2}, new string[]{"southwest", "southeast"}), 

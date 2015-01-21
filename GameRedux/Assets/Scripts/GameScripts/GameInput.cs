@@ -68,8 +68,14 @@ public class GameInput : MonoBehaviour
 			"You think that you should probably find him, before Kraymoar rears his ugly face again."
 		};
 
-
-		OutputText.GetComponent<Text>().text = startCinematic(introCine) + "\n";
+		if(GameMaster.GM.NewGame)
+		{
+			OutputText.GetComponent<Text>().text = startCinematic(introCine) + "\n";
+		}
+		else
+		{
+			OutputText.GetComponent<Text>().text =  "Welcome Back!\n"; 
+		}
 		StartCoroutine("topScroll");
 	}
 	
@@ -249,22 +255,22 @@ public class GameInput : MonoBehaviour
 					{
 						if(a.SubCommands)
 						{
-							return "I have subcommands";
+							return "Send to secondary parser";
 						}
 						else
 						{
-							return "This doesnt have modifiers";
+							return "This command does not have any modifiers.";
 						}
 					}
 					else if (tkn.Length <= 1 && tkn.Length > 0)
 					{
 						if(a.SubCommands)
 						{
-							return "I have subcommands, enter them";
+							return "I should be returning subcommands for the entered command";
 						}
 						else
 						{
-							return "valid input";
+							return "Return ";
 						}
 					}
 
