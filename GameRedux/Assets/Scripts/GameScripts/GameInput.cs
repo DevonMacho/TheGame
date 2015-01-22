@@ -12,7 +12,7 @@ public class GameInput : MonoBehaviour
 	public GameObject ScrollBar;
 	public GameObject cinematicButton;
 	public GameObject inputHolder;
-	List<Command> _commands = new List<Command>();
+	//List<Command> _commands = new List<Command>();
 	List<string> _cmdHist = new List<string>();
 	bool _acceptInput;
 	bool _cinematic;
@@ -42,9 +42,7 @@ public class GameInput : MonoBehaviour
 		InputField.GetComponent<InputField>().onEndEdit.RemoveAllListeners();
 
 		InputField.GetComponent<InputField>().characterLimit = 60;
-		_commands.Add(new Command("help","lists availiable commands",false));
-		_commands.Add(new Command("go","goes places",true));
-		_commands.Add(new Command("look","looks at things",true));
+
 
 		 string[] introCine = 
 		{
@@ -247,7 +245,7 @@ public class GameInput : MonoBehaviour
 		}
 		else
 		{
-			foreach(Command a in _commands)
+			foreach(Command a in GameCommands.Commands)
 			{
 				if(tkn[0].ToLower() == a.CommandName)
 				{
@@ -255,7 +253,7 @@ public class GameInput : MonoBehaviour
 					{
 						if(a.SubCommands)
 						{
-							return "Send to secondary parser";
+							return GameCommands.ProcessCommands(a,tkn,false);
 						}
 						else
 						{
@@ -266,11 +264,11 @@ public class GameInput : MonoBehaviour
 					{
 						if(a.SubCommands)
 						{
-							return "I should be returning subcommands for the entered command";
+							return GameCommands.ProcessCommands(a,tkn,true);
 						}
 						else
 						{
-							return "Return ";
+							return GameCommands.ProcessCommands(a,tkn,false);
 						}
 					}
 
