@@ -5,9 +5,10 @@ public class Command
 {
 	string _command;
 	string _commandDescription;
-	bool _subcommands;
+	bool _hasSubCommands;
+	Command[] _subcommands;
 
-	public Command(string command, string description, bool subcommands)
+	public Command(string command, string description ,Command[] subcommands)
 	{
 		_command = command;
 		_commandDescription = description;
@@ -30,7 +31,7 @@ public class Command
 		}
 	}
 
-	public bool SubCommands
+	public Command[] SubCommands
 	{
 		get
 		{
@@ -38,26 +39,26 @@ public class Command
 		}
 	}
 }
+
 public class GameCommands :MonoBehaviour
 {
 	static Command[] _commandsInUse =
 		{
 			//basics
-			new Command("help","Lists availiable commands.",false),
-			new Command("clear","Clears the terminal.",true),
-			//does not take a turn
-			new Command("look",".",true),
-			new Command("inventory",".",true),
+			new Command("help","Lists availiable commands.",null),
+			new Command("clear","Clears the terminal.",null),
+			new Command("look",".", null),
+			new Command("inventory",".",null),
 			//takes turn
-			new Command("go",".",true),
-			new Command("pickup",".",true),
-			new Command("drop",".",true),
-			new Command("equip",".",true),
-			new Command("unequip",".",true),
-			new Command("open",".",true),
-			new Command("close",".",true),
+			new Command("go",".",null),
+			new Command("pickup",".",null),
+			new Command("drop",".",null),
+			new Command("equip",".",null),
+			new Command("unequip",".",null),
+			new Command("open",".",null),
+			new Command("close",".",null),
 			//final commands
-			new Command("quit","Exits the current game.",false)
+			new Command("quit","Exits the current game.",null)
 			
 		};
 	public static string ProcessCommands(Command cmd,string[] tkn, bool displaySubcommands)

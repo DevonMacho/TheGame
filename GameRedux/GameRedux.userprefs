@@ -1,9 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameScripts\GameInput.cs">
     <Files>
-      <File FileName="Assets\Scripts\GameScripts\GameInput.cs" Line="76" Column="4" />
-      <File FileName="Assets\Scripts\DataStructures\GameCommands.cs" Line="69" Column="24" />
+      <File FileName="Assets\Scripts\DataStructures\GameCommands.cs" Line="61" Column="48" />
+      <File FileName="Assets\Scripts\GameScripts\GameInput.cs" Line="275" Column="6" />
       <File FileName="Assets\Scripts\NewGameScripts\NewGameInput.cs" Line="509" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>

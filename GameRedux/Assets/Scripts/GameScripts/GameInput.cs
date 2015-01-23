@@ -251,7 +251,7 @@ public class GameInput : MonoBehaviour
 				{
 					if(tkn.Length > 1)
 					{
-						if(a.SubCommands)
+						if(a.SubCommands != null)
 						{
 							return GameCommands.ProcessCommands(a,tkn,false);
 						}
@@ -262,7 +262,7 @@ public class GameInput : MonoBehaviour
 					}
 					else if (tkn.Length <= 1 && tkn.Length > 0)
 					{
-						if(a.SubCommands)
+						if(a.SubCommands != null)
 						{
 							return GameCommands.ProcessCommands(a,tkn,true);
 						}
