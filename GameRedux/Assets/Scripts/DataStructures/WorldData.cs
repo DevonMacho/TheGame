@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/*
 [System.Serializable]
 public class WorldData
 {
@@ -19,9 +20,8 @@ public class WorldData
 		}
 	}
 }
-
-[System.Serializable]
-public class Location
+*/
+public class Location//: IEnumerable
 {
 	int _node;
 	int[] _adjacentNodes;
@@ -36,9 +36,9 @@ public class Location
 		_locationInformation = info;
 		_adjacentNodes = adjacentNodes;
 		_adjacentDir = adjacentDirection;
+
 		//add in a description of the locations in the future
 	}
-
 	public int Node
 	{
 		get

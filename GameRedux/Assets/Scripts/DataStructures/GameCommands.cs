@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 [System.Serializable]
 public class Command
@@ -43,6 +46,8 @@ public class Command
 
 public class GameCommands :MonoBehaviour
 {
+	static string im = "Invalid Modifier.";
+	static string tma = "Too many Arguments.";
 	static Command[] _commandsInUse =
 		{
 	//basics
@@ -52,7 +57,8 @@ public class GameCommands :MonoBehaviour
 		    new Command[] 
 		    { 
 				new Command("at", "Allows you to look at an object. 'look at <object>'", new Command[]{new Command("<object>", "An Object", null)}),
-				new Command("around", "Allows you to look around you.", null)
+				new Command("around", "Allows you to look around you.", null),
+				new Command("<Location>", "Allows you to look towards a location 'look <Location Name>'.", null)
 			}),
 			new Command("inventory", "Opens your inventory.", null),
 	//takes turn
@@ -70,17 +76,37 @@ public class GameCommands :MonoBehaviour
 
 	public static string ProcessCommands(Command cmd, string[] tkn)
 	{
+
+
 		if(cmd.CommandName == "help")
 		{
 			return help();
 		}
-		else if(cmd.CommandName == "go")
+		else if(cmd.CommandName == "clear")
 		{
-			return "go";
+			return clear();
 		}
 		else if(cmd.CommandName == "look")
 		{
-			return "look";
+			return look(cmd, tkn);
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+		//last
+		else if(cmd.CommandName == "quit")
+		{
+
+			return quit();
 		}
 		else
 		{
@@ -92,19 +118,14 @@ public class GameCommands :MonoBehaviour
 
 	public static string DisplaySubCommands(Command cmd)
 	{
-		string ret = "\n==== Sub Commands ====\n";
-		string fnl = "";
-		if(cmd.SubCommands.Length == 1)
-		{
-			fnl = "\n";
-		}
+		string ret = "\n==== Sub Commands ====\n\n";
 		foreach (Command a in cmd.SubCommands)
 		{
 			string tab;
 
-			if(a.CommandName == "<Item>" || a.CommandName == "<Object>" || a.CommandName == "<Location>"  )
+			if(a.CommandName == "<Item>" || a.CommandName == "<Object>" )
 			{
-				ret +="\n";
+
 				tab = ":\t";
 			}
 			else if(a.CommandName.Length > 6)
@@ -121,7 +142,7 @@ public class GameCommands :MonoBehaviour
 			}
 			ret += a.CommandName + tab + a.CommandDescription + "\n";
 		}
-		return (ret + fnl +"======== END =========");
+		return (ret +"\n======== END =========");
 	}
 
 	static string help()
@@ -145,6 +166,92 @@ public class GameCommands :MonoBehaviour
 			ret += a.CommandName + tab + a.CommandDescription + "\n";
 		}
 		return (ret + "\n============ END ============");
+	}
+	static string clear()
+	{
+		GameObject.FindObjectOfType<GameInput>().StartCoroutine("clearDelay");
+		return "";
+
+	}
+
+	static string look(Command cmd, string[] tkn)
+	{
+		Location currentLoc = GameMaster.GM.World[GameMaster.GM.Data.Node];
+		/* Known factors
+		 * Tkn is at least 2 strings long
+		 * the command IS look
+		 */
+		if(tkn[1].ToLower() == "at")
+		{
+			if(tkn.Length == 2)
+			{
+				foreach (Command a in getSubcommands(cmd))
+				{
+					if(a.CommandName == "at")
+					{
+						return a.CommandDescription;
+					}
+				}
+				return "Guru Meditation 0x0003";
+			}
+			else if(tkn.Length == 3)
+			{
+				//check inventory / world
+				return "Looking at " + tkn[2];
+				//check to see if the object actually exists in the object list
+				//return "That object does not exist";
+			}
+			else
+			{
+				return tma;
+			}
+
+		}
+		else if(tkn[1].ToLower() == "around")
+		{
+			if(tkn.Length > 2)
+			{
+				return tma;
+			}
+			else
+			{
+				return currentLoc.Information;
+			}
+		}
+		else
+		{
+				foreach(string a in currentLoc.AdjacentNodeDirection)
+				{
+					if(tkn[1].ToLower() == a.ToLower())
+					{
+						return "looking " + a;
+					}
+				}
+				foreach(Location a in GameMaster.GM.World)
+				{
+					foreach(string b in a.AdjacentNodeDirection)
+					{
+						if(tkn[1].ToLower() == b.ToLower())
+						{
+							return "You can not go that way.";
+						}
+					}
+				}
+			return im;
+		}
+
+			
+	}
+	static string quit()
+	{
+		GameObject.FindObjectOfType<GameInput>().StartQuit();
+		return "Quitting...";
+	}
+
+
+	static Command[] getSubcommands(Command cmd)
+	{
+		return cmd.SubCommands;
 	}
 
 	public static Command[] Commands

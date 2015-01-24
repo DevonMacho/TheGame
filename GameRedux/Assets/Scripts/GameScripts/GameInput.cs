@@ -11,8 +11,13 @@ public class GameInput : MonoBehaviour
 	public GameObject OutputText;
 	public GameObject ScrollBar;
 	public GameObject cinematicButton;
-	public GameObject inputHolder; 
-	List<string> _cmdHist = new List<string>();
+	public GameObject inputHolder;
+	public GameObject quitMenu;
+	public GameObject GameView;
+	public Button quitYes;
+	public Button quitNo;
+
+	List<string> _cmdHist;
 	bool _acceptInput;
 	bool _cinematic;
 	int _cinematicStage = 0;
@@ -26,12 +31,22 @@ public class GameInput : MonoBehaviour
 		#else
 		InputField.GetComponent<InputField>().contentType = UnityEngine.UI.InputField.ContentType.Standard;
 		#endif
+		quitMenu.SetActive(false);
+		quitYes.onClick.RemoveAllListeners();
+		quitNo.onClick.RemoveAllListeners();
+		quitYes.onClick.AddListener(delegate
+		{
+			Application.LoadLevel("MainMenu");
+		});
+		quitNo.onClick.AddListener(delegate
+		{
+			cancelQuit();
+		});
 		SubmitButton.GetComponent<Button>().onClick.RemoveAllListeners(); //clears any actions
 		SubmitButton.GetComponent<Button>().onClick.AddListener(delegate
 		{
 			Submit();
 		}); // sets the button's action to submit
-		_cmdHist.Add("");
 		cinematicButton.GetComponent<Button>().onClick.RemoveAllListeners();
 		cinematicButton.GetComponent<Button>().onClick.AddListener(delegate
 		{
@@ -41,7 +56,7 @@ public class GameInput : MonoBehaviour
 		InputField.GetComponent<InputField>().onEndEdit.RemoveAllListeners();
 
 		InputField.GetComponent<InputField>().characterLimit = 60;
-
+		clearHistory();
 
 		 string[] introCine = 
 		{
@@ -75,8 +90,7 @@ public class GameInput : MonoBehaviour
 		}
 		StartCoroutine("topScroll");
 	}
-	
-	// Update is called once per frame
+
 	void Update()
 	{
 
@@ -88,24 +102,17 @@ public class GameInput : MonoBehaviour
 				Submit();
 				
 			}
-			//not working properly
 			else if(Input.GetKeyDown(KeyCode.UpArrow))
 			{
-				//Debug.Log("Up");
-				//do something to blank the text
-				 // moves cursor to the end
 				if(_cmdLoc < _cmdHist.Count)
 				{
 					_cmdLoc++;
 					InputField.GetComponent<InputField>().text = _cmdHist[_cmdLoc -1];
 				}
 				InputField.GetComponent<InputField>().MoveTextEnd(true);
-				//send in new text / stored text
 			}
 			else if(Input.GetKeyDown(KeyCode.DownArrow))
 			{
-				//Debug.Log("Down");
-				//do something to blank the text
 				if(_cmdLoc > 1)
 				{
 					_cmdLoc--;
@@ -147,12 +154,7 @@ public class GameInput : MonoBehaviour
 			}
 		}
 		
-		if(input == "")
-		{
-			//output no text error or just blank line
-			
-		}
-		else
+		if(input != "")
 		{
 			//send input text to the parser
 			string response = parse(input);
@@ -161,8 +163,11 @@ public class GameInput : MonoBehaviour
 			//take input and output and 
 			OutputText.GetComponent<Text>().text = OutputText.GetComponent<Text>().text + "\n" + input + "\n" + response + "\n";
 		}
-		
-		StartCoroutine("bottomScroll");
+		if(gameObject.activeInHierarchy)
+		{
+			StartCoroutine("bottomScroll");
+
+		}
 	}
 
 	public void AcceptInput(bool value)
@@ -231,8 +236,6 @@ public class GameInput : MonoBehaviour
 		_currentCinematic = null;
 		deselectInput();
 		cinematicButton.SetActive(false);
-		
-		
 	}
 	
 	string cinematic(int stage, string[] content)
@@ -246,6 +249,35 @@ public class GameInput : MonoBehaviour
 		{
 			return content [stage];
 		}
+	}
+	IEnumerator clearDelay()
+	{
+		OutputText.GetComponent<Text>().text = "";
+		clearHistory();
+		yield return new WaitForSeconds(.001f);
+		OutputText.GetComponent<Text>().text = "<<<======== cleared ========>>>";
+		StartCoroutine("topScroll");
+
+	}
+	void clearHistory()
+	{
+		_cmdHist = new List<string>();
+		_cmdHist.Add("");
+		_cmdLoc = 1;
+	}
+	public void StartQuit()
+	{
+		deselectInput();
+		GameView.SetActive(false);
+		quitMenu.SetActive(true);
+
+	}
+	void cancelQuit()
+	{
+		OutputText.GetComponent<Text>().text = OutputText.GetComponent<Text>().text + "\nQuit Aborted\n";
+		GameView.SetActive(true);
+		quitMenu.SetActive(false);
+		StartCoroutine("bottomScroll");
 	}
 	string parse(string input)
 	{
