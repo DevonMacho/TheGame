@@ -11,13 +11,12 @@ public class GameInput : MonoBehaviour
 	public GameObject OutputText;
 	public GameObject ScrollBar;
 	public GameObject cinematicButton;
-	public GameObject inputHolder;
-	//List<Command> _commands = new List<Command>();
+	public GameObject inputHolder; 
 	List<string> _cmdHist = new List<string>();
 	bool _acceptInput;
 	bool _cinematic;
 	int _cinematicStage = 0;
-	int _cmdLoc = 0;
+	int _cmdLoc = 1;
 	string[] _currentCinematic;
 	// Use this for initialization
 	void Awake()
@@ -32,7 +31,7 @@ public class GameInput : MonoBehaviour
 		{
 			Submit();
 		}); // sets the button's action to submit
-
+		_cmdHist.Add("");
 		cinematicButton.GetComponent<Button>().onClick.RemoveAllListeners();
 		cinematicButton.GetComponent<Button>().onClick.AddListener(delegate
 		{
@@ -80,6 +79,7 @@ public class GameInput : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+
 		if(_acceptInput && !_cinematic)
 		{
 			if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
@@ -88,22 +88,33 @@ public class GameInput : MonoBehaviour
 				Submit();
 				
 			}
+			//not working properly
 			else if(Input.GetKeyDown(KeyCode.UpArrow))
 			{
 				//Debug.Log("Up");
 				//do something to blank the text
-				InputField.GetComponent<InputField>().MoveTextEnd(true); // moves cursor to the end
-				_cmdLoc--;
+				 // moves cursor to the end
+				if(_cmdLoc < _cmdHist.Count)
+				{
+					_cmdLoc++;
+					InputField.GetComponent<InputField>().text = _cmdHist[_cmdLoc -1];
+				}
+				InputField.GetComponent<InputField>().MoveTextEnd(true);
 				//send in new text / stored text
 			}
 			else if(Input.GetKeyDown(KeyCode.DownArrow))
 			{
 				//Debug.Log("Down");
 				//do something to blank the text
-				//InputField.GetComponent<InputField>().MoveTextEnd(true); // moves cursor to the end
-				//send in new text / stored text
+				if(_cmdLoc > 1)
+				{
+					_cmdLoc--;
+					InputField.GetComponent<InputField>().text = _cmdHist[_cmdLoc -1];
+				}
+				InputField.GetComponent<InputField>().MoveTextEnd(true);
+
 			}
-			
+
 			InputField.GetComponent<InputField>().ActivateInputField();
 		}
 	}
@@ -145,8 +156,8 @@ public class GameInput : MonoBehaviour
 		{
 			//send input text to the parser
 			string response = parse(input);
-			_cmdHist.Add(input);
-			_cmdLoc = 0;
+			_cmdHist.Insert(1,input);
+			_cmdLoc = 1;
 			//take input and output and 
 			OutputText.GetComponent<Text>().text = OutputText.GetComponent<Text>().text + "\n" + input + "\n" + response + "\n";
 		}
@@ -253,7 +264,7 @@ public class GameInput : MonoBehaviour
 					{
 						if(a.SubCommands != null)
 						{
-							return GameCommands.ProcessCommands(a,tkn,false);
+							return GameCommands.ProcessCommands(a,tkn);
 						}
 						else
 						{
@@ -264,11 +275,11 @@ public class GameInput : MonoBehaviour
 					{
 						if(a.SubCommands != null)
 						{
-							return GameCommands.ProcessCommands(a,tkn,true);
+							return GameCommands.DisplaySubCommands(a);
 						}
 						else
 						{
-							return GameCommands.ProcessCommands(a,tkn,false);
+							return GameCommands.ProcessCommands(a,tkn);
 						}
 					}
 
