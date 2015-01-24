@@ -17,6 +17,8 @@ public class NewGameInput : MonoBehaviour
 	public GameObject cinematicButton;
 	public GameObject inputHolder;
 	public Button CharacterCreationAcceptButton;
+	public Image fore1;
+	public Image fore2;
 	GameData _char = null;
 	bool _acceptInput;
 	bool _cinematic;
@@ -484,7 +486,7 @@ public class NewGameInput : MonoBehaviour
 						_char = new GameData(_characterName, _characterClass, _characterGender);
 						GameMaster.GM.Data = _char;
 						GameMaster.GM.SaveGame("Wormhole Exit");
-						//GameMaster.GM.DebugShowInfo();
+						StartCoroutine("fadeTexture");
 						return startCinematic(cine2);
 
 
@@ -557,5 +559,22 @@ public class NewGameInput : MonoBehaviour
 		{
 			return content [stage];
 		}
+	}
+	IEnumerator fadeTexture(/*Texture top, Texture bottom,*/)
+	{
+		//top fades into bottom
+		//topObject.mainTexture = top;
+		//bottomObject.mainTexture = bottom;
+		for(int i = 255; i >= 0; i--)
+		{
+			fore2.color = new Color(fore2.color.r, fore2.color.g,fore2.color.b,(float)(i/255.0f));
+			yield return new WaitForSeconds(.0f);
+			if(i%2 == 0 && i > 3)
+			{
+				i -=3;
+				
+			}
+		}
+		
 	}
 }

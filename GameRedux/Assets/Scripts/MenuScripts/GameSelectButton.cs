@@ -47,12 +47,12 @@ public class GameSelectButton : MonoBehaviour
 			}
 			gameData.gameObject.SetActive(true);
 			noData.gameObject.SetActive(false);
-			gameData.GetChild(0).GetComponent<Text>().text = "[   File " + SlotNumber + "   ]"; //sets the slot number
+			gameData.GetChild(0).GetComponent<Text>().text = "[ File: " + SlotNumber + " ]"; //sets the slot number
 			gameData.GetChild(1).GetComponent<Text>().text = info.Name; //set character name
 			gameData.GetChild(2).GetComponent<Text>().text = info.CharClass; //set character class
 			Transform basicStats = fileData.GetChild(0);
 			basicStats.GetChild(0).GetComponent<Text>().text = "Loc:\t" + info.Location; //sets the location
-			basicStats.GetChild(1).GetComponent<Text>().text = "GP:\t" + info.Gold; //sets the gold value
+			basicStats.GetChild(1).GetComponent<Text>().text = "GP:\t\t" + info.Gold; //sets the gold value
 			basicStats.GetChild(2).GetComponent<Text>().text = "LvL:\t" + info.Level; //sets the gold value
 		}
 		else

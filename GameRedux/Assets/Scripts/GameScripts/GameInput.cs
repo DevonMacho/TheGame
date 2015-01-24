@@ -16,7 +16,8 @@ public class GameInput : MonoBehaviour
 	public GameObject GameView;
 	public Button quitYes;
 	public Button quitNo;
-
+	public Image fore1;
+	public Image fore2;
 	List<string> _cmdHist;
 	bool _acceptInput;
 	bool _cinematic;
@@ -82,6 +83,7 @@ public class GameInput : MonoBehaviour
 
 		if(GameMaster.GM.NewGame)
 		{
+			StartCoroutine("fadeTexture");
 			OutputText.GetComponent<Text>().text = startCinematic(introCine) + "\n";
 		}
 		else
@@ -319,5 +321,22 @@ public class GameInput : MonoBehaviour
 			}
 		}
 		return "Invalid Command";
+	}
+	IEnumerator fadeTexture(/*Texture top, Texture bottom,*/)
+	{
+		//top fades into bottom
+		//topObject.mainTexture = top;
+		//bottomObject.mainTexture = bottom;
+		for(int i = 255; i >= 0; i--)
+		{
+			fore2.color = new Color(fore2.color.r, fore2.color.g,fore2.color.b,(float)(i/255.0f));
+			yield return new WaitForSeconds(.0f);
+			if(i%2 == 0 && i > 3)
+			{
+				i -=3;
+
+			}
+		}
+
 	}
 }
