@@ -16,6 +16,10 @@ public class GameData
 	int _cha;
 	int _xp;
 	int _nodeNo;
+	int _hp;
+	int _maxHp;
+	int _mp;
+	int _maxMp;
 	string _gender;
 	//4 - quest item
 	//7 - wearable
@@ -25,9 +29,9 @@ public class GameData
 	//item list
 	Item[] _items = new Item[]
 	{
-		new Item("Rock", "A large rock that can be used to hit kraymoar",5,false,"<Generic>",2,false,false,-1,null),
-		new Item("Paper","A piece of paper that looks important","<Quest>",1),
-		new Item("Scissors","A pair of good safety scissors",30,"<Weapon>",-1,true,new int[]
+		new Item("Rock", "A large rock that can be used to hit kraymoar", 5, false, "<Generic>", 2, false, false, -1, null),
+		new Item("Paper", "A piece of paper that looks important", "<Quest>", 1),
+		new Item("Scissors", "A pair of good safety scissors", 30, "<Weapon>", -1, true, new int[]
 		{
 			0, //str
 			0, //dex
@@ -39,7 +43,7 @@ public class GameData
 			1, //defend
 			0, //health add
 		}),
-		new Item("Sword","A better version of the safety scissors",30,"<Weapon>",-1,true,new int[]
+		new Item("Sword", "A better version of the safety scissors", 30, "<Weapon>", -1, true, new int[]
 		         {
 			0, //str
 			0, //dex
@@ -51,7 +55,7 @@ public class GameData
 			1, //defend
 			0, //health add
 		}),
-		new Item("PotionA","A health potion",30,"<Consumable>",-1,true,true,1,new int[]
+		new Item("PotionA", "A health potion", 30, "<Consumable>", -1, true, true, 1, new int[]
 		         {
 			0, //str
 			0, //dex
@@ -63,7 +67,7 @@ public class GameData
 			0, //defend
 			0, //health add
 		}),
-		new Item("PotionB","B health potion",30,"<Consumable>",-1,true,true,2,new int[]
+		new Item("PotionB", "B health potion", 30, "<Consumable>", -1, true, true, 2, new int[]
 		         {
 			0, //str
 			0, //dex
@@ -78,12 +82,17 @@ public class GameData
 
 	};
 
+	int modRoll()
+	{
+		int retVal = (Random.Range(1, 2000) * Random.Range(1, 2000) )% 3;
+		return retVal;
+	}
 
 
 	//world objects
 	WorldObject[] _worldObjects = new WorldObject[] 
 	{
-		new WorldObject("Gate","A large rusty gate",true,"Paper",true,false,false,2,1)
+		new WorldObject("Gate", "A large rusty gate", true, "Paper", true, false, false, 2, 1)
 	};
 
 
@@ -106,14 +115,150 @@ public class GameData
                     I would like to thank the entire Silverfist clan for this info
         */
 
-		_str = 10;
-		_dex = 10;
-		_con = 10;
-		_int = 10;
-		_wis = 10;
-		_cha = 10;
+		int highBegin = 12;
+		int highEnd = 17;
+		int lowBegin = 9;
+		int lowEnd = 13;
+		if(charClass.ToLower() == "Fighter".ToLower())
+		{
+			//Fighter: Str, Con, Dex
+
+			int HighRoll = Random.Range(highBegin, highEnd);
+			_str = HighRoll + modRoll();
+			HighRoll = Random.Range(highBegin, highEnd);
+			_dex = HighRoll;
+			HighRoll = Random.Range(highBegin, highEnd);
+			_con = HighRoll;
+
+
+
+			int LowRoll = Random.Range(lowBegin, lowEnd);
+			_int = LowRoll - modRoll();
+			LowRoll = Random.Range(lowBegin, lowEnd);
+			_wis = LowRoll - modRoll();
+			LowRoll = Random.Range(lowBegin, lowEnd);
+			_cha = LowRoll - modRoll();
+
+
+
+		}
+		else if(charClass.ToLower() == "Ranger".ToLower())
+		{
+			//Ranger: Dex, Str, Wis
+			int HighRoll = Random.Range(highBegin, highEnd);
+			_dex = HighRoll + modRoll();
+			HighRoll = Random.Range(highBegin, highEnd);
+			_str = HighRoll;
+			HighRoll = Random.Range(highBegin, highEnd);
+			_wis = HighRoll;
+
+
+
+			int LowRoll = Random.Range(lowBegin, lowEnd);
+			_con = LowRoll - modRoll();
+			LowRoll = Random.Range(lowBegin, lowEnd);
+			_int = LowRoll - modRoll();
+			LowRoll = Random.Range(lowBegin, lowEnd);
+			_cha = LowRoll - modRoll();
+		}
+		else if(charClass.ToLower() == "Rogue".ToLower())
+		{
+			// Rogue: Dex, Cha, Int
+			int HighRoll = Random.Range(highBegin, highEnd);
+			_dex = HighRoll + modRoll();
+			HighRoll = Random.Range(highBegin, highEnd);
+			_int = HighRoll;
+			HighRoll = Random.Range(highBegin, highEnd);
+			_cha = HighRoll;
+
+
+			int LowRoll = Random.Range(lowBegin, lowEnd);
+			_str = LowRoll - modRoll();
+			LowRoll = Random.Range(lowBegin, lowEnd);
+			_con = LowRoll - modRoll();
+			LowRoll = Random.Range(lowBegin, lowEnd);
+			_wis = LowRoll - modRoll();
+
+		}
+		else if(charClass.ToLower() == "Wizard".ToLower())
+		{
+			//Wizard: Wis, Cha, Str
+			int HighRoll = Random.Range(highBegin, highEnd);
+			_wis = HighRoll + modRoll();
+			HighRoll = Random.Range(highBegin, highEnd);
+			_str = HighRoll;
+			HighRoll = Random.Range(highBegin, highEnd);
+			_cha = HighRoll;
+
+			int LowRoll = Random.Range(lowBegin, lowEnd);
+			_dex = LowRoll - modRoll();
+			LowRoll = Random.Range(lowBegin, lowEnd);
+			_con = LowRoll - modRoll();
+			LowRoll = Random.Range(lowBegin, lowEnd);
+			_int = LowRoll - modRoll();
+
+
+		}
+		else if(charClass.ToLower() == "Sorcerer".ToLower())
+		{
+			//Sorcerer: Cha, Int, Con
+			int HighRoll = Random.Range(highBegin, highEnd);
+			_cha = HighRoll + modRoll();
+			HighRoll = Random.Range(highBegin, highEnd);
+			_con = HighRoll;
+			HighRoll = Random.Range(highBegin, highEnd);
+			_int = HighRoll;
+
+			int LowRoll = Random.Range(lowBegin, lowEnd);
+			_str = LowRoll - modRoll();
+			LowRoll = Random.Range(lowBegin, lowEnd);
+			_dex = LowRoll - modRoll();
+			LowRoll = Random.Range(lowBegin, lowEnd);
+			_wis = LowRoll - modRoll();
+
+		}
+		else if(charClass.ToLower() == "Cleric".ToLower())
+		{
+			//Cleric: Wis, Str, Con
+
+
+			int HighRoll = Random.Range(highBegin, highEnd);
+			_wis = HighRoll + modRoll();
+			HighRoll = Random.Range(highBegin, highEnd);
+			_str = HighRoll;
+			HighRoll = Random.Range(highBegin, highEnd);
+			_con = HighRoll;
+
+			int LowRoll = Random.Range(lowBegin, lowEnd);
+			_dex = LowRoll - modRoll();
+			LowRoll = Random.Range(lowBegin, lowEnd);
+			_int = LowRoll - modRoll();
+			LowRoll = Random.Range(lowBegin, lowEnd);
+			_cha = LowRoll - modRoll();
+		}
+		else
+		{
+			int HighRoll = Random.Range(highBegin, highEnd);
+			_str = HighRoll + modRoll();
+			HighRoll = Random.Range(highBegin, highEnd);
+			_dex = HighRoll;
+			HighRoll = Random.Range(highBegin, highEnd);
+			_con = HighRoll;
+
+			int LowRoll = Random.Range(lowBegin, lowEnd);
+			_int = LowRoll;
+			LowRoll = Random.Range(lowBegin, lowEnd);
+			_wis = LowRoll - modRoll();
+			LowRoll = Random.Range(lowBegin, lowEnd);
+			_cha = LowRoll - modRoll();
+		}
+	
 		_xp = 0;
 		_nodeNo = 0;
+		_maxHp = (_str + _dex/2 + _con);
+		_maxMp = (_wis + _int/2 + _con/2);
+		_hp = _maxHp;
+		_mp = _maxMp;
 
 	}
 
@@ -222,6 +367,46 @@ public class GameData
 		set
 		{
 			_worldObjects = value;
+		}
+	}
+
+	public int HP
+	{
+		get
+		{
+			return _hp;
+		}
+		set
+		{
+			_hp = value;
+		}
+	}
+
+	public int MP
+	{
+		get
+		{
+			return _mp;
+		}
+		set
+		{
+			_mp = value;
+		}
+	}
+
+	public int maxHP
+	{
+		get
+		{
+			return _maxHp;
+		}
+	}
+
+	public int maxMP
+	{
+		get
+		{
+			return _maxMp;
 		}
 	}
 }
