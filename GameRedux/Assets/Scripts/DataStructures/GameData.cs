@@ -17,6 +17,26 @@ public class GameData
 	int _xp;
 	int _nodeNo;
 	string _gender;
+	//4 - quest item
+	//7 - wearable
+	//9 - consumable
+	//10 - generic
+	Item[] _items = new Item[]
+	{
+		new Item("Rock", "A large rock that can be used to hit kraymoar",5,false,"<Generic>",2,false,false,-1,null),
+		new Item("Paper","A piece of paper that looks important","<Quest>",3),
+		new Item("Scissors","A pair of good safety scissors",30,"<Weapon>",-1,true,new int[]
+		{
+			0, //str
+			0, //dex
+			0, //con
+			0, //int
+			0, //wis
+			0, //cha
+			2, //attack
+			1 //defend
+		})
+	};
 	//item list
 
 	//newGame
@@ -34,9 +54,9 @@ public class GameData
                     =========> Paladin: Con Str, Wis <========= Excluding due to forced alignment (Lawful Good. eww...)
                     Sorcerer: Cha, Int, Con
                     Cleric: Wis, Str, Con
-
+		
                     I would like to thank the entire Silverfist clan for this info
-                */
+        */
 
 		_str = 10;
 		_dex = 10;
@@ -130,6 +150,18 @@ public class GameData
 		set
 		{
 			_nodeNo = value;
+		}
+	}
+
+	public Item[] Items
+	{
+		get
+		{
+			return _items;
+		}
+		set
+		{
+			_items = value;
 		}
 	}
 }

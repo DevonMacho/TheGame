@@ -28,14 +28,17 @@ public class Location//: IEnumerable
 	//bool _visited;
 	string _locationName;
 	string _locationInformation;
+	string _shortInfo;
 	string[] _adjacentDir;
-	public Location(int node, string name, string info, int[] adjacentNodes, string[] adjacentDirection)
+
+	public Location(int node, string name, string info, int[] adjacentNodes, string[] adjacentDirection, string shortInfo)
 	{
 		_node = node;
 		_locationName = name;
 		_locationInformation = info;
 		_adjacentNodes = adjacentNodes;
 		_adjacentDir = adjacentDirection;
+		_shortInfo = shortInfo;
 
 		//add in a description of the locations in the future
 	}
@@ -76,6 +79,14 @@ public class Location//: IEnumerable
 		get
 		{
 			return _adjacentDir;
+		}
+	}
+
+	public string ShortInfo
+	{
+		get
+		{
+			return _shortInfo;
 		}
 	}
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Collections.Generic;
 public class GameInput : MonoBehaviour
 {
+
 	public GameObject SubmitButton;
 	public GameObject InputField;
 	public GameObject InputText;
@@ -18,6 +19,7 @@ public class GameInput : MonoBehaviour
 	public Button quitNo;
 	public Image fore1;
 	public Image fore2;
+	public Sprite testImage;
 	List<string> _cmdHist;
 	bool _acceptInput;
 	bool _cinematic;
@@ -64,7 +66,7 @@ public class GameInput : MonoBehaviour
 			"The surrounding white light fades as you wake up in the middle of a clearing",
 			"You panic for a moment, being surrounded by several charred cats, but then you remember;",
 			"You were a researcher at a wormhole research facility on the planet Uranus.",
-			"Right before you a small lab accident resulting in what could only be described as quantum displacement through a wormhole,",
+			"Right before you had a small lab accident resulting in what could only be described as quantum displacement through a wormhole,",
 			"you were conducting several wormhole experiments involving throwing cats into generated wormholes to see if they would arrive live or dead depending on the spin state of subatomic particles.",
 			"It looks like all of them have been charred by the wormhole... So much for quantum mechanics.",
 			"As you are staring at the pile of dead cats, you remember something.",
@@ -73,8 +75,8 @@ public class GameInput : MonoBehaviour
 			"Kraymoar!!!",
 			"You remember an attack on the research facility.",
 			"A giant prawn monster attacked, screaming his name over and over again.",
-			"'I AM KRAYMOAR!!!' echoes through the back of your mind as you shudder, remembering what that creature looked like.",
-			"Once you finish remembering the horrors that you have experienced with kraymoar, you start to remember what had happened earlier this afternoon (if the previous time reference frame is still valid where ever you are now).",
+			"'I AM KRAYMOAR!!!' echoes through the back of your mind as you shudder, remembering what that creature had looked like.",
+			"Once you finish remembering the horrors that you have experienced with Kraymoar, you start to remember what had happened earlier this afternoon (if the previous time reference frame is still valid, where ever you are now).",
 			"Right before you were sucked into the wormhole, you were able to cut off one of Kraymoar's claws, which was sucked into the wormhole before he was.",
 			"You remember seeing the claw bump into the generator before it was swallowed by the wormhole, causing it to start glowing bright purple.",
 			"After you were sucked into the wormhole, you remember darkness, then light, then something about the 'Duke of Brillo' in a place called 'Scrubbington'",
@@ -83,12 +85,16 @@ public class GameInput : MonoBehaviour
 
 		if(GameMaster.GM.NewGame)
 		{
-			StartCoroutine("fadeTexture");
+			//change testimage to level 1 background
+			StartCoroutine(fadeTexture(testImage, new Sprite()));
 			OutputText.GetComponent<Text>().text = startCinematic(introCine) + "\n";
 		}
 		else
 		{
-			OutputText.GetComponent<Text>().text =  "Welcome Back!\n"; 
+			//chage testimage to level GameMaster.Data.node background
+			fore2.color = new Color(0,0,0,255);
+			StartCoroutine(fadeTexture(testImage, new Sprite()));
+			OutputText.GetComponent<Text>().text =  "Welcome Back!\n";
 		}
 		StartCoroutine("topScroll");
 	}
@@ -130,7 +136,6 @@ public class GameInput : MonoBehaviour
 
 	public void Submit()
 	{
-		
 		string input = InputText.GetComponent<Text>().text;
 		InputField.GetComponent<InputField>().text = string.Empty;
 		if(_cinematic)
@@ -322,11 +327,13 @@ public class GameInput : MonoBehaviour
 		}
 		return "Invalid Command";
 	}
-	IEnumerator fadeTexture(/*Texture top, Texture bottom,*/)
+	IEnumerator fadeTexture(Sprite bottom, Sprite top)
 	{
 		//top fades into bottom
 		//topObject.mainTexture = top;
 		//bottomObject.mainTexture = bottom;
+		fore1.sprite = bottom;
+		fore2.sprite = top;
 		for(int i = 255; i >= 0; i--)
 		{
 			fore2.color = new Color(fore2.color.r, fore2.color.g,fore2.color.b,(float)(i/255.0f));
@@ -337,6 +344,7 @@ public class GameInput : MonoBehaviour
 
 			}
 		}
+		fore2.color = new Color(1.0f,1.0f,1.0f,0.0f);
 
 	}
 }

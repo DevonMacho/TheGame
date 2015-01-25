@@ -58,11 +58,11 @@ public class GameCommands :MonoBehaviour
 		    { 
 				new Command("at", "Allows you to look at an object. 'look at <object>'", new Command[]{new Command("<object>", "An Object", null)}),
 				new Command("around", "Allows you to look around you.", null),
-				new Command("<Location>", "Allows you to look towards a location 'look <Location Name>'.", null)
+				new Command("<Direction>", "Allows you to look in the desired direction 'look <Direction Name>'.", null)
 			}),
 			new Command("inventory", "Opens your inventory.", null),
 	//takes turn
-			new Command("go", 		"Allows you to change your location.", 	new Command[]{new Command("<Location>", "go <Location Name>", 	null)}),
+			new Command("go", 		"Allows you to change your location.",	new Command[]{new Command("<Direction>", "go <Direction Name>", 	null)}),
 			new Command("pickup", 	"Allows you to pick up an item.", 		new Command[]{new Command("<Item>", 	"'pickup' <Item Name>", null)}),
 			new Command("drop", 	"Allows you to drop an item.",			new Command[]{new Command("<Item>", 	"'drop <Item Name>'",	null)}),
 			new Command("equip", 	"Equips an item.",						new Command[]{new Command("<Item>", 	"'equip <Item Name>'", 	null)}),
@@ -90,8 +90,14 @@ public class GameCommands :MonoBehaviour
 		{
 			return look(cmd, tkn);
 		}
-
-
+		else if(cmd.CommandName == "go")
+		{
+			return go(cmd, tkn);
+		}
+		else if(cmd.CommandName == "pickup")
+		{
+			return pickup(cmd, tkn);
+		}
 
 
 
@@ -196,16 +202,37 @@ public class GameCommands :MonoBehaviour
 			}
 			else if(tkn.Length == 3)
 			{
-				//check inventory / world
-				return "Looking at " + tkn[2];
+				//check inventory
+				foreach(Item a in GameMaster.GM.Data.Items)
+				{
+					if(a.Location < 0 || a.Location == GameMaster.GM.Data.Node)
+					{
+						if(a.Name.ToLower() == tkn[2].ToLower())
+						{
+							return a.Description;
+						}
+					}
+
+				}
+				//check world
+
+				//check to see if the item actually exists in the object list
+				foreach(Item a in GameMaster.GM.Data.Items)
+				{
+					if(a.Name.ToLower() == tkn[2].ToLower())
+					{
+						return "That object is not here.";
+					}
+					
+				}
 				//check to see if the object actually exists in the object list
-				//return "That object does not exist";
+
+				return "That object does not exist.";
 			}
 			else
 			{
 				return tma;
 			}
-
 		}
 		else if(tkn[1].ToLower() == "around")
 		{
@@ -220,12 +247,15 @@ public class GameCommands :MonoBehaviour
 		}
 		else
 		{
+			int sub = 0;
 				foreach(string a in currentLoc.AdjacentNodeDirection)
 				{
+					sub++;
 					if(tkn[1].ToLower() == a.ToLower())
 					{
-						return "looking " + a;
+						return "Looking " + a.ToLower()+ "...\n" + GameMaster.GM.World[currentLoc.AdjacentNodes[sub-1]].ShortInfo;
 					}
+				
 				}
 				foreach(Location a in GameMaster.GM.World)
 				{
@@ -233,15 +263,82 @@ public class GameCommands :MonoBehaviour
 					{
 						if(tkn[1].ToLower() == b.ToLower())
 						{
-							return "You can not go that way.";
+							return "You do not see anything in that direction.";
 						}
 					}
 				}
 			return im;
-		}
-
-			
+		}	
 	}
+	static string go(Command cmd, string[] tkn)
+	{
+		Location currentLoc = GameMaster.GM.World[GameMaster.GM.Data.Node];
+		//go <Direction>
+		if(tkn.Length == 2)
+		{
+			int sub = 0;
+			foreach(string a in currentLoc.AdjacentNodeDirection)
+			{
+				sub++;
+				if(tkn[1].ToLower() == a.ToLower())
+				{
+					GameMaster.GM.Data.Node = currentLoc.AdjacentNodes[sub-1];
+					return "Going " + a.ToLower()+ "...\n" + GameMaster.GM.World[currentLoc.AdjacentNodes[sub-1]].Information;
+				}
+				
+			}
+			foreach(Location a in GameMaster.GM.World)
+			{
+				foreach(string b in a.AdjacentNodeDirection)
+				{
+					if(tkn[1].ToLower() == b.ToLower())
+					{
+						return "You can not go in that direction.";
+					}
+				}
+			}
+			return im;
+
+		}
+		else
+		{
+			return tma;
+		}
+	}
+
+	static string pickup(Command cmd, string[] tkn)
+	{
+		if(tkn.Length == 2)
+		{
+			int looper = 0;
+			foreach(Item a in GameMaster.GM.Data.Items)
+			{
+				looper++;
+				if(a.Location > 0 && GameMaster.GM.Data.Node == a.Location)
+				{
+					if(a.Name.ToLower() == tkn[1].ToLower())
+					{
+						GameMaster.GM.Data.Items[looper-1].Location = -1;
+						return "Picking up: " + a.Name + ".";
+					}
+				}
+			}
+			foreach(Item a in GameMaster.GM.Data.Items)
+			{
+				if(a.Name.ToLower() == tkn[1].ToLower())
+				{
+					return "That item is not here.";
+				}
+
+			}
+			return "That item does not exist.";
+		} 
+		else
+		{
+			return tma;
+		}
+	}
+
 	static string quit()
 	{
 		GameObject.FindObjectOfType<GameInput>().StartQuit();

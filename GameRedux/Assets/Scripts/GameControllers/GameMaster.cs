@@ -192,11 +192,11 @@ public class GameMaster : MonoBehaviour
 
 	Location[] _testWorld = new Location[]
 	{
-		new Location(0,"A","Node A / 0", new int[]{1,2}, new string[]{"southwest", "southeast"}), 
-		new Location(1,"B","Node B / 1", new int[]{0,2,3,4}, new string[]{"northeast", "east", "south", "southeast"}), 
-		new Location(2,"C","Node C / 2", new int[]{0,1,3,4}, new string[]{"northwest", "west", "southwest", "south"}), 
-		new Location(3,"D","Node D / 3", new int[]{1,2,4}, new string[]{"north", "northeast", "east"}), 
-		new Location(4,"E","Node E / 4", new int[]{1,2,3}, new string[]{"northwest", "north", "west"}) 
+		new Location(0,"A","Node A / 0", new int[]{1,2}, new string[]{"southwest", "southeast"}, "Node A"), 
+		new Location(1,"B","Node B / 1", new int[]{0,2,3,4}, new string[]{"northeast", "east", "south", "southeast"},"Node B"), 
+		new Location(2,"C","Node C / 2", new int[]{0,1,3,4}, new string[]{"northwest", "west", "southwest", "south"},"Node C"), 
+		new Location(3,"D","Node D / 3", new int[]{1,2,4}, new string[]{"north", "northeast", "east"},"Node D"), 
+		new Location(4,"E","Node E / 4", new int[]{1,2,3}, new string[]{"northwest", "north", "west"},"Node E") 
 		// 0: 1, 2
 		// 1: 0, 2, 3, 4
 		// 2: 0, 1, 3, 4
