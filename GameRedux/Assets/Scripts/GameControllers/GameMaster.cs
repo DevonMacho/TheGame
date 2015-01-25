@@ -190,7 +190,7 @@ public class GameMaster : MonoBehaviour
 			_newGame = value;
 		}
 	}
-
+	/*
 	Location[] _testWorld = new Location[]
 	{
 		new Location(0,"A","Node A / 0", new int[]{1,2}, new string[]{"southwest", "southeast"}, "Node A"), 
@@ -204,6 +204,7 @@ public class GameMaster : MonoBehaviour
 		// 3: 1, 2, 4
 		// 4: 1, 2, 3
 	};
+	*/
 	Location[] _flatWorld = new Location[]
 	{
 		new Location(0,"A","Node A / 0", new int[]{1}, new string[]{"east"}, "Node A"), 
