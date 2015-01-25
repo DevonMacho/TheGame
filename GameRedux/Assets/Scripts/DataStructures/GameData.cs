@@ -21,10 +21,12 @@ public class GameData
 	//7 - wearable
 	//9 - consumable
 	//10 - generic
+
+	//item list
 	Item[] _items = new Item[]
 	{
 		new Item("Rock", "A large rock that can be used to hit kraymoar",5,false,"<Generic>",2,false,false,-1,null),
-		new Item("Paper","A piece of paper that looks important","<Quest>",3),
+		new Item("Paper","A piece of paper that looks important","<Quest>",1),
 		new Item("Scissors","A pair of good safety scissors",30,"<Weapon>",-1,true,new int[]
 		{
 			0, //str
@@ -34,10 +36,56 @@ public class GameData
 			0, //wis
 			0, //cha
 			2, //attack
-			1 //defend
+			1, //defend
+			0, //health add
+		}),
+		new Item("Sword","A better version of the safety scissors",30,"<Weapon>",-1,true,new int[]
+		         {
+			0, //str
+			0, //dex
+			0, //con
+			0, //int
+			0, //wis
+			0, //cha
+			2, //attack
+			1, //defend
+			0, //health add
+		}),
+		new Item("PotionA","A health potion",30,"<Consumable>",-1,true,true,1,new int[]
+		         {
+			0, //str
+			0, //dex
+			0, //con
+			0, //int
+			0, //wis
+			0, //cha
+			0, //attack
+			0, //defend
+			0, //health add
+		}),
+		new Item("PotionB","B health potion",30,"<Consumable>",-1,true,true,2,new int[]
+		         {
+			0, //str
+			0, //dex
+			0, //con
+			0, //int
+			0, //wis
+			0, //cha
+			0, //attack
+			0, //defend
+			0, //health add
 		})
+
 	};
-	//item list
+
+
+
+	//world objects
+	WorldObject[] _worldObjects = new WorldObject[] 
+	{
+		new WorldObject("Gate","A large rusty gate",true,"Paper",true,false,false,2,1)
+	};
+
 
 	//newGame
 	public GameData(string name, string charClass, string gender)
@@ -162,6 +210,18 @@ public class GameData
 		set
 		{
 			_items = value;
+		}
+	}
+
+	public WorldObject[] WorldObjects
+	{
+		get
+		{
+			return _worldObjects;
+		}
+		set
+		{
+			_worldObjects = value;
 		}
 	}
 }

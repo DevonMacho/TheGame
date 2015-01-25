@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\DataStructures\GameCommands.cs" />
      <Compile Include="Assets\Scripts\DataStructures\GameData.cs" />
      <Compile Include="Assets\Scripts\DataStructures\InventoryData.cs" />
+     <Compile Include="Assets\Scripts\DataStructures\ObjectData.cs" />
      <Compile Include="Assets\Scripts\DataStructures\WorldData.cs" />
      <Compile Include="Assets\Scripts\GameControllers\GameMaster.cs" />
      <Compile Include="Assets\Scripts\GameScripts\GameInput.cs" />
