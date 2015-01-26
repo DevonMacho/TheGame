@@ -64,44 +64,43 @@ public class GameInput : MonoBehaviour
 		InputField.GetComponent<InputField>().characterLimit = 60;
 		clearHistory();
 
-		 string[] introCine = 
-		{
-			"The surrounding white light fades as you wake up in the middle of a clearing",
-			"You panic for a moment, being surrounded by several charred cats, but then you remember;",
-			"You were a researcher at a wormhole research facility on the planet Uranus.",
-			"Right before you had a small lab accident resulting in what could only be described as quantum displacement through a wormhole,",
-			"you were conducting several wormhole experiments involving throwing cats into generated wormholes to see if they would arrive live or dead depending on the spin state of subatomic particles.",
-			"It looks like all of them have been charred by the wormhole... So much for quantum mechanics.",
-			"As you are staring at the pile of dead cats, you remember something.",
-			"Something big...",
-			"Something red...",
-			"Kraymoar!!!",
-			"You remember an attack on the research facility.",
-			"A giant prawn monster attacked, screaming his name over and over again.",
-			"'I AM KRAYMOAR!!!' echoes through the back of your mind as you shudder, remembering what that creature had looked like.",
-			"Once you finish remembering the horrors that you have experienced with Kraymoar, you start to remember what had happened earlier this afternoon (if the previous time reference frame is still valid, where ever you are now).",
-			"Right before you were sucked into the wormhole, you were able to cut off one of Kraymoar's claws, which was sucked into the wormhole before he was.",
-			"You remember seeing the claw bump into the generator before it was swallowed by the wormhole, causing it to start glowing bright purple.",
-			"After you were sucked into the wormhole, you remember darkness, then light, then something about the 'Duke of Brillo' in a place called 'Scrubbington'",
-			"You think that you should probably find him, before Kraymoar rears his ugly face again."
-		};
 
 		if(GameMaster.GM.NewGame)
 		{
-			//change testimage to level 1 background
+			//nge testimage to level 1 background
 			StartCoroutine(fadeTexture(GameMaster.GM.backgrounds[0], new Sprite()));
+			string[] introCine = {
+				"The surrounding white light fades as you wake up in the middle of a clearing",
+				"You panic for a moment, being surrounded by several charred cats, but then you remember;",
+				"You were a researcher at a wormhole research facility in the deepest depths of the planet Uranus.",
+				"Right before you had a small lab accident resulting in what could only be described as quantum displacement through a wormhole,",
+				"you were conducting several wormhole experiments involving throwing cats into generated wormholes to see if they would arrive live or dead depending on the spin state of subatomic particles.",
+				"It looks like all of them have been charred by the wormhole... So much for quantum mechanics.",
+				"As you are staring at the pile of dead cats, you remember something.",
+				"Something big...",
+				"Something red...",
+				"Kraymoar!!!",
+				"You remember an attack on the research facility.",
+				"A giant prawn monster attacked, screaming his name over and over again.",
+				"'I AM KRAYMOAR!!!' echoes through the back of your mind as you shudder, remembering what that creature had looked like.",
+				"Once you finish remembering the horrors that you have experienced with Kraymoar, you start to remember what had happened earlier this afternoon (if the previous time reference frame is still valid, where ever you are now).",
+				"Right before you were sucked into the wormhole, you were able to cut off one of Kraymoar's claws, which was sucked into the wormhole before he was.",
+				"You remember seeing the claw bump into the generator before it was swallowed by the wormhole, causing it to start glowing bright purple.",
+				"After you were sucked into the wormhole, you remember darkness, then light, then something about the 'Duke of Brillo' in a place called 'Scrubbington'",
+				"You think that you should probably head towards that place, before Kraymoar rears his ugly face again."
+			};
 			OutputText.GetComponent<Text>().text = startCinematic(introCine) + "\n";
 		}
 		else
 		{
-			//chage testimage to level GameMaster.Data.node background
+			//get testimage to level GameMaster.Data.node background
 			fore2.color = new Color(0,0,0,255);
 			if(GameMaster.GM.Data.Node >= GameMaster.GM.backgrounds.Length)
 			{
 				StartCoroutine(fadeTexture(GameMaster.GM.blank, new Sprite()));
 			}
 			StartCoroutine(fadeTexture(GameMaster.GM.backgrounds[GameMaster.GM.Data.Node], new Sprite()));
-			OutputText.GetComponent<Text>().text =  "Welcome Back!\n";
+			OutputText.GetComponent<Text>().text =  "You walk out of the Inn feeling full, yet oddly empty inside!\n";
 		}
 		StartCoroutine("topScroll");
 	}
@@ -233,7 +232,7 @@ public class GameInput : MonoBehaviour
 		InputField.GetComponent<InputField>().Select();
 	}
 	
-	string startCinematic(string[] cine)
+	public string startCinematic(string[] cine)
 	{
 		_cinematic = true;
 		_currentCinematic = cine;
@@ -250,6 +249,14 @@ public class GameInput : MonoBehaviour
 		_currentCinematic = null;
 		deselectInput();
 		cinematicButton.SetActive(false);
+		foreach(Enemy b in GameMaster.GM.Data.Enemies)
+		{
+			if(b.Location == GameMaster.GM.Data.Node && b.IsAlive)
+			{
+					fs.startFight();
+			}
+		}
+
 	}
 	
 	string cinematic(int stage, string[] content)

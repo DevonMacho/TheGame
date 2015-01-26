@@ -434,9 +434,9 @@ public class NewGameInput : MonoBehaviour
 							if(tkn [2].ToLower() == "mirror")
 							{
 								_newGameStage = 6;
-								deselectInput();
-								CharacterCreationBackground.SetActive(true);
-								return name + "Ah yes, you look like you are just about ready to go. Just open that door behind you and you can be on your way.\nAn average sized door suddenly materializes behind you <Type in 'open door' to leave>";//name +"Good luck on your adventure traveler! Oh, and do say hello to the Duke of Brillo over in Scrubbington for me, he might be able to help you out in your travels.";
+								//deselectInput();
+								//CharacterCreationBackground.SetActive(true);
+								return  "The mirror shatters as you look into it.\n" + name +"Well thanks for that, now I have to buy a new one. Just open that door behind you and you can be on your way, before you break something else of mine.\nAn average sized door suddenly materializes behind you <Type in 'open door' to leave>";//name +"Good luck on your adventure traveler! Oh, and do say hello to the Duke of Brillo over in Scrubbington for me, he might be able to help you out in your travels.";
 							}
 							else
 							{
@@ -481,7 +481,7 @@ public class NewGameInput : MonoBehaviour
 						string[] cine2 = 
 						{
 							"A white light surrounds you as you open the door, you can hear a voice yelling behind you.",
-							name + "Good luck on your adventure traveler! Oh, and do say hello to the Duke of Brillo over in Scrubbington for me, he might be able to help you out in your travels!"
+							name + "Good luck on your adventure traveler! Oh, and do say hello to the Duke of Brillo over in Scrubbington for me!"//, he might be able to help you out in your travels!"
 						};
 						_char = new GameData(_characterName, _characterClass, _characterGender);
 						GameMaster.GM.Data = _char;

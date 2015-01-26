@@ -212,6 +212,7 @@ public class GameCommands :MonoBehaviour
 		{
 			if(tkn.Length == 2)
 			{
+
 				foreach (Command a in getSubcommands(cmd))
 				{
 					if(a.CommandName == "at")
@@ -283,7 +284,37 @@ public class GameCommands :MonoBehaviour
 			}
 			else
 			{
-				return currentLoc.Information;
+				string ret = "\n\n==== Items At Location ====\n\n";
+				int tick = 0;
+				foreach(Item a in GameMaster.GM.Data.Items)
+				{
+					if(a.Location == GameMaster.GM.Data.Node)
+					{
+						tick++;
+						ret +=  a.Name+ "\n";
+					}
+				}
+				if(tick == 0)
+				{
+					ret +=  "None"+ "\n";
+				}
+				ret += "\n======== Directions =======\n\n";
+				tick = 0;
+				foreach(string a in GameMaster.GM.World[GameMaster.GM.Data.Node].AdjacentNodeDirection)
+				{
+						tick++;
+						string info = GameMaster.GM.World[ GameMaster.GM.World[GameMaster.GM.Data.Node].AdjacentNodes[tick-1]].ShortInfo;
+						if(a.Length <= 5)
+						{
+							ret +=  a + "\t\t--\t" + info + "\n";
+						}
+						else
+						{
+							ret +=  a + "\t--\t" + info + "\n";
+						}
+
+				}
+				return currentLoc.Information + ret + "\n=========== END ===========";
 			}
 		}
 		else
@@ -294,7 +325,7 @@ public class GameCommands :MonoBehaviour
 				sub++;
 				if(tkn [1].ToLower() == a.ToLower())
 				{
-					return "Looking " + a.ToLower() + "...\n" + GameMaster.GM.World [currentLoc.AdjacentNodes [sub - 1]].ShortInfo;
+					return "Looking " + a.ToLower() + "...\nYou see: " + GameMaster.GM.World [currentLoc.AdjacentNodes [sub - 1]].ShortInfo;
 				}
 				
 			}
@@ -347,18 +378,28 @@ public class GameCommands :MonoBehaviour
 							}
 						}
 					}
-					//string fight;
+					GameInput input = GameObject.FindObjectOfType<GameInput>();
 					foreach(Enemy b in GameMaster.GM.Data.Enemies)
 					{
 						if(b.Location == currentLoc.AdjacentNodes [sub - 1] && b.IsAlive)
 						{
-							GameObject.FindObjectOfType<GameInput>().fs.startFight();
+							string[] cine1 = 
+							{
+								"Going " + a.ToLower() + "...\n" + GameMaster.GM.World [currentLoc.AdjacentNodes [sub - 1]].Information,"You spot an enemy.", "prepare for battle"
+							};
+							input.StartCoroutine(input.fadeTexture(GameMaster.GM.backgrounds[currentLoc.AdjacentNodes [sub - 1]], GameMaster.GM.backgrounds[GameMaster.GM.Data.Node]));
+							GameMaster.GM.Data.Node = currentLoc.AdjacentNodes [sub - 1];
+							return input.startCinematic(cine1);
+							//start cinematic instead
 						}
 					}
 
-					GameInput input = GameObject.FindObjectOfType<GameInput>();
-					input.StartCoroutine(input.fadeTexture(GameMaster.GM.backgrounds[currentLoc.AdjacentNodes [sub - 1]], GameMaster.GM.backgrounds[GameMaster.GM.Data.Node]));
 
+					input.StartCoroutine(input.fadeTexture(GameMaster.GM.backgrounds[currentLoc.AdjacentNodes [sub - 1]], GameMaster.GM.backgrounds[GameMaster.GM.Data.Node]));
+					if(currentLoc.AdjacentNodes [sub - 1] == 24)
+					{
+						GameMaster.GM.SaveGame("The 'One Eyed Gopher Stroker' Inn");
+					}
 					GameMaster.GM.Data.Node = currentLoc.AdjacentNodes [sub - 1];
 					return "Going " + a.ToLower() + "...\n" + GameMaster.GM.World [currentLoc.AdjacentNodes [sub - 1]].Information;
 				}

@@ -1,18 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameScripts\InventoryController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameScripts\Credits.cs">
     <Files>
-      <File FileName="Assets\Scripts\GameScripts\GameInput.cs" Line="332" Column="6" />
-      <File FileName="Assets\Scripts\DataStructures\BasicGameInfo.cs" Line="4" Column="1" />
-      <File FileName="Assets\Scripts\DataStructures\GameData.cs" Line="80" Column="6" />
-      <File FileName="Assets\Scripts\GameControllers\GameMaster.cs" Line="16" Column="22" />
-      <File FileName="Assets\Scripts\DataStructures\ObjectData.cs" Line="17" Column="3" />
-      <File FileName="Assets\Scripts\GameScripts\InventoryController.cs" Line="54" Column="41" />
-      <File FileName="Assets\Scripts\DataStructures\GameCommands.cs" Line="447" Column="6" />
-      <File FileName="Assets\FightScreen.cs" Line="193" Column="5" />
-      <File FileName="Assets\Scripts\DataStructures\WorldData.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\DataStructures\EnemyData.cs" Line="121" Column="4" />
-      <File FileName="Assets\Scripts\DataStructures\InventoryData.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameScripts\WinGameInput.cs" Line="117" Column="2" />
+      <File FileName="Assets\Scripts\DataStructures\GameData.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameScripts\GameInput.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\DataStructures\BasicGameInfo.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\DataStructures\ObjectData.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\DataStructures\GameCommands.cs" Line="1" Column="1" />
+      <File FileName="Assets\FightScreen.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameControllers\GameMaster.cs" Line="226" Column="121" />
+      <File FileName="Assets\Scripts\GameScripts\WingameInput.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameScripts\Credits.cs" Line="8" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

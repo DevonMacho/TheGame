@@ -41,9 +41,9 @@ public class GameData
 			0, //cha
 			0, //attack
 			2, //defend
-			0, //health add
+			0 //health add
 		}),
-		new Item("knit-helmet", "A helmet knit of strong wool, better for warmth than protection", 30, "<Head>", 6, true, new int[]
+		new Item("knitHelmet", "A helmet knit of strong wool, better for warmth than protection", 30, "<Head>", 6, true, new int[]
 		    {
 			0, //str
 			0, //dex
@@ -53,9 +53,9 @@ public class GameData
 			0, //cha
 			0, //attack
 			1, //defend
-			0, //health add
+			0 //health add
 		}),
-		new Item("lab-coat", "Lab coat of SCIENCE!!!", 30, "<Chest>", -3, true, new int[]
+		new Item("labCoat", "Lab coat of SCIENCE!!!", 30, "<Chest>", -3, true, new int[]
 		         {
 			0, //str
 			0, //dex
@@ -65,7 +65,7 @@ public class GameData
 			0, //cha
 			0, //attack
 			1, //defend
-			0, //health add
+			0 //health add
 		}),
 		new Item("khakis", "ragged khakis.Slightly burned from wormhole re-enrty", 30, "<Legs>", -6, true, new int[]
 		         {
@@ -77,7 +77,7 @@ public class GameData
 			0, //cha
 			0, //attack
 			1, //defend
-			0, //health add
+			0 //health add
 		}),
 		new Item("crocs", "why in gods name would you wear these?", 30, "<Feet>", -7, true, new int[]
 		         {
@@ -88,8 +88,8 @@ public class GameData
 			0, //wis
 			0, //cha
 			0, //attack
-			0, //defend
-			10, //health add
+			3, //defend
+			0 //health add
 		}),
 		new Item("gloves", "Mad scientist gloves", 30, "<Hands>", -4, true, new int[]
 		         {
@@ -101,9 +101,9 @@ public class GameData
 			0, //cha
 			1, //attack
 			1, //defend
-			0, //health add
+			0 //health add
 		}),
-		new Item("utility-belt", "Utility belt that can hold many tools. if only you had tools...", 30, "<Waist>", 3, true, new int[]
+		new Item("utilityBelt", "Utility belt that can hold many tools. if only you had tools...", 30, "<Waist>", 3, true, new int[]
 		         {
 			1, //str
 			0, //dex
@@ -113,7 +113,7 @@ public class GameData
 			0, //cha
 			0, //attack
 			1, //defend
-			1, //health add
+			1 //health add
 		}),
 		new Item("cat", "it appears to be one of the cats from your experimentation, it looks like it could be worn as a hat", 30, "<Head>", 0, true, new int[]
 		         {
@@ -125,10 +125,7 @@ public class GameData
 			0, //cha
 			1, //attack
 			0, //defend
-<<<<<<< HEAD
-			10, //health add
-=======
-			0, //health add
+			0 //health add
 		}),
 		new Item("pipe", "a length of pipe from the destroyed research facility", 30, "<Weapon>", 0, true, new int[]
 		         {
@@ -140,9 +137,9 @@ public class GameData
 			0, //cha
 			2, //attack
 			0, //defend
-			0, //health add
+			0 //health add
 		}),
-		new Item("laser-knife", "used for toasting bread as you slice it.", 30, "<Weapon>", 9, true, new int[]
+		new Item("laserKnife", "used for toasting bread as you slice it.", 30, "<Weapon>", 9, true, new int[]
 		         {
 			0, //str
 			1, //dex
@@ -152,7 +149,7 @@ public class GameData
 			0, //cha
 			5, //attack
 			0, //defend
-			0, //health add
+			0 //health add
 		}),
 		new Item("chaps", "assless chaps retains armor value even while pooping", 30, "<Legs>", 13, true, new int[]
 		         {
@@ -164,9 +161,9 @@ public class GameData
 			1, //cha
 			0, //attack
 			3, //defend
-			0, //health add
+			0 //health add
 		}),
-		new Item("fingerless-gloves", "They would lower your cool factor by 20. If that were a real stat", 30, "<Hands>", 16, true, new int[]
+		new Item("fingerlessGloves", "They would lower your cool factor by 20. If that were a real stat", 30, "<Hands>", 16, true, new int[]
 		         {
 			0, //str
 			0, //dex
@@ -176,7 +173,7 @@ public class GameData
 			0, //cha
 			0, //attack
 			0, //defend
-			0, //health add
+			0 //health add
 		}),
 		new Item("gauntlets", "Gauntlets of gauntleting", 30, "<Hands>", 11, true, new int[]
 		         {
@@ -188,9 +185,9 @@ public class GameData
 			0, //cha
 			2, //attack
 			2, //defend
-			1, //health add
+			1  //health add
 		}),
-		new Item("knights-helmet", "Helmet of a brave knight. it is unscracthed as the brave knight didnt feel the need to wear it in battle", 30, "<Head>", 9, true, new int[]
+		new Item("knightsHelmet", "Helmet of a brave knight. it is unscracthed as the brave knight didnt feel the need to wear it in battle", 30, "<Head>", 9, true, new int[]
 		         {
 			0, //str
 			0, //dex
@@ -200,7 +197,7 @@ public class GameData
 			3, //cha
 			1, //attack
 			2, //defend
-			0, //health add
+			0 //health add
 		}),
 		new Item("boots", "squeaky boots", 30, "<Trinket>", 5, true, new int[]
 		         {
@@ -212,9 +209,9 @@ public class GameData
 			0, //cha
 			0, //attack
 			2, //defend
-			0, //health add
+			0 //health add
 		}),
-		new Item("buster-sword", "every game needs a giant oversized sword", 30, "<Weapon>", 9, true, new int[]
+		new Item("busterSword", "every game needs a giant oversized sword", 30, "<Weapon>", 9, true, new int[]
 		         {
 			1, //str
 			0, //dex
@@ -224,7 +221,7 @@ public class GameData
 			0, //cha
 			5, //attack
 			1, //defend
-			0, //health add
+			0 //health add
 		}),
 		new Item("Scissors", "A pair of good safety scissors", 30, "<Weapon>", -1, true, new int[]
 		{
@@ -236,9 +233,9 @@ public class GameData
 			0, //cha
 			0, //attack
 			0, //defend
-			1, //health add
+			1 //health add
 		}),
-		new Item("Health-potion", "A health potion", 30, "<Consumable>", 12, true, true, 1, new int[]
+		new Item("HealthPotion", "A health potion", 30, "<Consumable>", 12, true, true, 1, new int[]
 		         {
 			0, //str
 			0, //dex
@@ -248,9 +245,9 @@ public class GameData
 			0, //cha
 			0, //attack
 			0, //defend
-			10, //health add
+			10 //health add
 		}),
-		new Item("Mega-potion", "Better potion than health potion", 30, "<Consumable>", 20, true, true, 1, new int[]
+		new Item("MegaPotion", "Better potion than health potion", 30, "<Consumable>", 20, true, true, 1, new int[]
 		         {
 			0, //str
 			0, //dex
@@ -260,15 +257,17 @@ public class GameData
 			0, //cha
 			0, //attack
 			0, //defend
-			20, //health add
->>>>>>> origin/Redux
+			20 //health add
 		})
+
+
 
 	};
 	Enemy[] _enemies = new Enemy[] 
 	{
-		new Enemy("Kraymoar","A large crab monster",3,true,false,new Item[]{ new Item("PotionF", "F health potion",200, "<Consumable>", -1, true, true, 1, new int[]{0, 0, 0,0,0, 0,0, 0, 0})},100,10)
+		new Enemy("Kraymoar","A large crab monster",23,true,false,null,100,10)
 	};
+
 	int modRoll()
 	{
 		int retVal = (Random.Range(1, 2000) * Random.Range(1, 2000) )% 3;
@@ -279,7 +278,7 @@ public class GameData
 	//world objects
 	WorldObject[] _worldObjects = new WorldObject[] 
 	{
-		new WorldObject("Gate", "A large rusty gate", true, "Paper", true, false, false, 2, 1)
+		new WorldObject("Gate", "A large stone gate.", true, "Key", true, false, false,19, 18)
 	};
 
 

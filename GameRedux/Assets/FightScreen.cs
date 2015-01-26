@@ -17,6 +17,8 @@ public class FightScreen : MonoBehaviour
 	public Text windTxt;
 	public Button ret;
 
+	public Text health;
+	public Text magic;
 	string move = "";
 	void Awake()
 	{
@@ -41,8 +43,15 @@ public class FightScreen : MonoBehaviour
 		windTxt.text = move + "\n" + enemyMove();
 		if(GameMaster.GM.Data.HP <= 0)
 		{
-			Application.LoadLevel("GameOver");
+			ret.onClick.RemoveAllListeners();
+			ret.onClick.AddListener(delegate
+			{
+				Application.LoadLevel("GameOver");
+			});
+
 		}
+		health.text = "Health:\t" +GameMaster.GM.Data.HP + " / " + GameMaster.GM.Data.maxHP;
+		magic.text = "Magic:\t" +GameMaster.GM.Data.MP + " / " + GameMaster.GM.Data.maxMP;
 	}
 	string enemyMove()
 	{
@@ -56,7 +65,11 @@ public class FightScreen : MonoBehaviour
 				{
 					ret.onClick.RemoveAllListeners();
 					ret.onClick.AddListener(delegate
-					                        {
+					{
+						if(a.Name.ToLower() == "Kraymoar".ToLower())
+						{
+							Application.LoadLevel("Win");
+						}
 						endFight();
 					});
 					GameMaster.GM.Data.Enemies[tick-1].IsAlive = false;
@@ -89,6 +102,8 @@ public class FightScreen : MonoBehaviour
 	}
 	void setButtons()
 	{
+		health.text = "Health:\t" +GameMaster.GM.Data.HP + " / " + GameMaster.GM.Data.maxHP;
+		magic.text = "Magic:\t" +GameMaster.GM.Data.MP + " / " + GameMaster.GM.Data.maxMP;
 		att.onClick.RemoveAllListeners();
 		def.onClick.RemoveAllListeners();
 		magicM.onClick.RemoveAllListeners();

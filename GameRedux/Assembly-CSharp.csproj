@@ -56,8 +56,10 @@
      <Compile Include="Assets\Scripts\DataStructures\WorldData.cs" />
      <Compile Include="Assets\Scripts\GameControllers\GameMaster.cs" />
      <Compile Include="Assets\Scripts\GameControllers\LoadMain.cs" />
+     <Compile Include="Assets\Scripts\GameScripts\Credits.cs" />
      <Compile Include="Assets\Scripts\GameScripts\GameInput.cs" />
      <Compile Include="Assets\Scripts\GameScripts\InventoryController.cs" />
+     <Compile Include="Assets\Scripts\GameScripts\WinGameInput.cs" />
      <Compile Include="Assets\Scripts\MenuScripts\GameSelectButton.cs" />
      <Compile Include="Assets\Scripts\MenuScripts\GameSelectController.cs" />
      <Compile Include="Assets\Scripts\MenuScripts\MenuController.cs" />
