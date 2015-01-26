@@ -30,33 +30,201 @@ public class GameData
 	Item[] _items = new Item[]
 	{
 		new Item("Rock", "A large rock that can be used to hit kraymoar", 5, false, "<Generic>", 2, false, false, -1, null),
-		new Item("Paper", "A piece of paper that looks important", "<Quest>", 1),
-		new Item("Scissors", "A pair of good safety scissors", 30, "<Weapon>", -1, true, new int[]
-		{
-			1, //str
-			2, //dex
-			3, //con
-			4, //int
-			5, //wis
-			6, //cha
-			7, //attack
+		new Item("Key", "Shiny golden key, it must be important", "<Quest>", 17),
+		new Item("Cap", "The cap of Dunesay", 30, "<Head>", 2, true, new int[]
+		         {
+			0, //str
+			0, //dex
+			0, //con
+			-1, //int
+			0, //wis
+			0, //cha
+			0, //attack
+			2, //defend
+			0, //health add
+		}),
+		new Item("knit-helmet", "A helmet knit of strong wool, better for warmth than protection", 30, "<Head>", 6, true, new int[]
+		    {
+			0, //str
+			0, //dex
+			0, //con
+			0, //int
+			0, //wis
+			0, //cha
+			0, //attack
 			1, //defend
 			0, //health add
 		}),
-		new Item("Sword", "A better version of the safety scissors", 30, "<Weapon>", -1, true, new int[]
+		new Item("lab-coat", "Lab coat of SCIENCE!!!", 30, "<Chest>", -3, true, new int[]
 		         {
 			0, //str
+			0, //dex
+			0, //con
+			2, //int
+			0, //wis
+			0, //cha
+			0, //attack
+			1, //defend
+			0, //health add
+		}),
+		new Item("khakis", "ragged khakis.Slightly burned from wormhole re-enrty", 30, "<Legs>", -6, true, new int[]
+		         {
+			0, //str
+			0, //dex
+			0, //con
+			0, //int
+			0, //wis
+			0, //cha
+			0, //attack
+			1, //defend
+			0, //health add
+		}),
+		new Item("crocs", "why in gods name would you wear these?", 30, "<Feet>", -7, true, new int[]
+		         {
+			0, //str
+			0, //dex
+			0, //con
+			0, //int
+			0, //wis
+			0, //cha
+			0, //attack
+			0, //defend
+			0, //health add
+		}),
+		new Item("gloves", "Mad scientist gloves", 30, "<Hands>", -4, true, new int[]
+		         {
+			0, //str
+			0, //dex
+			0, //con
+			1, //int
+			0, //wis
+			0, //cha
+			1, //attack
+			1, //defend
+			0, //health add
+		}),
+		new Item("utility-belt", "Utility belt that can hold many tools. if only you had tools...", 30, "<Waist>", 3, true, new int[]
+		         {
+			1, //str
+			0, //dex
+			0, //con
+			0, //int
+			0, //wis
+			0, //cha
+			0, //attack
+			1, //defend
+			1, //health add
+		}),
+		new Item("cat", "it appears to be one of the cats from your experimentation, it looks like it could be worn as a hat", 30, "<Head>", 0, true, new int[]
+		         {
+			0, //str
+			0, //dex
+			0, //con
+			0, //int
+			0, //wis
+			0, //cha
+			1, //attack
+			0, //defend
+			0, //health add
+		}),
+		new Item("pipe", "a length of pipe from the destroyed research facility", 30, "<Weapon>", 0, true, new int[]
+		         {
+			1, //str
 			0, //dex
 			0, //con
 			0, //int
 			0, //wis
 			0, //cha
 			2, //attack
+			0, //defend
+			0, //health add
+		}),
+		new Item("laser-knife", "used for toasting bread as you slice it.", 30, "<Weapon>", 9, true, new int[]
+		         {
+			0, //str
+			1, //dex
+			0, //con
+			0, //int
+			0, //wis
+			0, //cha
+			5, //attack
+			0, //defend
+			0, //health add
+		}),
+		new Item("chaps", "assless chaps retains armor value even while pooping", 30, "<Legs>", 13, true, new int[]
+		         {
+			0, //str
+			0, //dex
+			0, //con
+			0, //int
+			0, //wis
+			1, //cha
+			0, //attack
+			3, //defend
+			0, //health add
+		}),
+		new Item("fingerless-gloves", "They would lower your cool factor by 20. If that were a real stat", 30, "<Hands>", 16, true, new int[]
+		         {
+			0, //str
+			0, //dex
+			0, //con
+			0, //int
+			0, //wis
+			0, //cha
+			0, //attack
+			0, //defend
+			0, //health add
+		}),
+		new Item("gauntlets", "Gauntlets of gauntleting", 30, "<Hands>", 11, true, new int[]
+		         {
+			1, //str
+			1, //dex
+			0, //con
+			0, //int
+			0, //wis
+			0, //cha
+			2, //attack
+			2, //defend
+			1, //health add
+		}),
+		new Item("knights-helmet", "Helmet of a brave knight. it is unscracthed as the brave knight didnt feel the need to wear it in battle", 30, "<Head>", 9, true, new int[]
+		         {
+			0, //str
+			0, //dex
+			0, //con
+			1, //int
+			0, //wis
+			3, //cha
+			1, //attack
+			2, //defend
+			0, //health add
+		}),
+		new Item("boots", "squeaky boots", 30, "<Trinket>", 5, true, new int[]
+		         {
+			0, //str
+			0, //dex
+			0, //con
+			0, //int
+			0, //wis
+			0, //cha
+			0, //attack
+			2, //defend
+			0, //health add
+		}),
+		new Item("buster-sword", "every game needs a giant oversized sword", 30, "<Weapon>", 9, true, new int[]
+		         {
+			1, //str
+			0, //dex
+			0, //con
+			0, //int
+			0, //wis
+			0, //cha
+			5, //attack
 			1, //defend
 			0, //health add
 		}),
-		new Item("PotionA", "A health potion", 30, "<Consumable>", -1, true, true, 1, new int[]
-		         {
+		new Item("Scissors", "A pair of good safety scissors", 30, "<Weapon>", -1, true, new int[]
+		{
 			0, //str
 			0, //dex
 			0, //con
@@ -65,9 +233,9 @@ public class GameData
 			0, //cha
 			0, //attack
 			0, //defend
-			0, //health add
+			1, //health add
 		}),
-		new Item("PotionB", "B health potion", 30, "<Consumable>", -1, true, true, 2, new int[]
+		new Item("Health-potion", "A health potion", 30, "<Consumable>", 12, true, true, 1, new int[]
 		         {
 			0, //str
 			0, //dex
@@ -77,7 +245,19 @@ public class GameData
 			0, //cha
 			0, //attack
 			0, //defend
-			0, //health add
+			10, //health add
+		}),
+		new Item("Mega-potion", "Better potion than health potion", 30, "<Consumable>", 20, true, true, 1, new int[]
+		         {
+			0, //str
+			0, //dex
+			0, //con
+			0, //int
+			0, //wis
+			0, //cha
+			0, //attack
+			0, //defend
+			20, //health add
 		})
 
 	};
