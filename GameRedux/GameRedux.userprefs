@@ -1,17 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\DataStructures\GameCommands.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\FightScreen.cs">
     <Files>
-      <File FileName="Assets\Scripts\DataStructures\GameCommands.cs" Line="602" Column="45" />
-      <File FileName="Assets\Scripts\GameScripts\WinGameInput.cs" Line="117" Column="2" />
-      <File FileName="Assets\Scripts\DataStructures\GameData.cs" Line="67" Column="15" />
-      <File FileName="Assets\Scripts\GameScripts\GameInput.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\DataStructures\BasicGameInfo.cs" Line="9" Column="2" />
-      <File FileName="Assets\Scripts\DataStructures\ObjectData.cs" Line="1" Column="1" />
-      <File FileName="Assets\FightScreen.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameControllers\GameMaster.cs" Line="226" Column="121" />
-      <File FileName="Assets\Scripts\GameScripts\WingameInput.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameScripts\Credits.cs" Line="16" Column="37" />
+      <File FileName="Assets\FightScreen.cs" Line="104" Column="35" />
+      <File FileName="Assets\Scripts\GameScripts\InventoryController.cs" Line="160" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -112,7 +112,7 @@ public class WinGameInput : MonoBehaviour
 		_cinematic = false;
 		_currentCinematic = null;
 		cinematicButton.SetActive(false);
-		//roll credits
+		Application.LoadLevel("Credits");
 	}
 	
 	string cinematic(int stage, string[] content)

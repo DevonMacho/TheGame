@@ -85,12 +85,28 @@ public class FightScreen : MonoBehaviour
 					else if(rand %10 > 4 && rand %10 < 9)
 					{
 						int hit = Random.Range(1,(int)(a.MaxAttack/2));
+						if( hit > grabItemStats()[7]/5)
+						{
+							hit -= grabItemStats()[7]/5;
+						}
+						else
+						{
+							hit = 0;
+						}
 						GameMaster.GM.Data.HP -= hit;
 						return a.Name + " has hit you dealing " + hit +  " points of damage.";
 					}
 					else
 					{
 						int hit = Random.Range((int)(a.MaxAttack/2),((a.MaxAttack+1)));
+						if( hit > grabItemStats()[7]/5)
+						{
+							hit -= grabItemStats()[7]/5;
+						}
+						else
+						{
+							hit = 0;
+						}
 						GameMaster.GM.Data.HP -= hit;
 						return a.Name + " has critically hit you dealing " + hit +  " points of damage.";
 					}
@@ -125,7 +141,7 @@ public class FightScreen : MonoBehaviour
 			defend();
 			enemyTurn();
 		});
-		if(GameMaster.GM.Data.MP > 10)
+		if(GameMaster.GM.Data.MP > 3)
 		{
 			magicM.onClick.AddListener(delegate
 			{
@@ -160,7 +176,7 @@ public class FightScreen : MonoBehaviour
 				}
 				
 			}
-			int hit = 10;
+			int hit = ((GameMaster.GM.Data.Strength + grabItemStats()[0]) / 4) + grabItemStats()[6];
 			GameMaster.GM.Data.Enemies[tick-1].HP -= hit;
 			move = "You hit the enemy for " + hit + " damage.\n";
 			return;
@@ -172,10 +188,49 @@ public class FightScreen : MonoBehaviour
 	{
 
 	}
+	int[] grabItemStats()
+	{
+		int _str = 0;
+		int _dex = 0;
+		int _con = 0;
+		int _int = 0;
+		int _wis = 0;
+		int _cha = 0;
+		int _atk = 0;
+		int _def = 0;
+		foreach (Item a in GameMaster.GM.Data.Items)
+		{
+			if(a.Location > -10 && a.Location < -1)
+			{
+				if(a.ModValues != null)
+				{
+					_str += a.ModValues [0];
+					_dex += a.ModValues [1];
+					_con += a.ModValues [2];
+					_int += a.ModValues [3];
+					_wis += a.ModValues [4];
+					_cha += a.ModValues [5];
+					_atk += a.ModValues [6];
+					_def += a.ModValues [7];
+				}
+			}
+		}
+		return new int[]
+		{
+			_str,
+			_dex,
+			_con,
+			_int,
+			_wis,
+			_cha,
+			_atk,
+			_def,
+		};
+	}
 
 	void magicMissile()
 	{
-		GameMaster.GM.Data.MP -= 10;
+		GameMaster.GM.Data.MP -= 3;
 		if(doIHit(false))
 		{
 			int tick = 0;
@@ -188,7 +243,7 @@ public class FightScreen : MonoBehaviour
 				}
 				
 			}
-			int hit = 10;
+			int hit = ((GameMaster.GM.Data.Wisdom + grabItemStats()[4]) / 4);
 			GameMaster.GM.Data.Enemies[tick-1].HP -= hit;
 			move = "You hit the enemy for " + hit + " damage.\n";
 			return;

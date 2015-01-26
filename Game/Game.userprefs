@@ -1,9 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\GameRedux\Assets\Scripts\GameScripts\GameInput.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\GameRedux\Assets\FightScreen.cs">
     <Files>
-      <File FileName="..\GameRedux\Assets\Scripts\DataStructures\GameData.cs" Line="29" Column="1" />
-      <File FileName="..\GameRedux\Assets\Scripts\GameScripts\GameInput.cs" Line="66" Column="75" />
+      <File FileName="..\GameRedux\Assets\FightScreen.cs" Line="104" Column="35" />
+      <File FileName="..\GameRedux\Assets\Scripts\GameScripts\InventoryController.cs" Line="160" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
