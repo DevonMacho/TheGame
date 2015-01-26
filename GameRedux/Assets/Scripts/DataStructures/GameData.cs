@@ -43,7 +43,7 @@ public class GameData
 			2, //defend
 			0 //health add
 		}),
-		new Item("knitHelmet", "A helmet knit of strong wool, better for warmth than protection", 30, "<Head>", 6, true, new int[]
+		new Item("KnitHelmet", "A helmet knit of strong wool, better for warmth than protection", 30, "<Head>", 6, true, new int[]
 		    {
 			0, //str
 			0, //dex
@@ -55,7 +55,7 @@ public class GameData
 			1, //defend
 			0 //health add
 		}),
-		new Item("labCoat", "Lab coat of SCIENCE!!!", 30, "<Chest>", -3, true, new int[]
+		new Item("LabCoat", "Lab coat of SCIENCE!!!", 30, "<Chest>", -3, true, new int[]
 		         {
 			0, //str
 			0, //dex
@@ -67,7 +67,7 @@ public class GameData
 			1, //defend
 			0 //health add
 		}),
-		new Item("khakis", "ragged khakis.Slightly burned from wormhole re-enrty", 30, "<Legs>", -6, true, new int[]
+		new Item("Khakis", "ragged khakis.Slightly burned from wormhole re-enrty", 30, "<Legs>", -6, true, new int[]
 		         {
 			0, //str
 			0, //dex
@@ -79,7 +79,7 @@ public class GameData
 			1, //defend
 			0 //health add
 		}),
-		new Item("crocs", "why in gods name would you wear these?", 30, "<Feet>", -7, true, new int[]
+		new Item("Crocs", "why in gods name would you wear these?", 30, "<Feet>", -7, true, new int[]
 		         {
 			0, //str
 			0, //dex
@@ -91,7 +91,7 @@ public class GameData
 			3, //defend
 			0 //health add
 		}),
-		new Item("gloves", "Mad scientist gloves", 30, "<Hands>", -4, true, new int[]
+		new Item("Gloves", "Mad scientist gloves", 30, "<Hands>", -4, true, new int[]
 		         {
 			0, //str
 			0, //dex
@@ -103,7 +103,7 @@ public class GameData
 			1, //defend
 			0 //health add
 		}),
-		new Item("utilityBelt", "Utility belt that can hold many tools. if only you had tools...", 30, "<Waist>", 3, true, new int[]
+		new Item("UtilityBelt", "Utility belt that can hold many tools. if only you had tools...", 30, "<Waist>", 3, true, new int[]
 		         {
 			1, //str
 			0, //dex
@@ -115,7 +115,7 @@ public class GameData
 			1, //defend
 			1 //health add
 		}),
-		new Item("cat", "it appears to be one of the cats from your experimentation, it looks like it could be worn as a hat", 30, "<Head>", 0, true, new int[]
+		new Item("Cat", "it appears to be one of the cats from your experimentation, it looks like it could be worn as a hat", 30, "<Head>", 0, true, new int[]
 		         {
 			0, //str
 			0, //dex
@@ -127,7 +127,7 @@ public class GameData
 			0, //defend
 			0 //health add
 		}),
-		new Item("pipe", "a length of pipe from the destroyed research facility", 30, "<Weapon>", 0, true, new int[]
+		new Item("Pipe", "a length of pipe from the destroyed research facility", 30, "<Weapon>", 0, true, new int[]
 		         {
 			1, //str
 			0, //dex
@@ -139,7 +139,7 @@ public class GameData
 			0, //defend
 			0 //health add
 		}),
-		new Item("laserKnife", "used for toasting bread as you slice it.", 30, "<Weapon>", 9, true, new int[]
+		new Item("LaserKnife", "used for toasting bread as you slice it.", 30, "<Weapon>", 9, true, new int[]
 		         {
 			0, //str
 			1, //dex
@@ -151,7 +151,7 @@ public class GameData
 			0, //defend
 			0 //health add
 		}),
-		new Item("chaps", "assless chaps retains armor value even while pooping", 30, "<Legs>", 13, true, new int[]
+		new Item("Chaps", "assless chaps retains armor value even while pooping", 30, "<Legs>", 13, true, new int[]
 		         {
 			0, //str
 			0, //dex
@@ -163,7 +163,7 @@ public class GameData
 			3, //defend
 			0 //health add
 		}),
-		new Item("fingerlessGloves", "They would lower your cool factor by 20. If that were a real stat", 30, "<Hands>", 16, true, new int[]
+		new Item("FingerlessGloves", "They would lower your cool factor by 20. If that were a real stat", 30, "<Hands>", 16, true, new int[]
 		         {
 			0, //str
 			0, //dex
@@ -175,7 +175,7 @@ public class GameData
 			0, //defend
 			0 //health add
 		}),
-		new Item("gauntlets", "Gauntlets of gauntleting", 30, "<Hands>", 11, true, new int[]
+		new Item("Gauntlets", "Gauntlets of gauntleting", 30, "<Hands>", 11, true, new int[]
 		         {
 			1, //str
 			1, //dex
@@ -187,7 +187,7 @@ public class GameData
 			2, //defend
 			1  //health add
 		}),
-		new Item("knightsHelmet", "Helmet of a brave knight. it is unscracthed as the brave knight didnt feel the need to wear it in battle", 30, "<Head>", 9, true, new int[]
+		new Item("KnightsHelmet", "Helmet of a brave knight. it is unscracthed as the brave knight didnt feel the need to wear it in battle", 30, "<Head>", 9, true, new int[]
 		         {
 			0, //str
 			0, //dex
@@ -199,7 +199,7 @@ public class GameData
 			2, //defend
 			0 //health add
 		}),
-		new Item("boots", "squeaky boots", 30, "<Trinket>", 5, true, new int[]
+		new Item("Boots", "squeaky boots", 30, "<Trinket>", 5, true, new int[]
 		         {
 			0, //str
 			0, //dex
@@ -211,7 +211,7 @@ public class GameData
 			2, //defend
 			0 //health add
 		}),
-		new Item("busterSword", "every game needs a giant oversized sword", 30, "<Weapon>", 9, true, new int[]
+		new Item("BusterSword", "every game needs a giant oversized sword", 30, "<Weapon>", 9, true, new int[]
 		         {
 			1, //str
 			0, //dex
