@@ -65,7 +65,7 @@ public class GameData
 			0, //cha
 			0, //attack
 			0, //defend
-			0, //health add
+			10, //health add
 		}),
 		new Item("PotionB", "B health potion", 30, "<Consumable>", -1, true, true, 2, new int[]
 		         {
@@ -77,11 +77,14 @@ public class GameData
 			0, //cha
 			0, //attack
 			0, //defend
-			0, //health add
+			10, //health add
 		})
 
 	};
-
+	Enemy[] _enemies = new Enemy[] 
+	{
+		new Enemy("Kraymoar","A large crab monster",3,true,false,new Item[]{ new Item("PotionF", "F health potion",200, "<Consumable>", -1, true, true, 1, new int[]{0, 0, 0,0,0, 0,0, 0, 0})},100,10)
+	};
 	int modRoll()
 	{
 		int retVal = (Random.Range(1, 2000) * Random.Range(1, 2000) )% 3;
@@ -407,6 +410,18 @@ public class GameData
 		get
 		{
 			return _maxMp;
+		}
+	}
+
+	public Enemy[] Enemies
+	{
+		get
+		{
+			return _enemies;
+		}
+		set
+		{
+			_enemies = value;
 		}
 	}
 }

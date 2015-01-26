@@ -46,13 +46,16 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\FightScreen.cs" />
      <Compile Include="Assets\Scripts\DataStructures\BasicGameInfo.cs" />
+     <Compile Include="Assets\Scripts\DataStructures\EnemyData.cs" />
      <Compile Include="Assets\Scripts\DataStructures\GameCommands.cs" />
      <Compile Include="Assets\Scripts\DataStructures\GameData.cs" />
      <Compile Include="Assets\Scripts\DataStructures\InventoryData.cs" />
      <Compile Include="Assets\Scripts\DataStructures\ObjectData.cs" />
      <Compile Include="Assets\Scripts\DataStructures\WorldData.cs" />
      <Compile Include="Assets\Scripts\GameControllers\GameMaster.cs" />
+     <Compile Include="Assets\Scripts\GameControllers\LoadMain.cs" />
      <Compile Include="Assets\Scripts\GameScripts\GameInput.cs" />
      <Compile Include="Assets\Scripts\GameScripts\InventoryController.cs" />
      <Compile Include="Assets\Scripts\MenuScripts\GameSelectButton.cs" />

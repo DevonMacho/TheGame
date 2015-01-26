@@ -21,12 +21,14 @@ public class GameInput : MonoBehaviour
 	public Image fore2;
 	public Sprite testImage;
 	public InventoryController inv;
+	public FightScreen fs;
 	List<string> _cmdHist;
 	bool _acceptInput;
 	bool _cinematic;
 	int _cinematicStage = 0;
 	int _cmdLoc = 1;
 	string[] _currentCinematic;
+
 	// Use this for initialization
 	void Awake()
 	{
@@ -87,14 +89,18 @@ public class GameInput : MonoBehaviour
 		if(GameMaster.GM.NewGame)
 		{
 			//change testimage to level 1 background
-			StartCoroutine(fadeTexture(testImage, new Sprite()));
+			StartCoroutine(fadeTexture(GameMaster.GM.backgrounds[0], new Sprite()));
 			OutputText.GetComponent<Text>().text = startCinematic(introCine) + "\n";
 		}
 		else
 		{
 			//chage testimage to level GameMaster.Data.node background
 			fore2.color = new Color(0,0,0,255);
-			StartCoroutine(fadeTexture(testImage, new Sprite()));
+			if(GameMaster.GM.Data.Node >= GameMaster.GM.backgrounds.Length)
+			{
+				StartCoroutine(fadeTexture(GameMaster.GM.blank, new Sprite()));
+			}
+			StartCoroutine(fadeTexture(GameMaster.GM.backgrounds[GameMaster.GM.Data.Node], new Sprite()));
 			OutputText.GetComponent<Text>().text =  "Welcome Back!\n";
 		}
 		StartCoroutine("topScroll");
@@ -328,7 +334,7 @@ public class GameInput : MonoBehaviour
 		}
 		return "Invalid Command";
 	}
-	IEnumerator fadeTexture(Sprite bottom, Sprite top)
+	public IEnumerator fadeTexture(Sprite bottom, Sprite top)
 	{
 		//top fades into bottom
 		//topObject.mainTexture = top;

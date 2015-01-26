@@ -62,7 +62,18 @@ public class InventoryController : MonoBehaviour
 		{
 			if(a.Location == -1)
 			{
-				inv += "Name: " +a.Name +"\nValue: " + a.Value + " GP\n";
+				if(!a.Consumable)
+				{
+					inv += "Name: " +a.Name +"\nValue: " + a.Value + " GP\n";
+				}
+				else
+				{
+					if(a.Uses >= 1)
+					{
+						inv += "Name: " +a.Name +"\nValue: " + a.Value + " GP\n";
+					}
+				}
+
 				if(a.CanEquip)
 				{
 					inv +=

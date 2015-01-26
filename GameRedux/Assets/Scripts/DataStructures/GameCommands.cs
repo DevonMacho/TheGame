@@ -347,6 +347,18 @@ public class GameCommands :MonoBehaviour
 							}
 						}
 					}
+					//string fight;
+					foreach(Enemy b in GameMaster.GM.Data.Enemies)
+					{
+						if(b.Location == currentLoc.AdjacentNodes [sub - 1] && b.IsAlive)
+						{
+							GameObject.FindObjectOfType<GameInput>().fs.startFight();
+						}
+					}
+
+					GameInput input = GameObject.FindObjectOfType<GameInput>();
+					input.StartCoroutine(input.fadeTexture(GameMaster.GM.backgrounds[currentLoc.AdjacentNodes [sub - 1]], GameMaster.GM.backgrounds[GameMaster.GM.Data.Node]));
+
 					GameMaster.GM.Data.Node = currentLoc.AdjacentNodes [sub - 1];
 					return "Going " + a.ToLower() + "...\n" + GameMaster.GM.World [currentLoc.AdjacentNodes [sub - 1]].Information;
 				}
@@ -701,7 +713,7 @@ public class GameCommands :MonoBehaviour
 		GameObject.FindObjectOfType<GameInput>().StartQuit();
 		return "Quitting...";
 	}
-	static void useItem(Item toUse)
+	public static void useItem(Item toUse)
 	{
 		if (toUse.ModValues != null && toUse.ModValues.Length == 9)
 		{
