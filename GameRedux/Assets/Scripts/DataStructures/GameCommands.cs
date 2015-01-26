@@ -432,7 +432,7 @@ public class GameCommands :MonoBehaviour
 			foreach (Item a in GameMaster.GM.Data.Items)
 			{
 				looper++;
-				if(a.Location > 0 && GameMaster.GM.Data.Node == a.Location)
+				if(a.Location >= 0 && GameMaster.GM.Data.Node == a.Location)
 				{
 					if(a.Name.ToLower() == tkn [1].ToLower())
 					{
