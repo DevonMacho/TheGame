@@ -33,13 +33,13 @@ public class GameData
 		new Item("Paper", "A piece of paper that looks important", "<Quest>", 1),
 		new Item("Scissors", "A pair of good safety scissors", 30, "<Weapon>", -1, true, new int[]
 		{
-			0, //str
-			0, //dex
-			0, //con
-			0, //int
-			0, //wis
-			0, //cha
-			2, //attack
+			1, //str
+			2, //dex
+			3, //con
+			4, //int
+			5, //wis
+			6, //cha
+			7, //attack
 			1, //defend
 			0, //health add
 		}),

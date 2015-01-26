@@ -20,6 +20,7 @@ public class GameInput : MonoBehaviour
 	public Image fore1;
 	public Image fore2;
 	public Sprite testImage;
+	public InventoryController inv;
 	List<string> _cmdHist;
 	bool _acceptInput;
 	bool _cinematic;
@@ -211,7 +212,7 @@ public class GameInput : MonoBehaviour
 		return tokens;
 	}
 	
-	void deselectInput()
+	public void deselectInput()
 	{
 		
 		_acceptInput = false;

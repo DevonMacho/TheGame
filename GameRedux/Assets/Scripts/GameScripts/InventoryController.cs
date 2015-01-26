@@ -22,14 +22,22 @@ public class InventoryController : MonoBehaviour
 	public Text magic;
 	public Text charName;
 	public Text charClass;
-
-	void Awake()
+	public Text Inventory;
+	public Scrollbar invScroll;
+	public Text[] Equipped;
+	public Button ret;
+	public GameInput gi;
+	
+	public void openInv()
 	{
-		UpdateInv();
-	}
+		gameObject.SetActive(true);
+		gi.deselectInput();
+		ret.onClick.RemoveAllListeners();
+		ret.onClick.AddListener(delegate
+		{
+			gameObject.SetActive(false);
+		});
 
-	public void UpdateInv()
-	{
 		strBase.text = GameMaster.GM.Data.Strength.ToString();
 		dexBase.text = GameMaster.GM.Data.Dexterity.ToString();
 		conBase.text = GameMaster.GM.Data.Constitution.ToString();
@@ -49,8 +57,57 @@ public class InventoryController : MonoBehaviour
 		intMod.text = itemStats [3].ToString();
 		wisMod.text = itemStats [4].ToString();
 		chaMod.text = itemStats [5].ToString();
-	}
+		string inv = "";
+		foreach(Item a in GameMaster.GM.Data.Items)
+		{
+			if(a.Location == -1)
+			{
+				inv += "Name: " +a.Name +"\nValue: " + a.Value + " GP\n";
+				if(a.CanEquip)
+				{
+					inv +=
+					"str: " + a.ModValues [0] + "\n"+
+					"dex: " + a.ModValues [1] + "\n"+
+					"con: " + a.ModValues [2] + "\n"+
+					"int: " + a.ModValues [3] + "\n"+
+					"wis: " + a.ModValues [4] + "\n"+
+					"cha: " + a.ModValues [5] + "\n"+
+					"atk: " + a.ModValues [6] + "\n"+
+					"def: " + a.ModValues [7] + "\n";
+				}
+				inv += "\n";
+			}
+		}
+		if (inv == "")
+		{
+			inv = "No items";
+		}
+		Inventory.text = inv;
+		invScroll.value = 1;
 
+		Equipped[0].text = "Head:\t" + findItem(-2);
+		Equipped[1].text = "Chest:\t" +  findItem(-3);
+		Equipped[2].text = "Hands:\t" +  findItem(-4);
+		Equipped[3].text = "Waist:\t" +  findItem(-5);
+		Equipped[4].text = "Legs:\t" +  findItem(-6);
+		Equipped[5].text = "Feet:\t" +  findItem(-7);
+		Equipped[6].text = "Weapon:\t" +  findItem(-8);
+		Equipped[7].text = "Trinket:" +  findItem(-9);
+	}
+	string findItem(int slot)
+	{
+		if(slot < -1 && slot > -10)
+		{
+			foreach(Item a in GameMaster.GM.Data.Items)
+			{
+				if(a.Location == slot)
+				{
+					return a.Name;
+				}
+			}
+		}
+		return "None";
+	}
 	int[] grabItemStats()
 	{
 		int _str = 0;

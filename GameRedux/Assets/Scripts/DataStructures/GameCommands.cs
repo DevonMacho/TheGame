@@ -314,7 +314,8 @@ public class GameCommands :MonoBehaviour
 
 	static string inventory()
 	{
-		return "Opening Inventory";
+		GameObject.FindObjectOfType<GameInput>().inv.openInv();
+		return "Opening Inventory...";
 	}
 
 	static string go(string[] tkn)
@@ -702,7 +703,18 @@ public class GameCommands :MonoBehaviour
 	}
 	static void useItem(Item toUse)
 	{
+		if (toUse.ModValues != null && toUse.ModValues.Length == 9)
+		{
+			if(toUse.ModValues[8] + GameMaster.GM.Data.HP > GameMaster.GM.Data.maxHP)
+			{
+				GameMaster.GM.Data.HP = GameMaster.GM.Data.maxHP;
+			}
+			else
+			{
+				GameMaster.GM.Data.HP += toUse.ModValues[8];
+			}
 
+		}
 	}
 	static Command[] getSubcommands(Command cmd)
 	{
