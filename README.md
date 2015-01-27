@@ -8,3 +8,5 @@ Aaron Kramer,
 TJ Livingston,
 Alley Borden,
 Jarred Sumpter
+
+The ISO was too big for git to handle... http://www.eekumbokum.com/.Kraymoar/ is where it is currently hosted
