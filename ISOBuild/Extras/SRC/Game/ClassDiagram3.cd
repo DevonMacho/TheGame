@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GameData">
+    <Position X="7.25" Y="0.5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="GameData.GameInformation">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\GameData.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAQAAEAAAAAAAAAAAAAAAQAAEgIggAMAAAA=</HashCode>
+      <FileName>Assets\Scripts\GameData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameParser">
+    <Position X="15.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAoAAiAEAAAAAAAMAAQAEAAgAAAAAAAAAAEACAAAAg=</HashCode>
+      <FileName>Assets\Scripts\GameParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GenericCommands">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAEAAAAACAAgAAAAAAAAAAAAACAAAAAAhAAAACAA=</HashCode>
+      <FileName>Assets\Scripts\GenericCommands.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GlobalSettings">
+    <Position X="12.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\GlobalSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigureHUD_GUI">
+    <Position X="9.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARAAAAAACAAAAAAAAAAAgAAAAAAIAAAAACAAAAgAAA=</HashCode>
+      <FileName>Assets\Scripts\GUIScripts\ConfigureHUD_GUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FileBrowser">
+    <Position X="4.25" Y="0.5" Width="3" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="FileBrowser.FinishedCallback">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\GUIScripts\FileBrowser.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>FAAQABAgABiAAwgEIQAAAAEQBCEhAIABIMiAACiAMQA=</HashCode>
+      <FileName>Assets\Scripts\GUIScripts\FileBrowser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FileBrowserGUI">
+    <Position X="7.5" Y="8.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAACACIAAAAAAQABAAAAAABACAACAAAAI=</HashCode>
+      <FileName>Assets\Scripts\GUIScripts\FileBrowserGUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUI_Terminal">
+    <Position X="16.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAQEAAAACAAQAAAAAQAAAAAABAAABAABACAAAAgAAA=</HashCode>
+      <FileName>Assets\Scripts\GUIScripts\GUI_Terminal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUISelector">
+    <Position X="2.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQAAgAAAAAAAAAAAAAAAAACAAAAAAAABADAAAAAAGA=</HashCode>
+      <FileName>Assets\Scripts\GUIScripts\GUISelector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GUILayoutx">
+    <Position X="10" Y="6" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="GUILayoutx.DoubleClickCallback">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\GUIScripts\ImprovedSelection.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\GUIScripts\ImprovedSelection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainMenuGUI">
+    <Position X="12.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAIAA=</HashCode>
+      <FileName>Assets\Scripts\GUIScripts\MainMenuGUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MessageGUI">
+    <Position X="12.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\GUIScripts\MessageGUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SettingsGUI">
+    <Position X="10.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACBAQAAAAAABAAAAAIAAAAAAAACiAAAAIAA=</HashCode>
+      <FileName>Assets\Scripts\GUIScripts\SettingsGUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Inventory">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAMCAAAAAEAAAAAAAAhIAAIAAAAIA=</HashCode>
+      <FileName>Assets\Scripts\Inventory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ItemData">
+    <Position X="13.75" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Struct Name="ItemData.Container">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\ItemData.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="ItemData.Item">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\ItemData.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\ItemData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LocationData">
+    <Position X="10" Y="0.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Struct Name="LocationData.Location">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\LocationData.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\LocationData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NewGameParser">
+    <Position X="15.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAgACAAAAAAACAAAAAIgAgAAAAFCQAAAAAAgAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\NewGameParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ParserSelect">
+    <Position X="12.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgIAAACAAAAAAAAAAAAAAAAAAAAAACAAAIAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\ParserSelect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorldData">
+    <Position X="12.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAIAAgAAAACAAAAQAAEAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\WorldData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="FileBrowserType">
+    <Position X="15.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\GUIScripts\FileBrowser.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
